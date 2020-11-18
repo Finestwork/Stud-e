@@ -1,0 +1,318 @@
+.ghost--header
+    color: $color-primary-dark
+    position: relative
+    padding: 50 / $default-font-size * 1em 0
+    &__nav
+        position: fixed
+        width: 100%
+        top: 0
+        background-color: transparent
+        z-index: 999
+        &--active
+            height: 100%
+            overflow-y: scroll
+        &__list-container
+            margin-top: 1 / $default-font-size * 1em
+            transition: max-height .8s cubic-bezier(0.65, 0, 0.35, 1)
+            max-height: 0px
+            overflow: hidden
+            background-color: white
+            @include brk_md
+                flex-grow: 1
+                display: flex
+                justify-content: flex-end
+                margin-right: 95px
+                background-color: transparent
+                max-height: unset
+            @include brk_lrg
+                margin-right: 110px
+            @include brk_xlrg
+                margin-right: 125px
+        &__list-item
+            margin-top: 5 / $default-font-size * 1em
+            margin-bottom: 5 / $default-font-size * 1em
+            &:hover > a
+                background-color: $color-hover
+        &-link
+            @extend %font-medium
+            color: $color-primary-dark
+            display: block
+            text-align: center
+            text-transform: capitalize
+            padding: 10 / $default-font-size * 1em 0
+            font-size: 20 / $root-font-size * 1rem
+            @include brk_md
+                padding-left: 10 / $default-font-size * 1em
+                padding-right: 10 / $default-font-size * 1em
+                font-size: 16 / $root-font-size * 1rem
+            @include brk_lrg
+                font-size: 20 / $root-font-size * 1rem
+            @include brk_xlrg
+                font-size: 22 / $root-font-size * 1rem
+        &-flex
+            @include brk_md
+                position: relative
+                display: -webkit-flex
+                display: flex
+                align-items: center
+        //LEFT SIDE
+        &-top
+            display: -webkit-flex
+            display: flex
+            -webkit-align-items: center
+            align-items: center
+            -webkit-justify-content: space-between
+            justify-content: space-between
+            -webkit-flex-wrap: wrap
+            flex-wrap: wrap
+            padding-top: 10 / $default-font-size * 1em
+            @include custom_breakpoint(430)
+                -webkit-justify-content: flex-end
+                justify-content: flex-end
+        &-left
+            -webkit-flex-basis: 50%
+            flex-basis: 50%
+            @include custom_breakpoint(430)
+                -webkit-flex-basis: 0
+                flex-basis: 0
+                -webkit-flex-grow: 1
+                flex-grow: 1
+
+    //LOGO
+    &__logo-box
+        width: 40px
+    &__logo-link
+        @extend %display_flex
+        align-items: center
+        padding-top: 20 / $default-font-size * 1em
+        padding-bottom: 20 / $default-font-size * 1em
+        &:active,
+        &:focus,
+        &:visited
+            color: $color-primary-dark
+    &__logo-circle
+        width: 8px
+        height: 8px
+        background-color: $color-primary
+        border-radius: 100%
+        margin-top: 8px
+    &__logo-txt
+        font-size: 20 / $root-font-size * 1rem
+        margin-left: 8px
+        margin-right: 5px
+        @extend %font-bold
+        color: $color-primary-dark
+    &__signup-bttn
+        @include custom_breakpoint(430)
+            margin-left: 15 / $default-font-size * 1em
+            margin-right: 15 / $default-font-size * 1em
+        @include brk_md
+            position: absolute
+            right: 0
+            top: 50%
+            @include transform(translateY(-50%))
+            margin-right: 0
+            font-size: 14 / $root-font-size * 1rem
+        @include brk_lrg
+            font-size: 16 / $root-font-size * 1rem
+        @include brk_xlrg
+            font-size: 20 / $root-font-size * 1rem
+    //RIGHT SIDE
+    &__hamburger-bttn
+        width: 45px
+        height: 50px
+        @include brk_md
+            display: none
+        &:hover
+            background-color: $color-hover
+        &__line
+            transition: all .4s ease-in-out
+            background-color: $color-primary-dark
+            width: 100%
+            height: 3px
+            border-radius: 15px
+            position: relative
+            display: block
+            &::before,
+            &::after
+                transition: all .4s ease-in-out
+                content: ''
+                width: 50%
+                height: 3px
+                border-radius: 15px
+                position: absolute
+                background-color: $color-primary-dark
+            &::before
+                top: -12px
+                right: 0
+            &::after
+                top: 12px
+                left: 0
+
+
+    //MAIN CONTENT
+    &__main-content
+        margin-top: 70 / $default-font-size * 1em
+        &__title--top,
+        &__primary
+            text-transform: uppercase
+        &--left
+            padding-top: 0
+            @include brk_md
+                padding-top: 30 / $default-font-size * 1em
+        &__title--top
+            @extend %font-semibold
+            font-size: 16 / $root-font-size * 1rem
+            &__sub
+                color: $color-primary
+            @include brk_md
+                font-size: 14 / $root-font-size * 1rem
+            @include brk_lrg
+                font-size: 16 / $root-font-size * 1rem
+            @include brk_xlrg
+                font-size: 18 / $root-font-size * 1rem
+        &__primary
+            font-size: 25 / $root-font-size * 1rem
+            @extend %font-bold
+            margin: 10 / $default-font-size * 1em 0
+            position: relative
+            @include brk_md
+                font-size: 25 / $root-font-size * 1rem
+                line-height: 1.8
+                &--sub::before,
+                &::before
+                    content: ""
+                    max-width: 390px
+                    min-width: 360px
+                    height: 15px
+                    position: absolute
+                    background-color: $color-primary-light
+                    z-index: -1
+                    opacity: 0.1
+                    left: -8px
+                &::before
+                    bottom: 58%
+                    width: 100%
+                &--sub::before
+                    display: block
+                    bottom: 8%
+                    width: 65%
+            @include brk_lrg
+                font-size: 31.25 / $root-font-size * 1rem
+                &--sub::before,
+                &::before
+                    height: 20px
+                    max-width: unset
+                    min-width: unset
+            @include brk_xlrg
+                font-size: 39.06 / $root-font-size * 1rem
+                &--sub::before,
+                &::before
+                    left: 0
+
+        &__bottom
+            font-size: 16 / $root-font-size * 1rem
+            color: $txt-secondary
+            @extend %font-medium
+            @include brk_md
+                font-size: 14 / $root-font-size * 1rem
+            @include brk_lrg
+                font-size: 16 / $root-font-size * 1rem
+            @include brk_xlrg
+                font-size: 18 / $root-font-size * 1rem
+        &__bttn
+            margin-top: 30 / $default-font-size * 1em
+            margin-bottom: 25 / $default-font-size * 1em
+        &__img-box
+            width: 80%
+            max-width: 350px
+            margin: 30 / $default-font-size * 1em auto 0 auto
+            box-shadow: 0px 7px 100px rgba(227, 210, 243, 0.7)
+            padding-top: 15 / $default-font-size * 1em
+            border-radius: 15px
+            overflow: hidden
+            background-color: white
+            @include animation(floating 10s alternate infinite linear)
+            @include brk_md
+                margin-top: 30 / $default-font-size * 1em
+
+    .shape
+        &-1
+            width: 70%
+            top: 30px
+            right: 0
+            @include animation(fading 1s infinite linear)
+        &-2,
+        &-3
+            top: 0
+            z-index: -1
+        &-2
+            width: 60%
+            right: 0
+        &-3
+            width: 40%
+        &-4
+            top: 11%
+            left: 24%
+            @include animation(staticRotate 20s infinite linear)
+        &-5
+            left: 40%
+            top: 13%
+            @include animation(bigRotate 25s infinite linear)
+        &-6
+            right: 20%
+            top: 18%
+            @include animation(bigRotate 30s alternate infinite linear)
+        &-7
+            right: 11%
+            top: 23%
+            @include animation(slantSlide 25s alternate infinite linear)
+        &-8
+            right: 40%
+            top: 36%
+            @include animation(staticRotate 15s infinite linear)
+        &-9
+            right: 3%
+            bottom: 11%
+            @include animation(bigRotate 25s infinite linear)
+        &-10
+            right: 19%
+            top: 14%
+            @include animation(bigRotate 30s infinite linear)
+        &-11
+            right: 55%
+            bottom: 0
+            @include animation(staticRotate 12s infinite linear)
+        &-12
+            right: 27%
+            bottom: 16%
+            @include animation(staticRotate 14s infinite linear)
+        &-13
+            left: 15%
+            bottom: 26%
+            @include animation(bigRotate 25s infinite linear)
+        &-14
+            left: 4%
+            top: 50%
+            @include animation(staticRotate 14s infinite linear)
+
+.hamburger-bttn--active > span
+    background-color: transparent
+    &::before
+        width: 100%
+        top: 0
+        @include transform(rotate(405deg))
+    &::after
+        width: 100%
+        top: 0
+        @include transform(rotate(-405deg))
+.collapse--active
+    max-height: 1500px
+    @include brk_md
+        max-height: unset
+.link--active
+    color: $color-primary
+
+
+
+

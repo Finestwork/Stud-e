@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="19.9" height="19.907" viewBox="0 0 19.9 19.907">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        stroke: #dfecf1;
+        stroke-width: 2px;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path id="Rectangle" class="cls-1" d="M1219.83,776.778l4.95-4.95a3.988,3.988,0,0,1,5.65,0l4.95,4.95a3.986,3.986,0,0,1,0,5.657l-4.95,4.949a3.987,3.987,0,0,1-5.65,0l-4.95-4.949A3.986,3.986,0,0,1,1219.83,776.778Z" transform="translate(-1217.66 -769.656)"/>
+</svg>

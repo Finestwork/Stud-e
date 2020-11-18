@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="30px" height="28px" viewBox="0 0 30 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 53 (72520) - https://sketchapp.com -->
+    <title>F20B9650-77B7-46E2-883F-D293318A4AF6</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#B0FFE2" offset="0%"></stop>
+            <stop stop-color="#35EDB8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.600283668">
+        <g id="01_Index" transform="translate(-1172.000000, -190.000000)" fill="url(#linearGradient-1)" fill-rule="nonzero">
+            <g id="Banner" transform="translate(-54.000000, -261.000000)">
+                <g id="Shape-1" transform="translate(115.000000, 348.000000)">
+                    <path d="M1126,103 C1116.59322,103 1111,103 1111,112.824561 C1111,122.649123 1118.62712,131 1124.72881,131 C1130.83051,131 1141,124.524721 1141,117.446571 C1141,110.368421 1135.40678,103 1126,103 Z" id="Path-9"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

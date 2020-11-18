@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="74.962" height="70" viewBox="0 0 74.962 70">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#545aee"/>
+      <stop offset="1" stop-color="#3b43ff"/>
+    </linearGradient>
+    <linearGradient id="linear-gradient-2" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_133" data-name="Group 133" transform="translate(2.5)">
+    <circle id="Ellipse_76" data-name="Ellipse 76" cx="35" cy="35" r="35" transform="translate(2.462)" fill="#474dff" opacity="0.1"/>
+    <g id="Group_10" data-name="Group 10" transform="translate(11.962 12.705)">
+      <path id="Union_1" data-name="Union 1" d="M20.822,39.382H14.5A14.5,14.5,0,0,1,0,24.882V14.5A14.5,14.5,0,0,1,14.5,0H37A14.5,14.5,0,0,1,51.5,14.5V24.882A14.5,14.5,0,0,1,37,39.382H30.728l-4.953,4.953Z" stroke="#fff" stroke-width="2" fill="url(#linear-gradient)"/>
+      <g id="user" transform="translate(18.142 10.726)">
+        <path id="Path_4" data-name="Path 4" d="M17.059,14.863v.69a1.527,1.527,0,0,1-1.506,1.506H3.506A1.527,1.527,0,0,1,2,15.553v-.69c0-1.82,2.133-2.949,4.141-3.827l.188-.094a.5.5,0,0,1,.471.031,4.868,4.868,0,0,0,2.7.816,5.05,5.05,0,0,0,2.7-.816.5.5,0,0,1,.471-.031l.188.094C14.925,11.914,17.059,13.012,17.059,14.863ZM9.529,2a3.945,3.945,0,0,1,3.733,4.141,3.945,3.945,0,0,1-3.733,4.141A3.945,3.945,0,0,1,5.8,6.141,3.945,3.945,0,0,1,9.529,2Z" transform="translate(-2 -2)" fill="#fff"/>
+      </g>
+    </g>
+    <path id="Path_26" data-name="Path 26" d="M246.154,3303.847H231.538" transform="translate(-231.538 -3284)" fill="none" stroke="#ffc432" stroke-linecap="round" stroke-width="5"/>
+    <path id="Path_27" data-name="Path 27" d="M238.846,3303.847h-7.308" transform="translate(-224.231 -3276)" fill="none" stroke="#ffc432" stroke-linecap="round" stroke-width="5"/>
+    <g id="Group_80" data-name="Group 80" transform="translate(14.405 13.258)">
+      <ellipse id="Ellipse_57" data-name="Ellipse 57" cx="18" cy="10.5" rx="18" ry="10.5" transform="translate(44.483 29.67) rotate(-177)" opacity="0.2" fill="url(#linear-gradient-2)"/>
+      <ellipse id="Ellipse_58" data-name="Ellipse 58" cx="18" cy="10.5" rx="18" ry="10.5" transform="matrix(-0.695, 0.719, -0.719, -0.695, 40.114, 14.588)" opacity="0.1" fill="url(#linear-gradient-2)"/>
+    </g>
+  </g>
+</svg>

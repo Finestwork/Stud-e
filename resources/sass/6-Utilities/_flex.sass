@@ -1,0 +1,25 @@
+.d-flex
+    display: flex
+
+.flex-flow-column
+    flex-flow: column
+.justify-content-c
+    justify-content: center
+.flow-row-reverse
+    flex-flow: row-reverse
+
+@include brk_sm
+    .sm-flex-grow-1
+        flex-grow: 1
+@include brk_md
+    .md-f-order-first
+        order: -1
+    .sm-flex-grow-1
+        flex-grow: 0
+    .md-flex-grow-1
+        flex-grow: 1
+@include brk_lrg
+    .md-flex-grow-1
+        flex-grow: 0
+    .md-f-order-first
+        order: 0

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70" height="70" viewBox="0 0 70 70">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_136" data-name="Group 136" transform="translate(-140 -3442)">
+    <circle id="Ellipse_77" data-name="Ellipse 77" cx="35" cy="35" r="35" transform="translate(140 3442)" fill="#474dff" opacity="0.1"/>
+    <path id="Union_1" data-name="Union 1" d="M14.5,0H37A14.5,14.5,0,0,1,51.5,14.5V24.882A14.5,14.5,0,0,1,37,39.382H14.5A14.5,14.5,0,0,1,0,24.882V14.5A14.5,14.5,0,0,1,14.5,0Z" transform="translate(149.5 3458.705)" fill="#545aee" stroke="#fff" stroke-width="2"/>
+    <g id="ic_tag_faces_48px" transform="translate(161 3465)">
+      <path id="Path_36" data-name="Path 36" d="M13.653,4a9.658,9.658,0,1,0,9.663,9.658A9.651,9.651,0,0,0,13.653,4Zm0,17.384a7.726,7.726,0,1,1,7.726-7.726A7.724,7.724,0,0,1,13.658,21.384Zm3.38-8.692a1.449,1.449,0,1,0-1.449-1.449A1.447,1.447,0,0,0,17.038,12.692Zm-6.761,0a1.449,1.449,0,1,0-1.449-1.449A1.447,1.447,0,0,0,10.278,12.692Zm3.38,6.278a5.3,5.3,0,0,0,4.93-3.38H8.728A5.3,5.3,0,0,0,13.658,18.97Z" fill="#fff"/>
+    </g>
+    <g id="heart-2" transform="translate(143.262 3473.34) rotate(-21)">
+      <path id="Path_44" data-name="Path 44" d="M12.01,4a3.4,3.4,0,0,0-4.8,0q-.11.11-.211.231c-.067-.081-.137-.158-.211-.232A3.391,3.391,0,0,0,2,8.793l4.822,4.822a.261.261,0,0,0,.369,0L12.01,8.793A3.394,3.394,0,0,0,12.01,4Z" transform="translate(0 0)" fill="#ffc432"/>
+    </g>
+    <g id="Group_83" data-name="Group 83" transform="translate(-31 306)">
+      <ellipse id="Ellipse_57" data-name="Ellipse 57" cx="18" cy="10.5" rx="18" ry="10.5" transform="translate(227.426 3180.928) rotate(-177)" opacity="0.2" fill="url(#linear-gradient)"/>
+      <ellipse id="Ellipse_58" data-name="Ellipse 58" cx="18" cy="10.5" rx="18" ry="10.5" transform="matrix(-0.695, 0.719, -0.719, -0.695, 223.057, 3165.846)" opacity="0.1" fill="url(#linear-gradient)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,12 @@
+@for $i from 1 through 5
+    .mt-#{$i}
+        margin-top: ( 10 * $i) / $default-font-size * 1em
+@for $i from 1 through 5
+    .mb-#{$i}
+        margin-bottom: ( 10 * $i) / $default-font-size * 1em
+.sm-mx-auto
+    margin-left: auto
+    margin-right: auto
+    @include brk_md
+        margin-right: unset
+        margin-left: unset

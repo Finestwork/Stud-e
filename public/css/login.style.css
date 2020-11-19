@@ -1,3 +1,25 @@
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #190033;
+  height: 100vh;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
 *, *:before, *:after {
   box-sizing: inherit;
 }
@@ -6,8 +28,6 @@ html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockq
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -44,11 +64,6 @@ blockquote:before, blockquote:after, q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
-}
-
-input {
-  -webkit-appearance: none;
-  border-radius: 0;
 }
 
 .container {
@@ -181,6 +196,37 @@ input {
   }
   .row .col-xlrg-12 {
     width: 100%;
+  }
+}
+
+.form--primary input[type=email] {
+  background-color: green;
+}
+
+.sign-in__description {
+  margin: 2.8125em 0 1.25em 0;
+}
+.sign-in__title {
+  font-size: 2.5rem;
+  margin-bottom: 0.625em;
+}
+.sign-in__txt {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+.bttn {
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.disp-lrg-only {
+  display: none;
+}
+@media only screen and (min-width: 64em) {
+  .disp-lrg-only {
+    display: block;
   }
 }
 

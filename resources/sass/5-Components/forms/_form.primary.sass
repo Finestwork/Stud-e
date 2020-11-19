@@ -2,18 +2,29 @@
     position: relative
     color: $form-color
 .form--primary
+    @include custom_breakpoint(800)
+        margin: auto
+        max-width: 600px
     &__group
         @extend %position_rel
         padding-bottom: 40 / $default-font-size * 1em
+        max-width: 580px
+        margin: auto
         &--check
-            margin: 30 / $default-font-size * 1em 0
+            margin-top: 10 / $default-font-size * 1em
+            margin-left: auto
+            margin-right: auto
+            max-width: 580px
             @extend %position_rel
             input[type="checkbox"]
                 opacity: 0
             label
                 margin-left: 13 / $default-font-size * 1em
-                &::before,
-                &::after
+                user-select: none
+                cursor: pointer
+                &:hover
+                    color: $color-primary
+                &::before
                     content: ''
                     width: 25px
                     height: 25px
@@ -25,6 +36,23 @@
                     transform: translateY(-50%)
                     top: 50%
                     left: 0
+            input[type="checkbox"]:checked
+                + label
+                    color: $color-primary-light
+            input[type="checkbox"]:checked
+                + label::before
+                    border: 2px solid $color-primary-light
+                    background-color: $color-primary-xlighter
+            input[type="checkbox"]:checked
+                ~ .form--primary__check-icon
+                    fill: $color-primary-light
+                    opacity: 1
+    &__check-icon
+        position: absolute
+        left: 5px
+        top: 56%
+        @include transform(translateY(-50%))
+        opacity: 0
     input::placeholder
         color: $form-darker
 
@@ -62,23 +90,29 @@
     &__forgot-pw
         position: absolute
         right: 20%
-        bottom: 15px
+        bottom: 10px
+        color: $color-primary
+        font-weight: 700
+        &:hover,
+        &:active
+            color: $color-primary-light
 
     &__bttn
         color: white
-        background-color: $color-primary
+        background-color: $primary-bttn-color
         border: none
         font-size: 18px
         text-transform: uppercase
-        padding: 10px 25px
+        padding: 10 / $default-font-size * 1em 25 / $default-font-size * 1em
         font-weight: 700
-        margin: 25px auto
+        margin: 40 / $default-font-size * 1em auto
         display: block
         width: 90%
         border-radius: 10px
         cursor: pointer
+        font-weight: 800
         &:hover
-            background-color: $color-primary-hover
+            background-color: $primary-bttn-color-light
     input[type='email'],
     input[type='text'],
     input[type='password']
@@ -90,3 +124,5 @@
             color: $color-primary-dark
             &::placeholder
                 color: $color-primary-dark
+        &:hover
+            background-color: $form-bg-hover

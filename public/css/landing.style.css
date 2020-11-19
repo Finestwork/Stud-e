@@ -1281,6 +1281,17 @@ ul {
   }
 }
 
+.sm-md-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (min-width: 64em) {
+  .sm-md-mx-auto {
+    margin-right: unset;
+    margin-left: unset;
+  }
+}
+
 .pt-1 {
   padding-top: 0.625em;
 }

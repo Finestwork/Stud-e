@@ -1,9 +1,27 @@
 .sign-in
+    &__logo
+        display: flex
+        align-items: center
+        margin-top: 50 / $default-font-size * 1em
+    &__logo-txt
+        @extend %font-bold
+        font-size: 25 / $root-font-size * 1rem
+        margin-left: 10 / $default-font-size * 1em
+
     &__description
-        margin: 45 / $default-font-size * 1em 0 40 / $default-font-size * 1em 0
+        margin: 25 / $default-font-size * 1em 0 40 / $default-font-size * 1em 0
     &__title
         font-size: 25 / $root-font-size * 1rem
         margin-bottom: 10 / $default-font-size * 1em
+        @extend %font-semibold
     &__txt
         font-size: 16 / $root-font-size * 1rem
         line-height: 1.5
+    &__registration-txt
+        text-align: center
+        color: $form-darker
+        @extend %font-semibold
+    &__registration-link
+        color: $color-secondary
+        &:hover
+            color: #020ec1

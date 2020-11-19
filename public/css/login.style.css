@@ -1,3 +1,11 @@
+.sign-in__logo-txt {
+  font-weight: 800;
+}
+
+.sign-in__registration-txt, .sign-in__title {
+  font-weight: 700;
+}
+
 .form--primary input[type=email],
 .form--primary input[type=text],
 .form--primary input[type=password], .form--primary__bttn, .form--primary__n-lbl, .form--primary__r-lbl, .form--primary__forgot-pw {
@@ -210,19 +218,35 @@ table {
   color: #848484;
 }
 
+@media only screen and (min-width: 50em) {
+  .form--primary {
+    margin: auto;
+    max-width: 600px;
+  }
+}
 .form--primary__group {
   padding-bottom: 2.5em;
+  max-width: 580px;
+  margin: auto;
 }
 .form--primary__group--check {
-  margin: 1.875em 0;
+  margin-top: 0.625em;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 580px;
 }
 .form--primary__group--check input[type=checkbox] {
   opacity: 0;
 }
 .form--primary__group--check label {
   margin-left: 0.8125em;
+  user-select: none;
+  cursor: pointer;
 }
-.form--primary__group--check label::before, .form--primary__group--check label::after {
+.form--primary__group--check label:hover {
+  color: #7F2AFF;
+}
+.form--primary__group--check label::before {
   content: "";
   width: 25px;
   height: 25px;
@@ -235,6 +259,26 @@ table {
   transform: translateY(-50%);
   top: 50%;
   left: 0;
+}
+.form--primary__group--check input[type=checkbox]:checked + label {
+  color: #474DFF;
+}
+.form--primary__group--check input[type=checkbox]:checked + label::before {
+  border: 2px solid #474DFF;
+  background-color: #f2f2ff;
+}
+.form--primary__group--check input[type=checkbox]:checked ~ .form--primary__check-icon {
+  fill: #474DFF;
+  opacity: 1;
+}
+.form--primary__check-icon {
+  position: absolute;
+  left: 5px;
+  top: 56%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  opacity: 0;
 }
 .form--primary input::placeholder {
   color: #a0a0a0;
@@ -262,24 +306,30 @@ table {
 .form--primary__forgot-pw {
   position: absolute;
   right: 20%;
-  bottom: 15px;
+  bottom: 10px;
+  color: #7F2AFF;
+  font-weight: 700;
+}
+.form--primary__forgot-pw:hover, .form--primary__forgot-pw:active {
+  color: #474DFF;
 }
 .form--primary__bttn {
   color: white;
-  background-color: #7F2AFF;
+  background-color: #3A186C;
   border: none;
   font-size: 18px;
   text-transform: uppercase;
-  padding: 10px 25px;
+  padding: 0.625em 1.5625em;
   font-weight: 700;
-  margin: 25px auto;
+  margin: 2.5em auto;
   display: block;
   width: 90%;
   border-radius: 10px;
   cursor: pointer;
+  font-weight: 800;
 }
 .form--primary__bttn:hover {
-  background-color: #6312dc;
+  background-color: #4C2586;
 }
 .form--primary input[type=email],
 .form--primary input[type=text],
@@ -299,9 +349,23 @@ table {
 .form--primary input[type=password]:focus::placeholder {
   color: #26004D;
 }
+.form--primary input[type=email]:hover,
+.form--primary input[type=text]:hover,
+.form--primary input[type=password]:hover {
+  background-color: #fbfbfb;
+}
 
+.sign-in__logo {
+  display: flex;
+  align-items: center;
+  margin-top: 3.125em;
+}
+.sign-in__logo-txt {
+  font-size: 2.5rem;
+  margin-left: 0.625em;
+}
 .sign-in__description {
-  margin: 2.8125em 0 2.5em 0;
+  margin: 1.5625em 0 2.5em 0;
 }
 .sign-in__title {
   font-size: 2.5rem;
@@ -311,11 +375,83 @@ table {
   font-size: 1.6rem;
   line-height: 1.5;
 }
+.sign-in__registration-txt {
+  text-align: center;
+  color: #a0a0a0;
+}
+.sign-in__registration-link {
+  color: #101fff;
+}
+.sign-in__registration-link:hover {
+  color: #020ec1;
+}
 
 .bttn {
   background-color: white;
   border: none;
   cursor: pointer;
+}
+
+.mt-1 {
+  margin-top: 0.625em;
+}
+
+.mt-2 {
+  margin-top: 1.25em;
+}
+
+.mt-3 {
+  margin-top: 1.875em;
+}
+
+.mt-4 {
+  margin-top: 2.5em;
+}
+
+.mt-5 {
+  margin-top: 3.125em;
+}
+
+.mb-1 {
+  margin-bottom: 0.625em;
+}
+
+.mb-2 {
+  margin-bottom: 1.25em;
+}
+
+.mb-3 {
+  margin-bottom: 1.875em;
+}
+
+.mb-4 {
+  margin-bottom: 2.5em;
+}
+
+.mb-5 {
+  margin-bottom: 3.125em;
+}
+
+.sm-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (min-width: 48em) {
+  .sm-mx-auto {
+    margin-right: unset;
+    margin-left: unset;
+  }
+}
+
+.sm-md-mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+@media only screen and (min-width: 64em) {
+  .sm-md-mx-auto {
+    margin-right: unset;
+    margin-left: unset;
+  }
 }
 
 .disp-lrg-only {
@@ -325,6 +461,10 @@ table {
   .disp-lrg-only {
     display: block;
   }
+}
+
+.img-fluid {
+  width: 100%;
 }
 
 /*# sourceMappingURL=login.style.css.map */

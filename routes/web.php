@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\IndexController;
+use \App\Http\Controllers\Auth\LoginController;
+use \App\Http\Controllers\Auth\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,6 +17,10 @@ use \App\Http\Controllers\IndexController;
 
 Route::get('/', [IndexController::class, 'index']);
 
-Auth::routes();
+Route::get('/signin', [LoginController::class, 'showLoginForm'])->name('signin');
+Route::post('/signin', [LoginController::class, 'login']);
+Route::get('/signup', [RegisterController::class, 'showRegistrationForm'])->name('register');
+Route::post('/signup', [RegisterController::class, 'register']);
+//Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

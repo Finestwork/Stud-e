@@ -39,7 +39,7 @@
                                 <span class="ghost--header__logo-circle"></span>
                             </a>
                         </div>
-                        <a href="#" class="ghost--header__signup-bttn bttn--primary--ghost">Sign up</a>
+                        <a href="/signup" class="ghost--header__signup-bttn bttn--primary--ghost">Sign up</a>
                         <button class="bttn ghost--header__hamburger-bttn" id="hamburgerBttn">
                             <span class="ghost--header__hamburger-bttn__line"></span>
                         </button>

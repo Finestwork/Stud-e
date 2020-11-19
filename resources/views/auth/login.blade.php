@@ -31,20 +31,21 @@ p;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
             </div>
             <div class="form--primary">
                 <form action="{{ route('signin') }}" method="POST">
+                    @csrf
                     <div class="form--primary__group">
-                        <label for="emailTxt">Enter your email: </label>
-                        <input type="email" id="emailTxt" name="email">
+                        <label for="emailTxt" class="form--primary__n-lbl">Enter your email: </label>
+                        <input type="email" id="emailTxt" placeholder="Enter your email" name="email">
                     </div>
                     <div class="form--primary__group">
-                        <a href="#" class="form--primary__forgot-pw--upper">Forgot password</a>
-                        <label for="passwordTxt">Enter your Password: </label>
-                        <input type="password" id="passwordTxt" name="password">
+                        <a href="#" class="form--primary__forgot-pw">Forgot password?</a>
+                        <label for="passwordTxt" class="form--primary__n-lbl">Enter your Password: </label>
+                        <input type="password" id="passwordTxt" placeholder="Enter your password" name="password">
                     </div>
-                    <div class="form--primary__group">
+                    <div class="form--primary__group--check">
                         <input type="checkbox" id="rememberMe" name="rememberMe" value="rememberMe">
-                        <label for="rememberMe">Remember me?</label>
+                        <label for="rememberMe" class="form--primary__r-lbl">Remember me?</label>
                     </div>
-                    <input type="submit" value="Sign in" class="bttn">
+                    <input type="submit" value="Sign in" class="form--primary__bttn">
                 </form>
             </div>
             <p>Don't have an account? <a href="/signup">Signup here!</a></p>

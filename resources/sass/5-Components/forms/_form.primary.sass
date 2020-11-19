@@ -1,3 +1,92 @@
+%position_rel
+    position: relative
+    color: $form-color
 .form--primary
-    input[type="email"]
-        background-color: green
+    &__group
+        @extend %position_rel
+        padding-bottom: 40 / $default-font-size * 1em
+        &--check
+            margin: 30 / $default-font-size * 1em 0
+            @extend %position_rel
+            input[type="checkbox"]
+                opacity: 0
+            label
+                margin-left: 13 / $default-font-size * 1em
+                &::before,
+                &::after
+                    content: ''
+                    width: 25px
+                    height: 25px
+                    position: absolute
+                    border-radius: 5px
+                &::before
+                    background-color: $form-border
+                    border: 2px solid $form-border-darker
+                    transform: translateY(-50%)
+                    top: 50%
+                    left: 0
+    input::placeholder
+        color: $form-darker
+
+    input[type='email'],
+    input[type='text'],
+    input[type='password'],
+    &__bttn
+        font-family: 'Nunito', sans-serif
+
+    input[type='email'],
+    input[type='text'],
+    input[type='password'],
+    &__bttn,
+    &__n-lbl,
+    &__r-lbl,
+    &__forgot-pw
+        @extend %font-medium
+
+    input[type='email'],
+    input[type='text'],
+    input[type='password'],
+    &__bttn
+        background-color: $form-bg
+        border: 2px solid $form-border
+        padding: 10 / $default-font-size * 1em 15 / $default-font-size * 1em
+        font-size: 16 / $root-font-size * 1rem
+        width: 80%
+        color: $form-color
+
+    &__n-lbl
+        margin-bottom: 13 / $default-font-size * 1em
+        display: block
+        font-size: 18px
+
+    &__forgot-pw
+        position: absolute
+        right: 20%
+        bottom: 15px
+
+    &__bttn
+        color: white
+        background-color: $color-primary
+        border: none
+        font-size: 18px
+        text-transform: uppercase
+        padding: 10px 25px
+        font-weight: 700
+        margin: 25px auto
+        display: block
+        width: 90%
+        border-radius: 10px
+        cursor: pointer
+        &:hover
+            background-color: $color-primary-hover
+    input[type='email'],
+    input[type='text'],
+    input[type='password']
+        border-radius: 8px
+        &:focus
+            outline: transparent
+            border: 2px solid $color-primary-light
+            background-color: $color-primary-xlighter
+            color: $color-primary-dark
+            &::placeholder
+                color: $color-primary-dark

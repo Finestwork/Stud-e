@@ -1,3 +1,9 @@
+.form--primary input[type=email],
+.form--primary input[type=text],
+.form--primary input[type=password], .form--primary__bttn, .form--primary__n-lbl, .form--primary__r-lbl, .form--primary__forgot-pw {
+  font-weight: 600;
+}
+
 html {
   font-size: 62.5%;
   box-sizing: border-box;
@@ -199,12 +205,103 @@ table {
   }
 }
 
-.form--primary input[type=email] {
-  background-color: green;
+.form--primary__group--check, .form--primary__group {
+  position: relative;
+  color: #848484;
+}
+
+.form--primary__group {
+  padding-bottom: 2.5em;
+}
+.form--primary__group--check {
+  margin: 1.875em 0;
+}
+.form--primary__group--check input[type=checkbox] {
+  opacity: 0;
+}
+.form--primary__group--check label {
+  margin-left: 0.8125em;
+}
+.form--primary__group--check label::before, .form--primary__group--check label::after {
+  content: "";
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  border-radius: 5px;
+}
+.form--primary__group--check label::before {
+  background-color: #e8e8e8;
+  border: 2px solid #c5c5c5;
+  transform: translateY(-50%);
+  top: 50%;
+  left: 0;
+}
+.form--primary input::placeholder {
+  color: #a0a0a0;
+}
+.form--primary input[type=email],
+.form--primary input[type=text],
+.form--primary input[type=password], .form--primary__bttn {
+  font-family: "Nunito", sans-serif;
+}
+.form--primary input[type=email],
+.form--primary input[type=text],
+.form--primary input[type=password], .form--primary__bttn {
+  background-color: #FCFEFF;
+  border: 2px solid #e8e8e8;
+  padding: 0.625em 0.9375em;
+  font-size: 1.6rem;
+  width: 80%;
+  color: #848484;
+}
+.form--primary__n-lbl {
+  margin-bottom: 0.8125em;
+  display: block;
+  font-size: 18px;
+}
+.form--primary__forgot-pw {
+  position: absolute;
+  right: 20%;
+  bottom: 15px;
+}
+.form--primary__bttn {
+  color: white;
+  background-color: #7F2AFF;
+  border: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 10px 25px;
+  font-weight: 700;
+  margin: 25px auto;
+  display: block;
+  width: 90%;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.form--primary__bttn:hover {
+  background-color: #6312dc;
+}
+.form--primary input[type=email],
+.form--primary input[type=text],
+.form--primary input[type=password] {
+  border-radius: 8px;
+}
+.form--primary input[type=email]:focus,
+.form--primary input[type=text]:focus,
+.form--primary input[type=password]:focus {
+  outline: transparent;
+  border: 2px solid #474DFF;
+  background-color: #f2f2ff;
+  color: #26004D;
+}
+.form--primary input[type=email]:focus::placeholder,
+.form--primary input[type=text]:focus::placeholder,
+.form--primary input[type=password]:focus::placeholder {
+  color: #26004D;
 }
 
 .sign-in__description {
-  margin: 2.8125em 0 1.25em 0;
+  margin: 2.8125em 0 2.5em 0;
 }
 .sign-in__title {
   font-size: 2.5rem;

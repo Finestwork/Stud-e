@@ -1,15 +1,16 @@
-.sign-in__logo-txt {
+.sign-in__registration-txt, .sign-in__title, .sign-in__logo-txt {
   font-weight: 800;
-}
-
-.sign-in__registration-txt, .sign-in__title {
-  font-weight: 700;
 }
 
 .form--primary input[type=email],
 .form--primary input[type=text],
-.form--primary input[type=password], .form--primary__bttn, .form--primary__n-lbl, .form--primary__r-lbl, .form--primary__forgot-pw {
+.form--primary input[type=password], .form--primary__bttn, .form--primary__n-lbl, .form--primary__r-lbl {
   font-weight: 600;
+}
+
+.sign-in__logo, .form--primary__group--check {
+  display: -webkit-flex;
+  display: flex;
 }
 
 html {
@@ -24,6 +25,11 @@ body {
   font-weight: 400;
   color: #190033;
   height: 100vh;
+}
+@media only screen and (min-width: 64em) {
+  body {
+    overflow: hidden;
+  }
 }
 
 a {
@@ -213,33 +219,32 @@ table {
   }
 }
 
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
 .form--primary__group--check, .form--primary__group {
   position: relative;
   color: #848484;
 }
 
-@media only screen and (min-width: 50em) {
-  .form--primary {
-    margin: auto;
-    max-width: 600px;
-  }
+.form--primary {
+  margin: auto;
+  max-width: 450px;
 }
 .form--primary__group {
   padding-bottom: 2.5em;
-  max-width: 580px;
-  margin: auto;
 }
 .form--primary__group--check {
   margin-top: 0.625em;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 580px;
+  align-items: center;
 }
 .form--primary__group--check input[type=checkbox] {
   opacity: 0;
 }
 .form--primary__group--check label {
-  margin-left: 0.8125em;
+  margin-left: 0.4375em;
   user-select: none;
   cursor: pointer;
 }
@@ -248,8 +253,8 @@ table {
 }
 .form--primary__group--check label::before {
   content: "";
-  width: 25px;
-  height: 25px;
+  width: 20px;
+  height: 20px;
   position: absolute;
   border-radius: 5px;
 }
@@ -273,8 +278,8 @@ table {
 }
 .form--primary__check-icon {
   position: absolute;
-  left: 5px;
-  top: 56%;
+  left: 4px;
+  top: 50%;
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
@@ -295,7 +300,6 @@ table {
   border: 2px solid #e8e8e8;
   padding: 0.625em 0.9375em;
   font-size: 1.6rem;
-  width: 80%;
   color: #848484;
 }
 .form--primary__n-lbl {
@@ -305,13 +309,13 @@ table {
 }
 .form--primary__forgot-pw {
   position: absolute;
-  right: 20%;
+  right: 0;
   bottom: 10px;
-  color: #7F2AFF;
+  color: #190033;
   font-weight: 700;
 }
 .form--primary__forgot-pw:hover, .form--primary__forgot-pw:active {
-  color: #474DFF;
+  color: #7F2AFF;
 }
 .form--primary__bttn {
   color: white;
@@ -335,6 +339,7 @@ table {
 .form--primary input[type=text],
 .form--primary input[type=password] {
   border-radius: 8px;
+  width: 100%;
 }
 .form--primary input[type=email]:focus,
 .form--primary input[type=text]:focus,
@@ -356,20 +361,53 @@ table {
 }
 
 .sign-in__logo {
-  display: flex;
   align-items: center;
-  margin-top: 3.125em;
+  position: absolute;
+  left: 5%;
+  top: 10%;
+}
+.sign-in__logo-box {
+  width: 40px;
 }
 .sign-in__logo-txt {
   font-size: 2.5rem;
-  margin-left: 0.625em;
+  margin-left: 0.4em;
+  color: #26004D;
+}
+@media only screen and (min-width: 64em) {
+  .sign-in__logo-txt {
+    color: white;
+  }
+}
+.sign-in__logo-circle {
+  background-color: #7F2AFF;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  margin-left: 0.3125em;
+  margin-top: 0.5em;
+  -webkit-animation: bounce 2.5s infinite alternate ease-in-out;
+  animation: bounce 2.5s infinite alternate ease-in-out;
+  -webkit-transform-origin: center bottom;
+  transform-origin: center bottom;
+}
+@media only screen and (min-width: 64em) {
+  .sign-in__logo-circle {
+    background-color: #c3aaff;
+  }
 }
 .sign-in__description {
-  margin: 1.5625em 0 2.5em 0;
+  margin: 7.1875em auto 2.5em auto;
+  max-width: 450px;
+}
+@media only screen and (min-width: 64em) {
+  .sign-in__description {
+    margin: 0 0 2.5em 2.5em;
+  }
 }
 .sign-in__title {
   font-size: 2.5rem;
-  margin-bottom: 0.625em;
+  margin-bottom: 0.4em;
 }
 .sign-in__txt {
   font-size: 1.6rem;
@@ -378,12 +416,73 @@ table {
 .sign-in__registration-txt {
   text-align: center;
   color: #a0a0a0;
+  margin-bottom: 1.25em;
+}
+@media only screen and (min-width: 64em) {
+  .sign-in__registration-txt {
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    margin-bottom: 0;
+  }
 }
 .sign-in__registration-link {
-  color: #101fff;
+  color: #6772f8;
 }
 .sign-in__registration-link:hover {
-  color: #020ec1;
+  color: #101fff;
+}
+@media only screen and (min-width: 64em) {
+  .sign-in__banner {
+    background-image: url("/assets/imgs/login/login.jpg");
+    height: 100%;
+    width: 45%;
+    position: absolute;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.sign-in__banner--inner {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 45px;
+  color: white;
+}
+.sign-in__link {
+  color: white;
+  text-decoration: underline;
+}
+.sign-in__link:hover {
+  color: #6772f8;
+}
+.sign-in__bg {
+  background-color: #190033;
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+.sign-in__line {
+  background-color: #f1eef5;
+  width: 80%;
+  height: 3px;
+  margin: 1.25em auto 1.875em auto;
+}
+@media only screen and (min-width: 64em) {
+  .sign-in__left {
+    width: 55%;
+    position: absolute;
+    right: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .sign-in__left--inner {
+    width: 100%;
+  }
 }
 
 .bttn {
@@ -465,6 +564,54 @@ table {
 
 .img-fluid {
   width: 100%;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.flex-flow-column {
+  flex-flow: column;
+}
+
+.justify-content-c {
+  justify-content: center;
+}
+
+.flow-row-reverse {
+  flex-flow: row-reverse;
+}
+
+@media only screen and (min-width: 20em) {
+  .sm-flex-grow-1 {
+    flex-grow: 1;
+  }
+}
+@media only screen and (min-width: 48em) {
+  .md-f-order-first {
+    order: -1;
+  }
+
+  .sm-flex-grow-1 {
+    flex-grow: 0;
+  }
+
+  .md-flex-grow-1 {
+    flex-grow: 1;
+  }
+}
+@media only screen and (min-width: 64em) {
+  .md-flex-grow-1 {
+    flex-grow: 0;
+  }
+
+  .md-f-order-first {
+    order: 0;
+  }
+
+  .d-only-lrg-flex {
+    display: flex;
+  }
 }
 
 /*# sourceMappingURL=login.style.css.map */

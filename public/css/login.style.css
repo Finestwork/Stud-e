@@ -386,8 +386,8 @@ table {
   border-radius: 100%;
   margin-left: 0.3125em;
   margin-top: 0.5em;
-  -webkit-animation: bounce 2.5s infinite alternate ease-in-out;
-  animation: bounce 2.5s infinite alternate ease-in-out;
+  -webkit-animation: bounce 1.5s infinite forwards linear;
+  animation: bounce 1.5s infinite forwards linear;
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
 }
@@ -397,7 +397,7 @@ table {
   }
 }
 .sign-in__description {
-  margin: 7.1875em auto 2.5em auto;
+  margin: 7.8125em auto 2.5em auto;
   max-width: 450px;
 }
 @media only screen and (min-width: 64em) {

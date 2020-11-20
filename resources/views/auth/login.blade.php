@@ -1,6 +1,6 @@
 @extends('partials.base')
 @section('title')
-    Sign in | Welcome to Stud-e
+    Sign in to continue
 @endsection
 
 @section('cs-css')

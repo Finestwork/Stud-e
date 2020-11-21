@@ -1,0 +1,36 @@
+.card
+    &__item
+        @extend %display_flex
+        width: 80%
+        border: 2px solid $card--choice-border
+        border-radius: 8px
+        padding: 15 / $default-font-size * 1em
+        -webkit-justify-content: space-around
+        justify-content: space-around
+        -webkit-align-items: center
+        align-items: center
+        cursor: pointer
+        margin: 20 / $default-font-size * 1em auto
+        &:hover
+            border-color: $color-primary
+        @include custom_breakpoint(600)
+            padding-left: 25 / $default-font-size * 1em
+            padding-right: 25 / $default-font-size * 1em
+    &--choice
+        &__illustration
+            width: 130px
+            @include custom_breakpoint(600)
+                max-width: 75px
+        &__description
+            margin-left: 30 / $default-font-size * 1em
+        &__title,
+        &__txt
+            color: $color-primary-darker
+        &__title
+            @extend %font-semibold
+            font-size: 18 / $root-font-size * 1rem
+        &__txt
+            font-size: 16 / $root-font-size * 1rem
+            margin-top: 7 / 16 * 1em
+            @extend %font-medium
+            line-height: 1.5

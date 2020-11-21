@@ -53,7 +53,7 @@ p;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
                         <input type="submit" value="Sign in" class="form--primary__bttn">
                     </form>
                 </div>
-                <div class="sign-in__line"></div>
+                <div class="line--one-h sign-in__line"></div>
                 <p class="sign-in__registration-txt">Don't have an account? <a href="/signup" class="sign-in__registration-link">Signup here!</a></p>
             </div>
         </div>

@@ -1,0 +1,355 @@
+.navbar__logo-txt, .heading--sign-up {
+  font-weight: 800;
+}
+
+.card--choice__title, .learn-more__txt {
+  font-weight: 700;
+}
+
+.card--choice__txt {
+  font-weight: 600;
+}
+
+.navbar__inner, .card__item {
+  display: -webkit-flex;
+  display: flex;
+}
+
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Nunito", sans-serif;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #190033;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html, body, div, span, object, iframe, figure, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, code, em, img, small, strike, strong, sub, sup, tt, b, u, i, ol, ul, li, fieldset, form, label, table, caption, tbody, tfoot, thead, tr, th, td, main, canvas, embed, footer, header, nav, section, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  text-size-adjust: none;
+}
+
+footer, header, nav, section, main {
+  display: block;
+}
+
+html,
+body {
+  min-width: 100%;
+}
+
+body {
+  line-height: 1;
+  overflow-x: hidden;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.container {
+  width: 100%;
+  max-width: 600px;
+}
+@media only screen and (min-width: 20em) {
+  .container {
+    width: 90.625%;
+    margin: auto;
+  }
+}
+@media only screen and (min-width: 48em) {
+  .container {
+    width: 88.28125%;
+    max-width: 1100px;
+  }
+}
+@media only screen and (min-width: 64em) {
+  .container {
+    width: 90.8203125%;
+  }
+}
+@media only screen and (min-width: 90em) {
+  .container {
+    width: 77.0833333333%;
+    max-width: 1440px;
+  }
+}
+.container .row {
+  width: 100%;
+}
+
+.row {
+  display: flex;
+  flex-flow: wrap;
+  justify-content: space-between;
+}
+@media only screen and (min-width: 48em) {
+  .row .col-md-1 {
+    width: 12.9793510324%;
+  }
+  .row .col-md-2 {
+    width: 30.383480826%;
+  }
+  .row .col-md-3 {
+    width: 47.7876106195%;
+  }
+  .row .col-md-4 {
+    width: 65.191740413%;
+  }
+  .row .col-md-5 {
+    width: 82.5958702065%;
+  }
+  .row .col-md-6 {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 64em) {
+  .row .col-lrg-1 {
+    width: 5.376344086%;
+  }
+  .row .col-lrg-2 {
+    width: 13.9784946237%;
+  }
+  .row .col-lrg-3 {
+    width: 22.5806451613%;
+  }
+  .row .col-lrg-4 {
+    width: 31.1827956989%;
+  }
+  .row .col-lrg-5 {
+    width: 39.7849462366%;
+  }
+  .row .col-lrg-6 {
+    width: 48.3870967742%;
+  }
+  .row .col-lrg-7 {
+    width: 56.9892473118%;
+  }
+  .row .col-lrg-8 {
+    width: 65.5913978495%;
+  }
+  .row .col-lrg-9 {
+    width: 74.1935483871%;
+  }
+  .row .col-lrg-10 {
+    width: 82.7956989247%;
+  }
+  .row .col-lrg-11 {
+    width: 91.3978494624%;
+  }
+  .row .col-lrg-12 {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 90em) {
+  .row .col-xlrg-1 {
+    width: 5.8558558559%;
+  }
+  .row .col-xlrg-2 {
+    width: 14.4144144144%;
+  }
+  .row .col-xlrg-3 {
+    width: 22.972972973%;
+  }
+  .row .col-xlrg-4 {
+    width: 31.5315315315%;
+  }
+  .row .col-xlrg-5 {
+    width: 40.0900900901%;
+  }
+  .row .col-xlrg-6 {
+    width: 48.6486486486%;
+  }
+  .row .col-xlrg-7 {
+    width: 57.2072072072%;
+  }
+  .row .col-xlrg-8 {
+    width: 65.7657657658%;
+  }
+  .row .col-xlrg-9 {
+    width: 74.3243243243%;
+  }
+  .row .col-xlrg-10 {
+    width: 82.8828828829%;
+  }
+  .row .col-xlrg-11 {
+    width: 91.4414414414%;
+  }
+  .row .col-xlrg-12 {
+    width: 100%;
+  }
+}
+
+.wrapper__sign-up {
+  width: 90%;
+  max-width: 625px;
+  margin: auto;
+}
+.wrapper__sign-up .line {
+  width: 80%;
+  margin: 1.5625em auto;
+}
+.wrapper__sign-up__learn-more-txt {
+  margin-bottom: 1.25em;
+}
+
+.heading--secondary {
+  font-weight: 800;
+  color: #190033;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+}
+@media only screen and (min-width: 64em) {
+  .heading--secondary {
+    font-size: 3.906rem;
+  }
+}
+
+.heading--sign-up {
+  font-size: 2.5rem;
+  margin: 1.3888888889em 0;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.link--back {
+  color: #2d95ff;
+  fill: #2d95ff;
+}
+.link--back:hover {
+  color: #0178f1;
+  fill: #0178f1;
+}
+
+.line--one-h {
+  background-color: #f1eef5;
+  height: 2px;
+}
+
+.learn-more__txt {
+  text-align: center;
+  color: #a0a0a0;
+}
+.learn-more__link {
+  color: #474DFF;
+}
+.learn-more__link:hover {
+  color: #2d95ff;
+}
+
+.card__item {
+  width: 80%;
+  border: 2px solid #d5dee2;
+  border-radius: 8px;
+  padding: 0.9375em;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+  -webkit-align-items: center;
+  align-items: center;
+  cursor: pointer;
+  margin: 1.25em auto;
+}
+.card__item:hover {
+  border-color: #7F2AFF;
+}
+@media only screen and (min-width: 37.5em) {
+  .card__item {
+    padding-left: 1.5625em;
+    padding-right: 1.5625em;
+  }
+}
+.card--choice__illustration {
+  width: 130px;
+}
+@media only screen and (min-width: 37.5em) {
+  .card--choice__illustration {
+    max-width: 75px;
+  }
+}
+.card--choice__description {
+  margin-left: 1.875em;
+}
+.card--choice__title, .card--choice__txt {
+  color: #190033;
+}
+.card--choice__title {
+  font-size: 1.8rem;
+}
+.card--choice__txt {
+  font-size: 1.6rem;
+  margin-top: 0.4375em;
+  line-height: 1.5;
+}
+
+.navbar__logo-only {
+  padding: 1.25em 0;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 3.4375em;
+}
+.navbar__inner {
+  align-items: center;
+  width: 118px;
+  margin: 0 auto;
+}
+.navbar__logo-box {
+  width: 30px;
+}
+.navbar__logo-txt {
+  font-size: 2rem;
+  margin-left: 0.5em;
+  color: #26004D;
+}
+.navbar__logo-circle {
+  background-color: #7F2AFF;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  margin-left: 0.3125em;
+  margin-top: 0.3125em;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.img-fluid {
+  width: 100%;
+}
+
+/*# sourceMappingURL=signup.style.css.map */

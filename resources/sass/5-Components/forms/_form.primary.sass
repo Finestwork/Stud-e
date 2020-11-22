@@ -4,6 +4,13 @@
 .form--primary
     margin: auto
     max-width: 450px
+    @include brk_lrg
+        width: 80%
+        max-width: 1100px
+    &__main-container
+        @include brk_lrg
+            margin-top: 70 / $default-font-size * 1em
+    //LAYOUT
     &__group
         padding-bottom: 50 / $default-font-size * 1em
     &__group,
@@ -13,6 +20,19 @@
     &__group--radio-box
         @extend %display_flex
         margin-bottom: 25 / $default-font-size * 1em
+    //2 Column Layout
+    &__2-col
+        @include brk_lrg
+            display: -webkit-flex
+            display: flex
+    &__lrg--left,
+    &__lrg--right
+        @include brk_lrg
+            -webkit-flex-basis: 50%
+            flex: 50%
+    &__lrg--left
+        @include brk_lrg
+            margin-right: 60 / $default-font-size * 1em
 
     &__group
         //Checkbox
@@ -107,6 +127,7 @@
     input[type='text'],
     input[type='password'],
     &__bttn,
+    &__choice-bttn,
     &__sub-bttn,
     &__sub-bttn--r
         font-family: 'Nunito', sans-serif
@@ -114,8 +135,6 @@
     input[type='email'],
     input[type='text'],
     input[type='password'],
-    &__bttn,
-    &__sub-bttn,
     &__n-lbl,
     &__r-lbl
         @extend %font-medium
@@ -123,7 +142,8 @@
     input[type='email'],
     input[type='text'],
     input[type='password'],
-    &__bttn
+    &__bttn,
+    &__choice-bttn
         background-color: $form-bg
         border: 2px solid $form-border
         padding: 10 / $default-font-size * 1em 15 / $default-font-size * 1em
@@ -145,21 +165,27 @@
         &:active
             color: $color-primary
     //BUTTONS
-    &__bttn
+    &__bttn,
+    &__choice-bttn
         color: white
         background-color: $primary-bttn-color
         font-size: 18 / $root-font-size * 1rem
         padding: 10 / $default-font-size * 1em 25 / $default-font-size * 1em
-        margin: 40 / $default-font-size * 1em auto
         display: block
-        width: 90%
         border-radius: 10px
-        font-weight: 800
         &:hover
             background-color: $primary-bttn-color-light
+    &__bttn
+        width: 90%
+        margin: 40 / $default-font-size * 1em auto
+    &__choice-bttn
+        width: 80%
+        margin: auto
+        @include brk_lrg
+            max-width: 700px
+
     &__sub-bttn,
     &__sub-bttn--r
-        font-weight: 700
         padding: 10px 15px
         margin-top: 10px
         color: $color-primary-dark
@@ -173,10 +199,12 @@
 
     &__bttn,
     &__sub-bttn,
-    &__sub-bttn--r
+    &__sub-bttn--r,
+    &__choice-bttn
         text-transform: uppercase
         cursor: pointer
         border: none
+        font-weight: 800
         &:focus
             outline: none
             box-shadow: 0 0 0 4px $color-primary-outline
@@ -186,6 +214,7 @@
     input[type='password']
         border-radius: 8px
         width: 100%
+        margin-bottom: 10 / $default-font-size * 1em
         &:focus
             outline: transparent
             border: 2px solid $color-primary-light
@@ -212,6 +241,7 @@
             padding: 7 / $default-font-size * 1em 12 / $default-font-size * 1em
             @include transform(translateY(-25%))
             border-radius: 5px
+            @extend %font-medium
         &--optional
             color: $color-secondary
             background-color: $color-secondary-light
@@ -223,8 +253,41 @@
             display: block
             color: $color-primary-dark
             font-weight: 700
+        &--error,
+        &--error_c
+            display: none
+            color: $color-warning
+            line-height: 1.5
+    &__title
+        text-transform: uppercase
+        margin-bottom: 60px
+        text-align: center
+        position: relative
+        font-size: 31.25 / $root-font-size * 1rem
+        @extend %font-bold
+        &::before
+            content: ''
+            width: 350px
+            height: 70%
+            background-color: $color-primary-xlighter
+            z-index: -1
+            position: absolute
+            bottom: -5px
+            left: 50%
+            @include transform(translateX(-50%))
+    //VALIDATION STYLES
+    input[class*="form-error"]
+        background-color: $color-warning-bg
+        border-color: $color-warning
+        &:hover
+            background-color: $color-warning-bg-h
+        &:focus
+            background-color: $color-primary-xlighter
+        ~ .form--primary__note--error
+            display: block
 
 .form--hidden
     display: none
 .form--hidden--active
     display: block
+

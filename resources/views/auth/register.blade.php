@@ -7,7 +7,9 @@
 @section('cs-css')
     <link rel="stylesheet" href="/css/signup.style.css">
 @endsection
-
+@section('cs-js')
+    <script src="/assets/js/libraries/string-checker.js"></script>
+@endsection
 @section('body-content')
     <div class="navbar__logo-only">
         <div class="navbar__inner">
@@ -26,71 +28,129 @@
 </span>Go back</a>
         <div class="sign-up__page-1">
             <h1 class="heading--sign-up">Choose an account</h1>
-            <div class="form--slide">
-                <div class="form--slide-main card--choice">
-                    <div class="card__item" id="cardBttn1">
-                        <div class="card--choice__illustration">
-                            <img src="/assets/illustration/signup/Admin.svg" alt="Admin Account Card Illustration" class="img-fluid">
-                        </div>
-                        <div class="card--choice__description">
-                            <h2 class="card--choice__title onboarding-signup__card-title">Admin Account</h2>
-                            <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div>
+            <div class="card--choice">
+                <div class="card__item" id="cardBttn1">
+                    <div class="card--choice__illustration">
+                        <img src="/assets/illustration/signup/Admin.svg" alt="Admin Account Card Illustration" class="img-fluid">
+                    </div>
+                    <div class="card--choice__description">
+                        <h2 class="card--choice__title onboarding-signup__card-title">Admin Account</h2>
+                        <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
 
+                </div>
+                <div class="card__item" id="cardBttn2">
+                    <div class="card--choice__illustration">
+                        <img src="/assets/illustration/signup/Teachers.svg" alt="Teacher Account Card Illustration" class="img-fluid">
                     </div>
-                    <div class="card__item" id="cardBttn2">
-                        <div class="card--choice__illustration">
-                            <img src="/assets/illustration/signup/Teachers.svg" alt="Teacher Account Card Illustration" class="img-fluid">
-                        </div>
-                        <div class="card--choice__description">
-                            <h2 class="card--choice__title">Teacher Account</h2>
-                            <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div>
-                    </div>
-                    <div class="card__item" id="cardBttn3">
-                        <div class="card--choice__illustration">
-                            <img src="/assets/illustration/signup/Student.svg" alt="Student Account Card Illustration" class="img-fluid">
-                        </div>
-                        <div class="card--choice__description">
-                            <h2 class="card--choice__title">Student Account</h2>
-                            <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
-                        </div>
+                    <div class="card--choice__description">
+                        <h2 class="card--choice__title">Teacher Account</h2>
+                        <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     </div>
                 </div>
-                <!-- ADMIN -->
-                <div class="form--hidden mt-5 form--slide-1">
-                    <h2 class="form--slide_2__title mb-2">Admin Account</h2>
-                    <form action="/signup" method="POST" class="form--primary">
-                        @csrf
+                <div class="card__item" id="cardBttn3">
+                    <div class="card--choice__illustration">
+                        <img src="/assets/illustration/signup/Student.svg" alt="Student Account Card Illustration" class="img-fluid">
+                    </div>
+                    <div class="card--choice__description">
+                        <h2 class="card--choice__title">Student Account</h2>
+                        <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form--primary__main-container">
+        <!-- ADMIN -->
+        <div class="form--hidden form--slide-1">
+            <h2 class="form--primary__title">Admin Account</h2>
+            <form action="/signup" method="POST" class="form--primary">
+                @csrf
+                <div class="form--primary__2-col">
+                    <div class="form--primary__lrg--left">
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="adminFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
+                            <input type="text" id="adminFnameTxt" placeholder="Place your first name here" name="adminFnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error">• This field should not be empty.</p>
+                            <p class="form--primary__note--error">• Make sure that this field does not contain any special characters or numbers.</p>
+                        </div>
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="adminMnameTxt" class="form--primary__n-lbl">Enter your middle name: </label>
+                            <input type="text" id="adminMnameTxt" placeholder="Place your middle name here" name="adminMnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error">• This field should not be empty.</p>
+                            <p class="form--primary__note--error">• Make sure that this field does not contain any special characters or numbers.</p>
+                        </div>
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="adminLnameTxt" class="form--primary__n-lbl">Enter your last name: </label>
+                            <input type="text" id="adminLnameTxt" placeholder="Place your last name here" name="adminLnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error">• This field should not be empty.</p>
+                            <p class="form--primary__note--error">• Make sure that this field does not contain any special characters or numbers.</p>
+                        </div>
+                    </div>
+                    <div class="form--primary__lrg--right">
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminEmailTxt" class="form--primary__n-lbl">Enter your email: </label>
-                            <input type="email" id="adminEmailTxt" placeholder="Enter your email" name="adminEmailTxt" autocomplete="off">
+                            <input type="email" id="adminEmailTxt" placeholder="Place your email" name="adminEmailTxt" autocomplete="off">
+                            <p class="form--primary__note--error">• This field should not be empty.</p>
+                            <p class="form--primary__note--error">• Make sure that it is in the correct format (ex. Juan@example.com )</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminPasswordTxt" class="form--primary__n-lbl">Enter your password: </label>
-                            <input type="password" id="adminPasswordTxt" placeholder="Enter your password" name="adminPasswordTxt" autocomplete="off">
+                            <input type="password" id="adminPasswordTxt" placeholder="Place your password" name="adminPasswordTxt" autocomplete="off">
+                            <p class="form--primary__note--error">• This field should not be empty.</p>
+                            <p class="form--primary__note--error">• Your password should be more than 8 characters.</p>
+                            <p class="form--primary__note--error_c" id="passwordDoesNotMatch">• Password Does not Match</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminConfirmPasswordTxt" class="form--primary__n-lbl">Confirm your password: </label>
                             <input type="password" id="adminConfirmPasswordTxt" placeholder="Confirm your password" name="adminConfirmPasswordTxt" autocomplete="off">
+                            <p class="form--primary__note--error">• This field should not be empty.</p>
+                            <p class="form--primary__note--error">• Your password should be more than 8 characters.</p>
+                            <p class="form--primary__note--error_c" id="conPasswordDoesNotMatch">• Password Does not Match</p>
                         </div>
                         <div class="form--primary__group mb-5">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminCodeTxt" class="form--primary__n-lbl">Admin Code: </label>
-                            <input type="text" id="adminCodeTxt" placeholder="Enter your admin code" name="adminCodeTxt" autocomplete="off">
+                            <input type="text" id="adminCodeTxt" placeholder="Place your admin code" name="adminCodeTxt" autocomplete="off">
                             <button class="bttn form--primary__sub-bttn--r" type="button">Generate admin code</button>
+                            <p class="form--primary__note--error">• This field should not be empty.</p>
                         </div>
-                        <button class="form--primary__bttn ny-auto-margin" type="button" id="adminSubmitBttn">Submit</button>
-                    </form>
+                    </div>
                 </div>
-                <!-- TEACHER -->
-                <div class="form--hidden mt-5 form--slide-2">
-                    <h2 class="form--slide_2__title mb-2">Teacher Account</h2>
-                    <form action="/signup" method="POST" class="form--primary">
-                        @csrf
+                <button class="form--primary__choice-bttn bttn" type="button" id="adminSubmitBttn">Submit</button>
+            </form>
+        </div>
+        <!-- TEACHER -->
+        <div class="form--hidden form--slide-2">
+            <h2 class="form--primary__title">Teacher Account</h2>
+            <form action="/signup" method="POST" class="form--primary">
+                @csrf
+                <div class="form--primary__2-col">
+                    <div class="form--primary__lrg--left">
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="tchrFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
+                            <input type="email" id="tchrFnameTxt" placeholder="Enter your email" name="tchrFnameTxt" autocomplete="off">
+                        </div>
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="tchrMnameTxt" class="form--primary__n-lbl">Enter your middle name: </label>
+                            <input type="email" id="tchrMnameTxt" placeholder="Enter your email" name="tchrMnameTxt" autocomplete="off">
+                        </div>
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="tchrLnameTxt" class="form--primary__n-lbl">Enter your last name: </label>
+                            <input type="email" id="tchrLnameTxt" placeholder="Enter your email" name="tchrLnameTxt" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="form--primary__lrg--right">
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="subjectTxt" class="form--primary__n-lbl">Enter your subject name: </label>
@@ -122,14 +182,35 @@
                             <input type="text" id="teacherClassCode" placeholder="Enter your class code" name="teacherClassCode" autocomplete="off">
                             <button class="bttn form--primary__sub-bttn--r" type="button">Generate class code</button>
                         </div>
-                        <button class="form--primary__bttn ny-auto-margin" type="button" id="teacherSubmitBttn">Submit</button>
-                    </form>
+                    </div>
                 </div>
-                <!-- STUDENT -->
-                <div class="form--hidden mt-5 form--slide-3">
-                    <h2 class="form--slide_2__title mb-2">Student Account</h2>
-                    <form action="/signup" method="POST" class="form--primary">
-                        @csrf
+                <button class="form--primary__choice-bttn bttn" type="button" id="tchrSubmitBttn">Submit</button>
+            </form>
+        </div>
+        <!-- STUDENT -->
+        <div class="form--hidden form--slide-3">
+            <h2 class="form--primary__title">Student Account</h2>
+            <form action="/signup" method="POST" class="form--primary">
+                @csrf
+                <div class="form--primary__2-col">
+                    <div class="form--primary__lrg--left">
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="studFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
+                            <input type="email" id="studFnameTxt" placeholder="Enter your email" name="studFnameTxt" autocomplete="off">
+                        </div>
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="studMnameTxt" class="form--primary__n-lbl">Enter your middle name: </label>
+                            <input type="email" id="studMnameTxt" placeholder="Enter your email" name="studMnameTxt" autocomplete="off">
+                        </div>
+                        <div class="form--primary__group">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="studLnameTxt" class="form--primary__n-lbl">Enter your last name: </label>
+                            <input type="email" id="studLnameTxt" placeholder="Enter your email" name="studLnameTxt" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="form--primary__lrg--right">
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studentEmailTxt" class="form--primary__n-lbl">Enter your email: </label>
@@ -171,13 +252,17 @@
                                 <span class="form--primary__note--tip">Note: You can get your admin code from your teacher or admin.</span>
                             </div>
                         </div>
-                        <button class="form--primary__bttn ny-auto-margin" type="button" id="studSubmitBttn">Submit</button>
-                    </form>
+                    </div>
                 </div>
-            </div>
-            <div class="line--one-h line"></div>
-            <p class="learn-more__txt wrapper__sign-up__learn-more-txt">Not sure which account you want? <a href="#" class="learn-more__link">Click here!</a></p>
+                <button class="form--primary__choice-bttn bttn" type="button" id="studSubmitBttn">Submit</button>
+            </form>
         </div>
+    </div>
+
+
+    <div class="wrapper__sign-up">
+        <div class="line--one-h line"></div>
+        <p class="learn-more__txt wrapper__sign-up__learn-more-txt">Not sure which account you want? <a href="#" class="learn-more__link">Click here!</a></p>
     </div>
 @endsection
 

@@ -1299,6 +1299,10 @@ ul {
   }
 }
 
+.ny-auto-margin {
+  margin: 0 auto;
+}
+
 .pt-1 {
   padding-top: 0.625em;
 }

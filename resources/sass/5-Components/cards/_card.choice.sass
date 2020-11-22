@@ -11,6 +11,7 @@
         align-items: center
         cursor: pointer
         margin: 20 / $default-font-size * 1em auto
+        user-select: none
         &:hover
             border-color: $color-primary
         @include custom_breakpoint(600)
@@ -34,3 +35,6 @@
             margin-top: 7 / 16 * 1em
             @extend %font-medium
             line-height: 1.5
+
+.card--active
+    border-color: $color-primary

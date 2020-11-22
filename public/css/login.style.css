@@ -4,11 +4,11 @@
 
 .form--primary input[type=email],
 .form--primary input[type=text],
-.form--primary input[type=password], .form--primary__bttn, .form--primary__n-lbl, .form--primary__r-lbl {
+.form--primary input[type=password], .form--primary__bttn, .form--primary__sub-bttn, .form--primary__n-lbl, .form--primary__r-lbl {
   font-weight: 600;
 }
 
-.sign-in__logo, .form--primary__group--check {
+.sign-in__logo, .form--primary__group--radio, .form--primary__group--check, .form--primary__group--radio-box {
   display: -webkit-flex;
   display: flex;
 }
@@ -224,7 +224,7 @@ table {
   height: 100%;
 }
 
-.form--primary__group--check, .form--primary__group {
+.form--primary__group--check, .form--primary__group, .form--primary__group--radio {
   position: relative;
   color: #848484;
 }
@@ -234,7 +234,10 @@ table {
   max-width: 450px;
 }
 .form--primary__group {
-  padding-bottom: 2.5em;
+  padding-bottom: 3.125em;
+}
+.form--primary__group--radio-box {
+  margin-bottom: 1.5625em;
 }
 .form--primary__group--check {
   margin-top: 0.625em;
@@ -276,6 +279,54 @@ table {
   fill: #474DFF;
   opacity: 1;
 }
+.form--primary__group--radio {
+  margin-bottom: 1.125em;
+  margin-right: 0.9375em;
+}
+.form--primary__group--radio:last-of-type label::after {
+  left: 4.4px;
+}
+.form--primary__group--radio input[type=radio] {
+  visibility: hidden;
+}
+.form--primary__group--radio label {
+  font-size: 1.8rem;
+  margin-left: 0.2777777778em;
+  cursor: pointer;
+  user-select: none;
+}
+.form--primary__group--radio label::before, .form--primary__group--radio label::after {
+  content: "";
+  position: absolute;
+  border-radius: 100%;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+.form--primary__group--radio label::before {
+  border: 2px solid #848484;
+  width: 18px;
+  height: 18px;
+  left: 0;
+}
+.form--primary__group--radio label::after {
+  background-color: white;
+  width: 9.5px;
+  height: 9.5px;
+  left: 3.6%;
+}
+.form--primary__group--radio input[type=radio]:checked + label {
+  color: #7F2AFF;
+}
+.form--primary__group--radio input[type=radio]:checked + label::before {
+  border-color: #7F2AFF;
+}
+.form--primary__group--radio input[type=radio]:checked + label::after {
+  background-color: #7F2AFF;
+  -webkit-animation: rubberBand 0.5s ease-in-out;
+  animation: rubberBand 0.5s ease-in-out;
+}
 .form--primary__check-icon {
   position: absolute;
   left: 4px;
@@ -290,7 +341,7 @@ table {
 }
 .form--primary input[type=email],
 .form--primary input[type=text],
-.form--primary input[type=password], .form--primary__bttn {
+.form--primary input[type=password], .form--primary__bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
   font-family: "Nunito", sans-serif;
 }
 .form--primary input[type=email],
@@ -320,20 +371,40 @@ table {
 .form--primary__bttn {
   color: white;
   background-color: #3A186C;
-  border: none;
-  font-size: 18px;
-  text-transform: uppercase;
+  font-size: 1.8rem;
   padding: 0.625em 1.5625em;
-  font-weight: 700;
   margin: 2.5em auto;
   display: block;
   width: 90%;
   border-radius: 10px;
-  cursor: pointer;
   font-weight: 800;
 }
 .form--primary__bttn:hover {
   background-color: #4C2586;
+}
+.form--primary__sub-bttn, .form--primary__sub-bttn--r {
+  font-weight: 700;
+  padding: 10px 15px;
+  margin-top: 10px;
+  color: #26004D;
+  background-color: #f2f2ff;
+}
+.form--primary__sub-bttn:hover, .form--primary__sub-bttn--r:hover {
+  background-color: #e3e3fd;
+}
+.form--primary__sub-bttn--r {
+  position: absolute;
+  bottom: -8px;
+  right: 0;
+}
+.form--primary__bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+}
+.form--primary__bttn:focus, .form--primary__sub-bttn:focus, .form--primary__sub-bttn--r:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(103, 114, 248, 0.35);
 }
 .form--primary input[type=email],
 .form--primary input[type=text],
@@ -358,6 +429,44 @@ table {
 .form--primary input[type=text]:hover,
 .form--primary input[type=password]:hover {
   background-color: #fbfbfb;
+}
+.form--primary__heading {
+  font-size: 18px;
+  margin-bottom: 0.8333333333em;
+  font-weight: 600;
+}
+.form--primary__note--optional, .form--primary__note--required {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-transform: uppercase;
+  padding: 0.4375em 0.75em;
+  -webkit-transform: translateY(-25%);
+  -ms-transform: translateY(-25%);
+  transform: translateY(-25%);
+  border-radius: 5px;
+}
+.form--primary__note--optional {
+  color: #2d95ff;
+  background-color: #ebf5ff;
+}
+.form--primary__note--required {
+  color: #ff5656;
+  background-color: #ffebeb;
+}
+.form--primary__note--tip {
+  margin-top: 1.3em;
+  display: block;
+  color: #26004D;
+  font-weight: 700;
+}
+
+.form--hidden {
+  display: none;
+}
+
+.form--hidden--active {
+  display: block;
 }
 
 .sign-in__logo {
@@ -550,6 +659,10 @@ table {
     margin-right: unset;
     margin-left: unset;
   }
+}
+
+.ny-auto-margin {
+  margin: 0 auto;
 }
 
 .disp-lrg-only {

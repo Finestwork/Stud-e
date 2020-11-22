@@ -5,8 +5,17 @@
     margin: auto
     max-width: 450px
     &__group
+        padding-bottom: 50 / $default-font-size * 1em
+    &__group,
+    &__group--radio
         @extend %position_rel
-        padding-bottom: 40 / $default-font-size * 1em
+
+    &__group--radio-box
+        @extend %display_flex
+        margin-bottom: 25 / $default-font-size * 1em
+
+    &__group
+        //Checkbox
         &--check
             margin-top: 10 / $default-font-size * 1em
             @extend %display_flex
@@ -43,6 +52,48 @@
                 ~ .form--primary__check-icon
                     fill: $color-primary-light
                     opacity: 1
+
+        //Radio Button
+        &--radio
+            @extend %display_flex
+            margin-bottom: 18 / $default-font-size * 1em
+            margin-right: 15 / $default-font-size * 1em
+            &:last-of-type
+                label::after
+                    left: 4.4px
+            input[type="radio"]
+                visibility: hidden
+            label
+                font-size: 18 / $root-font-size * 1rem
+                margin-left: 5 / 18 * 1em
+                cursor: pointer
+                user-select: none
+                &::before,
+                &::after
+                    content: ''
+                    position: absolute
+                    border-radius: 100%
+                    top: 50%
+                    @include transform(translateY(-50%))
+                &::before
+                    border: 2px solid $form-color
+                    width: 18px
+                    height: 18px
+                    left: 0
+                &::after
+                    background-color: white
+                    width: 9.5px
+                    height: 9.5px
+                    left: 3.6%
+
+            input[type="radio"]:checked
+                + label
+                    color: $color-primary
+                + label::before
+                    border-color: $color-primary
+                + label::after
+                    background-color: $color-primary
+                    @include animation(rubberBand .5s ease-in-out)
     &__check-icon
         position: absolute
         left: 4px
@@ -55,13 +106,16 @@
     input[type='email'],
     input[type='text'],
     input[type='password'],
-    &__bttn
+    &__bttn,
+    &__sub-bttn,
+    &__sub-bttn--r
         font-family: 'Nunito', sans-serif
 
     input[type='email'],
     input[type='text'],
     input[type='password'],
     &__bttn,
+    &__sub-bttn,
     &__n-lbl,
     &__r-lbl
         @extend %font-medium
@@ -90,23 +144,43 @@
         &:hover,
         &:active
             color: $color-primary
-
+    //BUTTONS
     &__bttn
         color: white
         background-color: $primary-bttn-color
-        border: none
-        font-size: 18px
-        text-transform: uppercase
+        font-size: 18 / $root-font-size * 1rem
         padding: 10 / $default-font-size * 1em 25 / $default-font-size * 1em
-        font-weight: 700
         margin: 40 / $default-font-size * 1em auto
         display: block
         width: 90%
         border-radius: 10px
-        cursor: pointer
         font-weight: 800
         &:hover
             background-color: $primary-bttn-color-light
+    &__sub-bttn,
+    &__sub-bttn--r
+        font-weight: 700
+        padding: 10px 15px
+        margin-top: 10px
+        color: $color-primary-dark
+        background-color: $color-primary-xlighter
+        &:hover
+            background-color: $color-primary-xlighter-h
+    &__sub-bttn--r
+        position: absolute
+        bottom: -8px
+        right: 0
+
+    &__bttn,
+    &__sub-bttn,
+    &__sub-bttn--r
+        text-transform: uppercase
+        cursor: pointer
+        border: none
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 4px $color-primary-outline
+    //INPUT TAGS
     input[type='email'],
     input[type='text'],
     input[type='password']
@@ -121,3 +195,36 @@
                 color: $color-primary-dark
         &:hover
             background-color: $form-bg-hover
+
+    //HEADING
+    &__heading
+        font-size: 18px
+        margin-bottom: 15 / 18 * 1em
+        font-weight: 600
+    //SUB TEXTS
+    &__note
+        &--optional,
+        &--required
+            position: absolute
+            right: 0
+            top: 0
+            text-transform: uppercase
+            padding: 7 / $default-font-size * 1em 12 / $default-font-size * 1em
+            @include transform(translateY(-25%))
+            border-radius: 5px
+        &--optional
+            color: $color-secondary
+            background-color: $color-secondary-light
+        &--required
+            color: $color-warning
+            background-color: $color-warning-bg
+        &--tip
+            margin-top: 13 / $root-font-size * 1em
+            display: block
+            color: $color-primary-dark
+            font-weight: 700
+
+.form--hidden
+    display: none
+.form--hidden--active
+    display: block

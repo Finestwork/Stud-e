@@ -12,7 +12,9 @@ let formSlide1 = document.querySelector('.form--slide-1'),
     formSlide2 = document.querySelector('.form--slide-2'),
     formSlide3 = document.querySelector('.form--slide-3');
 
-let adminSubmitBttn = document.getElementById('adminSubmitBttn');
+//BUTTONS
+let adminSubmitBttn = document.getElementById('adminSubmitBttn'),
+    teacherSubmitBttn = document.getElementById('teacherSubmitBttn');
 
 //FIELDS
 let adminFnameTxt = document.getElementById('adminFnameTxt'),
@@ -23,13 +25,22 @@ let adminFnameTxt = document.getElementById('adminFnameTxt'),
     adminConfirmPasswordTxt = document.getElementById('adminConfirmPasswordTxt'),
     adminCodeTxt = document.getElementById('adminCodeTxt');
 
-//I'll fix this password match tomorrow
-let passwordDoesNotMatch = document.getElementById('passwordDoesNotMatch'),
-    conPasswordDoesNotMatch = document.getElementById('conPasswordDoesNotMatch');
+let teacherFnameTxt = document.getElementById('teacherFnameTxt'),
+    teacherMnameTxt = document.getElementById('teacherMnameTxt'),
+    teacherLnameTxt = document.getElementById('teacherLnameTxt'),
+    teacherSubjectTxt = document.getElementById('teacherSubjectTxt'),
+    teacherEmailTxt = document.getElementById('teacherEmailTxt'),
+    teacherPasswordTxt = document.getElementById('teacherPasswordTxt'),
+    teacherConfirmPasswordTxt = document.getElementById('teacherConfirmPasswordTxt'),
+    teacherClassCodeTxt = document.getElementById('teacherClassCodeTxt');
 
 let pastAdminFnameValue = null, pastAdminMnameValue = null,
     pastAdminLnameValue = null, pastAdminEmailValue = null,
     pastAdminPWValue = null, pastAdminConPWValue = null, pastAdminCodeValue = null;
+
+let pastTeacherFnameValue = null, pastTeacherMnameValue = null,
+    pastTeacherLnameValue = null, pastTeacherSubjValue = null, pastTeacherEmailValue = null,
+    pastTeacherPWValue = null, pastTeacherConPWValue = null, pastTeacherClassValue = null;
 
 
 //CLICK EVENTS
@@ -69,66 +80,68 @@ cardBttn3.addEventListener('click', function(){
     addClass(formSlide1, 'form--hidden');
 });
 adminSubmitBttn.addEventListener('click', checkIfAdminFieldIsValid);
+teacherSubmitBttn.addEventListener('click', checkIfTeacherFieldIsValid);
 
 //KEY EVENTS
 //ADMIN
 adminFnameTxt.addEventListener('keyup', function(e){
-    let txtVal = this.value;
-    if(alphaLettersOnly(txtVal)){
-        if(comparePastValue(pastAdminFnameValue, txtVal)){
-            removeClass(this, 'form-error');
-        }else{
+    if(!stringContainsNumber(this.value)){
+        if(isStringEqual(pastAdminFnameValue, this.value)
+            && isFieldBlank(this)
+            && doesFieldContainsNumber(this)){
             addClass(this, 'form-error');
+        }else{
+            removeClass(this,'form-error')
         }
     }else{
-        this.value = removeNumbers(txtVal);
+        this.value = removeNumbers(this.value);
     }
 });
 adminFnameTxt.addEventListener('keydown', function(){
-    if(!alphaLettersOnly(this.value)){
+    if(stringContainsNumber(this.value)){
         this.value = removeNumbers(this.value);
     }
-
 });
 adminMnameTxt.addEventListener('keyup', function(e){
-    let txtVal = this.value;
-    if(alphaLettersOnly(txtVal)){
-        if(comparePastValue(pastAdminMnameValue, txtVal)){
-            removeClass(this, 'form-error');
-        }else{
+    if(!stringContainsNumber(this.value)){
+        if(isStringEqual(pastAdminMnameValue, this.value)
+            && isFieldBlank(this)
+            && doesFieldContainsNumber(this)){
             addClass(this, 'form-error');
+        }else{
+            removeClass(this,'form-error')
         }
     }else{
-        this.value = removeNumbers(txtVal);
+        this.value = removeNumbers(this.value);
     }
 });
 adminMnameTxt.addEventListener('keydown', function(){
-    if(!alphaLettersOnly(this.value)){
+    if(stringContainsNumber(this.value)){
         this.value = removeNumbers(this.value);
     }
-
 });
 adminLnameTxt.addEventListener('keyup', function(e){
-    let txtVal = this.value;
-    if(alphaLettersOnly(txtVal)){
-        if(comparePastValue(pastAdminLnameValue, txtVal)){
-            removeClass(this, 'form-error');
-        }else{
+    if(!stringContainsNumber(this.value)){
+        if(isStringEqual(pastAdminLnameValue, this.value)
+            && isFieldBlank(this)
+            && doesFieldContainsNumber(this)){
             addClass(this, 'form-error');
+        }else{
+            removeClass(this,'form-error')
         }
     }else{
-        this.value = removeNumbers(txtVal);
+        this.value = removeNumbers(this.value);
     }
 });
 adminLnameTxt.addEventListener('keydown', function(){
-    if(!alphaLettersOnly(this.value)){
+    if(stringContainsNumber(this.value)){
         this.value = removeNumbers(this.value);
     }
 
 });
 adminEmailTxt.addEventListener('keyup', function(e){
     let txtVal = this.value;
-    if(comparePastValue(pastAdminEmailValue, txtVal)){
+    if(isStringEqual(pastAdminEmailValue, txtVal) && !doesFieldContainsValidEmail(this.value)){
         removeClass(this, 'form-error');
     }else{
         addClass(this, 'form-error');
@@ -136,65 +149,506 @@ adminEmailTxt.addEventListener('keyup', function(e){
 });
 adminPasswordTxt.addEventListener('keyup', function(e){
     let txtVal = this.value;
-    if(comparePastValue(pastAdminPWValue, txtVal)){
+    if(isStringEqual(pastAdminPWValue, txtVal) && isPasswordTheSame(this, adminConfirmPasswordTxt)){
         removeClass(this, 'form-error');
+        removeClass(adminConfirmPasswordTxt, 'form-error');
     }else{
         addClass(this, 'form-error');
+        addClass(adminConfirmPasswordTxt, 'form-error');
     }
 });
 adminConfirmPasswordTxt.addEventListener('keyup', function(e){
     let txtVal = this.value;
-    if(comparePastValue(pastAdminConPWValue, txtVal)){
+    if(isStringEqual(pastAdminConPWValue, txtVal) && isPasswordTheSame(this, adminPasswordTxt)){
+        removeClass(this, 'form-error');
+        removeClass(adminPasswordTxt, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+        addClass(adminPasswordTxt, 'form-error');
+    }
+});
+adminCodeTxt.addEventListener('keyup', function(e){
+    if(isCodeValid(adminCodeTxt)) {
+        removeClass(adminCodeTxt, 'form-error');
+    }else{
+        addClass(adminCodeTxt, 'form-error');
+    }
+});
+
+//ON BLUR
+adminFnameTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+    if(!doesFieldContainsNumber(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+}
+adminMnameTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+    if(!doesFieldContainsNumber(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+}
+adminLnameTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+    if(!doesFieldContainsNumber(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+}
+adminEmailTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+    if(doesFieldContainsValidEmail(this)){
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+}
+adminPasswordTxt.onblur = function(){
+    if(isPasswordTheSame(this, adminConfirmPasswordTxt)){
+        removeClass(this, 'form-error');
+        removeClass(adminConfirmPasswordTxt, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+        addClass(adminConfirmPasswordTxt, 'form-error');
+    }
+    if(confirmPasswordLength(this)){
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+}
+adminConfirmPasswordTxt.onblur = function(){
+    if(isPasswordTheSame(this, adminPasswordTxt)){
+        removeClass(this, 'form-error');
+        removeClass(adminPasswordTxt, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+        addClass(adminPasswordTxt, 'form-error');
+    }
+    if(confirmPasswordLength(this)){
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+}
+adminCodeTxt.onblur = function() {
+    if(isCodeValid(adminCodeTxt)) {
+        removeClass(adminCodeTxt, 'form-error');
+    }else{
+        addClass(adminCodeTxt, 'form-error');
+    }
+}
+
+//TEACHER
+teacherFnameTxt.addEventListener('keyup', function(e){
+    if(!stringContainsNumber(this.value)){
+        if(isStringEqual(pastTeacherFnameValue, this.value)
+            && isFieldBlank(this)
+            && doesFieldContainsNumber(this)){
+            addClass(this, 'form-error');
+        }else{
+            removeClass(this,'form-error')
+        }
+    }else{
+        this.value = removeNumbers(this.value);
+    }
+});
+teacherFnameTxt.addEventListener('keydown', function(){
+    if(stringContainsNumber(this.value)){
+        this.value = removeNumbers(this.value);
+    }
+});
+teacherMnameTxt.addEventListener('keyup', function(e){
+    if(!stringContainsNumber(this.value)){
+        if(isStringEqual(pastTeacherMnameValue, this.value)
+            && isFieldBlank(this)
+            && doesFieldContainsNumber(this)){
+            addClass(this, 'form-error');
+        }else{
+            removeClass(this,'form-error')
+        }
+    }else{
+        this.value = removeNumbers(this.value);
+    }
+});
+teacherMnameTxt.addEventListener('keydown', function(){
+    if(stringContainsNumber(this.value)){
+        this.value = removeNumbers(this.value);
+    }
+});
+teacherLnameTxt.addEventListener('keyup', function(e){
+    if(!stringContainsNumber(this.value)){
+        if(isStringEqual(pastTeacherLnameValue, this.value)
+            && isFieldBlank(this)
+            && doesFieldContainsNumber(this)){
+            addClass(this, 'form-error');
+        }else{
+            removeClass(this,'form-error')
+        }
+    }else{
+        this.value = removeNumbers(this.value);
+    }
+});
+teacherLnameTxt.addEventListener('keydown', function(){
+    if(stringContainsNumber(this.value)){
+        this.value = removeNumbers(this.value);
+    }
+});
+teacherSubjectTxt.addEventListener('keyup', function(e){
+    if(isStringEqual(pastTeacherSubjValue, this) && !isFieldBlank(this)){
         removeClass(this, 'form-error');
     }else{
         addClass(this, 'form-error');
     }
 });
-adminCodeTxt.addEventListener('keyup', function(e){
-    let txtVal = this.value;
-    if(comparePastValue(pastAdminCodeValue, txtVal)){
+teacherEmailTxt.addEventListener('keyup', function(e){
+    if(isStringEqual(pastTeacherEmailValue, this) && !doesFieldContainsValidEmail(this.value)){
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+});
+teacherPasswordTxt.addEventListener('keyup', function(e){
+    if(isStringEqual(pastTeacherPWValue, this) && isPasswordTheSame(this, teacherConfirmPasswordTxt)){
+        removeClass(this, 'form-error');
+        removeClass(teacherConfirmPasswordTxt, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+        addClass(teacherConfirmPasswordTxt, 'form-error');
+    }
+});
+teacherConfirmPasswordTxt.addEventListener('keyup', function(e){
+    if(isStringEqual(pastTeacherConPWValue, this) && isPasswordTheSame(this, teacherPasswordTxt)){
+        removeClass(this, 'form-error');
+        removeClass(teacherPasswordTxt, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+        addClass(teacherPasswordTxt, 'form-error');
+    }
+});
+teacherClassCodeTxt.addEventListener('keyup', function(e){
+    if(isCodeValid(this)) {
         removeClass(this, 'form-error');
     }else{
         addClass(this, 'form-error');
     }
 });
 
+//ON BLUR
+teacherFnameTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+    if(!doesFieldContainsNumber(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+}
+teacherMnameTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+    if(!doesFieldContainsNumber(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+}
+teacherLnameTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+    if(!doesFieldContainsNumber(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+}
+teacherSubjectTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+}
+teacherEmailTxt.onblur = function(){
+    if(isFieldBlank(this)){
+        addClass(this, 'form-error');
+    }else{
+        removeClass(this, 'form-error');
+    }
+    if(doesFieldContainsValidEmail(this)){
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+}
+teacherPasswordTxt.onblur = function(){
+    if(isPasswordTheSame(this, teacherConfirmPasswordTxt)){
+        removeClass(this, 'form-error');
+        removeClass(teacherConfirmPasswordTxt, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+        addClass(teacherConfirmPasswordTxt, 'form-error');
+    }
+    if(confirmPasswordLength(this)){
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+}
+teacherConfirmPasswordTxt.onblur = function(){
+    if(isPasswordTheSame(this, teacherPasswordTxt)){
+        removeClass(this, 'form-error');
+        removeClass(teacherPasswordTxt, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+        addClass(teacherPasswordTxt, 'form-error');
+    }
+    if(confirmPasswordLength(this)){
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+}
+teacherClassCodeTxt.onblur = function() {
+    if(isCodeValid(adminCodeTxt)) {
+        removeClass(adminCodeTxt, 'form-error');
+    }else{
+        addClass(adminCodeTxt, 'form-error');
+    }
+}
+
+
+
 //FUNCTIONS
+function checkIfAdminFieldIsValid(){
+    let isFNameEmpty, isMNameEmpty, isLNameEmpty, isEmailEmpty, isPasswordEmpty, isCodeEmpty;
+    if(!doesFieldContainsNumber(adminFnameTxt)){
+        addClass(adminFnameTxt, 'form-error');
+        isFNameEmpty = true;
+    }else{
+        isFNameEmpty = false;
+    }
+    if(!doesFieldContainsNumber(adminMnameTxt)){
+        addClass(adminMnameTxt, 'form-error');
+        isMNameEmpty = true;
+    }else{
+        isMNameEmpty = false;
+    }
+    if(!doesFieldContainsNumber(adminLnameTxt)){
+        addClass(adminLnameTxt, 'form-error');
+        isLNameEmpty = true;
+    }else{
+        isLNameEmpty = false;
+    }
+    if(!doesFieldContainsValidEmail(adminEmailTxt)){
+        addClass(adminEmailTxt, 'form-error');
+        isEmailEmpty = true;
+    }else{
+        isEmailEmpty = false;
+    }
+    if(!isPasswordTheSame(adminPasswordTxt, adminConfirmPasswordTxt)
+        || !confirmPasswordLength(adminPasswordTxt) || !confirmPasswordLength(adminConfirmPasswordTxt)){
+        addClass(adminPasswordTxt, 'form-error');
+        addClass(adminConfirmPasswordTxt, 'form-error');
+        isPasswordEmpty = true;
+    }else{
+        isPasswordEmpty = false;
+    }
+    if(!isCodeValid(adminCodeTxt)){
+        addClass(adminCodeTxt, 'form-error');
+        isCodeEmpty = true;
+    }else{
+        isCodeEmpty = false;
+    }
+
+    if(!isFNameEmpty && !isMNameEmpty && !isLNameEmpty && !isEmailEmpty
+        && !isPasswordEmpty && !isCodeEmpty){
+        //Fields are okay
+    }else{
+        //GET POSSIBLE FAULTY VALUES
+        pastAdminFnameValue = adminFnameTxt.value;
+        pastAdminMnameValue = adminMnameTxt.value;
+        pastAdminLnameValue = adminLnameTxt.value;
+        pastAdminEmailValue = adminEmailTxt.value;
+        pastAdminPWValue = adminPasswordTxt.value;
+        pastAdminConPWValue = adminConfirmPasswordTxt.value;
+        pastAdminCodeValue = adminCodeTxt.value;
+    }
+
+
+}
+function checkIfTeacherFieldIsValid(){
+    let isFNameEmpty, isMNameEmpty, isLNameEmpty, isSubjectEmpty,isEmailEmpty,
+        isPasswordEmpty, isCodeEmpty;
+    if(!doesFieldContainsNumber(teacherFnameTxt)){
+        addClass(teacherFnameTxt, 'form-error');
+        isFNameEmpty = true;
+    }else{
+        isFNameEmpty = false;
+    }
+    if(!doesFieldContainsNumber(teacherMnameTxt)){
+        addClass(teacherMnameTxt, 'form-error');
+        isMNameEmpty = true;
+    }else{
+        isMNameEmpty = false;
+    }
+    if(!doesFieldContainsNumber(teacherLnameTxt)){
+        addClass(teacherLnameTxt, 'form-error');
+        isLNameEmpty = true;
+    }else{
+        isLNameEmpty = false;
+    }
+    if(!doesFieldContainsNumber(teacherSubjectTxt)){
+        addClass(teacherSubjectTxt, 'form-error');
+        isSubjectEmpty = true;
+    }else{
+        isSubjectEmpty = false;
+    }
+    if(!doesFieldContainsValidEmail(teacherEmailTxt)){
+        addClass(teacherEmailTxt, 'form-error');
+        isEmailEmpty = true;
+    }else{
+        isEmailEmpty = false;
+    }
+    if(!isPasswordTheSame(teacherPasswordTxt, teacherConfirmPasswordTxt)
+        || !confirmPasswordLength(teacherPasswordTxt) || !confirmPasswordLength(teacherConfirmPasswordTxt)){
+        addClass(teacherPasswordTxt, 'form-error');
+        addClass(teacherConfirmPasswordTxt, 'form-error');
+        isPasswordEmpty = true;
+    }else{
+        isPasswordEmpty = false;
+    }
+    if(!isCodeValid(teacherClassCodeTxt)){
+        addClass(teacherClassCodeTxt, 'form-error');
+        isCodeEmpty = true;
+    }else{
+        isCodeEmpty = false;
+    }
+
+    if(!isFNameEmpty && !isMNameEmpty && !isLNameEmpty && !isEmailEmpty
+        && !isPasswordEmpty && !isCodeEmpty && isSubjectEmpty){
+        //Fields are okay
+        // Don't forget to make admin code null because it is optional
+    }else{
+        //GET POSSIBLE FAULTY VALUES
+        pastTeacherFnameValue = teacherFnameTxt.value;
+        pastTeacherMnameValue = teacherMnameTxt.value;
+        pastTeacherLnameValue = teacherLnameTxt.value;
+        pastTeacherEmailValue = teacherEmailTxt.value;
+        pastTeacherSubjValue = teacherSubjectTxt.value;
+        pastTeacherPWValue = teacherPasswordTxt.value;
+        pastTeacherConPWValue = teacherConfirmPasswordTxt.value;
+        pastTeacherClassValue = teacherClassCodeTxt.value;
+    }
+
+
+}
+
 function addClass(el, cl){
     el.classList.add(cl);
 }
 function removeClass(el, cl){
     el.classList.remove(cl);
 }
-function checkIfAdminFieldIsValid(){
-    if(isStringEmpty(adminFnameTxt.value)){
-        addClass(adminFnameTxt, 'form-error');
-    }
-    if(isStringEmpty(adminMnameTxt.value)){
-        addClass(adminMnameTxt, 'form-error');
-    }
-    if(isStringEmpty(adminLnameTxt.value)){
-        addClass(adminLnameTxt, 'form-error');
-    }
-    if(isStringEmpty(adminEmailTxt.value) || !isStringAnEmail(adminEmailTxt.value)){
-        addClass(adminEmailTxt, 'form-error');
-    }
+function showElement(el, cl){
+    el.parentNode.querySelector(cl).style.display = 'block';
+}
+function hideElement(el, cl){
+    el.parentNode.querySelector(cl).style.display = 'none';
+}
 
-    if(isStringEmpty(adminPasswordTxt.value) && !compareStrLength(adminPasswordTxt.value, 8)){
-        addClass(adminPasswordTxt, 'form-error');
+//VALIDATION
+function isFieldBlank(el){
+    if(isStringEmpty(el.value)){
+        showElement(el, '.js-field-blank');
+        return true;
+    }else{
+        hideElement(el, '.js-field-blank');
+        return false;
     }
-    if(isStringEmpty(adminConfirmPasswordTxt.value) && !compareStrLength(adminConfirmPasswordTxt.value, 8)){
-        addClass(adminConfirmPasswordTxt, 'form-error');
+}
+function doesFieldContainsNumber(el){
+    if(!isFieldBlank(el)){
+        if(!stringContainsNumber(el.value)){
+            hideElement(el, '.js-field-no-num');
+            return true;
+        }else{
+            showElement(el, '.js-field-no-num');
+        }
     }
-    if(isStringEmpty(adminCodeTxt.value)){
-        addClass(adminCodeTxt, 'form-error');
+    return false;
+}
+function doesFieldContainsValidEmail(el){
+    if(!isFieldBlank(el)){
+        if(isStringAnEmail(el.value)){
+            hideElement(el, '.js-field-email');
+            return true;
+        }else{
+            showElement(el, '.js-field-email');
+        }
     }
-
-    pastAdminFnameValue = adminFnameTxt.value;
-    pastAdminMnameValue = adminMnameTxt.value;
-    pastAdminLnameValue = adminLnameTxt.value;
-    pastAdminEmailValue = adminEmailTxt.value;
-    pastAdminPWValue = adminPasswordTxt.value;
-    pastAdminConPWValue = adminConfirmPasswordTxt.value;
-    pastAdminCodeValue = adminCodeTxt.value;
+    return false;
+}
+function isPasswordTheSame(el1, el2){
+    if(!isFieldBlank(el1) && !isFieldBlank(el2)){
+        if(isStringEqual(el1.value, el2.value)){
+            hideElement(el1, '.js-password-not-match');
+            hideElement(el2, '.js-password-not-match');
+            return true;
+        }else{
+            showElement(el1, '.js-password-not-match');
+            showElement(el2, '.js-password-not-match');
+        }
+    }
+    return false;
+}
+function confirmPasswordLength(el1){
+    if(compareStrLength(el1.value,8)){
+        hideElement(el1, '.js-password-length');
+        return true;
+    }else{
+        showElement(el1, '.js-password-length');
+    }
+    return false;
+}
+function isCodeValid(el1){
+    if(!isFieldBlank(el1)){
+        if(compareStrLength(el1.value, 6)){
+            hideElement(el1, '.js-field-code');
+            return true;
+        }else{
+            showElement(el1, '.js-field-code');
+        }
+    }
+    return false;
 }

@@ -73,22 +73,22 @@
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
                             <input type="text" id="adminFnameTxt" placeholder="Place your first name here" name="adminFnameTxt" autocomplete="off">
-                            <p class="form--primary__note--error">• This field should not be empty.</p>
-                            <p class="form--primary__note--error">• Make sure that this field does not contain any special characters or numbers.</p>
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminMnameTxt" class="form--primary__n-lbl">Enter your middle name: </label>
                             <input type="text" id="adminMnameTxt" placeholder="Place your middle name here" name="adminMnameTxt" autocomplete="off">
-                            <p class="form--primary__note--error">• This field should not be empty.</p>
-                            <p class="form--primary__note--error">• Make sure that this field does not contain any special characters or numbers.</p>
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminLnameTxt" class="form--primary__n-lbl">Enter your last name: </label>
                             <input type="text" id="adminLnameTxt" placeholder="Place your last name here" name="adminLnameTxt" autocomplete="off">
-                            <p class="form--primary__note--error">• This field should not be empty.</p>
-                            <p class="form--primary__note--error">• Make sure that this field does not contain any special characters or numbers.</p>
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                     </div>
                     <div class="form--primary__lrg--right">
@@ -96,31 +96,32 @@
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminEmailTxt" class="form--primary__n-lbl">Enter your email: </label>
                             <input type="email" id="adminEmailTxt" placeholder="Place your email" name="adminEmailTxt" autocomplete="off">
-                            <p class="form--primary__note--error">• This field should not be empty.</p>
-                            <p class="form--primary__note--error">• Make sure that it is in the correct format (ex. Juan@example.com )</p>
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-email">• Make sure that it is in the correct format (ex. Juan@example.com )</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminPasswordTxt" class="form--primary__n-lbl">Enter your password: </label>
                             <input type="password" id="adminPasswordTxt" placeholder="Place your password" name="adminPasswordTxt" autocomplete="off">
-                            <p class="form--primary__note--error">• This field should not be empty.</p>
-                            <p class="form--primary__note--error">• Your password should be more than 8 characters.</p>
-                            <p class="form--primary__note--error_c" id="passwordDoesNotMatch">• Password Does not Match</p>
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-password-length">• Your password should be more than 8 characters.</p>
+                            <p class="form--primary__note--error_c js-password-not-match">• Password Does not Match</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminConfirmPasswordTxt" class="form--primary__n-lbl">Confirm your password: </label>
                             <input type="password" id="adminConfirmPasswordTxt" placeholder="Confirm your password" name="adminConfirmPasswordTxt" autocomplete="off">
-                            <p class="form--primary__note--error">• This field should not be empty.</p>
-                            <p class="form--primary__note--error">• Your password should be more than 8 characters.</p>
-                            <p class="form--primary__note--error_c" id="conPasswordDoesNotMatch">• Password Does not Match</p>
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-password-length">• Your password should be more than 8 characters.</p>
+                            <p class="form--primary__note--error_c js-password-not-match">• Password Does not Match</p>
                         </div>
                         <div class="form--primary__group mb-5">
                             <span class="form--primary__note--required">Required</span>
                             <label for="adminCodeTxt" class="form--primary__n-lbl">Admin Code: </label>
                             <input type="text" id="adminCodeTxt" placeholder="Place your admin code" name="adminCodeTxt" autocomplete="off">
                             <button class="bttn form--primary__sub-bttn--r" type="button">Generate admin code</button>
-                            <p class="form--primary__note--error">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-code">• Code should be 6 characters long.</p>
                         </div>
                     </div>
                 </div>
@@ -136,40 +137,55 @@
                     <div class="form--primary__lrg--left">
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
-                            <label for="tchrFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
-                            <input type="email" id="tchrFnameTxt" placeholder="Enter your email" name="tchrFnameTxt" autocomplete="off">
+                            <label for="teacherFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
+                            <input type="text" id="teacherFnameTxt" placeholder="Place your first name here" name="teacherFnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
-                            <label for="tchrMnameTxt" class="form--primary__n-lbl">Enter your middle name: </label>
-                            <input type="email" id="tchrMnameTxt" placeholder="Enter your email" name="tchrMnameTxt" autocomplete="off">
+                            <label for="teacherMnameTxt" class="form--primary__n-lbl">Enter your middle name: </label>
+                            <input type="text" id="teacherMnameTxt" placeholder="Place your middle name here" name="teacherMnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
-                            <label for="tchrLnameTxt" class="form--primary__n-lbl">Enter your last name: </label>
-                            <input type="email" id="tchrLnameTxt" placeholder="Enter your email" name="tchrLnameTxt" autocomplete="off">
+                            <label for="teacherLnameTxt" class="form--primary__n-lbl">Enter your last name: </label>
+                            <input type="text" id="teacherLnameTxt" placeholder="Place your last name here" name="teacherLnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                     </div>
                     <div class="form--primary__lrg--right">
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
-                            <label for="subjectTxt" class="form--primary__n-lbl">Enter your subject name: </label>
-                            <input type="text" id="subjectTxt" placeholder="Place your subject name here" name="subjectTxt" autocomplete="off">
+                            <label for="teacherSubjectTxt" class="form--primary__n-lbl">Enter your subject name: </label>
+                            <input type="text" id="teacherSubjectTxt" placeholder="Place your subject name here" name="teacherSubjectTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="teacherEmailTxt" class="form--primary__n-lbl">Enter your email: </label>
                             <input type="email" id="teacherEmailTxt" placeholder="Enter your email" name="teacherEmailTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-email">• Make sure that it is in the correct format (ex. Juan@example.com )</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="teacherPasswordTxt" class="form--primary__n-lbl">Enter your password: </label>
                             <input type="password" id="teacherPasswordTxt" placeholder="Enter your password" name="teacherPasswordTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-password-length">• Your password should be more than 8 characters.</p>
+                            <p class="form--primary__note--error_c js-password-not-match">• Password Does not Match</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="teacherConfirmPasswordTxt" class="form--primary__n-lbl">Confirm your password: </label>
                             <input type="password" id="teacherConfirmPasswordTxt" placeholder="Confirm your password" name="teacherConfirmPasswordTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-password-length">• Your password should be more than 8 characters.</p>
+                            <p class="form--primary__note--error_c js-password-not-match">• Password Does not Match</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--optional">Optional</span>
@@ -178,13 +194,15 @@
                         </div>
                         <div class="form--primary__group mb-5">
                             <span class="form--primary__note--required">Required</span>
-                            <label for="teacherClassCode" class="form--primary__n-lbl">Class Code: </label>
-                            <input type="text" id="teacherClassCode" placeholder="Enter your class code" name="teacherClassCode" autocomplete="off">
+                            <label for="teacherClassCodeTxt" class="form--primary__n-lbl">Class Code: </label>
+                            <input type="text" id="teacherClassCodeTxt" placeholder="Enter your class code" name="teacherClassCodeTxt" autocomplete="off">
                             <button class="bttn form--primary__sub-bttn--r" type="button">Generate class code</button>
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-code">• Code should be 6 characters long.</p>
                         </div>
                     </div>
                 </div>
-                <button class="form--primary__choice-bttn bttn" type="button" id="tchrSubmitBttn">Submit</button>
+                <button class="form--primary__choice-bttn bttn" type="button" id="teacherSubmitBttn">Submit</button>
             </form>
         </div>
         <!-- STUDENT -->

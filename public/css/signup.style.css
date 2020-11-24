@@ -725,9 +725,6 @@ table {
 .form--primary input[class*=form-error]:focus {
   background-color: #f2f2ff;
 }
-.form--primary input[class*=form-error] ~ .form--primary__note--error {
-  display: block;
-}
 
 .form--hidden {
   display: none;

@@ -1,0 +1,30 @@
+.verify
+    &__title,
+    &__main-txt
+        text-align: center
+    &__title
+        text-transform: uppercase
+        font-weight: 800
+        margin-top: 55 / 20 * 1em
+        margin-bottom: 10 / 20 * 1em
+    &__main-txt
+        line-height: 1.4
+        @extend %font-semibold
+    &__illustration
+        max-width: 350px
+        margin: auto
+    &__sub-txt
+        color: $txt-secondary
+        text-align: center
+        line-height: 1.5
+        @extend %font-semibold
+        @include brk_lrg
+            max-width: 500px
+            margin: auto
+        @include brk_xlrg
+            max-width: 600px
+    &__email
+        color: $color-new-secondary
+    &__bttn
+        display: block
+        margin: 40px auto

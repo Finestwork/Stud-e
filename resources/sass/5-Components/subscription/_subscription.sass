@@ -1,0 +1,53 @@
+.subscription
+    margin-top: 80 / $default-font-size * 1em
+    @include brk_lrg
+        margin-top: 110 / $default-font-size * 1em
+    &__title
+        text-align: center
+        margin-bottom: 15 / 20 * 1em
+        &--primary
+            color: $color-new-secondary
+        @include brk_lrg
+            font-size: 48.83 / $root-font-size * 1rem
+            margin-bottom: 5 / 20 * 1em
+    &__txt
+        text-align: center
+        color: $txt-secondary
+        @extend %font-semibold
+        margin-bottom: 50 / $root-font-size * 1em
+        @include brk_lrg
+            font-size: 18 / $root-font-size * 1rem
+            margin-bottom: 30 / $root-font-size * 1em
+    &__bttn-box
+        @extend %display_flex
+        -webkit-justify-content: center
+        justify-content: center
+    &__bttn--teacher,
+    &__bttn--admin
+        font-size: 16 / $root-font-size * 1rem
+        @extend %font-extrabold
+        font-family: inherit
+        text-transform: uppercase
+        padding: 10 / $default-font-size * 1em 20 / $default-font-size * 1em
+        border: 2px solid $form-border
+        margin-right: 0
+        color: $form-color
+        outline: none
+    &__bttn--teacher
+        border-top-left-radius: 20 / $default-font-size * 1em
+        border-bottom-left-radius: 20 / $default-font-size * 1em
+        border-right-color: $color-primary
+    &__bttn--admin
+        border-top-right-radius: 20 / $default-font-size * 1em
+        border-bottom-right-radius: 20 / $default-font-size * 1em
+        border-left-color: $color-primary
+    &__table-box
+        margin-top: 70 / $default-font-size * 1em
+        margin-bottom: 50 / $default-font-size * 1em
+        @include custom_breakpoint(950)
+            display: -webkit-flex
+            display: flex
+.subscribe--active
+    background-color: $color-primary
+    border-color: $color-primary
+    color: white

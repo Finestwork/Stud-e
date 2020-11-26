@@ -1,0 +1,189 @@
+.pricing-table--secondary
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.05)
+    border-radius: 20px
+    padding: 25px 25px 10px 25px
+    width: 100%
+    max-width: 450px
+    margin: 25px auto
+    background-color: white
+    &__top
+        @extend %display_flex
+    &__title
+        @extend %font-extrabold
+        text-transform: uppercase
+        margin-bottom: 10px
+    &__info
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        -webkit-justify-content: center
+        justify-content: center
+        margin-left: 25px
+    &__price
+        @extend %font-bold
+    &__title,
+    &__price
+        font-size: 20px
+    &__logo-1,
+    &__logo-2
+
+        width: 70px
+        height: 70px
+        border-radius: 15px
+        position: relative
+        overflow: hidden
+        &::before,
+        &::after
+            content: ''
+            position: absolute
+            width: 50px
+            height: 50px
+        &::before
+            top: 50%
+            right: 50%
+        &::after
+            bottom: 50%
+            left: 50%
+            border-radius: 100%
+    &__logo-1
+        background-color: #16CB88
+        &::before,
+        &::after
+            background-color: #2dea8e
+    &__logo-2
+        background-color: $color-primary-dark
+        &::before,
+        &::after
+            background-color: #6934a0
+    &__line
+        width: 100%
+        height: 2px
+        background-color: $form-border
+        margin-top: 25px
+    &__list-wrapper
+        margin-top: 25px
+    &__list-item
+        @extend %display_flex
+        margin-top: 15px
+        margin-bottom: 15px
+    &__list-icon
+        min-width: 20px
+        display: block
+    &__list-txt
+        color: $txt-secondary
+        @extend %font-semibold
+        margin-left: 10px
+        line-height: 1.3
+    &__bttn
+        text-transform: uppercase
+        font-family: inherit
+        @extend %font-black
+        background-color: $color-primary-dark
+        color: white
+        padding: 10px 30px
+        border-radius: 20px
+        margin: 30px auto 10px auto
+        display: block
+        outline: none
+        font-size: 16 / $root-font-size * 1rem
+        &:focus
+            box-shadow: 0 0 0 3px rgba(38, 0, 77, .3)
+        &:hover
+            background-color: #3f037b
+
+
+.pricing-table--secondary--colored
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.05)
+    border-radius: 20px
+    padding: 25 / $default-font-size * 1em 25 / $default-font-size * 1em 10 / $default-font-size * 1em 25 / $default-font-size * 1em
+    width: 100%
+    max-width: 450px
+    margin: 25px auto
+    background-color: #130225
+    @include custom_breakpoint(950)
+        margin-left: 20px
+        margin-right: 20px
+        @include transform(scaleY(1.1))
+    @include brk_lrg
+        -webkit-flex-basis: 120%
+        flex-basis: 120%
+        padding-bottom: 0
+        max-height: 445px
+    &__top
+        @extend %display_flex
+    &__title
+        @extend %font-extrabold
+        text-transform: uppercase
+        margin-bottom: 10 / 20 * 1em
+    &__info
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        -webkit-justify-content: center
+        justify-content: center
+        margin-left: 25 / $default-font-size * 1em
+        color: white
+    &__price
+        @extend %font-bold
+    &__title,
+    &__price
+        font-size: 20px
+        color: #e4e4e4
+    &__logo
+        background-color: #FE875C
+        width: 70px
+        height: 70px
+        border-radius: 15px
+        position: relative
+        overflow: hidden
+        &::before,
+        &::after
+            content: ''
+            position: absolute
+            width: 50px
+            height: 50px
+            background-color: #FFB497
+        &::before
+            top: 50%
+            right: 50%
+        &::after
+            bottom: 50%
+            left: 50%
+            border-radius: 100%
+    &__line
+        width: 100%
+        height: 2px
+        background-color: #e4e4e4
+        margin-top: 25 / $default-font-size * 1em
+    &__list-wrapper
+        margin-top: 25 / $default-font-size * 1em
+    &__list-item
+        @extend %display_flex
+        margin-top: 15 / $default-font-size * 1em
+        margin-bottom: 15 / $default-font-size * 1em
+    &__list-icon
+        min-width: 20px
+        display: block
+    &__list-txt
+        color: white
+        @extend %font-semibold
+        margin-left: 10 / $default-font-size * 1em
+        line-height: 1.3
+        color: #e4e4e4
+    &__bttn
+        text-transform: uppercase
+        font-family: inherit
+        @extend %font-black
+        //background-color: $color-primary-dark
+        background-color: $color-primary
+        color: white
+        padding: 10 / 16 * 1em 30 / 16 * 1em
+        border-radius: 20px
+        margin: 30 / 16 * 1em auto 10 / 16 * 1em auto
+        display: block
+        outline: none
+        font-size: 16 / $root-font-size * 1rem
+        &:focus
+            box-shadow: 0 0 0 3px rgba(42, 127, 255, .3)
+        &:hover
+            background-color: $color-primary-hover

@@ -12,7 +12,7 @@
             margin-top: 70 / $default-font-size * 1em
     //LAYOUT
     &__group
-        padding-bottom: 50 / $default-font-size * 1em
+        padding-bottom: 30 / $default-font-size * 1em
     &__group,
     &__group--radio
         @extend %position_rel
@@ -117,27 +117,21 @@
     &__check-icon
         position: absolute
         left: 4px
-        top: 50%
+        top: 45%
         @include transform(translateY(-50%))
         opacity: 0
     input::placeholder
         color: $form-darker
 
-    input[type='email'],
-    input[type='text'],
-    input[type='password'],
+    &__n-lbl,
     &__bttn,
     &__choice-bttn,
     &__sub-bttn,
     &__sub-bttn--r
-        font-family: 'Nunito', sans-serif
-
-    input[type='email'],
-    input[type='text'],
-    input[type='password'],
-    &__n-lbl,
-    &__r-lbl
-        @extend %font-medium
+        @extend %font-semibold
+    &__r-lbl,
+    &__forgot-pw
+        @extend %font-bold
 
     input[type='email'],
     input[type='text'],
@@ -153,14 +147,13 @@
     &__n-lbl
         margin-bottom: 13 / $default-font-size * 1em
         display: block
-        font-size: 18px
+        font-size: 18 / $root-font-size * 1rem
 
     &__forgot-pw
         position: absolute
         right: 0
         bottom: 10px
         color: $color-primary-darker
-        font-weight: 700
         &:hover,
         &:active
             color: $color-primary
@@ -204,7 +197,7 @@
         text-transform: uppercase
         cursor: pointer
         border: none
-        font-weight: 800
+        @extend %font-semibold
         &:focus
             outline: none
             box-shadow: 0 0 0 4px $color-primary-outline
@@ -222,9 +215,25 @@
             color: $color-primary-dark
             &::placeholder
                 color: $color-primary-dark
+            + .form--primary__icon-user path,
+            + .form--primary__icon-pw path
+                    fill: $color-primary
         &:hover
             background-color: $form-bg-hover
-
+    //ICONS
+    &__icon-user,
+    &__icon-pw
+        position: absolute
+        right: 10px
+        path
+            fill: $form-color
+    &__icon-user
+        top: 47%
+        @include transform(translateY(-50%))
+    &__icon-pw
+        top: 48%
+        @include transform(translateY(-50%))
+        cursor: pointer
     //HEADING
     &__heading
         font-size: 18px
@@ -241,7 +250,7 @@
             padding: 7 / $default-font-size * 1em 12 / $default-font-size * 1em
             @include transform(translateY(-25%))
             border-radius: 5px
-            @extend %font-medium
+            @extend %font-semibold
         &--optional
             color: $color-secondary
             background-color: $color-secondary-light
@@ -252,7 +261,7 @@
             margin-top: 13 / $root-font-size * 1em
             display: block
             color: $color-primary-dark
-            font-weight: 700
+            @extend %font-semibold
         &--error,
         &--error_c
             display: none

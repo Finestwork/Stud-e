@@ -14,11 +14,9 @@
         max-width: 1440px
     .row
         width: 100%
-
-.row
-    display: flex
-    flex-flow: wrap
-    justify-content: space-between
+        display: flex
+        flex-flow: wrap
+        justify-content: space-between
     @include brk_md
         @for $i from 1 through 6
             .col-md-#{$i}
@@ -33,6 +31,78 @@
                 width: ((($xlrg-col-w * $i) + ($xlrg-g * ($i - 1))) / $xlrg-total-w)  * 100%
 
 
+.container-fluid
+    margin-right: auto
+    margin-left: auto
+    padding-right: 2rem
+    padding-left: 2rem
+
+    .row
+        display: -webkit-box
+        display: flex
+        -ms-flex: 0 1 auto
+        -webkit-box-flex: 0
+        flex: 0 1 auto
+        -ms-flex-direction: row
+        flex-direction: row
+        -ms-flex-wrap: wrap
+        flex-wrap: wrap
+
+    [class^="col-sm-"]
+        box-sizing: border-box
+        -ms-flex: 0 0 auto
+        -webkit-box-flex: 0
+        flex: 0 0 auto
+        padding-right: 1rem
+        padding-left: 1rem
+
+    @for $i from 1 through 12
+        .col-sm-#{$i}
+            -webkit-flex-basis: ($i / 12) * 100%
+            flex-basis: ($i / 12) * 100%
+            max-width: ($i / 12) * 100%
+
+    @include brk_md
+        [class^="col-md-"]
+            box-sizing: border-box
+            -ms-flex: 0 0 auto
+            -webkit-box-flex: 0
+            flex: 0 0 auto
+            padding-right: 1rem
+            padding-left: 1rem
+        @for $i from 1 through 12
+            .col-md-#{$i}
+                -webkit-flex-basis: ($i / 12) * 100%
+                flex-basis: ($i / 12) * 100%
+                max-width: ($i / 12) * 100%
+
+    @include brk_lrg
+        [class^="col-lrg-"]
+            box-sizing: border-box
+            -ms-flex: 0 0 auto
+            -webkit-box-flex: 0
+            flex: 0 0 auto
+            padding-right: 1rem
+            padding-left: 1rem
+        @for $i from 1 through 12
+            .col-lrg-#{$i}
+                -webkit-flex-basis: ($i / 12) * 100%
+                flex-basis: ($i / 12) * 100%
+                max-width: ($i / 12) * 100%
+
+    @include brk_xlrg
+        [class^="col-xlrg-"]
+            box-sizing: border-box
+            -ms-flex: 0 0 auto
+            -webkit-box-flex: 0
+            flex: 0 0 auto
+            padding-right: 1rem
+            padding-left: 1rem
+        @for $i from 1 through 12
+            .col-xlrg-#{$i}
+                -webkit-flex-basis: ($i / 12) * 100%
+                flex-basis: ($i / 12) * 100%
+                max-width: ($i / 12) * 100%
 
 
 

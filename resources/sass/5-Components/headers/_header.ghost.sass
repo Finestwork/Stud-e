@@ -34,7 +34,7 @@
             &:hover > a
                 background-color: $color-hover
         &-link
-            @extend %font-medium
+            @extend %font-semibold
             color: $color-primary-dark
             display: block
             text-align: center
@@ -161,19 +161,17 @@
             @include brk_md
                 padding-top: 30 / $default-font-size * 1em
         &__title--top
-            @extend %font-semibold
+            @extend %font-extrabold
             font-size: 16 / $root-font-size * 1rem
             &__sub
                 color: $color-primary
             @include brk_md
-                font-size: 14 / $root-font-size * 1rem
-            @include brk_lrg
                 font-size: 16 / $root-font-size * 1rem
             @include brk_xlrg
                 font-size: 18 / $root-font-size * 1rem
         &__primary
             font-size: 25 / $root-font-size * 1rem
-            @extend %font-bold
+            @extend %font-black
             margin: 10 / $default-font-size * 1em 0
             position: relative
             @include brk_md
@@ -213,9 +211,9 @@
         &__bottom
             font-size: 16 / $root-font-size * 1rem
             color: $txt-secondary
-            @extend %font-medium
+            @extend %font-semibold
             @include brk_md
-                font-size: 14 / $root-font-size * 1rem
+                font-size: 15 / $root-font-size * 1rem
             @include brk_lrg
                 font-size: 16 / $root-font-size * 1rem
             @include brk_xlrg

@@ -1,0 +1,17 @@
+.bttn--txt
+    @extend %font-semibold
+    margin: 10 / 14 * 1em 0
+    font-size: 14 / $root-font-size * 1rem
+    text-align: center
+    color: $color-secondary-dark
+    line-height: 1.5
+    outline: none
+    &:focus
+        box-shadow: 0 0 0 3px rgba(44, 149, 255, .3)
+        text-decoration: underline
+    @include brk_lrg
+        font-size: 16 / $root-font-size * 1rem
+        margin: 10 / 16 * 1em 0
+    @include brk_xlrg
+        font-size: 18 / $root-font-size * 1rem
+        margin: 10 / 18 * 1em 0

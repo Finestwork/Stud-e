@@ -39,7 +39,7 @@
         margin-right: 10 / $default-font-size * 1em
     &__list-txt
         color: $pricing-table-list-color
-        @extend %font-medium
+        @extend %font-semibold
         font-size: 14 / $root-font-size * 1rem
     &__bttn
         background-color: transparent
@@ -108,10 +108,8 @@
         margin-right: 10 / $default-font-size * 1em
     &__list-txt
         color: white
-        @extend %font-medium
+        @extend %font-semibold
         font-size: 14 / $root-font-size * 1rem
-        @include brk_lrg
-            font-size: 16 / $root-font-size * 1rem
     &__bttn
         background-color: white
         border: 2px solid white
@@ -127,7 +125,6 @@
         @extend %font-semibold
         &:hover
             background-color: $color-primary-light
-            border: 2px solid $color-primary-light
             color: white
 .table--scaled
     @include transform(scaleY(1.1))

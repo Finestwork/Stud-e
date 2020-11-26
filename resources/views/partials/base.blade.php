@@ -10,16 +10,14 @@
         <link rel="shortcut icon" href="/assets/svgs/logo.svg" type="image/svg+xml">
 
         <!-- Google Fonts -->
-        <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
         @yield('cs-css')
         @yield('cs-js')
     </head>
     <body>
         @yield('body-content')
-        @yield('footer-content')
         @yield('script')
     </body>
 </html>

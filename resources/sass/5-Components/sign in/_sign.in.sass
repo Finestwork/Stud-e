@@ -32,6 +32,7 @@
         margin: 115 / $default-font-size * 1em auto 40 / $default-font-size * 1em auto
         max-width: 450px
         @include brk_lrg
+            max-width: 630px
             margin: 0 0 40 / $default-font-size * 1em 40 / $default-font-size * 1em
     &__title
         font-size: 25 / $root-font-size * 1rem
@@ -42,6 +43,7 @@
     &__txt
         font-size: 16 / $root-font-size * 1rem
         line-height: 1.5
+        @extend %font-semibold
     &__registration-txt
         text-align: center
         color: $form-darker
@@ -82,6 +84,10 @@
         height: 100%
 
     @include brk_lrg
+        &__form-wrapper
+            max-width: 550px
+            margin: auto
+            padding: 1px
         &__left
             width: 55%
             position: absolute
@@ -91,4 +97,6 @@
             height: 100%
             &--inner
                 width: 100%
+                max-width: 750px
+
 

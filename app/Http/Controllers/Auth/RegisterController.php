@@ -70,4 +70,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    protected function showVerificationEmail(){
+        return view('auth.verify');
+    }
+
+    protected function showSubscriptionForm(){
+        return view('auth.subscription');
+    }
+
+
+
 }

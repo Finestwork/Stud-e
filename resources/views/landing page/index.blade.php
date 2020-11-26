@@ -39,7 +39,7 @@
                                 <span class="ghost--header__logo-circle"></span>
                             </a>
                         </div>
-                        <a href="/signup" class="ghost--header__signup-bttn bttn--primary--ghost">Sign up</a>
+                        <a href="{{ route('signup.step-1') }}" class="ghost--header__signup-bttn bttn--primary--ghost">Sign up</a>
                         <button class="bttn ghost--header__hamburger-bttn" id="hamburgerBttn">
                             <span class="ghost--header__hamburger-bttn__line"></span>
                         </button>
@@ -54,7 +54,7 @@
                         <li class="ghost--header__nav__list-item">
                             <a href="#features" class="ghost--header__nav-link">Features</a></li>
                         <li class="ghost--header__nav__list-item">
-                            <a href="/signin" class="ghost--header__nav-link">Sign in</a>
+                            <a href="{{ route('login') }}" class="ghost--header__nav-link">Sign in</a>
                         </li>
                     </ul>
                 </div>
@@ -97,7 +97,7 @@
                 <img src="/assets/svgs/shapes/19.svg" alt="Offer Section Shape 19" class="shape-19">
                 <img src="/assets/svgs/shapes/dot-big.svg" alt="Offer Section Dotted Background" class="shape-dot-big">
             </div>
-            <h2 class="heading--secondary mt-4">What do we offer?</h2>
+            <h2 class="heading--secondary">What do we offer?</h2>
             <p class="paragraph--heading mt-1 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias commodi consectetur, cumque debitis eaque eos error, et eveniet fugiat magni minima mollitia officia officiis quae quod, totam veniam voluptates.</p>
             <div class="card--primary">
                 <div class="row">

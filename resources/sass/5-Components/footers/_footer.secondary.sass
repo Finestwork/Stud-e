@@ -1,0 +1,17 @@
+.footer--secondary
+    padding: 20 / $default-font-size * 1em 0
+    background-color: #f5f7ff
+    &__link
+        @extend %font-semibold
+        color: $color-primary-dark
+        margin-right: 20 / $default-font-size * 1em
+        &:hover
+            color: $color-primary
+            text-decoration: underline
+    &__mssg
+        margin-top: 15px
+        @include brk_md
+            margin-top: 0
+    &__upper,
+    &__bottom
+        text-align: center

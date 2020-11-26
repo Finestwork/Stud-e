@@ -1,33 +1,33 @@
 .bttn--primary
     background-color: $color-primary
     text-transform: capitalize
-    @extend %font-semibold
-    text-transform: capitalize
+    @extend %font-bold
+    text-transform: uppercase
     color: white
     font-size: 18 / $root-font-size * 1rem
-    padding: 5 / $default-font-size * 1em 20 / $default-font-size * 1em
+    padding: 10 / 18 * 1em 20 / 18 * 1em
     border-radius: 5px
     display: block
-    width: 140px
+    width: 165px
     text-align: center
     @include brk_lrg
         font-size: 20 / $root-font-size * 1rem
-        width: 170px
-        padding-top: 10 / $default-font-size * 1em
-        padding-bottom: 10 / $default-font-size * 1em
+        width: 185px
+        padding-top: 10 / 20 * 1em
+        padding-bottom: 10 / 20 * 1em
     @include brk_xlrg
         font-size: 22 / $root-font-size * 1rem
     &--ghost
         border: 1px solid $color-primary
         color: $color-primary
         text-transform: uppercase
-        @extend %font-medium
-        padding: 5 / $default-font-size * 1em 15 / $default-font-size * 1em
+        @extend %font-bold
+        padding: 5 / 18 * 1em 15 / 18 * 1em
         &:hover
             background-color: $color-primary
             color: white
         @include brk_lrg
-            font-size: 20 / $root-font-size * 1rem
+            font-size: 20 / 18 * 1rem
         @include brk_xlrg
-            font-size: 22 / $root-font-size * 1rem
+            font-size: 22 / 18 * 1rem
 

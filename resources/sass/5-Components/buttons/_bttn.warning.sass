@@ -1,0 +1,16 @@
+.bttn--warning
+    @extend %font-semibold
+    margin: 10 / 14 * 1em 0
+    padding: 7 / 14 * 1em 15 / 14 * 1em
+    font-size: 14 / $root-font-size * 1rem
+    text-align: center
+    color: $color-warning
+    background-color: $color-warning-bg
+    line-height: 1.5
+    outline: none
+    &:focus
+        box-shadow: 0 0 0 3px rgba(255, 86, 86, .3)
+    @include brk_lrg
+        font-size: 16 / $root-font-size * 1rem
+    @include brk_xlrg
+        font-size: 18 / $root-font-size * 1rem

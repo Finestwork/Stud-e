@@ -1,0 +1,48 @@
+.steps
+    @extend %display_flex
+    flex-direction: row
+    -webkit-justify-content: center
+    justify-content: center
+    -webkit-align-items: center
+    align-items: center
+    &__item-wrapper
+        background-color: $color-primary-dark
+        position: relative
+        width: 50px
+        height: 50px
+        border-radius: 100%
+        @extend %display_flex
+        -webkit-justify-content: center
+        justify-content: center
+        -webkit-align-items: center
+        align-items: center
+    &__number
+        color: white
+        @extend %font-extrabold
+    &__message
+        &--t,
+        &--b
+            position: absolute
+            width: 170px
+            text-align: center
+            line-height: 1.4
+            left: 50%
+            @include transform(translateX(-50%))
+            text-align: center
+            @extend %font-bold
+        &--t
+            top: -35px
+        &--b
+            bottom: -35px
+    &__line
+        height: 3px
+        width: 75px
+        background-color: $color-primary-dark
+        @include brk_md
+            width: 100px
+    &--active
+        background-color: white
+        border: 2px solid #26004D
+        > p
+            color: #26004D
+

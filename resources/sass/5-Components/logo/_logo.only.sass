@@ -1,0 +1,29 @@
+.logo
+    @extend %display_flex
+    align-items: center
+    &__box
+        width: 40px
+    &__txt,
+    &__txt--d
+        @extend %font-extrabold
+        font-size: 25 / $root-font-size * 1rem
+        margin-left: 10 / 25 * 1em
+    &__txt
+        color: white
+    &__txt--d
+        color: $color-primary-dark
+    &__circle,
+    &__circle--d
+        background-color: $color-primary
+        width: 8px
+        height: 8px
+        border-radius: 100%
+        margin-left: 5 / $default-font-size * 1em
+        margin-top: 8 / $default-font-size * 1em
+        @include animation(bounce 1.5s infinite forwards linear)
+        @include transform_origin(center bottom)
+
+    &__circle
+        background-color: #c3aaff
+    &__circle--d
+        background-color: $color-primary-dark

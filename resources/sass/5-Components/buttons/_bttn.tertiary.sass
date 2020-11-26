@@ -1,0 +1,14 @@
+.bttn--tertiary
+    &--ghost
+        border: 1px solid $color-new-secondary
+        color: $color-new-secondary
+        text-transform: uppercase
+        padding: 5 / $root-font-size * 1em 20 / $root-font-size * 1em
+        @extend %font-extrabold
+        font-family: inherit
+        outline: none
+        &:hover
+            color: white
+            background-color: $color-new-secondary
+        &:focus
+            box-shadow: 0 0 0 3px rgba(255, 62, 108, .3)

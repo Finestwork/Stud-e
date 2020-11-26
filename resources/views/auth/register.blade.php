@@ -1,8 +1,6 @@
 @extends('partials.base')
 
-@section('title')
-    Sign up for stud-e
-@endsection
+@section('title') Step 1 - Choose your account @endsection
 
 @section('cs-css')
     <link rel="stylesheet" href="/css/signup.style.css">
@@ -20,12 +18,29 @@
             <div class="navbar__logo-circle"></div>
         </div>
     </div>
+    <div class="steps">
+        <div class="steps__item-wrapper steps--active">
+            <p class="steps__number">1</p>
+            <span class="steps__message--t">Choosing your account</span>
+        </div>
+        <div class="steps__line"></div>
+        <div class="steps__item-wrapper">
+            <p class="steps__number">2</p>
+            <span class="steps__message--b">Verify your email</span>
+        </div>
+        <div class="steps__line"></div>
+        <div class="steps__item-wrapper">
+            <p class="steps__number">3</p>
+            <span class="steps__message--t">Subscription</span>
+        </div>
+    </div>
     <div class="wrapper__sign-up">
         <a href="/signin" class="link--back"><span>
                 <svg xmlns="http://www.w3.org/2000/svg" width="15.5" height="9.5" viewBox="0 0 15.5 9.5">
   <path id="Shape" d="M4.22,9.28l-4-4L.207,5.267.2,5.261.194,5.254.187,5.246.182,5.24.174,5.231l0,0-.008-.01,0,0L.151,5.2l0,0L.14,5.186l0,0L.13,5.172l0,0L.12,5.157l0-.006L.111,5.142l0-.007,0-.008L.1,5.118l0-.006L.087,5.1l0,0A.751.751,0,0,1,.235,4.2L4.22.22A.75.75,0,0,1,5.28,1.281L2.561,4H14.75a.75.75,0,0,1,0,1.5H2.561L5.28,8.22A.75.75,0,1,1,4.22,9.28Z"/>
 </svg>
 </span>Go back</a>
+
         <div class="sign-up__page-1">
             <h1 class="heading--sign-up">Choose an account</h1>
             <div class="card--choice">
@@ -60,7 +75,6 @@
             </div>
         </div>
     </div>
-
     <div class="form--primary__main-container">
         <!-- ADMIN -->
         <div class="form--hidden form--slide-1">
@@ -215,17 +229,23 @@
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
-                            <input type="email" id="studFnameTxt" placeholder="Enter your email" name="studFnameTxt" autocomplete="off">
+                            <input type="text" id="studFnameTxt" placeholder="Enter your email" name="studFnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studMnameTxt" class="form--primary__n-lbl">Enter your middle name: </label>
-                            <input type="email" id="studMnameTxt" placeholder="Enter your email" name="studMnameTxt" autocomplete="off">
+                            <input type="text" id="studMnameTxt" placeholder="Enter your email" name="studMnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studLnameTxt" class="form--primary__n-lbl">Enter your last name: </label>
-                            <input type="email" id="studLnameTxt" placeholder="Enter your email" name="studLnameTxt" autocomplete="off">
+                            <input type="text" id="studLnameTxt" placeholder="Enter your email" name="studLnameTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                     </div>
                     <div class="form--primary__lrg--right">
@@ -233,55 +253,44 @@
                             <span class="form--primary__note--required">Required</span>
                             <label for="studentEmailTxt" class="form--primary__n-lbl">Enter your email: </label>
                             <input type="email" id="studentEmailTxt" placeholder="Enter your email" name="studentEmailTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-email">• Make sure that it is in the correct format (ex. Juan@example.com )</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studentPasswordTxt" class="form--primary__n-lbl">Enter your password: </label>
                             <input type="password" id="studentPasswordTxt" placeholder="Enter your password" name="studentPasswordTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-password-length">• Your password should be more than 8 characters.</p>
+                            <p class="form--primary__note--error_c js-password-not-match">• Password Does not Match</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studentConfirmPasswordTxt" class="form--primary__n-lbl">Confirm your password: </label>
                             <input type="password" id="studentConfirmPasswordTxt" placeholder="Confirm your password" name="studentConfirmPasswordTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-password-length">• Your password should be more than 8 characters.</p>
+                            <p class="form--primary__note--error_c js-password-not-match">• Password Does not Match</p>
                         </div>
-                        <div class="mb-1">
-                            <h3 class="form--primary__heading">Choose a code: </h3>
-                            <div class="form--primary__group--radio-box">
-                                <div class="form--primary__group--radio">
-                                    <input type="radio" name="studentCode" id="classCodeAdminBttn">
-                                    <label for="classCodeAdminBttn">Admin Code</label>
-                                </div>
-                                <div class="form--primary__group--radio">
-                                    <input type="radio" name="studentCode" id="classCodeClassBttn" class="form--primary__radio-bttn">
-                                    <label for="classCodeClassBttn">Class Code</label>
-                                </div>
-                            </div>
-
-                            <div class="form--primary__group form--hidden" id="radioChoice1">
-                                <span class="form--primary__note--required">Required</span>
-                                <label for="studentClassCodeTxt" class="form--primary__n-lbl">Class Code: </label>
-                                <input type="text" id="studentClassCodeTxt" placeholder="Enter your class code" name="studentClassCodeTxt" autocomplete="off">
-                                <span class="form--primary__note--tip">Note: You can get your class code from your teacher.</span>
-                            </div>
-                            <div class="form--primary__group form--hidden" id="radioChoice2">
-                                <span class="form--primary__note--required">Required</span>
-                                <label for="studentAdminCodeTxt" class="form--primary__n-lbl">Admin Code: </label>
-                                <input type="text" id="studentAdminCodeTxt" placeholder="Enter your class code" name="studentAdminCodeTxt" autocomplete="off">
-                                <span class="form--primary__note--tip">Note: You can get your admin code from your teacher or admin.</span>
-                            </div>
+                        <div class="form--primary__group mb-3">
+                            <span class="form--primary__note--required">Required</span>
+                            <label for="studentClassCodeTxt" class="form--primary__n-lbl">Class Code: </label>
+                            <input type="text" id="studentClassCodeTxt" placeholder="Enter your class code" name="studentClassCodeTxt" autocomplete="off">
+                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-code">• Code should be 6 characters long.</p>
+                            <span class="form--primary__note--tip">Note: You can get your class code from your teacher.</span>
                         </div>
                     </div>
                 </div>
-                <button class="form--primary__choice-bttn bttn" type="button" id="studSubmitBttn">Submit</button>
+                <button class="form--primary__choice-bttn bttn" type="button" id="studentSubmitBttn">Submit</button>
             </form>
         </div>
     </div>
-
-
     <div class="wrapper__sign-up">
         <div class="line--one-h line"></div>
         <p class="learn-more__txt wrapper__sign-up__learn-more-txt">Not sure which account you want? <a href="#" class="learn-more__link">Click here!</a></p>
     </div>
+    @include('partials.validation.y-n')
 @endsection
 
 @section('script')

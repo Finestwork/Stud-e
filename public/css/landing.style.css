@@ -377,12 +377,6 @@ ul {
   }
 }
 
-.container-fluid {
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 2rem;
-  padding-left: 2rem;
-}
 .container-fluid .row {
   display: -webkit-box;
   display: flex;
@@ -393,14 +387,6 @@ ul {
   flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-}
-.container-fluid [class^=col-sm-] {
-  box-sizing: border-box;
-  -ms-flex: 0 0 auto;
-  -webkit-box-flex: 0;
-  flex: 0 0 auto;
-  padding-right: 1rem;
-  padding-left: 1rem;
 }
 .container-fluid .col-sm-1 {
   -webkit-flex-basis: 8.3333333333%;
@@ -468,8 +454,6 @@ ul {
     -ms-flex: 0 0 auto;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
   }
   .container-fluid .col-md-1 {
     -webkit-flex-basis: 8.3333333333%;
@@ -538,8 +522,6 @@ ul {
     -ms-flex: 0 0 auto;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
   }
   .container-fluid .col-lrg-1 {
     -webkit-flex-basis: 8.3333333333%;
@@ -608,8 +590,6 @@ ul {
     -ms-flex: 0 0 auto;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
   }
   .container-fluid .col-xlrg-1 {
     -webkit-flex-basis: 8.3333333333%;
@@ -673,6 +653,23 @@ ul {
   }
 }
 
+.container--main {
+  position: relative;
+  margin: auto;
+  width: 90%;
+  padding: 0.1px;
+}
+@media only screen and (min-width: 64em) {
+  .container--main {
+    max-width: 1250px;
+  }
+}
+.container--main::before {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 .offer {
   position: relative;
   margin-top: 5em;
@@ -733,7 +730,7 @@ ul {
 }
 @media only screen and (min-width: 64em) {
   .features {
-    margin-bottom: 4.6875em;
+    margin-bottom: 6.25em;
   }
 }
 .features .shape-19 {
@@ -757,6 +754,9 @@ ul {
   display: block;
   width: 165px;
   text-align: center;
+}
+.bttn--primary:hover {
+  background-color: #6312dc;
 }
 @media only screen and (min-width: 64em) {
   .bttn--primary {
@@ -918,9 +918,9 @@ ul {
 .ghost--header__logo-circle {
   width: 8px;
   height: 8px;
-  background-color: #7F2AFF;
+  background-color: #ffa7e5;
   border-radius: 100%;
-  margin-top: 8px;
+  margin-top: 5px;
 }
 .ghost--header__logo-txt {
   font-size: 2rem;
@@ -1040,7 +1040,7 @@ ul {
     min-width: 360px;
     height: 15px;
     position: absolute;
-    background-color: #474DFF;
+    background-color: #ffa7e5;
     z-index: -1;
     opacity: 0.1;
     left: -8px;
@@ -1540,6 +1540,15 @@ ul {
 
 .img-fluid {
   width: 100%;
+}
+
+.img-fluid-h {
+  height: 100%;
+}
+
+.adjust-img-js {
+  width: auto;
+  height: auto;
 }
 
 .mt-1 {

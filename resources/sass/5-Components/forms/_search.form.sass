@@ -1,0 +1,27 @@
+.form--search
+    position: relative
+    &__input
+        background-color: $search-bg
+        border: none
+        color: $search-forecolor
+        padding: 10px
+        @extend %font-semibold
+        width: 100%
+        font-family: inherit
+        &::placeholder
+            color: $search-forecolor
+        &:hover
+            background-color: $search-bg-hover
+    &__bttn,
+    &__bttn-toggle
+        height: 100%
+        position: absolute
+        width: 45px
+        &:hover
+            background-color: $search-bg-hover
+    &__bttn
+        background-color: $search-bttn-bg
+        right: 0
+
+.toggle--active
+    background-color: $search-bg-hover

@@ -1,0 +1,27 @@
+.bttn--hamburger
+    width: 100%
+    height: 100%
+    position: relative
+    padding: 0
+    outline: none
+    &__line
+        background-color: $txt-secondary
+        width: 100%
+        height: 3px
+        display: block
+        border-radius: 5px
+        &::before,
+        &::after
+            content: ''
+            position: absolute
+            height: 3px
+            background-color: $txt-secondary
+            width: 50%
+            border-radius: 5px
+        &::before
+            top: 0
+            left: 0
+        &::after
+            bottom: 0
+            right: 0
+

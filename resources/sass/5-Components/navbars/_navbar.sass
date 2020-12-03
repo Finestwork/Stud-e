@@ -1,1 +1,347 @@
 .navbar
+    background-color: white
+    padding: 18 / $default-font-size * 1em 0
+    position: fixed
+    width: 100%
+    z-index: 999
+    &__inner
+        @extend %display_flex
+    &--left
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+    &--left,
+    &--mid
+        -webkit-flex-grow: 1
+        flex-grow: 1
+
+    //LEFT
+    &__hamburger-bttn-box
+        margin-right: 10 / $default-font-size * 1em
+        width: 42px
+        padding: 10 / $default-font-size * 1em 10 / $default-font-size * 1em 5 / $default-font-size * 1em 10 / $default-font-size * 1em
+        position: relative
+        cursor: pointer
+        border-radius: 5px
+        &:hover
+            background-color: $search-bg
+    &__logo-link
+        display: block
+        width: 110px
+    //MIDDLE
+    &--mid
+        @extend %display_flex
+        position: relative
+        -webkit-justify-content: flex-end
+        justify-content: flex-end
+        @include custom_breakpoint(810)
+            flex-grow: 2
+            -webkit-align-items: center
+            align-items: center
+            -webkit-justify-content: center
+            justify-content: center
+        &__form-wrapper
+            display: none
+            position: fixed
+            right: 0
+            left: 0
+            top: 100px
+            margin: auto
+            background-color: white
+            padding: 10px
+            width: 75%
+            max-width: 365px
+            @include animation(fadeInDown .4s linear)
+            @include custom_breakpoint(810)
+                display: -webkit-flex
+                display: flex
+                position: static
+                bottom: 0
+                left: 0
+                background-color: white
+                padding: 0
+                width: unset
+                margin-right: 65px
+                @include animation(none)
+            @include custom_breakpoint(810)
+                width: 100%
+                form
+                    width: 100%
+            @include brk_lrg
+                margin: auto
+    &__toggle-bttn
+        display: block
+        @include custom_breakpoint(810)
+            display: none
+    &__s-close-bttn
+        @include custom_breakpoint(810)
+            display: none
+    //RIGHT
+    &--right
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        -webkit-justify-content: center
+        justify-content: center
+    &__icon-box,
+    &__profile-box
+        padding: 10 / $default-font-size * 1em
+        cursor: pointer
+        border-radius: 10px
+        user-select: none
+        position: relative
+        &:hover
+            background-color: $body-color
+    &__icon-box
+        position: relative
+        margin-right: 5px
+        margin-left: 5px
+    &__notif-icon,
+    &__mssg-icon
+        width: 20px
+    &__profile-box
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        display: none
+        @include custom_breakpoint(851)
+            display: -webkit-flex
+            display: flex
+        &__name
+            @extend %font-bold
+            font-size: 14 / $root-font-size * 1rem
+            margin-right: 10 / 14 * 1em
+            color: $txt-primary
+        &__icon
+            width: 18px
+    &__profile-dropdown
+        position: absolute
+        top: 46px
+        left: 0
+        background-color: white
+        width: 140px
+        box-shadow: 0 3px 10px rgba(0,0,0,0.05)
+        border-radius: 8px
+        padding: 5px 0
+        display: none
+    &__profile-link
+        @extend %display_flex
+        -webkit-justify-content: center
+        justify-content: center
+        -webkit-align-items: center
+        align-items: center
+        padding: 10px 0
+        &:hover
+            background-color: $body-color
+    &__profile-icon-box
+        width: 17px
+    &__icon-txt
+        color: $txt-primary
+        font-size: 14 / $root-font-size * 1rem
+        margin-left: 15 / $default-font-size * 1em
+        @extend %font-semibold
+    &__icon-ctr
+        background-color: #ff6f6f
+        color: white
+        font-size: 12px
+        border-radius: 100%
+        font-weight: 800
+        border: 2px solid white
+        position: absolute
+        top: -3px
+        right: -5px
+        height: 26px
+        width: 26px
+        @extend %display_flex
+        -webkit-justify-content: center
+        justify-content: center
+        -webkit-align-items: center
+        align-items: center
+
+    .profile-box--active,
+    .notif-box--active
+        background-color: $body-color
+    .profile-box--active
+        .navbar__profile-dropdown
+            display: block
+
+    .notif-box--active
+        .navbar__notif-item-wrapper
+            display: block
+    .mssg-box--active
+        .navbar__mssg-item-wrapper
+            display: block
+
+
+    //NOTIFICATION & MESSAGE
+    &__notif-item-wrapper,
+    &__mssg-item-wrapper
+        display: none
+        position: absolute
+        @include transform(translateX(-50%))
+        width: 410px
+        max-height: 405px
+        left: -50%
+        top: 55px
+        box-shadow: 0px 5px 10px rgba(0,0,0,0.1)
+        border-radius: 10px
+        cursor: default
+        padding-bottom: 30px
+        border-radius: 10px
+        overflow: hidden
+    &__notif-wrapper,
+    &__mssg-wrapper
+        max-height: 400px
+        overflow: hidden
+        background-color: white
+    &__scrollbar,
+    &__mssg-scrollbar
+        height: 100%
+        background-color: white
+        padding: 15px 20px
+
+    //UPPER
+    &__notif-title,
+    &__mssg-title
+        @extend %font-bold
+        text-transform: uppercase
+        font-size: 25px
+        margin: 15px 0
+    &__notif-option-box
+        margin: 30px 0
+    &__notif-option-item
+        color: $option-controls-forecolor
+        border: 1px solid $option-controls-light
+        padding: 3px 25px
+        border-radius: 17px
+        margin: 10px 3px
+        font-size: 13px
+        @extend %font-semibold
+        &:hover
+            background-color: $option-controls-light
+            cursor: pointer
+    .notif--active,
+    .mssg-box--active
+        background-color: $option-controls-light
+    //LOWER
+    &__notif-item-link,
+    &__notif-illustration,
+    &__notif-description,
+    &__mssg-item-link,
+    &__mssg-description
+        @extend %display_flex
+    &__notif-item,
+    &__mssg-item
+        margin: 10px 0
+        border-bottom: 1.5px solid $navbar-line-color
+    &__notif-item-link,
+    &__mssg-item-link
+        padding: 10px
+        margin-bottom: 10px
+        -webkit-align-items: center
+        align-items: center
+        &:hover
+            background-color: $notif-item-hover
+    &__notif-item-container,
+    &__msg-item-container
+        margin-bottom: 30px
+    &__notif-illustration
+        border-radius: 100%
+        -webkit-justify-content: center
+        justify-content: center
+        -webkit-align-items: center
+        align-items: center
+        margin-right: 22px
+        min-width: 50px
+        height: 50px
+    &__notif-image-wrapper,
+    &__mssg-user-img-wrapper
+        display: block
+        margin-left: 2px
+    &__mssg-user-img
+        display: block
+    &__notif-user-img,
+    &__mssg-user-img
+        overflow: hidden
+        max-width: 40px
+        min-width: 40px
+        height: 40px
+        border-radius: 100%
+        margin-right: 22px
+        &-wrapper
+            width: 100%
+            height: 100%
+
+    &__notif-description,
+    &__mssg-description
+        -webkit-flex-direction: column
+        flex-direction: column
+    &__notif-info,
+    &__mssg-info
+        color: $txt-primary
+        @extend %font-bold
+        line-height: 1.5
+        font-size: 14px
+        width: 270px
+        overflow-wrap: break-word
+    &__notif-date,
+    &__mssg-date
+        margin-top: 8px
+        font-size: 12px
+        @extend %font-bold
+        color: $notif-date-color
+
+    .notif-unread,
+    .mssg-unread
+        background-color: $notif-unread-color
+        position: relative
+        &::before
+            content: ''
+            position: absolute
+            width: 10px
+            height: 10px
+            background-color: #7ddaff
+            border-radius: 100%
+            right: 10px
+            top: 50%
+            @include transform(translateY(-50%))
+        &:hover
+            background-color: $notif-unread-color-hover
+
+    &__view-all
+        position: fixed
+        bottom: 0
+        background-color: $color-notif-bttn
+        width: 100%
+        text-align: center
+        padding: 10px 0
+        color: #3e00a0
+        font-weight: 700
+        &:hover
+            background-color: $color-notif-bttn-h
+    &__mssg-search-box
+        margin: 20px 10px
+    //COLORING OF TASKS
+    &__notif-span
+        color: $color-primary
+    .notif-grade
+        background-color: $task-grade-color
+        > span
+            width: 25px
+    .notif-approved-request
+        background-color: $task-request-approved-color
+        > span
+            width: 19px
+    .notif-disccusion
+        background-color: $task-discussion-color
+        > span
+            width: 25px
+    .notif-reviewer
+        background-color: $task-reviewer-color
+        > span
+            width: 18px
+    .notif-schedule
+        background-color: $task-schedule-color
+        > span
+            width: 18px
+

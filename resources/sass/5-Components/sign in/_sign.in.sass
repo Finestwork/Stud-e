@@ -16,7 +16,7 @@
         @include brk_lrg
             color: white
     &__logo-circle
-        background-color: $color-primary
+        background-color: $color-new-secondary-light
         width: 8px
         height: 8px
         border-radius: 100%
@@ -24,8 +24,6 @@
         margin-top: 8 / $default-font-size * 1em
         @include animation(bounce 1.5s infinite forwards linear)
         @include transform_origin(center bottom)
-        @include brk_lrg
-            background-color: #c3aaff
 
     //LOWER
     &__description
@@ -52,7 +50,7 @@
     &__registration-link
         color: $color-primary-light
         &:hover
-            color: $color-secondary
+            color: $color-new-secondary
     &__banner
         @include brk_lrg
             background-image: url('/assets/imgs/login/login.jpg')
@@ -73,12 +71,13 @@
         color: white
         text-decoration: underline
         &:hover
-            color: $color-primary-light
+            color: $color-new-secondary
     &__line
         width: 80%
         margin: 25 / $default-font-size * 1em auto
     &__bg
-        background-color: $color-primary-darker
+        background: rgb(127,42,255)
+        background: linear-gradient(90deg, rgba(127,42,255,1) 0%, rgba(138,44,242,1) 8%, rgba(142,44,238,1) 16%, rgba(148,45,231,1) 23%, rgba(160,47,218,1) 31%, rgba(173,49,202,1) 44%, rgba(197,53,174,1) 61%, rgba(255,62,108,1) 100%)
         opacity: 0.4
         width: 100%
         height: 100%

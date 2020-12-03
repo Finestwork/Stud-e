@@ -217,12 +217,6 @@ table {
   }
 }
 
-.container-fluid {
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 2rem;
-  padding-left: 2rem;
-}
 .container-fluid .row {
   display: -webkit-box;
   display: flex;
@@ -233,14 +227,6 @@ table {
   flex-direction: row;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-}
-.container-fluid [class^=col-sm-] {
-  box-sizing: border-box;
-  -ms-flex: 0 0 auto;
-  -webkit-box-flex: 0;
-  flex: 0 0 auto;
-  padding-right: 1rem;
-  padding-left: 1rem;
 }
 .container-fluid .col-sm-1 {
   -webkit-flex-basis: 8.3333333333%;
@@ -308,8 +294,6 @@ table {
     -ms-flex: 0 0 auto;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
   }
   .container-fluid .col-md-1 {
     -webkit-flex-basis: 8.3333333333%;
@@ -378,8 +362,6 @@ table {
     -ms-flex: 0 0 auto;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
   }
   .container-fluid .col-lrg-1 {
     -webkit-flex-basis: 8.3333333333%;
@@ -448,8 +430,6 @@ table {
     -ms-flex: 0 0 auto;
     -webkit-box-flex: 0;
     flex: 0 0 auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
   }
   .container-fluid .col-xlrg-1 {
     -webkit-flex-basis: 8.3333333333%;
@@ -511,6 +491,23 @@ table {
     flex-basis: 100%;
     max-width: 100%;
   }
+}
+
+.container--main {
+  position: relative;
+  margin: auto;
+  width: 90%;
+  padding: 0.1px;
+}
+@media only screen and (min-width: 64em) {
+  .container--main {
+    max-width: 1250px;
+  }
+}
+.container--main::before {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .wrapper {
@@ -877,7 +874,7 @@ table {
   }
 }
 .sign-in__logo-circle {
-  background-color: #7F2AFF;
+  background-color: #ffa7e5;
   width: 8px;
   height: 8px;
   border-radius: 100%;
@@ -887,11 +884,6 @@ table {
   animation: bounce 1.5s infinite forwards linear;
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
-}
-@media only screen and (min-width: 64em) {
-  .sign-in__logo-circle {
-    background-color: #c3aaff;
-  }
 }
 .sign-in__description {
   margin: 7.1875em auto 2.5em auto;
@@ -925,7 +917,7 @@ table {
   color: #474DFF;
 }
 .sign-in__registration-link:hover {
-  color: #03a9f4;
+  color: #ff3e6c;
 }
 @media only screen and (min-width: 64em) {
   .sign-in__banner {
@@ -951,14 +943,15 @@ table {
   text-decoration: underline;
 }
 .sign-in__link:hover {
-  color: #474DFF;
+  color: #ff3e6c;
 }
 .sign-in__line {
   width: 80%;
   margin: 1.5625em auto;
 }
 .sign-in__bg {
-  background-color: #190033;
+  background: #7f2aff;
+  background: linear-gradient(90deg, #7f2aff 0%, #8a2cf2 8%, #8e2cee 16%, #942de7 23%, #a02fda 31%, #ad31ca 44%, #c535ae 61%, #ff3e6c 100%);
   opacity: 0.4;
   width: 100%;
   height: 100%;
@@ -1071,6 +1064,15 @@ table {
 
 .img-fluid {
   width: 100%;
+}
+
+.img-fluid-h {
+  height: 100%;
+}
+
+.adjust-img-js {
+  width: auto;
+  height: auto;
 }
 
 .d-flex {

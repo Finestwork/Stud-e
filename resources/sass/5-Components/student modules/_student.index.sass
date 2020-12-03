@@ -1,0 +1,84 @@
+.schedule
+    background-color: white
+    padding: 25px 10px 5px 10px
+    border-radius: 15px
+    @include custom_breakpoint(430)
+        padding: 25px 20px 5px 20px
+    &__top
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        margin-bottom: 25px
+        border-bottom: 2px solid $form-dark
+        padding-bottom: 20px
+        color: $txt-primary-2
+    &__title-lbl
+        font-size: 20px
+        margin-bottom: 10px
+        @extend %font-black
+    &__date-lbl
+        font-size: 14px
+        @extend %font-extrabold
+    &__view-link
+        text-align: center
+        font-size: 14px
+        line-height: 1.5
+
+    //LOWER - UPPER
+    &__item-lbl
+        @extend %display_flex
+        justify-content: space-between
+        @extend %font-bold
+        padding: 15px 10px
+        background-color: $form-border
+        color: $form-forecolor
+        text-transform: uppercase
+        font-size: 12px
+    //LOWER -BOTTOM
+    &__item
+        padding-bottom: 10px
+        border-bottom: 1px solid $form-dark
+        margin-top: 10px
+        &:last-of-type
+            border-bottom: unset
+    &__item-link
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        -webkit-align-items: center
+        align-items: center
+        width: 100%
+        @extend %font-semibold
+        color: $txt-primary-2
+        line-height: 1.5
+        padding: 10px
+        font-size: 12px
+        @include custom_breakpoint(550)
+            font-size: 14px
+        &:hover
+            background-color: $form-border
+    &__lbl-subject,
+    &__lbl-day,
+    &__lbl-time,
+    &__item-day,
+    &__item-time,
+    &__item-subject,
+    &__item-date
+        flex-basis: 50%
+
+    &__lbl-teacher,
+    &__item-teacher
+        flex-basis: 80%
+
+    &__lbl-subject,
+    &__lbl-teacher,
+    &__item-teacher,
+    &__lbl-day,
+    &__lbl-time,
+    &__item-subject,
+    &__item-day,
+    &__item-time,
+    &__item-date
+        text-align: center

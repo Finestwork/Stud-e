@@ -32,11 +32,6 @@
 
 
 .container-fluid
-    margin-right: auto
-    margin-left: auto
-    padding-right: 2rem
-    padding-left: 2rem
-
     .row
         display: -webkit-box
         display: flex
@@ -47,14 +42,6 @@
         flex-direction: row
         -ms-flex-wrap: wrap
         flex-wrap: wrap
-
-    [class^="col-sm-"]
-        box-sizing: border-box
-        -ms-flex: 0 0 auto
-        -webkit-box-flex: 0
-        flex: 0 0 auto
-        padding-right: 1rem
-        padding-left: 1rem
 
     @for $i from 1 through 12
         .col-sm-#{$i}
@@ -68,8 +55,6 @@
             -ms-flex: 0 0 auto
             -webkit-box-flex: 0
             flex: 0 0 auto
-            padding-right: 1rem
-            padding-left: 1rem
         @for $i from 1 through 12
             .col-md-#{$i}
                 -webkit-flex-basis: ($i / 12) * 100%
@@ -82,8 +67,6 @@
             -ms-flex: 0 0 auto
             -webkit-box-flex: 0
             flex: 0 0 auto
-            padding-right: 1rem
-            padding-left: 1rem
         @for $i from 1 through 12
             .col-lrg-#{$i}
                 -webkit-flex-basis: ($i / 12) * 100%
@@ -96,8 +79,6 @@
             -ms-flex: 0 0 auto
             -webkit-box-flex: 0
             flex: 0 0 auto
-            padding-right: 1rem
-            padding-left: 1rem
         @for $i from 1 through 12
             .col-xlrg-#{$i}
                 -webkit-flex-basis: ($i / 12) * 100%
@@ -107,3 +88,15 @@
 
 
 
+.container
+    &--main
+        position: relative
+        margin: auto
+        width: 90%
+        padding: .1px
+        @include brk_lrg
+            max-width: 1250px
+        &::before
+            content: ''
+            display: block
+            clear: both

@@ -6,6 +6,7 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
+
         <title>@yield('title')</title>
         <link rel="shortcut icon" href="/assets/svgs/logo.svg" type="image/svg+xml">
 
@@ -13,8 +14,12 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
+
+
+
         @yield('cs-css')
         @yield('cs-js')
+
     </head>
     <body>
         @yield('body-content')

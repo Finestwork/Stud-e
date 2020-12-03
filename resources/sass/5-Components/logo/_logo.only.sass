@@ -3,6 +3,8 @@
     align-items: center
     &__box
         width: 40px
+    &__box--s
+        width: 25px
     &__txt,
     &__txt--d
         @extend %font-extrabold
@@ -10,20 +12,24 @@
         margin-left: 10 / 25 * 1em
     &__txt
         color: white
+    &__txt--s
+        font-size: 18 / $root-font-size * 1rem
     &__txt--d
         color: $color-primary-dark
     &__circle,
-    &__circle--d
-        background-color: $color-primary
+    &__circle--d,
+    &__circle--p
         width: 8px
         height: 8px
         border-radius: 100%
         margin-left: 5 / $default-font-size * 1em
         margin-top: 8 / $default-font-size * 1em
-        @include animation(bounce 1.5s infinite forwards linear)
         @include transform_origin(center bottom)
-
     &__circle
-        background-color: #c3aaff
+        background-color: $color-new-secondary-light
+    &__circle--p
+        background-color: $color-primary
     &__circle--d
         background-color: $color-primary-dark
+    &__circle--s
+        margin-top: 6 / $default-font-size * 1em

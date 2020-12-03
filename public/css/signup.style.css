@@ -624,7 +624,7 @@ table {
   margin: 0.7142857143em 0;
   font-size: 1.4rem;
   text-align: center;
-  color: #2c95ff;
+  color: #4c6cf7;
   line-height: 1.5;
   outline: none;
 }
@@ -688,8 +688,8 @@ table {
 }
 
 .link--back {
-  color: #03a9f4;
-  fill: #03a9f4;
+  color: #6583fe;
+  fill: #6583fe;
 }
 .link--back:hover {
   color: #0178f1;
@@ -1071,7 +1071,7 @@ table {
   border-radius: 5px;
 }
 .form--primary__note--optional {
-  color: #03a9f4;
+  color: #6583fe;
   background-color: #ebf5ff;
 }
 .form--primary__note--required {

@@ -1,0 +1,99 @@
+.enrolled-subjects
+    position: relative
+    background-color: white
+    padding: 25px 10px 45px 10px
+    border-radius: 15px
+    margin-bottom: 20px
+    overflow: hidden
+    @include custom_breakpoint(430)
+        padding: 25px 20px 45px 20px
+    &__top
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        margin-bottom: 25px
+        border-bottom: 2px solid $form-dark
+        padding-bottom: 20px
+        color: $txt-primary-2
+    &__title-lbl
+        font-size: 20px
+        margin-bottom: 10px
+        @extend %font-black
+    &__date-lbl
+        font-size: 14px
+        @extend %font-extrabold
+
+    //LOWER - UPPER
+    &__item-lbl
+        @extend %display_flex
+        justify-content: space-between
+        @extend %font-bold
+        padding: 15px 10px
+        background-color: $schedule-table-color
+        color: $form-forecolor
+        text-transform: uppercase
+        font-size: 12px
+    //LOWER -BOTTOM
+    &__item
+        padding-bottom: 10px
+        border-bottom: 1px solid $form-dark
+        margin-top: 10px
+        &:last-of-type
+            border-bottom: unset
+    &__item-link
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        -webkit-align-items: center
+        align-items: center
+        width: 100%
+        @extend %font-bold
+        color: $txt-primary-2
+        line-height: 1.5
+        padding: 10px
+        font-size: 12px
+        @include custom_breakpoint(550)
+            font-size: 14px
+        &:hover
+            background-color: $schedule-table-color
+    &__lbl-subject,
+    &__lbl-day,
+    &__lbl-time,
+    &__item-day,
+    &__item-time,
+    &__item-subject,
+    &__item-date
+        flex-basis: 50%
+
+    &__lbl-teacher,
+    &__item-teacher
+        flex-basis: 80%
+
+    &__lbl-subject,
+    &__lbl-teacher,
+    &__item-teacher,
+    &__lbl-day,
+    &__lbl-time,
+    &__item-subject,
+    &__item-day,
+    &__item-time,
+    &__item-date
+        text-align: center
+    &__view-all
+        display: block
+        position: absolute
+        left: 0
+        bottom: 0
+        background-color: $color-secondary
+        width: 100%
+        text-align: center
+        padding: 10px 0
+        color: white
+        &:hover
+            background-color: $color-secondary-dark
+    &-scrollbar
+        max-height: 380px
+        width: 100%
+        overflow: hidden

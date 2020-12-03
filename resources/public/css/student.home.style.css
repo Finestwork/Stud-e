@@ -1,16 +1,16 @@
-.schedule__title-lbl {
+.enrolled-subjects__title-lbl, .teachers-note__title, .schedule__title-lbl {
   font-weight: 900;
 }
 
-.schedule__date-lbl, .sidebar--fixed .sidebar__icon-txt, .sidebar__icon-txt, .logo__txt, .logo__txt--d {
+.enrolled-subjects__date-lbl, .schedule__date-lbl, .sidebar--fixed .sidebar__icon-txt, .sidebar__icon-txt, .logo__txt, .logo__txt--d {
   font-weight: 800;
 }
 
-.schedule__item-lbl, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .bttn-link--default {
+.enrolled-subjects__item-link, .enrolled-subjects__item-lbl, .schedule__item-link, .schedule__item-lbl, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .bttn--link-read-more, .bttn-link--default {
   font-weight: 700;
 }
 
-.schedule__item-link, .form--search__input, .navbar__notif-option-item, .navbar__icon-txt {
+.teachers-note__teacher-mssg, .form--search__input, .navbar__notif-option-item, .navbar__icon-txt {
   font-weight: 600;
 }
 
@@ -18,7 +18,7 @@ body {
   font-weight: 400;
 }
 
-.schedule__item-link, .schedule__item-lbl, .schedule__top, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .sidebar--md .sidebar__bttn-icon, .sidebar--md .sidebar__bttn, .sidebar__bttn-icon, .sidebar__bttn, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .logo {
+.enrolled-subjects__item-link, .enrolled-subjects__item-lbl, .enrolled-subjects__top, .teachers-note__item, .teachers-note__top, .schedule__item-link, .schedule__item-lbl, .schedule__top, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .sidebar--md .sidebar__bttn-icon, .sidebar--md .sidebar__bttn, .sidebar__bttn-icon, .sidebar__bttn, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .logo {
   display: -webkit-flex;
   display: flex;
 }
@@ -573,10 +573,20 @@ table {
 }
 
 .bttn-link--default {
-  color: #8e8d8d;
+  color: #6583fe;
 }
 .bttn-link--default:hover {
-  color: #ff34c3;
+  color: #4c6cf7;
+  text-decoration: underline;
+}
+
+.bttn--link-read-more {
+  color: #6583fe;
+  font-size: 14px;
+}
+.bttn--link-read-more:hover {
+  color: #4c6cf7;
+  text-decoration: underline;
 }
 
 .logo {
@@ -1094,7 +1104,7 @@ table {
 .sidebar__bttn {
   -webkit-align-items: center;
   align-items: center;
-  background-color: #6312dc;
+  background-color: #ff3e6c;
   margin: 1.25em auto;
   font-size: 1.6rem;
   font-family: inherit;
@@ -1104,7 +1114,7 @@ table {
   color: white;
 }
 .sidebar__bttn:hover {
-  background-color: #7F2AFF;
+  background-color: #f9285asid;
 }
 .sidebar__bttn-icon {
   margin-right: 0.9375em;
@@ -1232,7 +1242,7 @@ table {
   animation: slideInLeft 0.3s 0.3s both linear;
 }
 .sidebar--fixed .sidebar__bttn {
-  background-color: #6312dc;
+  background-color: #ff3e6c;
   margin: 1.25em auto;
   font-size: 1.6rem;
   font-family: inherit;
@@ -1242,7 +1252,7 @@ table {
   color: white;
 }
 .sidebar--fixed .sidebar:hover {
-  background-color: #7F2AFF;
+  background-color: #f9285asid;
 }
 .sidebar--fixed .sidebar-icon {
   margin-right: 0.9375em;
@@ -1330,7 +1340,7 @@ table {
 .schedule__item-lbl {
   justify-content: space-between;
   padding: 15px 10px;
-  background-color: #e8e8e8;
+  background-color: #f1f1f1;
   color: #828282;
   text-transform: uppercase;
   font-size: 12px;
@@ -1360,7 +1370,7 @@ table {
   }
 }
 .schedule__item-link:hover {
-  background-color: #e8e8e8;
+  background-color: #f1f1f1;
 }
 .schedule__lbl-subject, .schedule__lbl-day, .schedule__lbl-time, .schedule__item-day, .schedule__item-time, .schedule__item-subject, .schedule__item-date {
   flex-basis: 50%;
@@ -1370,6 +1380,204 @@ table {
 }
 .schedule__lbl-subject, .schedule__lbl-teacher, .schedule__item-teacher, .schedule__lbl-day, .schedule__lbl-time, .schedule__item-subject, .schedule__item-day, .schedule__item-time, .schedule__item-date {
   text-align: center;
+}
+
+.teachers-note {
+  background-color: white;
+  padding: 25px 10px 44px 10px;
+  border-radius: 15px;
+  margin: 40px 0;
+  color: #172239;
+  overflow: hidden;
+  position: relative;
+}
+.teachers-note__top {
+  -webkit-align-items: center;
+  align-items: center;
+  border-bottom: 2px solid #d4d4d4;
+  padding-bottom: 10px;
+  margin: 0 20px 15px 20px;
+}
+.teachers-note__illustration-box {
+  width: 55px;
+}
+.teachers-note__title {
+  font-size: 20px;
+  margin-left: 10px;
+}
+.teachers-note__item-wrapper {
+  margin: 10px 0 20px 0;
+}
+.teachers-note__item {
+  -webkit-align-items: center;
+  align-items: center;
+  color: #172239;
+  margin: 15px 20px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #d4d4d4;
+}
+.teachers-note__item:last-of-type {
+  border-bottom: none;
+}
+.teachers-note__img-box {
+  display: block;
+  min-width: 65px;
+  max-width: 65px;
+  height: 90px;
+  border-radius: 13px;
+  overflow: hidden;
+}
+@media only screen and (min-width: 64em) {
+  .teachers-note__img-box {
+    min-width: 100px;
+    max-width: 100px;
+  }
+}
+.teachers-note__teacher-description {
+  margin-left: 20px;
+}
+.teachers-note__teacher-name {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.teachers-note__teacher-mssg {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-bottom: 5px;
+}
+@media only screen and (min-width: 64em) {
+  .teachers-note__teacher-mssg {
+    font-size: 14px;
+  }
+}
+.teachers-note__read-more-link {
+  font-size: 12px;
+}
+@media only screen and (min-width: 64em) {
+  .teachers-note__read-more-link {
+    font-size: 16px;
+  }
+}
+.teachers-note__scrollbar {
+  max-height: 300px;
+  width: 100%;
+  overflow: hidden;
+}
+.teachers-note__view-all {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #6583fe;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  color: white;
+}
+.teachers-note__view-all:hover {
+  background-color: #4c6cf7;
+}
+
+.enrolled-subjects {
+  position: relative;
+  background-color: white;
+  padding: 25px 10px 45px 10px;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+@media only screen and (min-width: 26.875em) {
+  .enrolled-subjects {
+    padding: 25px 20px 45px 20px;
+  }
+}
+.enrolled-subjects__top {
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  margin-bottom: 25px;
+  border-bottom: 2px solid #d4d4d4;
+  padding-bottom: 20px;
+  color: #172239;
+}
+.enrolled-subjects__title-lbl {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.enrolled-subjects__date-lbl {
+  font-size: 14px;
+}
+.enrolled-subjects__item-lbl {
+  justify-content: space-between;
+  padding: 15px 10px;
+  background-color: #f1f1f1;
+  color: #828282;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+.enrolled-subjects__item {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d4d4d4;
+  margin-top: 10px;
+}
+.enrolled-subjects__item:last-of-type {
+  border-bottom: unset;
+}
+.enrolled-subjects__item-link {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  -webkit-align-items: center;
+  align-items: center;
+  width: 100%;
+  color: #172239;
+  line-height: 1.5;
+  padding: 10px;
+  font-size: 12px;
+}
+@media only screen and (min-width: 34.375em) {
+  .enrolled-subjects__item-link {
+    font-size: 14px;
+  }
+}
+.enrolled-subjects__item-link:hover {
+  background-color: #f1f1f1;
+}
+.enrolled-subjects__lbl-subject, .enrolled-subjects__lbl-day, .enrolled-subjects__lbl-time, .enrolled-subjects__item-day, .enrolled-subjects__item-time, .enrolled-subjects__item-subject, .enrolled-subjects__item-date {
+  flex-basis: 50%;
+}
+.enrolled-subjects__lbl-teacher, .enrolled-subjects__item-teacher {
+  flex-basis: 80%;
+}
+.enrolled-subjects__lbl-subject, .enrolled-subjects__lbl-teacher, .enrolled-subjects__item-teacher, .enrolled-subjects__lbl-day, .enrolled-subjects__lbl-time, .enrolled-subjects__item-subject, .enrolled-subjects__item-day, .enrolled-subjects__item-time, .enrolled-subjects__item-date {
+  text-align: center;
+}
+.enrolled-subjects__view-all {
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: #6583fe;
+  width: 100%;
+  text-align: center;
+  padding: 10px 0;
+  color: white;
+}
+.enrolled-subjects__view-all:hover {
+  background-color: #4c6cf7;
+}
+.enrolled-subjects-scrollbar {
+  max-height: 380px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.calendar {
+  width: 100%;
+  height: 200px;
+  background-color: white;
+  margin: 0 10px;
+  border-radius: 15px;
 }
 
 .img-fluid {

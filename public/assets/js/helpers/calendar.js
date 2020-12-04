@@ -3,9 +3,9 @@
 let element = document.getElementById('calendar');
 
 var events = [
-    {'Date': new Date(2020, 12, 1), 'Title': 'Doctor appointment at 3:25pm.'},
-    {'Date': new Date(2020, 12, 7), 'Title': 'New Garfield movie comes out!', 'Link': 'https://garfield.com'},
-    {'Date': new Date(2020, 12, 11), 'Title': '25 year anniversary', 'Link': 'https://www.google.com.au/#q=anniversary+gifts'},
+    {'Date': new Date(2020, 12, 1), 'Title': 'You have 2 quizzes in philosophy of man'},
+    {'Date': new Date(2020, 12, 7), 'Title': 'You have 4 seatworks in philosophy of man', 'Link': '/tasks'},
+    {'Date': new Date(2020, 12, 11), 'Title': 'You have 1 exam in philosophy of man', 'Link': '/tasks'},
 ];
 
 var settings={

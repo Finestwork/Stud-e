@@ -1,6 +1,148 @@
 .calendar
-    width: 100%
-    height: 200px
     background-color: white
-    margin: 0 10px
     border-radius: 15px
+    padding: 10px 15px
+    width: 80%
+    margin-left: auto
+    margin-right: auto
+    @include brk_md
+        width: 93%
+        max-width: 310px
+        margin-left: auto
+        margin-right: unset
+        padding: 10px 5px
+    @include brk_lrg
+        margin-left: auto
+.cld-main
+    width: 100%
+    margin: auto
+
+.cld-main a
+    color: $color-primary
+
+.cld-main svg
+    fill: $color-primary
+
+.cld-datetime
+    position: relative
+    width: 66%
+    min-width: 100px
+    max-width: 300px
+    margin: 15px auto
+    overflow: hidden
+
+.cld-datetime .today
+    position: relative
+    float: left
+    width: calc(100% - 40px)
+    margin: auto
+    text-align: center
+
+.cld-nav
+    position: relative
+    width: 20px
+    height: 20px
+    margin-top: 2px
+
+.cld-nav:hover
+    cursor: pointer
+
+.cld-nav:hover svg
+    fill: $color-primary-light
+
+.cld-rwd
+    float: left
+
+.cld-fwd
+    float: right
+
+
+
+.cld-labels, .cld-days
+    padding-left: 0
+
+.cld-label, .cld-day
+    box-sizing: border-box
+    display: inline-block
+    width: 14.28%
+    text-align: center
+
+.cld-labels
+    @extend %font-extrabold
+    margin-bottom: 15px
+    color: $txt-secondary-3
+    @include brk_md
+        font-size: 14px
+.cld-days
+    @extend %font-bold
+    color: $txt-secondary-2
+    @include brk_md
+        font-size: 12px
+
+.cld-day.today
+    background: $color-primary
+    color: #fff
+    border-radius: 10px
+
+.cld-day.disableDay
+    opacity: 0.5
+
+.cld-day.nextMonth, .cld-day.prevMonth
+    opacity: 0.33
+
+.cld-number
+    position: relative
+    margin: 0
+    padding: 10px
+
+.cld-title
+    position: absolute
+    z-index: 5
+    display: none
+    top: 35px
+    left: 0
+    padding: 5px 10px
+    background: #fff
+    white-space: nowrap
+    border: 1px solid #ccc
+    border-radius: 5px
+    font-size: 12px
+
+.cld-number:hover .cld-title
+    display: block
+
+.cld-title::before
+    content: ''
+    position: absolute
+    top: -7.5px
+    left: 10px
+    width: 0
+    height: 0
+    border-left: 7.5px solid transparent
+    border-right: 7.5px solid transparent
+    border-bottom: 7.5px solid #ccc
+
+.cld-number.eventday
+    font-weight: bold
+    color: $color-primary
+    border-radius: 10px
+    position: relative
+    &::after
+        content: ""
+        position: absolute
+        width: 8px
+        height: 8px
+        border-radius: 100%
+        background-color: $color-primary
+        bottom: -3px
+        left: 50%
+        @include transform(translateX(-50%))
+        border: 1px solid white
+
+.cld-number.eventday:hover
+    cursor: pointer
+    background: $color-primary
+    color: white
+
+.today .cld-number.eventday:hover
+    background: $color-primary-light

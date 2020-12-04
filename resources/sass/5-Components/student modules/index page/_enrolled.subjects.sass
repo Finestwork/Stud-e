@@ -3,10 +3,12 @@
     background-color: white
     padding: 25px 10px 45px 10px
     border-radius: 15px
-    margin-bottom: 20px
+    margin-bottom: 50px
     overflow: hidden
     @include custom_breakpoint(430)
         padding: 25px 20px 45px 20px
+    @include brk_lrg
+        max-width: 650px
     &__top
         @extend %display_flex
         -webkit-align-items: center

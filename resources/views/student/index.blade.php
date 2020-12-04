@@ -11,20 +11,21 @@
 @section('cs-js')
     <!-- JS CDN Libraries -->
     <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.3.1,npm/smooth-scrollbar@8.2.7,npm/smooth-scrollbar@8.2.7/dist/plugins/overscroll.min.js"></script>
+    <script src="/assets/js/libraries/caleandar.js"></script>
     <script src="/assets/js/libraries/smooth-scrollbar.js"></script>
     <script src="/assets/js/helpers/scroll-bar-builder.js"></script>
     <script src="/assets/js/helpers/image-checker.js"></script>
+
 @endsection
 
 @section('body-content')
     @include('partials.navbar')
     @include('student.optinal partials.sidebar')
-
     <div class="container--main">
         <main class="main-content">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-12 col-md-8 col-lrg-8">
+                    <div class="col-sm-12 col-md-7 col-lrg-8">
                         <section class="schedule">
                             <div class="schedule__top">
                                 <div class="schedule__left">
@@ -99,7 +100,7 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a href="#" class="teachers-note__view-all teachers-note__read-more-link">View all notifications</a>
+                            <a href="#" class="teachers-note__view-all teachers-note__read-more-link">View all announcements</a>
                         </div>
                         <section class="enrolled-subjects">
                             <div class="enrolled-subjects__top">
@@ -201,22 +202,182 @@
                             <a href="#" class="enrolled-subjects__view-all">View all subjects</a>
                         </section>
                     </div>
-                    <div class="col-sm-12 col-md-4 col-lrg-4">
-                        <div class="calendar"></div>
+                    <div class="col-sm-12 col-md-5 col-lrg-4">
+                        <div class="calendar" id="calendar">
+                        </div>
+                        <div class="task">
+                            <div class="task__top">
+                                <h2 class="task__title">Tasks</h2>
+                                <a href="#" class="bttn-link--default task__bttn-link">View all tasks</a>
+                            </div>
+                            <ul class="task__item-container">
+                                <span class="task__notif"></span> <!-- IF THERE'S AN ACTIVE TASK -->
+                                <li class="task__item">
+                                    <span class="task__item-top">
+                                        <span class="task__item-lbl">Exam</span>
+                                        <span class="task__item-arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 9.5">
+                                                <path id="Path" d="M.321,15.552a1.175,1.175,0,0,0,0,1.614,1.066,1.066,0,0,0,1.55,0L9.179,9.557a1.175,1.175,0,0,0,0-1.614L1.871.334a1.066,1.066,0,0,0-1.55,0,1.175,1.175,0,0,0,0,1.614l6.533,6.8Z" transform="translate(17.5) rotate(90)" fill="#0D0417"></path>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <ul class="task__item-bottom">
+                                        <li class="task__link-item">
+                                            <a href="#" class="task__link">
+                                                <span class="task__link-lbl">Philosophy of man</span>
+                                                <span class="task__link-ctr">2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="task__item-container">
+                                <span class="task__notif"></span> <!-- IF THERE'S AN ACTIVE TASK -->
+                                <li class="task__item">
+                                    <span class="task__item-top">
+                                        <span class="task__item-lbl">Quiz</span>
+                                        <span class="task__item-arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 9.5">
+                                                <path id="Path" d="M.321,15.552a1.175,1.175,0,0,0,0,1.614,1.066,1.066,0,0,0,1.55,0L9.179,9.557a1.175,1.175,0,0,0,0-1.614L1.871.334a1.066,1.066,0,0,0-1.55,0,1.175,1.175,0,0,0,0,1.614l6.533,6.8Z" transform="translate(17.5) rotate(90)" fill="#0D0417"></path>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <ul class="task__item-bottom">
+                                        <li class="task__link-item">
+                                            <a href="#" class="task__link">
+                                                <span class="task__link-lbl">Philosophy of man</span>
+                                                <span class="task__link-ctr">2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="task__item-container">
+                                <span class="task__notif"></span> <!-- IF THERE'S AN ACTIVE TASK -->
+                                <li class="task__item">
+                                    <span class="task__item-top">
+                                        <span class="task__item-lbl">Seatwork</span>
+                                        <span class="task__item-arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 9.5">
+                                                <path id="Path" d="M.321,15.552a1.175,1.175,0,0,0,0,1.614,1.066,1.066,0,0,0,1.55,0L9.179,9.557a1.175,1.175,0,0,0,0-1.614L1.871.334a1.066,1.066,0,0,0-1.55,0,1.175,1.175,0,0,0,0,1.614l6.533,6.8Z" transform="translate(17.5) rotate(90)" fill="#0D0417"></path>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <ul class="task__item-bottom">
+                                        <li class="task__link-item">
+                                            <a href="#" class="task__link">
+                                                <span class="task__link-lbl">Philosophy of man</span>
+                                                <span class="task__link-ctr">2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="task__item-container">
+                                <span class="task__notif"></span> <!-- IF THERE'S AN ACTIVE TASK -->
+                                <li class="task__item">
+                                    <span class="task__item-top">
+                                        <span class="task__item-lbl">Assignment</span>
+                                        <span class="task__item-arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 9.5">
+                                                <path id="Path" d="M.321,15.552a1.175,1.175,0,0,0,0,1.614,1.066,1.066,0,0,0,1.55,0L9.179,9.557a1.175,1.175,0,0,0,0-1.614L1.871.334a1.066,1.066,0,0,0-1.55,0,1.175,1.175,0,0,0,0,1.614l6.533,6.8Z" transform="translate(17.5) rotate(90)" fill="#0D0417"></path>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <ul class="task__item-bottom">
+                                        <li class="task__link-item">
+                                            <a href="#" class="task__link">
+                                                <span class="task__link-lbl">Philosophy of man</span>
+                                                <span class="task__link-ctr">2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul class="task__item-container">
+                                <span class="task__notif"></span> <!-- IF THERE'S AN ACTIVE TASK -->
+                                <li class="task__item">
+                                    <span class="task__item-top">
+                                        <span class="task__item-lbl">Project</span>
+                                        <span class="task__item-arrow">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 9.5">
+                                                <path id="Path" d="M.321,15.552a1.175,1.175,0,0,0,0,1.614,1.066,1.066,0,0,0,1.55,0L9.179,9.557a1.175,1.175,0,0,0,0-1.614L1.871.334a1.066,1.066,0,0,0-1.55,0,1.175,1.175,0,0,0,0,1.614l6.533,6.8Z" transform="translate(17.5) rotate(90)" fill="#0D0417"></path>
+                                            </svg>
+                                        </span>
+                                    </span>
+                                    <ul class="task__item-bottom">
+                                        <li class="task__link-item">
+                                            <a href="#" class="task__link">
+                                                <span class="task__link-lbl">Philosophy of man</span>
+                                                <span class="task__link-ctr">2</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="teachers">
+                            <h2 class="teachers__title">Teachers</h2>
+                            <div class="teachers__scrollbar">
+                                <ul class="teachers__item-container">
+                                    <li class="teachers__item prof--active">
+                                        <span class="teachers__img-box">
+                                            <img src="/assets/imgs/test images/professor.jpg" alt="Your teacher's profile picture" class="adjust-img-js">
+                                        </span>
+                                        <span class="teachers__description">
+                                                <span class="teachers__name">Guil Hernandez</span>
+                                                <a href="#" class="teachers__mssg-bttn">Send a message</a>
+                                            </span>
+                                    </li>
+                                    <li class="teachers__item prof--active">
+                                        <span class="teachers__img-box">
+                                            <img src="/assets/imgs/test images/professor.jpg" alt="Your teacher's profile picture" class="adjust-img-js">
+                                        </span>
+                                        <span class="teachers__description">
+                                                <span class="teachers__name">Guil Hernandez</span>
+                                                <a href="#" class="teachers__mssg-bttn">Send a message</a>
+                                            </span>
+                                    </li>
+                                    <li class="teachers__item">
+                                        <span class="teachers__img-box">
+                                            <img src="/assets/imgs/test images/professor.jpg" alt="Your teacher's profile picture" class="adjust-img-js">
+                                        </span>
+                                        <span class="teachers__description">
+                                                <span class="teachers__name">Guil Hernandez</span>
+                                                <a href="#" class="teachers__mssg-bttn">Send a message</a>
+                                            </span>
+                                    </li>
+                                    <li class="teachers__item">
+                                        <span class="teachers__img-box">
+                                            <img src="/assets/imgs/test images/professor.jpg" alt="Your teacher's profile picture" class="adjust-img-js">
+                                        </span>
+                                        <span class="teachers__description">
+                                                <span class="teachers__name">Guil Hernandez</span>
+                                                <a href="#" class="teachers__mssg-bttn">Send a message</a>
+                                            </span>
+                                    </li>
+                                    <li class="teachers__item prof--active">
+                                        <span class="teachers__img-box">
+                                            <img src="/assets/imgs/test images/professor.jpg" alt="Your teacher's profile picture" class="adjust-img-js">
+                                        </span>
+                                        <span class="teachers__description">
+                                                <span class="teachers__name">Guil Hernandez</span>
+                                                <a href="#" class="teachers__mssg-bttn">Send a message</a>
+                                            </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </main>
     </div>
-
-
-
-
-
-
 @endsection
 
 @section('script')
     <script src="/assets/js/helpers/navbar-with-sidebar.js"></script>
     <script src="/assets/js/modules/student/student.index.js"></script>
+    <script src="/assets/js/helpers/calendar.js"></script>
+    <script src="/assets/js/helpers/tasks.js"></script>
 @endsection

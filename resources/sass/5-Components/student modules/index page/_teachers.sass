@@ -1,0 +1,54 @@
+.teachers
+    background-color: white
+    border-radius: 15px
+    margin-top: 30px
+    padding: 20px 25px 5px 25px
+    width: 80%
+    margin-left: auto
+    margin-right: auto
+    color: $txt-primary-2
+    @include brk_md
+        width: 93%
+        max-width: 310px
+        margin-left: auto
+        margin-right: unset
+    &__title
+        margin-bottom: 10px
+        margin-top: 13px
+    &__item
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        position: relative
+        margin: 15px 0
+        border-bottom: 2px solid $form-dark
+        padding-bottom: 13px
+        &:last-of-type
+            border-bottom: none
+    &__img-box
+        width: 50px
+        height: 50px
+        display: block
+        border-radius: 100%
+        overflow: hidden
+    &__description
+        margin-left: 10px
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+    &__name
+        @extend %font-bold
+    &__mssg-bttn
+        background-color: $color-secondary
+        color: white
+        padding: 6px 8px
+        border-radius: 5px
+        margin-top: 7px
+        font-size: 12px
+        text-align: center
+        &:hover
+            background-color: $color-secondary-dark
+    &__scrollbar
+        max-height: 250px
+.prof--active > .teachers__img-box
+    border: 3px solid #5ee688

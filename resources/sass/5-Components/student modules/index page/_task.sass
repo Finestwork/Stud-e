@@ -1,0 +1,82 @@
+.task
+    background-color: white
+    border-radius: 15px
+    margin-top: 35px
+    padding: 20px 25px 5px 25px
+    width: 80%
+    margin-left: auto
+    margin-right: auto
+    @include brk_md
+        width: 93%
+        max-width: 310px
+        margin-left: auto
+        margin-right: unset
+    &__top
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        -webkit-align-items: center
+        align-items: center
+        margin-bottom: 30px
+    &__item-container
+        margin-bottom: 20px
+        position: relative
+        user-select: none
+    &__title
+        color: $txt-primary-2
+    &__item-arrow
+        display: block
+        width: 17px
+    &__item
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        background-color: #f8f4ff
+        border-radius: 10px
+        &-top
+            @extend %display_flex
+            -webkit-justify-content: space-between
+            justify-content: space-between
+            padding: 10px 15px
+            cursor: pointer
+            border-bottom: 2px solid #e6d9ff
+            &:hover
+                background-color: #e6d9ff
+        &-lbl
+            font-size: 16px
+            @extend %font-extrabold
+            color: #5426ab
+        &-arrow
+            path
+                fill: #5426ab
+        &-bottom
+            height: 0
+            overflow: hidden
+            background-color: white
+            transition: height .5s linear
+    &__bttn-link
+        font-size: 14px
+    &__notif
+        position: absolute
+        width: 13px
+        height: 13px
+        background-color: #ff5656
+        border-radius: 100%
+        left: -4px
+        top: -4px
+        border: 2px solid white
+
+    //LOWER PART
+    &__link-item
+        margin: 10px 0
+    &__link
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        padding: 10px 15px
+        color: #5426ab
+        @extend %font-semibold
+        &:hover
+            background-color: #e6d9ff
+        &-ctr
+            @extend %font-bold

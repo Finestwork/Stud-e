@@ -1,0 +1,53 @@
+.banner
+    background-color: white
+    border-radius: 20px
+    padding: 10px 15px
+    @extend %display_flex
+    -webkit-align-items: center
+    align-items: center
+    -webkit-flex-direction: column
+    flex-direction: column
+    @include brk_md
+        -webkit-flex-direction: row
+        flex-direction: row
+    &__img-box
+        width: 150px
+        @include brk_md
+            min-width: 150px
+    &__description
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        -webkit-align-items: center
+        align-items: center
+        margin: 20px 0
+        @include brk_md
+            -webkit-align-items: flex-start
+            align-items: flex-start
+            margin-left: 30px
+    &__title
+        color: $txt-primary-2
+        @extend %font-black
+        position: relative
+        display: inline
+        &::before
+            content: ""
+            position: absolute
+            width: 10px
+            height: 10px
+            background-color: #ffa7e5
+            right: -13px
+            border-radius: 100%
+            top: 62%
+            @include transform(translateY(-50%))
+    &__txt
+        font-size: 15px
+        margin-top: 12px
+        margin-bottom: 20px
+        @extend %font-semibold
+        color: $txt-secondary-2
+        line-height: 1.5
+        text-align: center
+        margin-right: 25px
+        @include brk_md
+            text-align: left

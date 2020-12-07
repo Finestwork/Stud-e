@@ -33,3 +33,16 @@
         @include brk_xlrg
             font-size: 22 / 18 * 1rem
 
+    &--small
+        background-color: $color-primary
+        @extend %font-bold
+        text-transform: uppercase
+        color: white
+        font-size: 14 / $root-font-size * 1rem
+        padding: 15 / 18 * 1em 20 / 18 * 1em
+        border-radius: 5px
+        display: block
+        text-align: center
+        font-family: inherit
+        &:hover
+            background-color: $color-primary-hover

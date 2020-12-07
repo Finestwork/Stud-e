@@ -1,0 +1,43 @@
+.selection--primary
+    width: 185px
+    cursor: pointer
+    @extend %font-semibold
+    position: relative
+    margin: 10px 0
+    &__top,
+    &__list-container
+        border: 1px solid #e2e7fd
+    &__top
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        -webkit-align-items: center
+        align-items: center
+        padding: 5px 15px
+        background-color: #e2e7fd
+        &:hover
+            background-color: #d5ddff
+    &__list-container
+        display: none
+        position: absolute
+        width: 100%
+        background-color: white
+        z-index: 50
+    &__txt
+        font-size: 14px
+        color: $color-secondary
+    &__icon
+        width: 14px
+    &__list-item
+        text-align: center
+        padding: 7px
+        color: $color-secondary
+        font-size: 14px
+        &:hover
+            background-color: #f1f3fb
+    &__label
+        @extend %font-bold
+        color: #828cb5
+.selection--active
+    + .selection--primary__list-container
+        display: block

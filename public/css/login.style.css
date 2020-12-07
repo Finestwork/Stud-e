@@ -1053,6 +1053,11 @@ table {
   margin: 0 auto;
 }
 
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .disp-lrg-only {
   display: none;
 }

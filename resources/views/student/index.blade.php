@@ -20,7 +20,7 @@
 
 @section('body-content')
     @include('partials.navbar')
-    @include('student.optinal partials.sidebar')
+    @include('student.optional partials.sidebar')
     <div class="container--main">
         <main class="main-content">
             <div class="container-fluid">

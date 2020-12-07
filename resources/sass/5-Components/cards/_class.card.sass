@@ -1,0 +1,68 @@
+.class-card
+    background-color: white
+    border-radius: 15px
+    margin: 25px
+    padding: 25px 10px 60px 15px
+    @extend %display_flex
+    position: relative
+    &__left
+        -webkit-flex-basis: 35%
+        flex-basis: 35%
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        -webkit-align-items: center
+        align-items: center
+        padding-top: 10px
+        @include brk_xlrg
+            -webkit-flex-basis: 70%
+            flex-basis: 70%
+    &__img-name
+        margin-top: 15px
+        margin-bottom: 5px
+        @extend %font-bold
+        color: $color-primary
+        text-align: center
+    &__img-lbl
+        color: $txt-primary-2
+        @extend %font-bold
+    &__img-border
+        position: relative
+        &::before
+            content: ''
+            position: absolute
+            width: 60px
+            height: 100%
+            border: 2px solid $color-primary
+            border-radius: 10px
+            transform: scale(1.15)
+    &__img-box
+        width: 60px
+        height: 60px
+        overflow: hidden
+        border-radius: 10px
+    &__right
+        margin-left: 25px
+    &__subject
+        @extend %font-bold
+        line-height: 1.4
+        margin-bottom: 12px
+    &__more-info
+        font-size: 16px
+        @extend %font-bold
+        color: $txt-secondary-3
+        margin-bottom: 20px
+    &__footer
+        position: absolute
+        width: 100%
+        bottom: 18px
+        left: 0
+        &__text
+            text-align: right
+            color: $txt-secondary
+            @extend %font-semibold
+            margin-right: 15px
+    &__loader
+        margin-top: 80px
+        display: none
+

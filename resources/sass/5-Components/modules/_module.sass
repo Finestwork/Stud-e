@@ -1,0 +1,116 @@
+.modules
+    margin-top: 40px
+    &__heading
+        text-transform: uppercase
+        font-size: 16px
+        color: $txt-secondary
+        margin-bottom: 8px
+        @include brk_lrg
+            font-size: 18px
+    &__container
+        background-color: white
+        border-radius: 9px
+        overflow: hidden
+        margin-right: 20px
+        margin-bottom: 20px
+        &-bottom
+            margin: 0 15px 0 15px
+            height: 0
+            overflow: hidden
+            transition: height .15s linear
+        &-top
+            @extend %display_flex
+            -webkit-justify-content: space-between
+            justify-content: space-between
+            -webkit-align-items: center
+            align-items: center
+            padding: 10px 15px
+            cursor: pointer
+            &:hover
+                background-color: #e8e8e8
+        &-top-icon
+            @extend %display_flex
+            -webkit-align-items: center
+            align-items: center
+            height: 5px
+            width: 8px
+            transition: transform .3s linear
+            svg
+                width: 100%
+    &__title
+        font-size: 14px
+        color: #53565b
+        @include brk_lrg
+            font-size: 16px
+    //BOTTOM
+    &__separator
+        background-color: #53565b
+        height: 3px
+        margin-top: 5px
+        margin-bottom: 20px
+        border-radius: 30px
+    &__txt
+        font-size: 16px
+        color: $txt-secondary
+        margin-bottom: 20px
+    &__download-link
+        color: #05aeff
+        @extend %font-bold
+        position: relative
+        font-size: 14px
+        &:hover
+         color: #40c1ff
+        &:hover::before
+            @include transform(scaleX(1))
+            transform-origin: left
+        &::before
+            position: absolute
+            content: ''
+            width: 100%
+            height: 3px
+            background-color: #40c1ff
+            bottom: 0
+            left: 0
+            @include transform(scaleX(0))
+            transition: transform .3s linear
+            transition-delay: .1s
+            transform-origin: right
+    &__task-label-container
+        margin-top: 20px
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        width: 410px
+    &__task-title
+        font-size: 22px
+        position: relative
+        color: #0186FB
+        z-index: 1
+        text-transform: uppercase
+        margin-bottom: 10px
+        &::before
+            content: ''
+            position: absolute
+            width: 86%
+            height: 11px
+            bottom: 2px
+            z-index: -1
+            background-color: #E4F2FF
+        @include brk_lrg
+            font-size: 25px
+            &::before
+                height: 14px
+    &__task-link
+        color: #53628e
+        @extend %font-bold
+        position: relative
+        margin: 8px 0
+        font-size: 14px
+        @include brk_lrg
+            font-size: 16px
+        &:hover
+            color: $color-secondary
+.container--active
+    .modules__container-top-icon
+        transition: transform .3s linear
+        @include transform(rotate(90deg))

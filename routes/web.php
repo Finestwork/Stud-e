@@ -4,6 +4,14 @@ use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\IndexController;
 use \App\Http\Controllers\Auth\LoginController;
 use \App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Student\ClassController;
+use App\Http\Controllers\HomepageController;
+use App\Http\Controllers\Student\GradeController;
+use App\Http\Controllers\Student\ReviewerController;
+use App\Http\Controllers\Student\ScheduleController;
+use App\Http\Controllers\Student\TaskController;
+use \App\Http\Controllers\UserController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,5 +44,33 @@ Route::prefix('signup')->group(function(){
 
 //Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/student', [\App\Http\Controllers\StudentController::class, 'index'])->name('student.home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+//STUDENTS GET REQUEST
+//AND STILL DECIDING HOW TO KEEP THESE URLS CLEAN
+//MAYBE, AS WE GO ALONG WE MAY GET AN IDEA
+Route::prefix('/student')->group(function(){
+    //HOMEPAGE OF EVERY NAVIGATION LINKS
+    Route::get('/', [HomepageController::class, 'index'])->name('student.home');
+
+    Route::get('/class', [ClassController::class, 'index'])->name('student.class');
+    Route::get('/{classID}/modules', [ClassController::class, 'renderClassroom'])->name('student.modules');
+    Route::get('/{classID}/tasks', [ClassController::class, 'renderTask'])->name('student.tasks');
+    Route::get('/{classID}/discussion', [ClassController::class, 'renderDiscussion'])->name('student.discussion');
+    Route::get('/discussion/{discussionUniqueID}', [ClassController::class, 'renderDiscussionForum'])->name('student.forum');
+    Route::get('/{classID}/members', [ClassController::class, 'rendermember'])->name('student.members');
+
+    Route::get('/grades', [GradeController::class, 'index'])->name('student.grade');
+
+
+    Route::get('/tasks', [TaskController::class, 'index'])->name('student.task');
+
+    Route::get('/reviewer', [ReviewerController::class, 'index'])->name('student.reviewer');
+
+    Route::get('/schedule', [ScheduleController::class, 'index'])->name('student.schedule');
+
+    Route::get('/schedule', [ScheduleController::class, 'index'])->name('student.schedule');
+
+});
+
+Route::get('/profile', [UserController::class, 'renderUserProfile'])->name('user.profile');

@@ -45,24 +45,42 @@
         align-items: center
         margin: 10px 0
         &:hover
-            background-color: $color-primary-xlighter
+            background-color: #f8f4ff
     &__icon
         path
-            fill: $txt-primary
+            fill: $txt-primary-2
+    &__icon-stroke
+        path,
+        line
+            stroke: $txt-primary-2
     &__icon-txt
-        color: $txt-primary
+        color: $txt-primary-2
         font-size: 16px
         margin-left: 25px
         @extend %font-extrabold
     &--active
-        background-color: #270044
+        background-color: #f8f4ff
+        position: relative
         .sidebar__icon
             path
-                fill: white
+                fill: $color-primary
+        .sidebar__icon-stroke
+            path,
+            line
+                stroke: $color-primary
         .sidebar__icon-txt
-            color: white
+            color: $color-primary
         &:hover
-            background-color: #270044
+            background-color: #f8f4ff
+        &::before
+            content: ''
+            background-color: $color-primary
+            width: 4px
+            height: 90%
+            position: absolute
+            right: 0
+            top: 50%
+            @include transform(translateY(-50%))
 .scrollbar
     z-index: 999
     height: 100%

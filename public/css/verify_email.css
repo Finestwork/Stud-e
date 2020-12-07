@@ -534,6 +534,7 @@ table {
   padding: 0.5em 2em;
   font-family: inherit;
   outline: none;
+  background-color: inherit;
 }
 .bttn--tertiary--ghost:hover {
   color: white;

@@ -1,0 +1,61 @@
+.sidelinks
+    &__links-container
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        border-bottom: 2px solid #b7b7b7
+        margin-bottom: 20px
+        padding-bottom: 10px
+        @include brk_md
+            -webkit-flex-direction: column
+            flex-direction: column
+            -webkit-justify-content: unset
+            justify-content: unset
+            margin-bottom: 0
+            border-bottom: none
+        @include brk_lrg
+            position: sticky
+            top: 100px
+            min-width: 99px
+    &__links-item
+        -webkit-flex-basis: 100%
+        flex-basis: 100%
+        text-align: center
+        font-size: 14px
+        @include custom_breakpoint(350)
+            margin: 0 10px
+            &:first-of-type
+                margin-left: 0
+            &:last-of-type
+                margin-right: 0
+        @include brk_md
+            text-align: left
+            margin-left: 0
+            margin-right: 0
+    &__links
+        padding: 10px 5px
+        display: block
+        font-weight: 700
+        margin: 10px 0
+        color: $txt-secondary-2
+        position: relative
+        @include brk_md
+            padding-left: 12px
+        &:hover
+            background-color: #e7e7ff
+            color: #6328f1
+
+.link--active
+    background-color: #e7e7ff
+    color: #6328f1
+    &::before
+        content: ''
+        position: absolute
+        background-color: $color-primary
+        right: 0
+        bottom: 0
+        height: 5px
+        width: 100%
+        @include brk_md
+            height: 100%
+            width: 5px

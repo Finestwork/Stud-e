@@ -1,0 +1,25 @@
+.main-content
+    background-color: inherit
+    width: 100%
+    margin-top: 104px
+    margin-bottom: 30px
+    @include brk_lrg
+        width: 82%
+        float: right
+    @include custom_breakpoint(1150)
+        width: 84%
+    @include custom_breakpoint(1360)
+        width: 86%
+    @include brk_xlrg
+        width: 90%
+    @include custom_breakpoint(1660)
+        width: 100%
+        float: unset
+
+.main-content--md
+    @include brk_lrg
+        width: 90%
+    @include custom_breakpoint(1530)
+        width: 100%
+        float: unset
+

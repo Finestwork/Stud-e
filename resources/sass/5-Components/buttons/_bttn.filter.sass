@@ -1,0 +1,17 @@
+.bttn-filter
+    @extend %display_flex
+    -webkit-align-items: center
+    align-items: center
+    text-transform: uppercase
+    font-family: 'Nunito', sans-serif
+    @extend %font-bold
+    color: $color-secondary
+    background-color: #f3f5fd
+    padding: 5px 15px
+    &:hover
+        background-color: #e2e7fd
+    &__icon
+        width: 25px
+        margin-right: 8px
+        path
+            fill: $color-secondary

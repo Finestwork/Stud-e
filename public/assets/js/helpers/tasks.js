@@ -14,5 +14,4 @@ function task(e){
                 isCollapsed = !ch,
                 noHeightSet = !pastElPosition.style.height;
     pastElPosition.style.height = (isCollapsed || noHeightSet ? sh : 0) + "px";
-
 }

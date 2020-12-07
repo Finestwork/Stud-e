@@ -1,0 +1,44 @@
+.option
+    position: relative
+    width: 188px
+    color: white
+    cursor: pointer
+    -webkit-user-select: none
+    user-select: none
+    &--active
+        + .option__selection-container
+            display: block
+    &__top
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        -webkit-align-items: center
+        align-items: center
+        padding: 8px 10px
+        border-radius: 10px
+        background-color: $color-secondary
+        &:hover
+            background-color: $color-primary-lighter
+    &__icon-box
+        width: 17px
+
+    &__selection-container
+        background-color: white
+        box-shadow: 0 0 6px rgba(101, 131, 254,.3)
+        color: $color-secondary
+        position: absolute
+        width: 100%
+        border-radius: 10px
+        bottom: -80px
+        overflow: hidden
+        display: none
+        z-index: 995
+    &__select
+        padding: 10px 8px
+        &:hover
+            background-color: $color-secondary
+            color: white
+    &__selected-text
+        @extend %font-bold
+        @include brk_md
+            font-size: 14px

@@ -30,10 +30,10 @@
             padding: 10/ 16 * 1em 20 / 16 * 1em
             border-radius: 10px
             color: white
-        &:hover
-            background-color: $color-new-secondary-dark
-        &-icon
-            margin-right: 15 / $default-font-size * 1em
+            &:hover
+                background-color: $color-new-secondary-dark
+            &-icon
+                margin-right: 15 / $default-font-size * 1em
         &__line
             background-color: $navbar-line-color
             width: 90%
@@ -48,25 +48,43 @@
             -webkit-align-items: center
             align-items: center
             margin: 10px 0
+            position: relative
             &:hover
-                background-color: $color-primary-xlighter
+                background-color: #f8f4ff
         &__icon
             path
-                fill: $txt-primary
+                fill: $txt-primary-2
+        &__icon-stroke
+            path,
+            line
+                stroke: $txt-primary-2
         &__icon-txt
-            color: $txt-primary
+            color: $txt-primary-2
             font-size: 16 / $root-font-size * 1rem
             margin-left: 25 / 16 * 1em
             @extend %font-extrabold
         &--active
-            background-color: #270044
+            background-color: #f8f4ff
             .sidebar__icon
                 path
-                    fill: white
+                    fill: $color-primary
+            .sidebar__icon-stroke
+                path,
+                line
+                    stroke: $color-primary
             .sidebar__icon-txt
-                color: white
+                color: $color-primary
             &:hover
-                background-color: #270044
+                background-color: #f8f4ff
+            &::before
+                content: ''
+                background-color: $color-primary
+                width: 4px
+                height: 90%
+                position: absolute
+                right: 0
+                top: 50%
+                @include transform(translateY(-50%))
         &__top
             @extend %display_flex
             -webkit-justify-content: center

@@ -1,0 +1,77 @@
+.member
+    margin-top: 120px
+    &__right
+        margin-top: 20px
+        @include brk_md
+            margin-left: 35px
+            margin-top: 15px
+    &__main-container
+        margin-top: 30px
+        width: 100%
+        @include brk_md
+            padding: 20px
+            width: 85%
+    &__lists
+        margin: 20px 0
+        font-size: 14px
+        @include brk_md
+            margin: 20px 30px 20px 0
+            font-size: 16px
+    &__list
+        @extend %display_flex
+        -webkit-justify-content: space-around
+        justify-content: space-around
+        background-color: white
+        @extend %font-bold
+        padding: 15px
+        border-radius: 10px
+        margin: 15px 0
+        &-left,
+        &-right
+            -webkit-flex-grow: 1
+            flex-grow: 1
+        &-left
+            @extend %display_flex
+            -webkit-align-items: center
+            align-items: center
+        &-right
+            @extend %display_flex
+            -webkit-align-items: center
+            align-items: center
+            -webkit-justify-content: space-between
+            justify-content: space-between
+            color: $txt-secondary-2
+            margin-left: 52px
+            @include brk_md
+                margin-left: 75px
+            &-p
+                margin-right: 10px
+                @include brk_md
+                    margin-right: 0
+        &-info
+            margin-left: 15px
+        &-name
+            color: $txt-secondary-2
+        &-position
+            color: $color-primary
+    &__list-img
+        display: none
+        @include brk_md
+            display: block
+        min-width: 40px
+        max-width: 40px
+        min-height: 40px
+        max-height: 40px
+        overflow: hidden
+        border-radius: 100%
+    &__labels
+        @extend %display_flex
+        -webkit-justify-content: space-around
+        justify-content: space-around
+        &-txt
+            -webkit-flex-grow: 1
+            flex-grow: 1
+            text-align: left
+            color: $txt-secondary
+            @extend %font-bold
+            padding-left: 10px

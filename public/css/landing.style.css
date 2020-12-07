@@ -6,7 +6,7 @@
   font-weight: 800;
 }
 
-.heading--sign-up, .heading--secondary, .card--primary__title, .ghost--header__logo-txt, .bttn--primary--ghost, .bttn--primary {
+.heading--sign-up, .heading--secondary, .card--primary__title, .ghost--header__logo-txt, .bttn--primary--small, .bttn--primary--ghost, .bttn--primary {
   font-weight: 700;
 }
 
@@ -790,6 +790,20 @@ ul {
   .bttn--primary--ghost {
     font-size: 1.2222222222rem;
   }
+}
+.bttn--primary--small {
+  background-color: #7F2AFF;
+  text-transform: uppercase;
+  color: white;
+  font-size: 1.4rem;
+  padding: 0.8333333333em 1.1111111111em;
+  border-radius: 5px;
+  display: block;
+  text-align: center;
+  font-family: inherit;
+}
+.bttn--primary--small:hover {
+  background-color: #6312dc;
 }
 
 .ghost--header {
@@ -1615,6 +1629,11 @@ ul {
 
 .ny-auto-margin {
   margin: 0 auto;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .pt-1 {

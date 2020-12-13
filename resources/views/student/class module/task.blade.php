@@ -27,16 +27,16 @@
                     <div class="col-sm-12 col-md-2 col-lrg-1">
                         <ul class="sidelinks__links-container">
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.modules', 'classUniqueID') }}" class="sidelinks__links">Modules</a>
+                                <a href="{{ route('student.modules') }}" class="sidelinks__links">Modules</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.tasks', 'classUniqueID') }}" class="sidelinks__links link--active">Tasks</a>
+                                <a href="{{ route('student.tasks') }}" class="sidelinks__links link--active">Tasks</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.discussion', 'classUniqueID') }}" class="sidelinks__links">Discussion</a>
+                                <a href="{{ route('student.discussion') }}" class="sidelinks__links">Discussion</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.members', 'classUniqueID') }}" class="sidelinks__links ">Members</a>
+                                <a href="{{ route('student.members') }}" class="sidelinks__links ">Members</a>
                             </li>
                         </ul>
                     </div>
@@ -57,14 +57,11 @@
                                 <div class="task__main-container">
                                     <div class="task__filter-bttn-container">
                                         <button type="button" class="bttn bttn-filter" id="filterBttn">
-                                    <span class="bttn-filter__icon">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 25 25">
-                                          <g id="Group_465" data-name="Group 465" transform="translate(-350.5 -564.5)">
-                                            <path id="Path-3" data-name="Path" d="M16,20.5V8.666a.5.5,0,0,1,1,0V20.5a.5.5,0,0,1-1,0Zm-8,0V16.715a.5.5,0,1,1,1,0V20.5a.5.5,0,0,1-1,0Zm-8,0V8.5a.5.5,0,0,1,1,0v12a.5.5,0,0,1-1,0Zm8-8.135V.5a.5.5,0,1,1,1,0V12.365a.5.5,0,1,1-1,0ZM0,4.424V.5a.5.5,0,1,1,1,0V4.424a.5.5,0,1,1-1,0Zm16-.239V.5a.5.5,0,1,1,1,0V4.185a.5.5,0,1,1-1,0Z" transform="translate(354.5 567.483)" fill="#0093e1"/>
-                                            <path id="Path-4" data-name="Path" d="M11.5,13h-2A1.5,1.5,0,0,1,8,11.5v-2A1.5,1.5,0,0,1,9.5,8h2A1.5,1.5,0,0,1,13,9.5v2A1.5,1.5,0,0,1,11.5,13Zm-2-4a.5.5,0,0,0-.5.5v2a.5.5,0,0,0,.5.5h2a.5.5,0,0,0,.5-.5v-2a.5.5,0,0,0-.5-.5Zm10-4h-2A1.5,1.5,0,0,1,16,3.5v-2A1.5,1.5,0,0,1,17.5,0h2A1.5,1.5,0,0,1,21,1.5v2A1.5,1.5,0,0,1,19.5,5Zm-2-4a.5.5,0,0,0-.5.5v2a.5.5,0,0,0,.5.5h2a.5.5,0,0,0,.5-.5v-2a.5.5,0,0,0-.5-.5ZM3.5,5h-2A1.5,1.5,0,0,1,0,3.5v-2A1.5,1.5,0,0,1,1.5,0h2A1.5,1.5,0,0,1,5,1.5v2A1.5,1.5,0,0,1,3.5,5Zm-2-4a.5.5,0,0,0-.5.5v2a.5.5,0,0,0,.5.5h2A.5.5,0,0,0,4,3.5v-2A.5.5,0,0,0,3.5,1Z" transform="translate(352.5 571.483)" fill="#52c3ff"/>
-                                          </g>
-                                        </svg>
-                                    </span>
+                                        <span class="bttn-filter__icon">
+                                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M4 1C4.55228 1 5 1.44772 5 2V10.1707C6.16519 10.5825 7 11.6938 7 13C7 14.3062 6.16519 15.4175 5 15.8293V22C5 22.5523 4.55228 23 4 23C3.44772 23 3 22.5523 3 22V15.8293C1.83481 15.4175 1 14.3062 1 13C1 11.6938 1.83481 10.5825 3 10.1707V2C3 1.44772 3.44772 1 4 1ZM12 1C12.5523 1 13 1.44772 13 2V5.17071C14.1652 5.58254 15 6.69378 15 8C15 9.30622 14.1652 10.4175 13 10.8293V22C13 22.5523 12.5523 23 12 23C11.4477 23 11 22.5523 11 22V10.8293C9.83481 10.4175 9 9.30622 9 8C9 6.69378 9.83481 5.58254 11 5.17071V2C11 1.44772 11.4477 1 12 1ZM20 1C20.5523 1 21 1.44772 21 2V13.1707C22.1652 13.5825 23 14.6938 23 16C23 17.3062 22.1652 18.4175 21 18.8293V22C21 22.5523 20.5523 23 20 23C19.4477 23 19 22.5523 19 22V18.8293C17.8348 18.4175 17 17.3062 17 16C17 14.6938 17.8348 13.5825 19 13.1707V2C19 1.44772 19.4477 1 20 1ZM12 7C11.4477 7 11 7.44772 11 8C11 8.55228 11.4477 9 12 9C12.5523 9 13 8.55228 13 8C13 7.44772 12.5523 7 12 7ZM4 12C3.44772 12 3 12.4477 3 13C3 13.5523 3.44772 14 4 14C4.55228 14 5 13.5523 5 13C5 12.4477 4.55228 12 4 12ZM20 15C19.4477 15 19 15.4477 19 16C19 16.5523 19.4477 17 20 17C20.5523 17 21 16.5523 21 16C21 15.4477 20.5523 15 20 15Z" fill="#8c93b1"/>
+                                            </svg>
+                                        </span>
                                             <span class="bttn-filter__txt">Filter</span>
                                         </button>
                                     </div>
@@ -73,7 +70,7 @@
                                             <p class="selection--primary__label">Select a type:</p>
                                             <div class="selection--primary">
                                                 <div class="selection--primary__top js-selection-type-task">
-                                                    <span class="selection--primary__txt">Assigned</span>
+                                                    <span class="selection--primary__txt">All</span>
                                                     <span class="selection--primary__icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 9.5">
                                                         <path id="Path" d="M.321,15.552a1.175,1.175,0,0,0,0,1.614,1.066,1.066,0,0,0,1.55,0L9.179,9.557a1.175,1.175,0,0,0,0-1.614L1.871.334a1.066,1.066,0,0,0-1.55,0,1.175,1.175,0,0,0,0,1.614l6.533,6.8Z" transform="translate(17.5) rotate(90)" fill="#6583fe"></path>
@@ -94,7 +91,7 @@
                                             <p class="selection--primary__label">Select a status:</p>
                                             <div class="selection--primary">
                                                 <div class="selection--primary__top js-selection-progress">
-                                                    <span class="selection--primary__txt">All</span>
+                                                    <span class="selection--primary__txt">Assigned</span>
                                                     <span class="selection--primary__icon">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 9.5">
                                                         <path id="Path" d="M.321,15.552a1.175,1.175,0,0,0,0,1.614,1.066,1.066,0,0,0,1.55,0L9.179,9.557a1.175,1.175,0,0,0,0-1.614L1.871.334a1.066,1.066,0,0,0-1.55,0,1.175,1.175,0,0,0,0,1.614l6.533,6.8Z" transform="translate(17.5) rotate(90)" fill="#6583fe"></path>
@@ -130,7 +127,7 @@
                                                         <th scope="row" class="table__row-head">
                                                             <a href="#" class="table__link">What is the difference between physics and metaphysics?</a>
                                                         </th>
-                                                        <td><a href="#" class="table__link">Different branches of science</a></td>
+                                                        <td><a href="{{ route('student.task.page', 'taskID') }}" class="table__link">Different branches of science</a></td>
                                                         <td class="table__type">Assignment</td>
                                                         <td class="table__start-date">November 7, 2020 (5:00 PM)</td>
                                                         <td class="table__duedate">December 7, 2020 (12:00 PM)</td>
@@ -139,7 +136,7 @@
                                                         <th scope="row" class="table__row-head">
                                                             <a href="#" class="table__link">What is the difference between physics and metaphysics?</a>
                                                         </th>
-                                                        <td><a href="#" class="table__link">Different branches of science</a></td>
+                                                        <td><a href="{{ route('student.task.page', 'taskID') }}" class="table__link">Different branches of science</a></td>
                                                         <td class="table__type">Quiz</td>
                                                         <td class="table__start-date">November 7, 2020 (5:00 PM)</td>
                                                         <td class="table__duedate">December 7, 2020 (12:00 PM)</td>
@@ -148,7 +145,7 @@
                                                         <th scope="row" class="table__row-head">
                                                             <a href="#" class="table__link">What is the difference between physics and metaphysics?</a>
                                                         </th>
-                                                        <td><a href="#" class="table__link">Different branches of science</a></td>
+                                                        <td><a href="{{ route('student.task.page', 'taskID') }}" class="table__link">Different branches of science</a></td>
                                                         <td class="table__type">Project</td>
                                                         <td class="table__start-date">November 7, 2020 (5:00 PM)</td>
                                                         <td class="table__duedate">December 7, 2020 (12:00 PM)</td>

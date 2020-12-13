@@ -27,16 +27,16 @@
                     <div class="col-sm-12 col-md-2 col-lrg-1">
                         <ul class="sidelinks__links-container">
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.modules', 'classUniqueID') }}" class="sidelinks__links">Modules</a>
+                                <a href="{{ route('student.modules') }}" class="sidelinks__links">Modules</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.tasks', 'classUniqueID') }}" class="sidelinks__links">Tasks</a>
+                                <a href="{{ route('student.tasks') }}" class="sidelinks__links">Tasks</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.discussion', 'classUniqueID') }}" class="sidelinks__links">Discussion</a>
+                                <a href="{{ route('student.discussion') }}" class="sidelinks__links">Discussion</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.members', 'classUniqueID') }}" class="sidelinks__links link--active">Members</a>
+                                <a href="{{ route('student.members') }}" class="sidelinks__links link--active">Members</a>
                             </li>
                         </ul>
                     </div>

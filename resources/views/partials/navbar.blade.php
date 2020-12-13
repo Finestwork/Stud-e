@@ -82,7 +82,8 @@
                                                 </span>
                                             </span>
                                             <span class="navbar__mssg-description">
-                                                <span class="navbar__mssg-info">Your classmate replied to the discussion in <span class="navbar__notif-span">Computer Programming 3</span>.</span>
+                                                <span class="navbar__mssg-info navbar__notif-span">John Doe</span>
+                                                <span class="navbar__mssg-info">Where do you want to study?</span>
                                                 <span class="navbar__mssg-date">1 week ago</span>
                                             </span>
                                         </a>
@@ -96,8 +97,9 @@
                                                 </span>
                                             </span>
                                             <span class="navbar__mssg-description">
-                                                <span class="navbar__mssg-info">Your classmate replied to the discussion in <span class="navbar__notif-span">Computer Programming 3</span>.</span>
-                                                <span class="navbar__mssg-date">1 month ago</span>
+                                                <span class="navbar__mssg-info navbar__notif-span">John Doe</span>
+                                                <span class="navbar__mssg-info">Where do you want to study?</span>
+                                                <span class="navbar__mssg-date">1 week ago</span>
                                             </span>
                                         </a>
                                     </li>
@@ -110,8 +112,9 @@
                                                 </span>
                                             </span>
                                             <span class="navbar__mssg-description">
-                                                <span class="navbar__mssg-info">Your classmate replied to the discussion in <span class="navbar__notif-span">Computer Programming 3</span>.</span>
-                                                <span class="navbar__mssg-date">1 month ago</span>
+                                                <span class="navbar__mssg-info navbar__notif-span">John Doe</span>
+                                                <span class="navbar__mssg-info">Where do you want to study?</span>
+                                                <span class="navbar__mssg-date">1 week ago</span>
                                             </span>
                                         </a>
                                     </li>
@@ -124,8 +127,39 @@
                                                 </span>
                                             </span>
                                             <span class="navbar__mssg-description">
-                                                <span class="navbar__mssg-info">Your classmate replied to the discussion in <span class="navbar__notif-span">Computer Programming 3</span>.</span>
-                                                <span class="navbar__mssg-date">1 month ago</span>
+                                                <span class="navbar__mssg-info navbar__notif-span">John Doe</span>
+                                                <span class="navbar__mssg-info">Where do you want to study?</span>
+                                                <span class="navbar__mssg-date">1 week ago</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="navbar__mssg-item">
+                                        <a href="#" class="navbar__mssg-item-link">
+                                            <!-- LOGIC HERE WHAT TYPE OF TASK IS IT? task-grade = affects color -->
+                                            <span class="navbar__mssg-user-img">
+                                                <span class="navbar__mssg-user-img-wrapper">
+                                                    <img src="/assets/imgs/test images/classmate.jpg" alt="Profile picture of the user" class="adjust-img-js">
+                                                </span>
+                                            </span>
+                                            <span class="navbar__mssg-description">
+                                                <span class="navbar__mssg-info navbar__notif-span">John Doe</span>
+                                                <span class="navbar__mssg-info">Where do you want to study?</span>
+                                                <span class="navbar__mssg-date">1 week ago</span>
+                                            </span>
+                                        </a>
+                                    </li>
+                                    <li class="navbar__mssg-item">
+                                        <a href="#" class="navbar__mssg-item-link">
+                                            <!-- LOGIC HERE WHAT TYPE OF TASK IS IT? task-grade = affects color -->
+                                            <span class="navbar__mssg-user-img">
+                                                <span class="navbar__mssg-user-img-wrapper">
+                                                    <img src="/assets/imgs/test images/classmate.jpg" alt="Profile picture of the user" class="adjust-img-js">
+                                                </span>
+                                            </span>
+                                            <span class="navbar__mssg-description">
+                                                <span class="navbar__mssg-info navbar__notif-span">John Doe</span>
+                                                <span class="navbar__mssg-info">Where do you want to study?</span>
+                                                <span class="navbar__mssg-date">1 week ago</span>
                                             </span>
                                         </a>
                                     </li>

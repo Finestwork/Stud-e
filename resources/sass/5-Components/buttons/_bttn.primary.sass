@@ -10,6 +10,9 @@
     display: block
     width: 165px
     text-align: center
+    &:focus
+        box-shadow: 0 0 0 3px rgba(126, 40, 255, .2)
+        outline: none
     &:hover
         background-color: $color-primary-hover
     @include brk_lrg
@@ -38,7 +41,7 @@
         @extend %font-bold
         text-transform: uppercase
         color: white
-        font-size: 14 / $root-font-size * 1rem
+        font-size: 12 / $root-font-size * 1rem
         padding: 15 / 18 * 1em 20 / 18 * 1em
         border-radius: 5px
         display: block
@@ -46,3 +49,7 @@
         font-family: inherit
         &:hover
             background-color: $color-primary-hover
+        &:focus
+            box-shadow: 0 0 0 3px rgba(126, 40, 255, .2)
+        @include brk_md
+            font-size: 14 / $root-font-size * 1rem

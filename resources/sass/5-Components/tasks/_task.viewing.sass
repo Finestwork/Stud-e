@@ -1,0 +1,115 @@
+.task-viewing
+    width: 100%
+    background-color: white
+    border-radius: 15px
+    padding: 35px 25px 15px 25px
+    @include brk_md
+        padding-left: 50px
+        padding-right: 50px
+    &__go-back
+        &-icon
+            path
+                fill: #0060ad
+        &-txt
+            color: #0060ad
+        &:hover
+            .task-viewing__go-back-icon
+                path
+                    fill: #0891ff
+            .task-viewing__go-back-txt
+                color: #0891ff
+
+    &__tag
+        &-container
+            margin: 35px 0
+            > div
+                display: inline-block
+                margin-right: 20px
+        &--status,
+        &--task
+            padding: 5px 10px
+            @extend %font-bold
+        &--status
+            margin-top: 20px
+            @include custom_breakpoint(386)
+                margin-top: 0
+        &--task
+            background-color: #ebf9ff
+            color: #03A9F4
+            border: 1px solid #03A9F4
+    &__info
+        &-container
+            color: $txt-primary-2
+        &-title
+            font-size: 25px
+            margin-bottom: 10px
+        &-txt,
+        &-date-created,
+        &-date-due,
+        &-max-score
+            @extend %font-semibold
+            margin-bottom: 15px
+        &-label
+            @extend %font-bold
+    &__teacher
+        &-container
+            margin: 22px 0
+        &-line
+            width: 80%
+            background-color: $form-border-darker
+            height: 2px
+            margin-bottom: 20px
+        &-comment
+            &-title,
+            &-txt
+                color: $txt-primary-2
+        &-comment-title
+            margin-bottom: 5px
+        &-comment-txt
+            @extend %font-semibold
+    &__warning
+        color: #ff0707
+        text-align: center
+        @extend %font-semibold
+        background-color: #ffe7e7
+        width: 100%
+        margin: 20px auto
+        padding: 10px
+        border-radius: 7px
+        @include brk_md
+            width: 80%
+            padding: 10px 0
+    &__bttn-group
+        margin-top: 25px
+        margin-bottom: 20px
+    &__bttn,
+    &__start-quiz-bttn
+        background-color: $color-primary
+        @extend %font-bold
+        font-family: inherit
+        color: white
+        border-radius: 5px
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 3px rgba(127, 42, 255, .3)
+        &:hover
+            background-color: #6913ea
+    &__bttn
+        font-size: 12px
+        padding: 7px 10px
+        @include brk_md
+            font-size: 14px
+    &__start-quiz-bttn
+        font-size: 16px
+        text-transform: uppercase
+        padding: 7px 15px
+
+.status
+    &--default
+        background-color: #06ced8
+        color: white
+        border: 1px solid #06ced8
+    &--missed
+        background-color: #F44336
+        color: white
+        border: 1px solid #F44336

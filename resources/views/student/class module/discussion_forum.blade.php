@@ -27,16 +27,16 @@
                     <div class="col-sm-12 col-md-2 col-lrg-1">
                         <ul class="sidelinks__links-container">
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.modules', 'classUniqueID') }}" class="sidelinks__links">Modules</a>
+                                <a href="{{ route('student.modules') }}" class="sidelinks__links">Modules</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.tasks', 'classUniqueID') }}" class="sidelinks__links">Tasks</a>
+                                <a href="{{ route('student.tasks') }}" class="sidelinks__links">Tasks</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.discussion', 'classUniqueID') }}" class="sidelinks__links link--active">Discussion</a>
+                                <a href="{{ route('student.discussion') }}" class="sidelinks__links link--active">Discussion</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.members', 'classUniqueID') }}" class="sidelinks__links ">Members</a>
+                                <a href="{{ route('student.members') }}" class="sidelinks__links ">Members</a>
                             </li>
                         </ul>
                     </div>
@@ -50,7 +50,7 @@
                                           <path id="Shape" d="M1.28.22A.75.75,0,0,0,.22,1.28l5,5a.75.75,0,0,0,1.061,0l5-5A.75.75,0,0,0,10.22.22L5.75,4.689Z" transform="translate(0 11.5) rotate(-90)" fill="#0D0417"/>
                                         </svg>
                                     </span>
-                                    <a href="{{ route('student.discussion', 'classUniqueID') }}" class="breadcrumbs__link">Discussion board</a>
+                                    <a href="{{ route('student.discussion') }}" class="breadcrumbs__link">Discussion board</a>
                                     <span class="breadcrumbs__arrow">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.5 11.5">
                                           <path id="Shape" d="M1.28.22A.75.75,0,0,0,.22,1.28l5,5a.75.75,0,0,0,1.061,0l5-5A.75.75,0,0,0,10.22.22L5.75,4.689Z" transform="translate(0 11.5) rotate(-90)" fill="#0D0417"/>

@@ -1160,6 +1160,9 @@ ul {
   -webkit-animation: slideInLeft 0.3s 0.3s both linear;
   animation: slideInLeft 0.3s 0.3s both linear;
 }
+.sidebar--fixed .sidebar__extra {
+  padding-bottom: 20px;
+}
 .sidebar--fixed .sidebar__bttn {
   background-color: #ff3e6c;
   margin: 1.25em auto;

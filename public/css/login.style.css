@@ -1,8 +1,8 @@
-.sign-in__registration-txt, .sign-in__title, .sign-in__logo-txt, .form--primary__title, .form--primary__r-lbl, .form--primary__forgot-pw {
+.sign-in__registration-txt, .sign-in__title, .sign-in__logo-txt, .form--primary__title, .form--primary__r-lbl, .form--primary__forgot-pw, .form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
   font-weight: 700;
 }
 
-.sign-in__txt, .form--primary__note--tip, .form--primary__note--optional, .form--primary__note--required, .form--primary__n-lbl, .form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
+.sign-in__txt, .form--primary__note--tip, .form--primary__note--optional, .form--primary__note--required, .form--primary__n-lbl {
   font-weight: 600;
 }
 
@@ -657,6 +657,12 @@ table {
 }
 .form--primary input::placeholder {
   color: #a0a0a0;
+}
+.form--primary__n-lbl {
+  font-family: inherit;
+}
+.form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
+  font-family: inherit;
 }
 .form--primary input[type=email],
 .form--primary input[type=text],

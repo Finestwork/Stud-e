@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="/css/signup.style.css">
 @endsection
 @section('cs-js')
-    <script src="/assets/js/libraries/string-checker.js"></script>
+    <script src="/assets/js/libraries/smooth-scroll.polyfills.js"></script>
+    <script src="/assets/js/helpers/string-checker.js"></script>
 @endsection
 @section('body-content')
     <div class="navbar__logo-only">
@@ -40,8 +41,8 @@
   <path id="Shape" d="M4.22,9.28l-4-4L.207,5.267.2,5.261.194,5.254.187,5.246.182,5.24.174,5.231l0,0-.008-.01,0,0L.151,5.2l0,0L.14,5.186l0,0L.13,5.172l0,0L.12,5.157l0-.006L.111,5.142l0-.007,0-.008L.1,5.118l0-.006L.087,5.1l0,0A.751.751,0,0,1,.235,4.2L4.22.22A.75.75,0,0,1,5.28,1.281L2.561,4H14.75a.75.75,0,0,1,0,1.5H2.561L5.28,8.22A.75.75,0,1,1,4.22,9.28Z"/>
 </svg>
 </span>Go back</a>
-
         <div class="sign-up__page-1">
+            @include('partials.flash message.error')
             <h1 class="heading--sign-up">Choose an account</h1>
             <div class="card--choice">
                 <div class="card__item" id="cardBttn1">
@@ -131,7 +132,7 @@
                         </div>
                         <div class="form--primary__group mb-5">
                             <span class="form--primary__note--required">Required</span>
-                            <label for="adminCodeTxt" class="form--primary__n-lbl">Admin Code: </label>
+                            <label for="adminCodeTxt" class="form--primary__n-lbl">Initial Admin Code: </label>
                             <input type="text" id="adminCodeTxt" placeholder="Place your admin code" name="adminCodeTxt" autocomplete="off">
                             <button class="bttn form--primary__sub-bttn--r" type="button">Generate admin code</button>
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
@@ -145,7 +146,7 @@
         <!-- TEACHER -->
         <div class="form--hidden form--slide-2">
             <h2 class="form--primary__title">Teacher Account</h2>
-            <form action="/signup" method="POST" class="form--primary">
+            <form action="/teacher/signup" method="POST" id="formTeacher" class="form--primary">
                 @csrf
                 <div class="form--primary__2-col">
                     <div class="form--primary__lrg--left">
@@ -184,6 +185,7 @@
                             <input type="email" id="teacherEmailTxt" placeholder="Enter your email" name="teacherEmailTxt" autocomplete="off">
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
                             <p class="form--primary__note--error js-field-email">• Make sure that it is in the correct format (ex. Juan@example.com )</p>
+                            <p class="form--primary__note--error js-field-email-taken">• Your email has already been taken.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
@@ -201,18 +203,13 @@
                             <p class="form--primary__note--error js-password-length">• Your password should be more than 8 characters.</p>
                             <p class="form--primary__note--error_c js-password-not-match">• Password Does not Match</p>
                         </div>
-                        <div class="form--primary__group">
-                            <span class="form--primary__note--optional">Optional</span>
-                            <label for="fromAdminCodeTxt" class="form--primary__n-lbl">Admin Code: </label>
-                            <input type="text" id="fromAdminCodeTxt" placeholder="Place admin code here" name="fromAdminCodeTxt" autocomplete="off">
-                        </div>
                         <div class="form--primary__group mb-5">
                             <span class="form--primary__note--required">Required</span>
-                            <label for="teacherClassCodeTxt" class="form--primary__n-lbl">Class Code: </label>
+                            <label for="teacherClassCodeTxt" class="form--primary__n-lbl">Class code for the subject: </label>
                             <input type="text" id="teacherClassCodeTxt" placeholder="Enter your class code" name="teacherClassCodeTxt" autocomplete="off">
-                            <button class="bttn form--primary__sub-bttn--r" type="button">Generate class code</button>
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
                             <p class="form--primary__note--error js-field-code">• Code should be 6 characters long.</p>
+                            <p class="form--primary__note--error js-field-isCodeValid">• Your code has already been taken.</p>
                         </div>
                     </div>
                 </div>
@@ -222,7 +219,7 @@
         <!-- STUDENT -->
         <div class="form--hidden form--slide-3">
             <h2 class="form--primary__title">Student Account</h2>
-            <form action="/signup" method="POST" class="form--primary">
+            <form action="/student/signup" method="POST" class="form--primary">
                 @csrf
                 <div class="form--primary__2-col">
                     <div class="form--primary__lrg--left">
@@ -254,6 +251,7 @@
                             <label for="studentEmailTxt" class="form--primary__n-lbl">Enter your email: </label>
                             <input type="email" id="studentEmailTxt" placeholder="Enter your email" name="studentEmailTxt" autocomplete="off">
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
+                            <p class="form--primary__note--error js-field-email-taken">• Your email has already been taken.</p>
                             <p class="form--primary__note--error js-field-email">• Make sure that it is in the correct format (ex. Juan@example.com )</p>
                         </div>
                         <div class="form--primary__group">

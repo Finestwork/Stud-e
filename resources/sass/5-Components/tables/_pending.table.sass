@@ -1,0 +1,58 @@
+.table
+    &--pending
+        color: $txt-primary-2
+        width: 1050px
+        @include custom_breakpoint(1180)
+            width: 100%
+        tbody
+            @extend %font-bold
+        tr
+            border-bottom: 2px solid $form-border-light
+        thead
+            border-bottom: 2px solid $form-border-light
+            th
+                padding-bottom: 10px
+        tbody
+            th
+                display: block
+                margin: 15px
+        tbody
+            tr
+                font-size: 14px
+                &:hover
+                    background-color: $form-border-light
+                &:last-of-type
+                    border-bottom: none
+            td
+                vertical-align: middle
+        .table
+            &__row-head,
+            &__link
+                text-align: left
+            &__type,
+            &__start-date,
+            &__duedate,
+            &__score
+                text-align: center
+            &__start-date,
+            &__duedate
+                padding: 0 10px
+            &__checkbox
+                width: 18px
+                height: 18px
+            &__start-date,
+            &__duedate
+                width: 20%
+            &__score
+                width: 8%
+            &__type,
+            &__icon
+                width: 10%
+            &__checkbox
+                margin: auto
+            &__tba
+                text-align: center
+            &__link
+                color: $color-secondary-dark
+                &:hover
+                    color: $color-secondary-hover-d-2

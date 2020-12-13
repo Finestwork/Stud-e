@@ -1,4 +1,4 @@
-
+isDomReady();
 let cardBttn1 = document.getElementById('cardBttn1'),
     cardBttn2 = document.getElementById('cardBttn2'),
     cardBttn3 = document.getElementById('cardBttn3');
@@ -53,33 +53,41 @@ let pastStudentFnameValue = null, pastStudentMnameValue = null,
 let popYBttn = document.getElementById('popYBttn'),
     popNBttn = document.getElementById('popNBttn');
 
+
 //CLICK EVENTS
 cardBttn1.addEventListener('click', function(){
-    addClass(cardBttn1, 'card--active');
-    removeClass(cardBttn2, 'card--active');
-    removeClass(cardBttn3, 'card--active');
-
-    removeClass(formSlide1, 'form--hidden');
-    addClass(formSlide2, 'form--hidden');
-    addClass(formSlide3, 'form--hidden');
+    if(!checkIfAllTeacherFieldsAreEmpty() || !checkIfAllStudentFieldsAreEmpty()){
+        if(confirm("Are you sure want to change your account type?")){
+            resetTeacherFields();
+            resetStudentFields();
+            showAdminAccount();
+        }
+    }else{
+        showAdminAccount();
+    }
 });
 cardBttn2.addEventListener('click', function(){
-    addClass(cardBttn2, 'card--active');
-    removeClass(cardBttn1, 'card--active');
-    removeClass(cardBttn3, 'card--active');
+    if(!checkIfAllAdminFieldsAreEmpty() || !checkIfAllStudentFieldsAreEmpty()){
+        if(confirm("Are you sure want to change your account type?")){
+            resetAdminFields();
+            resetStudentFields();
+            showTeacherAccount();
+        }
+    }else{
+        showTeacherAccount();
+    }
 
-    removeClass(formSlide2, 'form--hidden');
-    addClass(formSlide1, 'form--hidden');
-    addClass(formSlide3, 'form--hidden');
 });
 cardBttn3.addEventListener('click', function(){
-    addClass(cardBttn3, 'card--active');
-    removeClass(cardBttn1, 'card--active');
-    removeClass(cardBttn2, 'card--active');
-
-    removeClass(formSlide3, 'form--hidden');
-    addClass(formSlide2, 'form--hidden');
-    addClass(formSlide1, 'form--hidden');
+    if(!checkIfAllTeacherFieldsAreEmpty() || !checkIfAllAdminFieldsAreEmpty()){
+        if(confirm("Are you sure want to change your account type?")){
+            resetAdminFields();
+            resetTeacherFields();
+            showStudentAccount();
+        }
+    }else{
+        showStudentAccount();
+    }
 });
 adminSubmitBttn.addEventListener('click', checkIfAdminFieldIsValid);
 teacherSubmitBttn.addEventListener('click', checkIfTeacherFieldIsValid);
@@ -335,6 +343,13 @@ teacherEmailTxt.addEventListener('keyup', function(e){
         addClass(this, 'form-error');
     }
 });
+teacherEmailTxt.addEventListener('keydown', function(e){
+    if(isStringEqual(pastTeacherEmailValue, this) && !doesFieldContainsValidEmail(this.value)){
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+});
 teacherPasswordTxt.addEventListener('keyup', function(e){
     if(isStringEqual(pastTeacherPWValue, this) && isPasswordTheSame(this, teacherConfirmPasswordTxt)){
         removeClass(this, 'form-error');
@@ -360,7 +375,13 @@ teacherClassCodeTxt.addEventListener('keyup', function(e){
         addClass(this, 'form-error');
     }
 });
-
+teacherClassCodeTxt.addEventListener('keydown', function(e){
+    if(isCodeValid(this)) {
+        removeClass(this, 'form-error');
+    }else{
+        addClass(this, 'form-error');
+    }
+});
 //ON BLUR
 teacherFnameTxt.onblur = function(){
     if(isFieldBlank(this)){
@@ -416,6 +437,7 @@ teacherEmailTxt.onblur = function(){
     }else{
         addClass(this, 'form-error');
     }
+    fetchEmail(this);
 }
 teacherPasswordTxt.onblur = function(){
     if(isPasswordTheSame(this, teacherConfirmPasswordTxt)){
@@ -446,10 +468,12 @@ teacherConfirmPasswordTxt.onblur = function(){
     }
 }
 teacherClassCodeTxt.onblur = function() {
-    if(isCodeValid(adminCodeTxt)) {
-        removeClass(adminCodeTxt, 'form-error');
+    //Check if Code does exist
+    fetchClassCode(teacherClassCodeTxt);
+    if(isCodeValid(teacherClassCodeTxt)) {
+        removeClass(teacherClassCodeTxt, 'form-error');
     }else{
-        addClass(adminCodeTxt, 'form-error');
+        addClass(teacherClassCodeTxt, 'form-error');
     }
 }
 
@@ -591,6 +615,7 @@ studentEmailTxt.onblur = function(){
     }else{
         addClass(this, 'form-error');
     }
+    fetchEmail(this);
 }
 studentPasswordTxt.onblur = function(){
     if(isPasswordTheSame(this, studentConfirmPasswordTxt)){
@@ -628,6 +653,11 @@ studentClassCodeTxt.onblur = function() {
     }
 }
 
+window.onbeforeunload = function(){
+    if(!checkIfAllAdminFieldsAreEmpty() || !checkIfAllTeacherFieldsAreEmpty() || !checkIfAllStudentFieldsAreEmpty()){
+        return 'true';
+    }
+}
 
 
 //FUNCTIONS
@@ -707,7 +737,7 @@ function checkIfTeacherFieldIsValid(){
     }else{
         isLNameEmpty = false;
     }
-    if(!doesFieldContainsNumber(teacherSubjectTxt)){
+    if(!isStringEmpty(teacherClassCodeTxt)){
         addClass(teacherSubjectTxt, 'form-error');
         isSubjectEmpty = true;
     }else{
@@ -736,8 +766,8 @@ function checkIfTeacherFieldIsValid(){
 
     if(!isFNameEmpty && !isMNameEmpty && !isLNameEmpty && !isEmailEmpty
         && !isPasswordEmpty && !isCodeEmpty && isSubjectEmpty){
-        //Fields are okay
-        // Don't forget to make admin code null because it is optional
+        window.onbeforeunload = null;
+        teacherSubmitBttn.setAttribute('type', 'submit');
     }else{
         //GET POSSIBLE FAULTY VALUES
         pastTeacherFnameValue = teacherFnameTxt.value;
@@ -794,7 +824,8 @@ function checkIfStudentFieldIsValid(){
 
     if(!isFNameEmpty && !isMNameEmpty && !isLNameEmpty && !isEmailEmpty
         && !isPasswordEmpty && !isCodeEmpty){
-        //Fields are okay
+        window.onbeforeunload = null;
+        studentSubmitBttn.setAttribute('type', 'submit');
     }else{
         //GET POSSIBLE FAULTY VALUES
         pastStudentFnameValue = studentFnameTxt.value;
@@ -818,7 +849,47 @@ function showElement(el, cl){
 function hideElement(el, cl){
     el.parentNode.querySelector(cl).style.display = 'none';
 }
+function scrolling(){
+    let scroll = new SmoothScroll();
+    let element = document.querySelector('.form--primary__main-container')
+    let options = { speed: 2000, easing: 'easeOutQuart' , offset: 20};
+    setTimeout(function(){
+        scroll.animateScroll(element,element, options);
+    },250);
+}
+function showAdminAccount(){
+    addClass(cardBttn1, 'card--active');
+    removeClass(cardBttn2, 'card--active');
+    removeClass(cardBttn3, 'card--active');
 
+    removeClass(formSlide1, 'form--hidden');
+    addClass(formSlide2, 'form--hidden');
+    addClass(formSlide3, 'form--hidden');
+    scrolling();
+}
+function showTeacherAccount(){
+    addClass(cardBttn2, 'card--active');
+    removeClass(cardBttn1, 'card--active');
+    removeClass(cardBttn3, 'card--active');
+
+    removeClass(formSlide2, 'form--hidden');
+    addClass(formSlide1, 'form--hidden');
+    addClass(formSlide3, 'form--hidden');
+    scrolling();
+}
+function showStudentAccount(){
+    addClass(cardBttn3, 'card--active');
+    removeClass(cardBttn1, 'card--active');
+    removeClass(cardBttn2, 'card--active');
+
+    removeClass(formSlide3, 'form--hidden');
+    addClass(formSlide2, 'form--hidden');
+    addClass(formSlide1, 'form--hidden');
+    scrolling();
+}
+function makeFieldEmpty(el){
+    el.value = '';
+}
 //VALIDATION
 function isFieldBlank(el){
     if(isStringEmpty(el.value)){
@@ -884,7 +955,56 @@ function isCodeValid(el1){
     }
     return false;
 }
-
+function resetAdminFields(){
+    makeFieldEmpty(adminFnameTxt);
+    makeFieldEmpty(adminMnameTxt);
+    makeFieldEmpty(adminLnameTxt);
+    makeFieldEmpty(adminEmailTxt);
+    makeFieldEmpty(adminPasswordTxt);
+    makeFieldEmpty(adminConfirmPasswordTxt);
+    makeFieldEmpty(adminCodeTxt);
+    pastAdminFnameValue = null;
+    pastAdminMnameValue = null;
+    pastAdminLnameValue = null;
+    pastAdminEmailValue = null;
+    pastAdminPWValue = null;
+    pastAdminConPWValue = null;
+    pastAdminCodeValue = null;
+}
+function resetTeacherFields(){
+    makeFieldEmpty(teacherFnameTxt);
+    makeFieldEmpty(teacherMnameTxt);
+    makeFieldEmpty(teacherLnameTxt);
+    makeFieldEmpty(teacherSubjectTxt);
+    makeFieldEmpty(teacherEmailTxt);
+    makeFieldEmpty(teacherPasswordTxt);
+    makeFieldEmpty(teacherConfirmPasswordTxt);
+    makeFieldEmpty(teacherClassCodeTxt);
+    pastTeacherFnameValue = null;
+    pastTeacherMnameValue = null;
+    pastTeacherLnameValue = null;
+    pastTeacherSubjValue = null;
+    pastTeacherEmailValue = null;
+    pastTeacherPWValue = null;
+    pastTeacherConPWValue = null;
+    pastTeacherClassValue = null;
+}
+function resetStudentFields(){
+    makeFieldEmpty(studentFnameTxt);
+    makeFieldEmpty(studentMnameTxt);
+    makeFieldEmpty(studentLnameTxt);
+    makeFieldEmpty(studentEmailTxt);
+    makeFieldEmpty(studentPasswordTxt);
+    makeFieldEmpty(studentConfirmPasswordTxt);
+    makeFieldEmpty(studentClassCodeTxt);
+    pastStudentFnameValue = null;
+    pastStudentMnameValue = null;
+    pastStudentLnameValue = null;
+    pastStudentEmailValue = null;
+    pastStudentPWValue = null;
+    pastStudentConPWValue = null;
+    pastStudentClassValue = null;
+}
 //CLEAR FIELDS BEFORE SWITCHING
 function popYFunction(){
     console.log('yes');
@@ -893,9 +1013,98 @@ function popNFunction(){
     console.log('no');
 }
 
+function checkIfAllAdminFieldsAreEmpty(){
+    if (!isStringEmpty(adminFnameTxt.value) || !isStringEmpty(adminMnameTxt.value) || !isStringEmpty(adminLnameTxt.value) || !isStringEmpty(adminEmailTxt.value) || !isStringEmpty(adminPasswordTxt.value) || !isStringEmpty(adminConfirmPasswordTxt.value) || !isStringEmpty(adminCodeTxt.value)){
+        return false;
+    }else{
+        return true;
+    }
+}
+function checkIfAllTeacherFieldsAreEmpty(){
+    if (!isStringEmpty(teacherFnameTxt.value) || !isStringEmpty(teacherMnameTxt.value) || !isStringEmpty(teacherLnameTxt.value) || !isStringEmpty(teacherSubjectTxt.value) || !isStringEmpty(teacherEmailTxt.value) || !isStringEmpty(teacherPasswordTxt.value) || !isStringEmpty(teacherConfirmPasswordTxt.value) || !isStringEmpty(teacherClassCodeTxt.value)){
+        return false;
+    }else{
+        return true;
+    }
+}
+function checkIfAllStudentFieldsAreEmpty(){
+    if (!isStringEmpty(studentFnameTxt.value) || !isStringEmpty(studentMnameTxt.value) || !isStringEmpty(studentLnameTxt.value) || !isStringEmpty(studentEmailTxt.value) || !isStringEmpty(studentPasswordTxt.value) || !isStringEmpty(studentConfirmPasswordTxt.value) || !isStringEmpty(studentClassCodeTxt.value)){
+        return false;
+    }else{
+        return true;
+    }
+}
 
-//
-// 1. Before switching ask user first
-//     - Detect if one of the fields has a value
-//         -if yes then pop if no then no more popup
-//     - Reset automatically all the fields
+function fetchClassCode(el){
+    let classCodeElement = document.querySelector('.js-field-isCodeValid');
+    let url = '/checkClassCode';
+    let jsonData = JSON.stringify({inputCode: el.value});
+    const options = {
+        method: 'POST',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: jsonData
+    };
+    fetch(url, options)
+        .then((response)=>{
+            return response.text();
+        })
+        .then((body)=>{
+            if(body === 'true'){
+                classCodeElement.style.display = 'block';
+                addClass(el, 'form-error');
+            }else{
+                classCodeElement.style.display = 'none';
+                removeClass(el, 'form-error');
+            }
+    })
+        .catch(error=>{
+        console.log(error);
+    });
+}
+function fetchEmail(el){
+    let classEmailElement = el.parentNode.querySelector('.js-field-email-taken');
+    let url = '/checkEmail';
+    let jsonData = JSON.stringify({inputEmail: el.value});
+    const options = {
+        method: 'POST',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: jsonData
+    };
+    fetch(url, options)
+        .then((response)=>{
+            return response.text();
+        })
+        .then((body)=>{
+            if(body === 'true'){
+                classEmailElement.style.display = 'none';
+                removeClass(el, 'form-error');
+            }else{
+                classEmailElement.style.display = 'block';
+                addClass(el, 'form-error');
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        });
+}
+
+//FINISH THE DATABASE FIRST
+function ready(){
+    console.log('yep I am ready');
+}
+function isDomReady(){
+    let interval = setInterval(function(){
+        if(document.readyState === 'complete'){
+            clearInterval(interval);
+            ready();
+        }
+    }, 100);
+}

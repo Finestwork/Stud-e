@@ -24,7 +24,7 @@
             <div class="sidebar__line"></div>
 
             @if(Request::path() == 'student')
-                <a class="sidebar__icon-wrapper sidebar--active" href="/student">
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.home') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="21" height="19.041" viewBox="0 0 21 19.041">
                 <path id="Fill_1184" data-name="Fill 1184" d="M15.749,19.041H5.25a2.643,2.643,0,0,1-2.625-2.654V7.35l-1.235.908a.862.862,0,0,1-.514.169.876.876,0,0,1-.709-.364A.893.893,0,0,1,.36,6.827L8.955.508a2.6,2.6,0,0,1,3.089,0l8.595,6.319a.885.885,0,0,1-.515,1.6.86.86,0,0,1-.514-.169L18.374,7.35v9.038A2.643,2.643,0,0,1,15.749,19.041ZM9.625,9.312h1.75A2.642,2.642,0,0,1,14,11.965v5.308h1.75a.881.881,0,0,0,.875-.885V6.064l-5.61-4.126a.869.869,0,0,0-1.03,0L4.374,6.064V16.387a.881.881,0,0,0,.875.885H7V11.965A2.642,2.642,0,0,1,9.625,9.312Zm0,1.769a.881.881,0,0,0-.875.884v5.308h3.5V11.965a.881.881,0,0,0-.875-.884Z" fill="#172239"/>
@@ -33,7 +33,7 @@
                     <span class="sidebar__icon-txt">Home</span>
                 </a>
             @else
-                <a class="sidebar__icon-wrapper" href="/student">
+                <a class="sidebar__icon-wrapper" href="{{ route('student.home') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="21" height="19.041" viewBox="0 0 21 19.041">
                 <path id="Fill_1184" data-name="Fill 1184" d="M15.749,19.041H5.25a2.643,2.643,0,0,1-2.625-2.654V7.35l-1.235.908a.862.862,0,0,1-.514.169.876.876,0,0,1-.709-.364A.893.893,0,0,1,.36,6.827L8.955.508a2.6,2.6,0,0,1,3.089,0l8.595,6.319a.885.885,0,0,1-.515,1.6.86.86,0,0,1-.514-.169L18.374,7.35v9.038A2.643,2.643,0,0,1,15.749,19.041ZM9.625,9.312h1.75A2.642,2.642,0,0,1,14,11.965v5.308h1.75a.881.881,0,0,0,.875-.885V6.064l-5.61-4.126a.869.869,0,0,0-1.03,0L4.374,6.064V16.387a.881.881,0,0,0,.875.885H7V11.965A2.642,2.642,0,0,1,9.625,9.312Zm0,1.769a.881.881,0,0,0-.875.884v5.308h3.5V11.965a.881.881,0,0,0-.875-.884Z" fill="#172239"/>
@@ -43,9 +43,9 @@
                 </a>
             @endif
 
-            @if(Request::is('student/class/*'))
-                <a class="sidebar__icon-wrapper sidebar--active" href="/student/class">
-                    <span class="sidebar__icon-stroke-box">
+            @if(Request::path() =='student/class')
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.class') }}">
+        <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
               <g id="Group_26" data-name="Group 26" transform="translate(0.75 -3.56)">
                 <g id="Group_295" data-name="Group 295" transform="translate(0 4.31)">
@@ -60,7 +60,7 @@
                     <span class="sidebar__icon-txt">Classes</span>
                 </a>
             @else
-                <a class="sidebar__icon-wrapper" href="/student/class">
+                <a class="sidebar__icon-wrapper" href="{{ route('student.class') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
               <g id="Group_26" data-name="Group 26" transform="translate(0.75 -3.56)">
@@ -78,7 +78,7 @@
             @endif
 
             @if(Request::path() == 'student/task')
-                <a class="sidebar__icon-wrapper sidebar--active" href="/student/task">
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.task') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
               <path id="Fill_1009" data-name="Fill 1009" d="M4.9,21H.947A.948.948,0,0,1,0,20.053V16.1a2.819,2.819,0,0,1,.833-2.009L14.094.832a2.841,2.841,0,0,1,4.018,0l2.058,2.057a2.846,2.846,0,0,1,0,4.019L6.908,20.167A2.829,2.829,0,0,1,4.9,21ZM12.314,5.29h0L2.172,15.432a.941.941,0,0,0-.278.67v3h3a.943.943,0,0,0,.671-.278L15.71,8.687l-3.4-3.4Zm3.789-3.4a.943.943,0,0,0-.67.277l-1.779,1.78,3.4,3.4,1.78-1.78a.95.95,0,0,0,0-1.338L16.772,2.171A.94.94,0,0,0,16.1,1.894Z" fill="#172239"/>
@@ -87,7 +87,7 @@
                     <span class="sidebar__icon-txt">Tasks</span>
                 </a>
             @else
-                <a class="sidebar__icon-wrapper" href="/student/task">
+                <a class="sidebar__icon-wrapper" href="{{ route('student.task') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="21" height="21" viewBox="0 0 21 21">
               <path id="Fill_1009" data-name="Fill 1009" d="M4.9,21H.947A.948.948,0,0,1,0,20.053V16.1a2.819,2.819,0,0,1,.833-2.009L14.094.832a2.841,2.841,0,0,1,4.018,0l2.058,2.057a2.846,2.846,0,0,1,0,4.019L6.908,20.167A2.829,2.829,0,0,1,4.9,21ZM12.314,5.29h0L2.172,15.432a.941.941,0,0,0-.278.67v3h3a.943.943,0,0,0,.671-.278L15.71,8.687l-3.4-3.4Zm3.789-3.4a.943.943,0,0,0-.67.277l-1.779,1.78,3.4,3.4,1.78-1.78a.95.95,0,0,0,0-1.338L16.772,2.171A.94.94,0,0,0,16.1,1.894Z" fill="#172239"/>
@@ -98,7 +98,7 @@
             @endif
 
             @if(Request::path() == 'student/grade')
-                <a class="sidebar__icon-wrapper sidebar--active" href="/student/grades">
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.grade') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="21.003" height="20.369" viewBox="0 0 21.003 20.369">
               <path id="Fill_1162" data-name="Fill 1162" d="M15.893,20.369a1.745,1.745,0,0,1-.824-.209L10.5,17.744,5.934,20.16a1.745,1.745,0,0,1-.824.209,1.772,1.772,0,0,1-1.355-.639,1.749,1.749,0,0,1-.387-1.437l.86-5.164L.53,9.457A1.751,1.751,0,0,1,.091,7.641a1.761,1.761,0,0,1,1.42-1.207l5.11-.766L8.915.992a1.765,1.765,0,0,1,3.173,0l2.293,4.676,5.111.766a1.78,1.78,0,0,1,.981,3.023l-3.7,3.672.86,5.164a1.749,1.749,0,0,1-.387,1.437A1.772,1.772,0,0,1,15.893,20.369ZM10.5,15.734h0l5.39,2.852L14.88,12.512l4.351-4.32-6.026-.9L10.5,1.777,7.8,7.289l-6.026.9,4.351,4.32L5.111,18.586l5.39-2.852Z" fill="#172239"/>
@@ -107,7 +107,7 @@
                     <span class="sidebar__icon-txt">Grades</span>
                 </a>
             @else
-                <a class="sidebar__icon-wrapper" href="/student/grades">
+                <a class="sidebar__icon-wrapper" href="{{ route('student.grade') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="21.003" height="20.369" viewBox="0 0 21.003 20.369">
               <path id="Fill_1162" data-name="Fill 1162" d="M15.893,20.369a1.745,1.745,0,0,1-.824-.209L10.5,17.744,5.934,20.16a1.745,1.745,0,0,1-.824.209,1.772,1.772,0,0,1-1.355-.639,1.749,1.749,0,0,1-.387-1.437l.86-5.164L.53,9.457A1.751,1.751,0,0,1,.091,7.641a1.761,1.761,0,0,1,1.42-1.207l5.11-.766L8.915.992a1.765,1.765,0,0,1,3.173,0l2.293,4.676,5.111.766a1.78,1.78,0,0,1,.981,3.023l-3.7,3.672.86,5.164a1.749,1.749,0,0,1-.387,1.437A1.772,1.772,0,0,1,15.893,20.369ZM10.5,15.734h0l5.39,2.852L14.88,12.512l4.351-4.32-6.026-.9L10.5,1.777,7.8,7.289l-6.026.9,4.351,4.32L5.111,18.586l5.39-2.852Z" fill="#172239"/>
@@ -118,7 +118,7 @@
             @endif
 
             @if(Request::path() == 'student/reviewer')
-                <a class="sidebar__icon-wrapper sidebar--active" href="/student/reviewer">
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.reviewer') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="14.25" height="19" viewBox="0 0 14.25 19">
               <path id="Fill_1125" data-name="Fill 1125" d="M11.875,19h-9.5A2.378,2.378,0,0,1,0,16.625V2.375A2.378,2.378,0,0,1,2.375,0H7.916a.791.791,0,0,1,.56.232l5.542,5.541a.786.786,0,0,1,.231.56V16.625A2.378,2.378,0,0,1,11.875,19ZM2.375,1.583a.793.793,0,0,0-.792.792v14.25a.793.793,0,0,0,.792.792h9.5a.793.793,0,0,0,.792-.792v-9.5H9.5A2.378,2.378,0,0,1,7.125,4.75V1.583ZM8.708,2.7V4.75a.792.792,0,0,0,.792.791h2.047ZM9.5,15.042H4.75a.792.792,0,1,1,0-1.583H9.5a.792.792,0,0,1,0,1.583ZM7.125,11.875H4.75a.792.792,0,1,1,0-1.583H7.125a.792.792,0,0,1,0,1.583Z" fill="#172239"/>
@@ -127,7 +127,7 @@
                     <span class="sidebar__icon-txt">Reviewer</span>
                 </a>
             @else
-                <a class="sidebar__icon-wrapper" href="/student/reviewer">
+                <a class="sidebar__icon-wrapper" href="{{ route('student.reviewer') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="14.25" height="19" viewBox="0 0 14.25 19">
               <path id="Fill_1125" data-name="Fill 1125" d="M11.875,19h-9.5A2.378,2.378,0,0,1,0,16.625V2.375A2.378,2.378,0,0,1,2.375,0H7.916a.791.791,0,0,1,.56.232l5.542,5.541a.786.786,0,0,1,.231.56V16.625A2.378,2.378,0,0,1,11.875,19ZM2.375,1.583a.793.793,0,0,0-.792.792v14.25a.793.793,0,0,0,.792.792h9.5a.793.793,0,0,0,.792-.792v-9.5H9.5A2.378,2.378,0,0,1,7.125,4.75V1.583ZM8.708,2.7V4.75a.792.792,0,0,0,.792.791h2.047ZM9.5,15.042H4.75a.792.792,0,1,1,0-1.583H9.5a.792.792,0,0,1,0,1.583ZM7.125,11.875H4.75a.792.792,0,1,1,0-1.583H7.125a.792.792,0,0,1,0,1.583Z" fill="#172239"/>
@@ -138,7 +138,7 @@
             @endif
 
             @if(Request::path() == 'student.schedule')
-                <a class="sidebar__icon-wrapper sidebar--active" href="/student/schedule">
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.schedule') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
               <path id="Shape" d="M2.829,18A2.832,2.832,0,0,1,0,15.171V4.886A2.833,2.833,0,0,1,2.571,2.069V.771a.771.771,0,0,1,1.543,0V2.057H8.229V.771a.771.771,0,1,1,1.543,0V2.057h4.115V.771a.771.771,0,1,1,1.543,0v1.3A2.833,2.833,0,0,1,18,4.886V15.171A2.832,2.832,0,0,1,15.171,18ZM1.543,15.171a1.288,1.288,0,0,0,1.286,1.286H15.171a1.288,1.288,0,0,0,1.286-1.286V8.229H1.543ZM16.457,6.686v-1.8A1.288,1.288,0,0,0,15.171,3.6H2.829A1.288,1.288,0,0,0,1.543,4.886v1.8Z" fill="#172239"/>
@@ -147,7 +147,7 @@
                     <span class="sidebar__icon-txt">Schedule</span>
                 </a>
             @else
-                <a class="sidebar__icon-wrapper" href="/student/schedule">
+                <a class="sidebar__icon-wrapper" href="{{ route('student.schedule') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18">
               <path id="Shape" d="M2.829,18A2.832,2.832,0,0,1,0,15.171V4.886A2.833,2.833,0,0,1,2.571,2.069V.771a.771.771,0,0,1,1.543,0V2.057H8.229V.771a.771.771,0,1,1,1.543,0V2.057h4.115V.771a.771.771,0,1,1,1.543,0v1.3A2.833,2.833,0,0,1,18,4.886V15.171A2.832,2.832,0,0,1,15.171,18ZM1.543,15.171a1.288,1.288,0,0,0,1.286,1.286H15.171a1.288,1.288,0,0,0,1.286-1.286V8.229H1.543ZM16.457,6.686v-1.8A1.288,1.288,0,0,0,15.171,3.6H2.829A1.288,1.288,0,0,0,1.543,4.886v1.8Z" fill="#172239"/>

@@ -123,12 +123,15 @@
     input::placeholder
         color: $form-darker
 
-    &__n-lbl,
+    &__n-lbl
+        font-family: inherit
+        @extend %font-semibold
     &__bttn,
     &__choice-bttn,
     &__sub-bttn,
     &__sub-bttn--r
-        @extend %font-semibold
+        font-family: inherit
+        @extend %font-bold
     &__r-lbl,
     &__forgot-pw
         @extend %font-bold
@@ -197,7 +200,6 @@
         text-transform: uppercase
         cursor: pointer
         border: none
-        @extend %font-semibold
         &:focus
             outline: none
             box-shadow: 0 0 0 4px $color-primary-outline

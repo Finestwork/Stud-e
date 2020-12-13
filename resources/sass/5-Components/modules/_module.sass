@@ -11,8 +11,9 @@
         background-color: white
         border-radius: 9px
         overflow: hidden
-        margin-right: 20px
         margin-bottom: 20px
+        @include brk_md
+            margin-right: 20px
         &-bottom
             margin: 0 15px 0 15px
             height: 0
@@ -45,7 +46,7 @@
     //BOTTOM
     &__separator
         background-color: #53565b
-        height: 3px
+        height: 2px
         margin-top: 5px
         margin-bottom: 20px
         border-radius: 30px
@@ -76,15 +77,17 @@
             transition-delay: .1s
             transform-origin: right
     &__task-label-container
-        margin-top: 20px
+        margin-top: 40px
+        margin-bottom: 25px
         @extend %display_flex
         -webkit-flex-direction: column
         flex-direction: column
-        width: 410px
+        @include brk_md
+            width: 410px
     &__task-title
         font-size: 22px
         position: relative
-        color: #0186FB
+        color: $color-primary-dark
         z-index: 1
         text-transform: uppercase
         margin-bottom: 10px
@@ -92,22 +95,18 @@
             content: ''
             position: absolute
             width: 86%
-            height: 11px
+            height: 3px
             bottom: 2px
             z-index: -1
-            background-color: #E4F2FF
+            background-color: $color-primary-dark
         @include brk_lrg
             font-size: 25px
-            &::before
-                height: 14px
     &__task-link
         color: #53628e
         @extend %font-bold
         position: relative
         margin: 8px 0
         font-size: 14px
-        @include brk_lrg
-            font-size: 16px
         &:hover
             color: $color-secondary
 .container--active

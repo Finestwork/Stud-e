@@ -1099,19 +1099,20 @@ ul {
   align-items: center;
   text-transform: uppercase;
   font-family: "Nunito", sans-serif;
-  color: #6583fe;
-  background-color: #f3f5fd;
+  color: #828282;
+  background-color: #f3f3f3;
   padding: 5px 15px;
+  outline: none;
 }
 .bttn-filter:hover {
-  background-color: #e2e7fd;
+  background-color: #efebeb;
 }
 .bttn-filter__icon {
   width: 25px;
   margin-right: 8px;
 }
 .bttn-filter__icon path {
-  fill: #6583fe;
+  fill: #828282;
 }
 
 .selection--primary {
@@ -1120,8 +1121,8 @@ ul {
   position: relative;
   margin: 10px 0;
 }
-.selection--primary__top, .selection--primary__list-container {
-  border: 1px solid #e2e7fd;
+.selection--primary__list-container {
+  border: 1px solid #eeeeef;
 }
 .selection--primary__top {
   -webkit-justify-content: space-between;
@@ -1129,10 +1130,16 @@ ul {
   -webkit-align-items: center;
   align-items: center;
   padding: 5px 15px;
-  background-color: #e2e7fd;
+  background-color: #f3f3f3;
+}
+@media only screen and (min-width: 48em) {
+  .selection--primary__top {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 }
 .selection--primary__top:hover {
-  background-color: #d5ddff;
+  background-color: #efebeb;
 }
 .selection--primary__list-container {
   display: none;
@@ -1143,22 +1150,26 @@ ul {
 }
 .selection--primary__txt {
   font-size: 14px;
-  color: #6583fe;
+  color: #868b9e;
 }
 .selection--primary__icon {
-  width: 14px;
+  min-width: 14px;
+  margin-left: 10px;
+}
+.selection--primary__icon path {
+  fill: #868b9e;
 }
 .selection--primary__list-item {
   text-align: center;
   padding: 7px;
-  color: #6583fe;
+  color: #868b9e;
   font-size: 14px;
 }
 .selection--primary__list-item:hover {
-  background-color: #f1f3fb;
+  background-color: #eeeeef;
 }
 .selection--primary__label {
-  color: #828cb5;
+  color: #828282;
 }
 
 .selection--active + .selection--primary__list-container {
@@ -1223,6 +1234,9 @@ ul {
   transition: width 0.3s ease-in-out;
   -webkit-animation: slideInLeft 0.3s 0.3s both linear;
   animation: slideInLeft 0.3s 0.3s both linear;
+}
+.sidebar--fixed .sidebar__extra {
+  padding-bottom: 20px;
 }
 .sidebar--fixed .sidebar__bttn {
   background-color: #ff3e6c;
@@ -1434,6 +1448,10 @@ ul {
 }
 .table__start-date, .table__duedate {
   padding: 0 10px;
+}
+.table__checkbox-box {
+  width: 18px;
+  height: 18px;
 }
 .table__score {
   width: 8%;

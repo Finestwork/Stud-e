@@ -2,11 +2,11 @@
   font-weight: 800;
 }
 
-.steps__message--t, .steps__message--b, .form--primary__title, .form--primary__r-lbl, .form--primary__forgot-pw, .heading--sign-up, .heading--secondary {
+.steps__message--t, .steps__message--b, .form--primary__title, .form--primary__r-lbl, .form--primary__forgot-pw, .form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r, .heading--sign-up, .heading--secondary {
   font-weight: 700;
 }
 
-.popup__message, .form--primary__note--tip, .form--primary__note--optional, .form--primary__note--required, .form--primary__n-lbl, .form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r, .card--choice__txt, .learn-more__txt, .bttn--warning, .bttn--txt {
+.popup__message, .flash--error, .form--primary__note--tip, .form--primary__note--optional, .form--primary__note--required, .form--primary__n-lbl, .card--choice__txt, .learn-more__txt, .bttn--warning, .bttn--txt {
   font-weight: 600;
 }
 
@@ -931,6 +931,12 @@ table {
 .form--primary input::placeholder {
   color: #a0a0a0;
 }
+.form--primary__n-lbl {
+  font-family: inherit;
+}
+.form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
+  font-family: inherit;
+}
 .form--primary input[type=email],
 .form--primary input[type=text],
 .form--primary input[type=password], .form--primary__bttn, .form--primary__choice-bttn {
@@ -1125,6 +1131,21 @@ table {
 
 .form--hidden--active {
   display: block;
+}
+
+.flash--error {
+  color: #f92121;
+  background-color: #ffd9d9;
+  text-align: center;
+  padding: 15px 0;
+  margin: 25px 0;
+  border-radius: 8px;
+  font-size: 14px;
+}
+@media only screen and (min-width: 48em) {
+  .flash--error {
+    font-size: 16px;
+  }
 }
 
 .popup__bg {

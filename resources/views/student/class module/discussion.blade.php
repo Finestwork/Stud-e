@@ -1,7 +1,7 @@
 @extends('partials.base')
 
 @section('title')
-    Discussion - Psychology with Drugs, HIV/AIDS, and SARS Education
+    Discussions - Psychology with Drugs, HIV/AIDS, and SARS Education
 @endsection
 
 @section('cs-css')
@@ -27,16 +27,16 @@
                     <div class="col-sm-12 col-md-2 col-lrg-1">
                         <ul class="sidelinks__links-container">
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.modules', 'classUniqueID') }}" class="sidelinks__links">Modules</a>
+                                <a href="{{ route('student.modules') }}" class="sidelinks__links">Modules</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.tasks', 'classUniqueID') }}" class="sidelinks__links">Tasks</a>
+                                <a href="{{ route('student.tasks') }}" class="sidelinks__links">Tasks</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.discussion', 'classUniqueID') }}" class="sidelinks__links link--active">Discussion</a>
+                                <a href="{{ route('student.discussion') }}" class="sidelinks__links link--active">Discussion</a>
                             </li>
                             <li class="sidelinks__links-item">
-                                <a href="{{ route('student.members', 'classUniqueID') }}" class="sidelinks__links ">Members</a>
+                                <a href="{{ route('student.members') }}" class="sidelinks__links ">Members</a>
                             </li>
                         </ul>
                     </div>
@@ -167,7 +167,7 @@
                                         <div class="forum__side-wrapper">
                                             <h2 class="forum__side-label">Welcome to discussion board</h2>
                                             <p class="forum__side-txt">Got concerns? You can start a class discussion here.</p>
-                                            <button href="#" class="bttn bttn--tertiary--ghost forum__bttn">Start a thread</button>
+                                            <a href="{{ route('discussion.create') }}" class="bttn bttn--tertiary--ghost forum__bttn">Start a thread</a>
                                         </div>
                                     </div>
                                 </div>

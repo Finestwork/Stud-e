@@ -618,7 +618,7 @@ ul {
   border: 1px solid #ff3e6c;
   color: #ff3e6c;
   text-transform: uppercase;
-  padding: 0.5em 2em;
+  padding: 0.8em 2em;
   font-family: inherit;
   outline: none;
   background-color: inherit;
@@ -1170,6 +1170,9 @@ ul {
   -webkit-animation: slideInLeft 0.3s 0.3s both linear;
   animation: slideInLeft 0.3s 0.3s both linear;
 }
+.sidebar--fixed .sidebar__extra {
+  padding-bottom: 20px;
+}
 .sidebar--fixed .sidebar__bttn {
   background-color: #ff3e6c;
   margin: 1.25em auto;
@@ -1377,7 +1380,7 @@ ul {
 }
 .forum__side-txt {
   font-size: 14px;
-  margin-bottom: 8px;
+  margin-bottom: 15px;
 }
 @media only screen and (min-width: 64em) {
   .forum__side-txt {

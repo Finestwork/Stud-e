@@ -6,11 +6,11 @@
   font-weight: 800;
 }
 
-.pricing-table--secondary--colored__price, .pricing-table--secondary__price, .steps__message--t, .steps__message--b, .form--primary__title, .form--primary__r-lbl, .form--primary__forgot-pw {
+.pricing-table--secondary--colored__price, .pricing-table--secondary__price, .steps__message--t, .steps__message--b, .form--primary__title, .form--primary__r-lbl, .form--primary__forgot-pw, .form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
   font-weight: 700;
 }
 
-.footer--secondary__link, .subscription__txt, .pricing-table--secondary--colored__list-txt, .pricing-table--secondary__list-txt, .form--primary__note--tip, .form--primary__note--optional, .form--primary__note--required, .form--primary__n-lbl, .form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
+.footer--secondary__link, .subscription__txt, .pricing-table--secondary--colored__list-txt, .pricing-table--secondary__list-txt, .form--primary__note--tip, .form--primary__note--optional, .form--primary__note--required, .form--primary__n-lbl {
   font-weight: 600;
 }
 
@@ -535,7 +535,7 @@ table {
   border: 1px solid #ff3e6c;
   color: #ff3e6c;
   text-transform: uppercase;
-  padding: 0.5em 2em;
+  padding: 0.8em 2em;
   font-family: inherit;
   outline: none;
   background-color: inherit;
@@ -690,6 +690,12 @@ table {
 }
 .form--primary input::placeholder {
   color: #a0a0a0;
+}
+.form--primary__n-lbl {
+  font-family: inherit;
+}
+.form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
+  font-family: inherit;
 }
 .form--primary input[type=email],
 .form--primary input[type=text],

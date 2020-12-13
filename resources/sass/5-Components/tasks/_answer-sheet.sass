@@ -1,0 +1,144 @@
+.answer-sheet
+    background-color: white
+    width: 100%
+    border-radius: 10px
+    padding: 30px
+    margin-bottom: 100px
+    display: none
+    @include brk_md
+        padding: 40px 50px
+    &--active
+        display: block
+    &__item
+        list-style: decimal
+        @extend %font-bold
+        color: $txt-primary-2
+        margin-left: 35px
+        margin-bottom: 50px
+        @include brk_md
+            margin-left: 35px
+        &:last-of-type
+            margin-bottom: 0
+    &__done-textarea,
+    &__textarea
+        width: 100%
+        max-width: 550px
+        height: 140px
+        margin-top: 15px
+        border: none
+        resize: none
+        border-bottom: 5px solid transparent
+        font-family: inherit
+        @extend %font-semibold
+        font-size: 16px
+        padding: 10px
+        &:focus
+            outline: none
+    &__done-textarea
+        color: #5d5d5d
+
+    &__radio-bttn-group
+        margin-top: 15px
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+        width: 100%
+        max-width: 270px
+        @include brk_md
+            width: 25%
+    &__radio-bttn
+        position: relative
+        user-select: none
+        margin: 10px 0
+        input[type="radio"]
+            opacity: 0
+        label
+            cursor: pointer
+        label::before,
+        label::after
+            content: ''
+            position: absolute
+            border-radius: 100%
+            left: 10px
+            top: 50%
+            @include transform(translate(-50%, -50%))
+        label::before
+            width: 15px
+            height: 15px
+            border: 1px solid $txt-secondary-2
+        label::after
+            width: 8px
+            height: 8px
+
+.radio-checked
+    label
+        color: #03A9F4
+    label::before
+        border-color: #03A9F4
+    label::after
+        background-color: #03A9F4
+.radio-wrong
+    label
+        color: #ff2626
+    label::before
+        border-color: #ff2626
+    label::after
+        background-color: #ff2626
+
+.fill-in-the-blank
+    p
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+    textarea
+        border: none
+        resize: none
+        white-space: nowrap
+        overflow-x: hidden
+        font-size: 16px
+        width: 220px
+        height: 35px
+        @extend %font-semibold
+        font-family: inherit
+        border-bottom: 3px solid transparent
+        padding-bottom: 5px
+        padding-top: 5px
+        padding-left: 10px
+        margin: 10px 13px
+        &:focus
+            outline: none
+    &::before,
+    &::before
+        @include brk_md
+            top: 10px
+
+
+.correct-answer
+    position: relative
+    &::before
+        content: url("/assets/svgs/icons/Correct answer.svg")
+        position: absolute
+        left: -25px
+        @include transform(translateX(-25px))
+    .answer-sheet__done-textarea,
+    textarea
+        background-color: #f8fdff
+        color: #0397da
+        border-color: #03A9F4
+
+.wrong-answer
+    position: relative
+    &::before
+        content: url("/assets/svgs/icons/Wrong answer.svg")
+        position: absolute
+        left: -25px
+        @include transform(translateX(-25px))
+    .answer-sheet__done-textarea,
+    textarea
+        background-color: #fff6f6
+        color: #ff2626
+        border-color: #ff2626

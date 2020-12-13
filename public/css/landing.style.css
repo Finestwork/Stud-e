@@ -755,6 +755,10 @@ ul {
   width: 165px;
   text-align: center;
 }
+.bttn--primary:focus {
+  box-shadow: 0 0 0 3px rgba(126, 40, 255, 0.2);
+  outline: none;
+}
 .bttn--primary:hover {
   background-color: #6312dc;
 }
@@ -795,7 +799,7 @@ ul {
   background-color: #7F2AFF;
   text-transform: uppercase;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   padding: 0.8333333333em 1.1111111111em;
   border-radius: 5px;
   display: block;
@@ -804,6 +808,14 @@ ul {
 }
 .bttn--primary--small:hover {
   background-color: #6312dc;
+}
+.bttn--primary--small:focus {
+  box-shadow: 0 0 0 3px rgba(126, 40, 255, 0.2);
+}
+@media only screen and (min-width: 48em) {
+  .bttn--primary--small {
+    font-size: 1.4rem;
+  }
 }
 
 .ghost--header {

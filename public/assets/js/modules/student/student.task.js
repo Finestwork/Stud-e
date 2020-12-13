@@ -19,7 +19,7 @@ selectionProgress.addEventListener('click', function(){
     this.classList.toggle('selection--active');
     selectionTaskType.classList.remove('selection--active');
 });
-selectionProgressItem       .addEventListener('click', function(e){
+selectionProgressItem .addEventListener('click', function(e){
     let firstSibling = e.currentTarget.previousElementSibling;
     let text = e.target.textContent;
     firstSibling.children[0].textContent = text;

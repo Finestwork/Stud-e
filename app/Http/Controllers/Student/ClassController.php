@@ -23,6 +23,10 @@ class ClassController extends Controller
     public function renderDiscussionForum() {
         return view('student.class module.discussion_forum');
     }
+
+    public function renderCreateDiscussionForum() {
+        return view('student.class module.discussion_forum_create');
+    }
     public function rendermember() {
         return view('student.class module.members');
     }

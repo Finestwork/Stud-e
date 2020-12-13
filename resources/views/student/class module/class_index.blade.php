@@ -1,7 +1,7 @@
 @extends('partials.base')
 
 @section('title')
-    Modules - Welcome to your classroom!
+     Welcome to your classroom!
 @endsection
 
 @section('cs-css')
@@ -73,7 +73,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Free section</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2020</p>
@@ -94,7 +94,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Section A701</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2020</p>
@@ -115,7 +115,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Free section</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2020</p>
@@ -136,7 +136,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Section A701</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2020</p>
@@ -157,7 +157,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Free section</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2020</p>
@@ -178,7 +178,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Section A701</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2020</p>
@@ -199,7 +199,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Free section</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2020</p>
@@ -220,7 +220,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Section A701</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2020</p>
@@ -247,7 +247,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Free section</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: December 5, 2019</p>
@@ -268,7 +268,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Section A701</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: November 5, 2019</p>
@@ -289,7 +289,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Free section</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: October 5, 2019</p>
@@ -310,7 +310,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Section A701</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: October 5, 2018</p>
@@ -331,7 +331,7 @@
                                         <div class="class-card__right">
                                             <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
                                             <p class="class-card__more-info">Free section</p>
-                                            <a href="/student/classUniqueID/modules" class="bttn-link--primary">View this class</a>
+                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
                                         </div>
                                         <div class="class-card__footer">
                                             <p class="class-card__footer__text">Date created: September 14, 2019</p>

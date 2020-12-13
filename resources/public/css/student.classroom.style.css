@@ -1153,6 +1153,9 @@ ul {
   -webkit-animation: slideInLeft 0.3s 0.3s both linear;
   animation: slideInLeft 0.3s 0.3s both linear;
 }
+.sidebar--fixed .sidebar__extra {
+  padding-bottom: 20px;
+}
 .sidebar--fixed .sidebar__bttn {
   background-color: #ff3e6c;
   margin: 1.25em auto;
@@ -1256,8 +1259,12 @@ ul {
   background-color: white;
   border-radius: 9px;
   overflow: hidden;
-  margin-right: 20px;
   margin-bottom: 20px;
+}
+@media only screen and (min-width: 48em) {
+  .modules__container {
+    margin-right: 20px;
+  }
 }
 .modules__container-bottom {
   margin: 0 15px 0 15px;
@@ -1297,7 +1304,7 @@ ul {
 }
 .modules__separator {
   background-color: #53565b;
-  height: 3px;
+  height: 2px;
   margin-top: 5px;
   margin-bottom: 20px;
   border-radius: 30px;
@@ -1337,15 +1344,20 @@ ul {
   transform-origin: right;
 }
 .modules__task-label-container {
-  margin-top: 20px;
+  margin-top: 40px;
+  margin-bottom: 25px;
   -webkit-flex-direction: column;
   flex-direction: column;
-  width: 410px;
+}
+@media only screen and (min-width: 48em) {
+  .modules__task-label-container {
+    width: 410px;
+  }
 }
 .modules__task-title {
   font-size: 22px;
   position: relative;
-  color: #0186FB;
+  color: #26004D;
   z-index: 1;
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -1354,17 +1366,14 @@ ul {
   content: "";
   position: absolute;
   width: 86%;
-  height: 11px;
+  height: 3px;
   bottom: 2px;
   z-index: -1;
-  background-color: #E4F2FF;
+  background-color: #26004D;
 }
 @media only screen and (min-width: 64em) {
   .modules__task-title {
     font-size: 25px;
-  }
-  .modules__task-title::before {
-    height: 14px;
   }
 }
 .modules__task-link {
@@ -1372,11 +1381,6 @@ ul {
   position: relative;
   margin: 8px 0;
   font-size: 14px;
-}
-@media only screen and (min-width: 64em) {
-  .modules__task-link {
-    font-size: 16px;
-  }
 }
 .modules__task-link:hover {
   color: #6583fe;

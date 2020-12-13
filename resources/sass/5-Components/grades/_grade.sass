@@ -1,0 +1,172 @@
+.grade
+    &__labels,
+    &__label
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+    &__labels
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+        margin-top: 45px
+        @include brk_md
+            height: auto
+    &__label
+        margin-right: 40px
+        margin-bottom: 23px
+        transition: opacity .3s ease-in-out
+        @include custom_breakpoint(910)
+            margin-bottom: 0
+        &-icon
+            width: 25px
+            height: 25px
+        &-txt
+            @extend %font-bold
+            margin-left: 10px
+            font-size: 16px
+    //TASKS
+    &__content-title
+        color: #374258
+        position: relative
+        font-size: 31.25px
+        margin-bottom: 40px
+        @extend %font-black
+        text-transform: uppercase
+        text-align: center
+        &::before
+            content: ""
+            position: absolute
+            width: 70%
+            min-width: 250px
+            max-width: 330px
+            background-color: rgba(23, 34, 57, .05)
+            height: 23px
+            border-radius: 19px
+            left: 50%
+            bottom: 0px
+            @include transform(translateX(-50%))
+            @include brk_md
+                width: 40%
+    &__content-item
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        padding: 15px 13px
+        margin-bottom: 25px
+        -webkit-flex-direction: column
+        flex-direction: column
+        @include brk_md
+            -webkit-flex-direction: row
+            flex-direction: row
+            padding: 15px 25px
+        &-left
+            margin-bottom: 20px
+            @include brk_md
+                margin-bottom: 0
+                margin-right: 20px
+        &-right
+            @extend %display_flex
+            flex-grow: 1
+            -webkit-justify-content: space-between
+            justify-content: space-between
+            -webkit-align-items: center
+            align-items: center
+            -webkit-flex-direction: column
+            flex-direction: column
+            @include brk_md
+                -webkit-flex-direction: row
+                flex-direction: row
+    &__content-txt
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+    &__content-link-1,
+    &__content-link-2
+        @extend %font-semibold
+    &__content-link-1
+        font-size: 14px
+        margin-bottom: 10px
+        @include brk_md
+            margin-bottom: 8px
+        @include custom_breakpoint(1080)
+            font-size: 16px
+            margin-bottom: 0
+    &__content-link-2
+        font-size: 12px
+        text-align: center
+        @include custom_breakpoint(1080)
+            text-align: left
+    &__date
+        @extend %font-semibold
+        font-size: 12px
+        margin-top: 15px
+        @include brk_md
+            margin-top: 0
+        @include custom_breakpoint(1080)
+            font-size: 14px
+    &__content-item-icon
+        width: 40px
+        height: 40px
+        @include brk_md
+            width: 25px
+            height: 25px
+
+.label--exam
+    color: #29bdd0
+.label--quiz
+    color: #8BC34A
+.label--assignment
+    color: #E91E63
+.label--seatwork
+    color: #FF5722
+.label--project
+    color: #3F51B5
+
+.item--circle
+    background-color: #f7feff
+    .grade__content-link-1:hover,
+    .grade__content-link-2:hover
+        color: #1cbbd0
+    .grade__content-link-1,
+    .grade__content-link-2,
+    .grade__date
+        color: #017a8a
+
+.item--rhombus
+    background-color: #f6ffec
+    .grade__content-link-1:hover,
+    .grade__content-link-2:hover
+        color: #6db719
+    .grade__content-link-1,
+    .grade__content-link-2,
+    .grade__date
+        color: #448000
+
+.item--square
+    background-color: #fff7fa
+    .grade__content-link-1:hover,
+    .grade__content-link-2:hover
+        color: #ca3568
+    .grade__content-link-1,
+    .grade__content-link-2,
+    .grade__date
+        color: #960134
+
+.item--hexagon
+    background-color: #f5f6ff
+    .grade__content-link-1:hover,
+    .grade__content-link-2:hover
+        color: #2c3ea9
+    .grade__content-link-1,
+    .grade__content-link-2,
+    .grade__date
+        color: #031682
+
+.item--triangle
+    background-color: #fff8f6
+    .grade__content-link-1:hover,
+    .grade__content-link-2:hover
+        color: #d04e25
+    .grade__content-link-1,
+    .grade__content-link-2,
+    .grade__date
+        color: #ca3000

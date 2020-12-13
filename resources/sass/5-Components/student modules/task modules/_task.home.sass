@@ -1,0 +1,116 @@
+.task-home
+    margin-top: 120px
+    &__banner
+        width: 100%
+        max-width: 340px
+        margin: auto
+        @include brk_md
+            width: 50%
+            max-width: unset
+    &__loader
+        margin: 100px 0
+        display: none
+    &__container
+        background-color: white
+        border-radius: 15px
+        margin-top: 50px
+        padding: 0.1px 35px
+        margin-bottom: 80px
+        @include brk_md
+            padding-left: 50px
+            padding-right: 50px
+        @include brk_lrg
+            padding-left: 50px
+            padding-right: 50px
+    &__top-controls
+        display: none
+        width: 50%
+        margin: 25px auto
+        padding-bottom: 15px
+        border-bottom: 2px solid #dcdcdc
+        position: relative
+        max-width: 475px
+        @include brk_md
+            display: -webkit-flex
+            display: flex
+            -webkit-justify-content: space-around
+            justify-content: space-around
+    &__top-bttn
+        @extend %font-bold
+        font-family: inherit
+        color: #868b9e
+        padding: 10px 20px
+        outline: none
+        &:hover
+            background-color: #efebeb
+    &__line-indicator
+        position: absolute
+        background-color: $color-primary
+        height: 3px
+        bottom: -4px
+        @include transform(translateY((-50%)))
+        transition: all .8s ease-out
+    &__progress-control-hide
+        display: block
+        @include brk_md
+            display: none
+    &__task-filters
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        flex-wrap: wrap
+        margin-top: 35px
+        max-width: 450px
+        @include custom_breakpoint(540)
+            -webkit-flex-direction: row
+            flex-direction: row
+        @include brk_md
+            width: 100%
+            height: auto
+            margin-top: 70px
+            max-width: unset
+            -webkit-justify-content: flex-start
+            justify-content: flex-start
+    &__filters-item
+        margin: 0 auto 12px auto
+        @include custom_breakpoint(540)
+            margin: 0 22px 0 0
+            &:last-of-type
+                margin-top: 15px
+        @include brk_md
+            margin: 0 0 0 20px
+            &:first-of-type
+                margin-left: 0
+    &__selection--primary
+        @include brk_md
+            width: 100%
+            max-width: 410px
+    &__subject-type
+        @include brk_lrg
+            min-width: 130px
+    &__subject-option
+        @include brk_lrg
+            min-width: 190px
+    &__grade-container
+        margin-top: 20px
+        @include custom_breakpoint(490)
+            margin-top: 0
+        @include brk_md
+            margin: 35px 0
+    &__table-container
+        margin-top: 30px
+        @include brk_md
+            margin-top: 45px
+    &__pending,
+    &__missed,
+    &__done
+        margin-top: 60px
+
+.bttn--active
+    color: $color-primary
+.task-home__pending
+    display: none
+.task-home__missed
+    display: none
+.task-home__done
+    display: none

@@ -2,8 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\IndexController;
-use \App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Student\ClassController;
 use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\Student\GradeController;
@@ -12,6 +10,8 @@ use App\Http\Controllers\Student\ScheduleController;
 use App\Http\Controllers\Student\TaskController;
 use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\Auth\RegistrationController;
+use \App\Http\Controllers\Teacher\RenderViewsController;
+use \App\Http\Controllers\UnAuthorizedController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,25 +25,16 @@ use \App\Http\Controllers\Auth\RegistrationController;
 
 Route::get('/', [IndexController::class, 'index']);
 
-Route::get('/signin', [LoginController::class, 'showLoginForm'])->name('login');
-Route::post('/signin', [LoginController::class, 'login']);
-Route::prefix('signup')->group(function(){
-    Route::get('/step-1', [RegistrationController::class, 'showRegistrationForm'])->name('signup.step-1');
-    //Change POST routes
-    Route::get('/step-2', [RegistrationController::class, 'showVerificationEmail'])->name('signup.step-2');
+Route::get('/signin', [IndexController::class, 'showLoginForm']);
+Route::post('/signin', [IndexController::class, 'login'])->name('login');
+Route::get('/signup', [RegistrationController::class, 'showRegistrationForm']);
 
-    //Change POST
-    Route::get('/step-3', [RegistrationController::class, 'showSubscriptionForm'])->name('signup.step-3');
-});
-
-//Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+//Auth::routes(['verify'=>true]);
 
 //STUDENTS GET REQUEST
 //AND STILL DECIDING HOW TO KEEP THESE URLS CLEAN
 //MAYBE, AS WE GO ALONG WE MAY GET AN IDEA
-Route::prefix('/student')->group(function(){
+Route::group(['middleware' => ['auth:student'],'prefix'=>'/student'],function(){
     //HOMEPAGE OF EVERY NAVIGATION LINKS
     Route::get('/', [HomepageController::class, 'index'])->name('student.home');
 
@@ -72,17 +63,26 @@ Route::prefix('/student')->group(function(){
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('student.schedule');
 
 });
-//REGISTRATION
-Route::prefix('/teacher')->group(function(){
-    Route::get('/signup', [RegistrationController::class, 'redirectTeacher']);
-    Route::post('/signup', [RegistrationController::class, 'registerTeacher']);
+
+Route::group(['middleware' => ['auth:teacher'], 'prefix'=>'/teacher'],function(){
+    //HOMEPAGE OF EVERY NAVIGATION LINKS
+    Route::get('/', [RenderViewsController::class, 'index'])->name('teacher.home');
 });
-Route::prefix('/student')->group(function(){
-    Route::get('/signup', [RegistrationController::class, 'redirectStudent']);
-    Route::post('/signup', [RegistrationController::class, 'registerStudent']);
+
+
+
+//REGISTRATION
+Route::prefix('/signup')->group(function(){
+    Route::get('/teacher', [RegistrationController::class, 'redirectTeacher']);
+    Route::post('/teacher', [RegistrationController::class, 'registerTeacher']);
+
+    Route::get('/student', [RegistrationController::class, 'redirectStudent']);
+    Route::post('/student', [RegistrationController::class, 'registerStudent']);
 });
 //PARTIALS
 Route::post('/checkClassCode',[RegistrationController::class, 'checkClassCode']);
 Route::post('/checkEmail',[RegistrationController::class, 'checkEmail']);
 //GENERAL
 Route::get('/profile', [UserController::class, 'renderUserProfile'])->name('user.profile');
+Route::get('/logout', [UserController::class, 'logout'])->name('user.profile');
+Route::get('/unauthorized-access' ,[UnAuthorizedController::class, 'unauthorized'])->name('unauthorized.access');

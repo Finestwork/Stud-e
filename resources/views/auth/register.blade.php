@@ -146,7 +146,7 @@
         <!-- TEACHER -->
         <div class="form--hidden form--slide-2">
             <h2 class="form--primary__title">Teacher Account</h2>
-            <form action="/teacher/signup" method="POST" id="formTeacher" class="form--primary">
+            <form action="/signup/teacher" method="POST" id="formTeacher" class="form--primary">
                 @csrf
                 <div class="form--primary__2-col">
                     <div class="form--primary__lrg--left">
@@ -219,7 +219,7 @@
         <!-- STUDENT -->
         <div class="form--hidden form--slide-3">
             <h2 class="form--primary__title">Student Account</h2>
-            <form action="/student/signup" method="POST" class="form--primary">
+            <form action="/signup/student" method="POST" class="form--primary">
                 @csrf
                 <div class="form--primary__2-col">
                     <div class="form--primary__lrg--left">

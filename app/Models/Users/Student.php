@@ -11,9 +11,8 @@ class Student extends Model implements Authenticatable
     use \Illuminate\Auth\Authenticatable;
     use HasFactory;
     protected $table = 'student';
-    protected $guarded = [];
     protected $hidden = [
-        'password'
+        'password', 'remember_token'
     ];
     protected $fillable = [
         'f_name',

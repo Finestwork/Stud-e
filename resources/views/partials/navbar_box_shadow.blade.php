@@ -322,7 +322,7 @@
                     </div>
                 </div>
                 <div class="navbar__profile-box" id="profileBox">
-                    <span class="navbar__profile-box__name">John Smith</span>
+                    <span class="navbar__profile-box__name">{{ ucfirst($user->f_name) . ' ' . ucfirst($user->l_name) }}</span>
                     <div class="navbar__profile-box__icon">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.5 9.5">
                             <path id="Path" d="M.321,15.552a1.175,1.175,0,0,0,0,1.614,1.066,1.066,0,0,0,1.55,0L9.179,9.557a1.175,1.175,0,0,0,0-1.614L1.871.334a1.066,1.066,0,0,0-1.55,0,1.175,1.175,0,0,0,0,1.614l6.533,6.8Z" transform="translate(17.5) rotate(90)" fill="#0D0417"/>

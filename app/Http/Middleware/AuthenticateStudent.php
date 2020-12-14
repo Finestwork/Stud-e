@@ -3,7 +3,9 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthenticateStudent
 {
@@ -14,8 +16,14 @@ class AuthenticateStudent
      * @param  \Closure  $next
      * @return mixed
      */
+    protected function authenticated(){
+
+    }
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if(Auth::check()){
+            return $next($request);
+        }
+        return redirect('/unauthorized-access');
     }
 }

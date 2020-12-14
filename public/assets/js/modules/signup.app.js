@@ -1,4 +1,3 @@
-isDomReady();
 let cardBttn1 = document.getElementById('cardBttn1'),
     cardBttn2 = document.getElementById('cardBttn2'),
     cardBttn3 = document.getElementById('cardBttn3');
@@ -1096,15 +1095,4 @@ function fetchEmail(el){
         });
 }
 
-//FINISH THE DATABASE FIRST
-function ready(){
-    console.log('yep I am ready');
-}
-function isDomReady(){
-    let interval = setInterval(function(){
-        if(document.readyState === 'complete'){
-            clearInterval(interval);
-            ready();
-        }
-    }, 100);
-}
+

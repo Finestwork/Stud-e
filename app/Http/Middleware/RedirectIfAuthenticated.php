@@ -23,10 +23,15 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if($guard === 'student'){
+                    return redirect()->intended('/student');
+                }else if($guard === 'teacher'){
+                    return redirect()->intended('teacher');
+                }else if($guard === 'admin'){
+                    return redirect()->intended('admin');
+                }
             }
         }
-
         return $next($request);
     }
 }

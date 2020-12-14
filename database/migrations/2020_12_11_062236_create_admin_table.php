@@ -22,6 +22,7 @@ class CreateAdminTable extends Migration
             $table->string('password', 128);
             $table->boolean('isSubscribed');
             $table->unsignedBigInteger('role_id');
+            $table->rememberToken();
             $table->timestamps();
             $table->foreign('role_id')->references('id')->on('roles')->cascadeOnDelete();
         });

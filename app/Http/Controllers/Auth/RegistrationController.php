@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Mail\MailController;
 use App\Models\Relations\StudentSubject;
 use App\Models\Relations\TeacherSubject;
 use App\Models\Subject;
@@ -17,6 +18,13 @@ class RegistrationController extends Controller
 {
 
     public function showRegistrationForm() {
+        //LATER CHANGE IF USER IS NOT VERIFIED ====== INDEX
+        $guards = ['admin', 'teacher', 'student'];
+        foreach ($guards as $guard){
+            if(Auth::guard($guard)->check()){
+                Auth::guard($guard)->logout();
+            }
+        }
         return view('auth.register');
     }
 
@@ -24,12 +32,12 @@ class RegistrationController extends Controller
         $guards = ['admin', 'teacher', 'student'];
         foreach ($guards as $guard){
             if(Auth::guard($guard)->check()){
-                Auth::guard($guard)->logout();
-                $user = Auth::guard($guard)->user();
-                return view('auth.verify', ['user'=>$user]);
+                if($user = Auth::guard($guard)->user()){
+                    return view('auth.verify', ['user'=>$user]);
+                }
             }
         }
-        return redirect('/signup/step-1');
+        return view('auth.register');
     }
 
     public function showSubscriptionForm() {
@@ -49,14 +57,14 @@ class RegistrationController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->back()->with('ErrorRegistration', 'Something went wrong, please check make sure that all fields are valid.');
+            return redirect()->back()->with('error', 'Something went wrong, please check make sure that all fields are valid.');
         }else{
             $teacher = new Teacher();
             $subject = new Subject();
             $teacherSubject = new TeacherSubject();
-            $teacher->f_name = $request['teacherFnameTxt'];
-            $teacher->m_name = $request['teacherMnameTxt'];
-            $teacher->l_name = $request['teacherLnameTxt'];
+            $teacher->f_name = strtolower($request['teacherFnameTxt']);
+            $teacher->m_name = strtolower($request['teacherMnameTxt']);
+            $teacher->l_name = strtolower($request['teacherLnameTxt']);
             $teacher->email = $request['teacherEmailTxt'];
             $teacher->password = Hash::make($request['teacherPasswordTxt']);
             $teacher->isSubscribed = 0;
@@ -66,6 +74,7 @@ class RegistrationController extends Controller
             if(!$this->isEmailTaken($request['teacherEmailTxt']) && !$checkClassCode){
                 $subject->subject_name = $request['teacherSubjectTxt'];
                 $subject->class_code = $request['teacherClassCodeTxt'];
+                //SEND EMAIL HERE
                 if($teacher->save() && $subject->save()){
                     $teacherSubject->teacher_id = $teacher->id;
                     $teacherSubject->subject_id = $subject->id;
@@ -75,16 +84,17 @@ class RegistrationController extends Controller
                             'password' => $request->input('teacherPasswordTxt')
                         );
                         if(Auth::guard('teacher')->attempt($user_data)){
-                            return redirect()->intended('/signup/step-2');
+                            $user = Auth::guard('teacher')->user();
+                            return view('auth.verify', ['user'=>$user]);
                         }
                     }
                 }
             }
-            return redirect()->back()->with('ErrorRegistration', 'Something went wrong, please check make sure that all fields are valid.');
+            return redirect()->back()->with('error', 'Something went wrong, please check make sure that all fields are valid.');
         }
     }
     public function redirectTeacher() {
-        return redirect('/signup/step-1');
+        return redirect('/signup');
     }
 
     public function registerStudent(Request $request) {
@@ -99,14 +109,14 @@ class RegistrationController extends Controller
         ]);
 
         if($validator->fails()){
-            return redirect()->back()->with('ErrorRegistration', 'Something went wrong, please check make sure that all fields are valid.');
+            return redirect()->back()->with('error', 'Something went wrong, please check make sure that all fields are valid.');
         }else{
             $student = new Student();
             $subject = new Subject();
             $studentSubject = new StudentSubject();
-            $student->f_name = $request['studFnameTxt'];
-            $student->m_name = $request['studMnameTxt'];
-            $student->l_name = $request['studLnameTxt'];
+            $student->f_name = strtolower($request['studFnameTxt']);
+            $student->m_name = strtolower($request['studMnameTxt']);
+            $student->l_name = strtolower($request['studLnameTxt']);
             $student->email = $request['studentEmailTxt'];
             $student->password = Hash::make($request['studentPasswordTxt']);
             $student->role_id = 3;
@@ -121,18 +131,19 @@ class RegistrationController extends Controller
                             'password' => $request->input('studentPasswordTxt')
                         );
                         if(Auth::guard('student')->attempt($user_data)){
-                            return redirect()->intended('/signup/step-2');
+                            $user = Auth::guard('student')->user();
+                            return view('auth.verify', ['user'=>$user]);
                         }
                     }
                 }
             }else{
-                return redirect()->back()->with('ErrorRegistration', 'It seems like your class code does not exist, please check it.');
+                return redirect()->back()->with('error', 'It seems like your class code does not exist, please check it.');
             }
-            return redirect()->back()->with('ErrorRegistration', 'Something went wrong, please check make sure that all fields are valid.');
+            return redirect()->back()->with('error', 'Something went wrong, please check make sure that all fields are valid.');
         }
     }
     public function redirectStudent() {
-        return redirect('/signup/step-1');
+        return redirect('/signup');
     }
     protected function isEmailTaken($email){
         $teacher = new Teacher();

@@ -1,0 +1,75 @@
+html,
+body,
+main,
+.error-img,
+svg
+    height: 100vh
+svg
+    width: 100%
+
+main
+    display: -webkit-flex
+    display: flex
+.error-img
+    flex-grow: 2
+    display: none
+    @include brk_md
+        display: block
+.error-right
+    flex-grow: 1
+
+
+.human
+    @include animation(floating 15s both linear infinite)
+.background_n2 .st3
+    @include animation(floating 8s both linear infinite)
+.background_n2 .st2
+    @include animation(floating 5s both linear infinite)
+.cat
+    @include animation(floating 10s both linear infinite)
+
+
+.error-right
+    @extend %display_flex
+    background-color: #150505
+    color: white
+    -webkit-flex-direction: column
+    flex-direction: column
+    -webkit-justify-content: center
+    justify-content: center
+    -webkit-align-items: center
+    align-items: center
+h1
+    color: #ec615b
+    font-size: 30px
+    font-weight: 900
+    margin-bottom: 25px
+    @include brk_lrg
+        font-size: 50px
+h2
+    margin-bottom: 40px
+    font-size: 25px
+    font-weight: 800
+    @include brk_lrg
+        font-size: 40px
+a
+    color: white
+    font-weight: 700
+    text-transform: uppercase
+    position: relative
+    z-index: 1
+    &::before
+        content: ''
+        position: absolute
+        width: 120%
+        height: 50%
+        background-color: #ec615b
+        left: 50%
+        @include transform(translate(-50%, -50%) scaleY(.2))
+        bottom: -115%
+        z-index: -1
+        -webkit-transform-origin: bottom
+        transform-origin: bottom
+        transition: transform .3s linear
+    &:hover::before
+        @include transform(translate(-50%, -50%) scaleY(5.5))

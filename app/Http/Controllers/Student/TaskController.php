@@ -4,27 +4,33 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
     public function index() {
-        return view('student.task modules.task_index');
+        $user = Auth::guard('student')->user();
+        return view('student.task modules.task_index',['user'=>$user]);
     }
 
     public function renderTaskInfoPage() {
-        return view('student.task modules.task_viewing');
+        $user = Auth::guard('student')->user();
+        return view('student.task modules.task_viewing',['user'=>$user]);
     }
 
     public function renderTakingATaskPage() {
-        return view('student.task modules.task_taking');
+        $user = Auth::guard('student')->user();
+        return view('student.task modules.task_taking',['user'=>$user]);
     }
 
     public function renderCommonTask(){
-        return view('student.task modules.task_taking_common');
+        $user = Auth::guard('student')->user();
+        return view('student.task modules.task_taking_common',['user'=>$user]);
     }
 
     public function renderEssayTask(){
-        return view('student.task modules.task_taking_essay');
+        $user = Auth::guard('student')->user();
+        return view('student.task modules.task_taking_essay',['user'=>$user]);
     }
 
 

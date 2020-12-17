@@ -43,7 +43,7 @@
                 </a>
             @endif
 
-            @if(Request::path() =='student/class')
+            @if(Request::path() =='student/class' || Request::path() == 'teacher/classroom/create-classroom')
                 <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.class') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">

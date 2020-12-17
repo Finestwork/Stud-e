@@ -199,5 +199,5 @@
 
 @section('script')
     <script src="/assets/js/helpers/navbar-with-fixed-sidebar.js"></script>
-    <script src="/assets/js/modules/student/task/task-taking.js"></script>
+    <script id="" src="/assets/js/modules/student/task/task-taking.js"></script>
 @endsection

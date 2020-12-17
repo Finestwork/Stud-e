@@ -60,26 +60,26 @@
                                     @if($teachers)
                                         @foreach($teachers as $key => $row)
                                             <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                                <div class="class-card">
-                                                    <div class="class-card__top">
-                                                        <div class="class-card__left">
-                                                            <!-- IMAGE WILL BE REPLACED AFTER I FX PROFILE PAGE -->
-                                                            <div class="class-card__img-border">
-                                                                <div class="class-card__img-box">
-                                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
+                                                  <div class="class-card">
+                                                      <div class="class-card__top">
+                                                            <div class="class-card__left">
+                                                                <!-- IMAGE WILL BE REPLACED AFTER I FX PROFILE PAGE -->
+                                                                <div class="class-card__img-border">
+                                                                    <div class="class-card__img-box">
+                                                                        <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
+                                                                    </div>
                                                                 </div>
+                                                                <div class="class-card__img-name">{{ ucfirst($row['f_name']) .' '.ucfirst($row['l_name']) }}</div>
+                                                                <div class="class-card__img-lbl">Teacher</div>
                                                             </div>
-                                                            <div class="class-card__img-name">{{ ucfirst($row['f_name']) .' '.ucfirst($row['l_name']) }}</div>
-                                                            <div class="class-card__img-lbl">Teacher</div>
-                                                        </div>
-                                                        <div class="class-card__right">
-                                                            <p class="class-card__subject">{{ $classrooms[$key]->classroom_name }}</p>
-                                                            <p class="class-card__more-info">{{ $classrooms[$key]->classroom_section }}</p>
-                                                            <a href="{{ route('classroom.home', $classrooms[$key]->classroom_unique_url) }}" class="bttn-link--primary"> View Classroom </a>
-                                                        </div>
+                                                            <div class="class-card__right">
+                                                                <p class="class-card__subject">{{ $classrooms[$key]->classroom_name }}</p>
+                                                                <p class="class-card__more-info">{{ $classrooms[$key]->classroom_section }}</p>
+                                                                <a href="{{ route('teacher.home', $classrooms[$key]->classroom_unique_url) }}" class="bttn-link--primary"> View Classroom </a>
+                                                            </div>
+                                                      </div>
+                                                        <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($classrooms[$key]->created_at)) }}</p>
                                                     </div>
-                                                    <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($classrooms[$key]->created_at)) }}</p>
-                                                </div>
                                             </div>
                                         @endforeach
                                     @endif

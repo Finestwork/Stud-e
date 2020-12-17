@@ -22,8 +22,7 @@ class ClassController extends Controller
                 $classroom = Classroom::where('id', $cID->classroom_id)->get();
             }
             foreach($teacherID as $tID){
-                return $tID;
-                $teacher = Teacher::where('id', $tID->teacher_id)->get();
+                $teacher = Teacher::where('id', $tID->id)->get();
             }
             return view('student.class module.class_index', [
                 'user'=>$user,
@@ -38,7 +37,11 @@ class ClassController extends Controller
         ]);
 
     }
-
+    //TEMPORARY
+    public function renderModules() {
+        $user = Auth::guard('student')->user();
+        return view('student.class module.classroom',['user'=>$user]);
+    }
     public function renderTask(){
         $user = Auth::guard('student')->user();
         return view('student.class module.task',['user'=>$user]);

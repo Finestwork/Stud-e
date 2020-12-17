@@ -1,9 +1,10 @@
 @extends('partials.base')
 
 @section('title')
-    @foreach($classrooms as $classroom )
-        Schedule - {{ $classroom->classroom_name }}
-    @endforeach
+{{--    @foreach($classrooms as $classroom )--}}
+{{--        Schedule - {{ $classroom->classroom_name }}--}}
+{{--    @endforeach--}}
+    Temporary subject name title
 @endsection
 
 @section('cs-css')

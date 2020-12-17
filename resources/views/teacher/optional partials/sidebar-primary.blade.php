@@ -28,7 +28,7 @@
             </a>
         @endif
 
-        @if(Request::path() =='teacher/classroom')
+        @if(Request::path() =='teacher/classroom' || Request::path() == 'teacher/classroom/create-classroom')
             <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('teacher.classroom') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
@@ -168,7 +168,7 @@
                 </a>
             @endif
 
-            @if(Request::path() =='teacher/classroom')
+            @if(Request::path() =='teacher/classroom' || Request::path() == 'teacher/classroom/create-classroom')
                 <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('teacher.classroom') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">

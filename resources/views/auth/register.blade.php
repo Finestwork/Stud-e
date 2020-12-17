@@ -51,7 +51,7 @@
                     </div>
                     <div class="card--choice__description">
                         <h2 class="card--choice__title onboarding-signup__card-title">Admin Account</h2>
-                        <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p class="card--choice__txt">Sign-up for your company or your team and get classrooms for your teachers/instructors.Be the best you and your team can be.</p>
                     </div>
 
                 </div>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="card--choice__description">
                         <h2 class="card--choice__title">Teacher Account</h2>
-                        <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p class="card--choice__txt">If you are independent, feel free to sign-up as a teacher and set up your class,if you are not independet, and you haved a code from your admin or your HR, higher ups or jedi master, feel free choose this.</p>
                     </div>
                 </div>
                 <div class="card__item" id="cardBttn3">
@@ -70,7 +70,7 @@
                     </div>
                     <div class="card--choice__description">
                         <h2 class="card--choice__title">Student Account</h2>
-                        <p class="card--choice__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                        <p class="card--choice__txt">If you need a virtual organizer, to set up your reviewers and classes, or join an existing class, feel free to choose this.</p>
                     </div>
                 </div>
             </div>

@@ -42,7 +42,7 @@ Route::group(['middleware' => ['auth:student'],'prefix'=>'/student'],function(){
     Route::get('/', [HomepageController::class, 'index'])->name('student.home');
 
     Route::get('/classroom', [ClassController::class, 'index'])->name('student.class');
-    Route::get('/modules', [ClassController::class, 'index'])->name('student.modules');
+    Route::get('/modules', [ClassController::class, 'renderModules'])->name('student.modules');
     Route::get('/tasks', [ClassController::class, 'renderTask'])->name('student.tasks');
     Route::get('/members', [ClassController::class, 'rendermember'])->name('student.members');
 
@@ -66,8 +66,9 @@ Route::group(['middleware' => ['auth:student'],'prefix'=>'/student'],function(){
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('student.schedule');
 
 });
-
+//SEPARATE ACTIONS INCLUDE STUDENT IN AUTHENTICATION WITH
 Route::group(['middleware' => ['auth:teacher'], 'prefix'=>'/teacher'],function(){
+    // ARRANGE separate teacher.home
     Route::get('/', [RenderViewsController::class, 'index'])->name('teacher.home');
     //CLASSROOM
     Route::get('/classroom', [RenderViewsController::class, 'classroom'])->name('teacher.classroom');
@@ -75,9 +76,10 @@ Route::group(['middleware' => ['auth:teacher'], 'prefix'=>'/teacher'],function()
     Route::post('/create-classroom', [ClassroomController::class, 'createClassroom']);
 });
 
-Route::group(['middeware'=>['auth:teacher,student'], 'prefix'=>'/classroom'], function(){
+Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function(){
     Route::get('/{uniqueUrl}', [GlobalClassroomController::class, 'renderClassroom'])->name('classroom.schedule');
 });
+
 Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function(){
     //RETRIEVE
     Route::get('/{uniqueUrl}/members', [GlobalMemberController::class, 'renderMembers'])->name('classroom.member');

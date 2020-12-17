@@ -301,7 +301,7 @@
                 <img src="/assets/svgs/shapes/dot-small.svg" alt="Features Background Shape" class="shape-dot">
             </div>
             <h2 class="heading--secondary mt-5">Why Us?</h2>
-            <p class="paragraph--heading mt-1 mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias commodi consectetur, cumque debitis eaque eos error, et eveniet fugiat magni minima mollitia officia officiis quae quod, totam veniam voluptates.</p>
+            <p class="paragraph--heading mt-1 mb-5">We are simple, fast and easy, everything you want in order to have a quick access to a Micro-Learning Platform. So if you are independent, or if you have a team with you, spend time with us, choose a platform that wants you to have an easy time learning.</p>
             <div class="illustration">
                 <div class="row">
                     <div class="col-md-3 col-lrg-12 col-xlrg-12 ">
@@ -367,13 +367,8 @@
         </div>
     </footer>
 @endsection
-
-
-
-
 @section('script')
     <script src="/assets/js/libraries/smooth-scroll.polyfills.js"></script>
     <script src="/assets/js/libraries/scrolltosmooth.min.js"></script>
     <script src="/assets/js/landing.app.js"></script>
 @endsection
-

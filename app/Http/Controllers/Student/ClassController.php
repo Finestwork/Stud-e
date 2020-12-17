@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Student;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
+use App\Models\Relations\ApprovedStudent;
 use App\Models\Relations\StudentClassroom;
 use App\Models\Relations\TeacherClassroom;
 use App\Models\Users\Teacher;
@@ -14,19 +15,28 @@ class ClassController extends Controller
 {
     public function index() {
         $user = Auth::guard('student')->user();
-        $classroomId = StudentClassroom::where('student_id', $user->id)->select('classroom_id')->get();
-        foreach ($classroomId as $cID){
-            $teacherID = TeacherClassroom::where('classroom_id', $cID->classroom_id)->select('teacher_id')->get();
-            $classroom = Classroom::where('id', $cID->classroom_id)->get();
-        }
-        foreach($teacherID as $tID){
-            $teacher = Teacher::where('id', $tID->teacher_id)->get();
+        $classroomId = ApprovedStudent::where('student_id', $user->id)->select('classroom_id')->get();
+        if ($classroomId->count() > 0){
+            foreach ($classroomId as $cID){
+                $teacherID = TeacherClassroom::where('classroom_id', $cID->classroom_id)->select('id')->get();
+                $classroom = Classroom::where('id', $cID->classroom_id)->get();
+            }
+            foreach($teacherID as $tID){
+                return $tID;
+                $teacher = Teacher::where('id', $tID->teacher_id)->get();
+            }
+            return view('student.class module.class_index', [
+                'user'=>$user,
+                'classrooms' => $classroom,
+                'teachers' => $teacher,
+            ]);
         }
         return view('student.class module.class_index', [
             'user'=>$user,
-            'classrooms' => $classroom,
-            'teachers' => $teacher,
+            'classrooms' => 0,
+            'teachers' => 0,
         ]);
+
     }
 
     public function renderTask(){

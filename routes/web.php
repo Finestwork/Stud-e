@@ -42,6 +42,7 @@ Route::group(['middleware' => ['auth:student'],'prefix'=>'/student'],function(){
     Route::get('/', [HomepageController::class, 'index'])->name('student.home');
 
     Route::get('/classroom', [ClassController::class, 'index'])->name('student.class');
+    Route::get('/modules', [ClassController::class, 'index'])->name('student.modules');
     Route::get('/tasks', [ClassController::class, 'renderTask'])->name('student.tasks');
     Route::get('/members', [ClassController::class, 'rendermember'])->name('student.members');
 

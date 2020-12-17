@@ -39,16 +39,23 @@ window.addEventListener('visibilitychange', function(){
    if(document.hidden){
        //During cheating attempt
    } else{
-       if(cheatCtr !== 3){
-           cheatHtml.classList.add('attention-seeker');
-           cheatCtr++;
-           cheatHtml.textContent = 'Cheating attempt: '+cheatCtr+'/3';
-           setTimeout(function(){
-               cheatHtml.classList.remove('attention-seeker');
-           },1000);
-           if(cheatCtr === 2){
-               cheatHtml.style.color = '#ff5656'
-           }
-       }
+       cheating();
    }
 });
+window.onfocus = function(){
+    cheating();
+}
+
+function cheating(){
+    if(cheatCtr !== 3){
+        cheatHtml.classList.add('attention-seeker');
+        cheatCtr++;
+        cheatHtml.textContent = 'Cheating attempt: '+cheatCtr+'/3';
+        setTimeout(function(){
+            cheatHtml.classList.remove('attention-seeker');
+        },1000);
+        if(cheatCtr === 2){
+            cheatHtml.style.color = '#ff5656'
+        }
+    }
+}

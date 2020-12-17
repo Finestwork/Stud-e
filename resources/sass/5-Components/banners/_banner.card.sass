@@ -51,3 +51,31 @@
         margin-right: 25px
         @include brk_md
             text-align: left
+    &__bttn--create
+        text-transform: uppercase
+        @extend %font-bold
+        font-family: inherit
+        color: $color-new-secondary
+        position: relative
+        font-size: 16px
+        z-index: 1
+        transition: all .3s linear
+        &:focus
+            outline: none
+        &:hover
+            color: white
+        &::before
+            content: ''
+            position: absolute
+            background-color: $color-new-secondary
+            height: 3px
+            width: 100%
+            bottom: -5px
+            @include transform(translateX(-50%))
+            left: 50%
+            -webkit-transform-origin: bottom
+            transform-origin: bottom
+            z-index: -1
+            transition: inherit
+        &:hover::before
+            @include transform(translateX(-50%) scaleY(11.5))

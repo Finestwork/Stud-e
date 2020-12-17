@@ -13,30 +13,67 @@
         left: 50%
         @include transform(translate(-50%, -50%))
         border-radius: 15px
-        padding: 15 / $default-font-size * 1em 20 / $default-font-size * 1em
-        @include brk_lrg
-            padding: 25 / $default-font-size * 1em 40 / $default-font-size * 1em
+        width: 80%
+        max-width: 350px
+        padding: 15px 20px
     &__bttn-box
         @extend %display_flex
-        -webkit-justify-content: center
-        justify-content: center
-        flex-wrap: wrap
-        margin-top: 10 / $default-font-size * 1em
-        @include brk_md
-            -webkit-justify-content: space-between
+        -webkit-justify-content: space-between
             justify-content: space-between
+        flex-wrap: wrap
+        margin-top: 18 / $default-font-size * 1em
+        margin-bottom: 10 / $default-font-size * 1em
         @include brk_lrg
             margin-top: 15 / $default-font-size * 1em
     &__message
         font-size: 16 / $root-font-size * 1rem
-        color: $color-primary-darker
+        color: $txt-primary-2
         @extend %font-semibold
         line-height: 1.5
-        @include brk_lrg
-            font-size: 18 / $root-font-size * 1rem
         @include brk_xlrg
             font-size: 20 / $root-font-size * 1rem
-
-
+    &__yes,
+    &__no
+        font-family: inherit
+        @extend %font-bold
+        font-size: 16px
+        padding: 7px 15px
+        cursor: pointer
+        &:focus
+            outline: none
+    &__yes
+        color: $color-primary
+        &:hover
+            background-color: #f2ebfd
+    &__no
+        color: white
+        background-color: #ff6161
+        &:hover
+            background-color: #fd5353
+    &__loader-container,
+    &__error-message
+        display: none
+    &__loading-message
+        color: $color-new-secondary
+        @extend %font-semibold
+    &__error-txt
+        color: #ff3838
+        background-color: #fff6f6
+        text-align: center
+        padding: 5px
+        @extend %font-semibold
+    &__error-bttn
+        margin: 17px auto
+        display: block
+        font-family: inherit
+        @extend %font-bold
+        background-color: #5f46ff
+        color: white
+        padding: 7px 14px
+        font-size: 14px
+        &:focus
+            outline: none
+        &:hover
+            background-color: #3a1df5
 .popup--hidden
     display: none

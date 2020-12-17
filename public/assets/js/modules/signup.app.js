@@ -23,11 +23,9 @@ let adminFnameTxt = document.getElementById('adminFnameTxt'),
 let teacherFnameTxt = document.getElementById('teacherFnameTxt'),
     teacherMnameTxt = document.getElementById('teacherMnameTxt'),
     teacherLnameTxt = document.getElementById('teacherLnameTxt'),
-    teacherSubjectTxt = document.getElementById('teacherSubjectTxt'),
     teacherEmailTxt = document.getElementById('teacherEmailTxt'),
     teacherPasswordTxt = document.getElementById('teacherPasswordTxt'),
-    teacherConfirmPasswordTxt = document.getElementById('teacherConfirmPasswordTxt'),
-    teacherClassCodeTxt = document.getElementById('teacherClassCodeTxt');
+    teacherConfirmPasswordTxt = document.getElementById('teacherConfirmPasswordTxt');
 
 let studentFnameTxt = document.getElementById('studFnameTxt'),
     studentMnameTxt = document.getElementById('studMnameTxt'),
@@ -42,8 +40,8 @@ let pastAdminFnameValue = null, pastAdminMnameValue = null,
     pastAdminPWValue = null, pastAdminConPWValue = null, pastAdminCodeValue = null;
 
 let pastTeacherFnameValue = null, pastTeacherMnameValue = null,
-    pastTeacherLnameValue = null, pastTeacherSubjValue = null, pastTeacherEmailValue = null,
-    pastTeacherPWValue = null, pastTeacherConPWValue = null, pastTeacherClassValue = null;
+    pastTeacherLnameValue = null, pastTeacherEmailValue = null,
+    pastTeacherPWValue = null, pastTeacherConPWValue = null;
 
 let pastStudentFnameValue = null, pastStudentMnameValue = null,
     pastStudentLnameValue = null, pastStudentEmailValue = null,
@@ -328,13 +326,6 @@ teacherLnameTxt.addEventListener('keydown', function(){
         this.value = removeNumbers(this.value);
     }
 });
-teacherSubjectTxt.addEventListener('keyup', function(e){
-    if(isStringEqual(pastTeacherSubjValue, this) && !isFieldBlank(this)){
-        removeClass(this, 'form-error');
-    }else{
-        addClass(this, 'form-error');
-    }
-});
 teacherEmailTxt.addEventListener('keyup', function(e){
     if(isStringEqual(pastTeacherEmailValue, this) && !doesFieldContainsValidEmail(this.value)){
         removeClass(this, 'form-error');
@@ -365,20 +356,6 @@ teacherConfirmPasswordTxt.addEventListener('keyup', function(e){
     }else{
         addClass(this, 'form-error');
         addClass(teacherPasswordTxt, 'form-error');
-    }
-});
-teacherClassCodeTxt.addEventListener('keyup', function(e){
-    if(isCodeValid(this)) {
-        removeClass(this, 'form-error');
-    }else{
-        addClass(this, 'form-error');
-    }
-});
-teacherClassCodeTxt.addEventListener('keydown', function(e){
-    if(isCodeValid(this)) {
-        removeClass(this, 'form-error');
-    }else{
-        addClass(this, 'form-error');
     }
 });
 //ON BLUR
@@ -413,13 +390,6 @@ teacherLnameTxt.onblur = function(){
         removeClass(this, 'form-error');
     }
     if(!doesFieldContainsNumber(this)){
-        addClass(this, 'form-error');
-    }else{
-        removeClass(this, 'form-error');
-    }
-}
-teacherSubjectTxt.onblur = function(){
-    if(isFieldBlank(this)){
         addClass(this, 'form-error');
     }else{
         removeClass(this, 'form-error');
@@ -464,15 +434,6 @@ teacherConfirmPasswordTxt.onblur = function(){
         removeClass(this, 'form-error');
     }else{
         addClass(this, 'form-error');
-    }
-}
-teacherClassCodeTxt.onblur = function() {
-    //Check if Code does exist
-    fetchClassCode(teacherClassCodeTxt);
-    if(isCodeValid(teacherClassCodeTxt)) {
-        removeClass(teacherClassCodeTxt, 'form-error');
-    }else{
-        addClass(teacherClassCodeTxt, 'form-error');
     }
 }
 
@@ -716,8 +677,8 @@ function checkIfAdminFieldIsValid(){
     }
 }
 function checkIfTeacherFieldIsValid(){
-    let isFNameEmpty, isMNameEmpty, isLNameEmpty, isSubjectEmpty,isEmailEmpty,
-        isPasswordEmpty, isCodeEmpty;
+    let isFNameEmpty, isMNameEmpty, isLNameEmpty,isEmailEmpty,
+        isPasswordEmpty;
     if(!doesFieldContainsNumber(teacherFnameTxt)){
         addClass(teacherFnameTxt, 'form-error');
         isFNameEmpty = true;
@@ -736,12 +697,6 @@ function checkIfTeacherFieldIsValid(){
     }else{
         isLNameEmpty = false;
     }
-    if(!isStringEmpty(teacherClassCodeTxt)){
-        addClass(teacherSubjectTxt, 'form-error');
-        isSubjectEmpty = true;
-    }else{
-        isSubjectEmpty = false;
-    }
     if(!doesFieldContainsValidEmail(teacherEmailTxt)){
         addClass(teacherEmailTxt, 'form-error');
         isEmailEmpty = true;
@@ -756,15 +711,9 @@ function checkIfTeacherFieldIsValid(){
     }else{
         isPasswordEmpty = false;
     }
-    if(!isCodeValid(teacherClassCodeTxt)){
-        addClass(teacherClassCodeTxt, 'form-error');
-        isCodeEmpty = true;
-    }else{
-        isCodeEmpty = false;
-    }
 
     if(!isFNameEmpty && !isMNameEmpty && !isLNameEmpty && !isEmailEmpty
-        && !isPasswordEmpty && !isCodeEmpty && isSubjectEmpty){
+        && !isPasswordEmpty){
         window.onbeforeunload = null;
         teacherSubmitBttn.setAttribute('type', 'submit');
     }else{
@@ -773,10 +722,8 @@ function checkIfTeacherFieldIsValid(){
         pastTeacherMnameValue = teacherMnameTxt.value;
         pastTeacherLnameValue = teacherLnameTxt.value;
         pastTeacherEmailValue = teacherEmailTxt.value;
-        pastTeacherSubjValue = teacherSubjectTxt.value;
         pastTeacherPWValue = teacherPasswordTxt.value;
         pastTeacherConPWValue = teacherConfirmPasswordTxt.value;
-        pastTeacherClassValue = teacherClassCodeTxt.value;
     }
 }
 function checkIfStudentFieldIsValid(){
@@ -974,19 +921,15 @@ function resetTeacherFields(){
     makeFieldEmpty(teacherFnameTxt);
     makeFieldEmpty(teacherMnameTxt);
     makeFieldEmpty(teacherLnameTxt);
-    makeFieldEmpty(teacherSubjectTxt);
     makeFieldEmpty(teacherEmailTxt);
     makeFieldEmpty(teacherPasswordTxt);
     makeFieldEmpty(teacherConfirmPasswordTxt);
-    makeFieldEmpty(teacherClassCodeTxt);
     pastTeacherFnameValue = null;
     pastTeacherMnameValue = null;
     pastTeacherLnameValue = null;
-    pastTeacherSubjValue = null;
     pastTeacherEmailValue = null;
     pastTeacherPWValue = null;
     pastTeacherConPWValue = null;
-    pastTeacherClassValue = null;
 }
 function resetStudentFields(){
     makeFieldEmpty(studentFnameTxt);
@@ -1020,7 +963,7 @@ function checkIfAllAdminFieldsAreEmpty(){
     }
 }
 function checkIfAllTeacherFieldsAreEmpty(){
-    if (!isStringEmpty(teacherFnameTxt.value) || !isStringEmpty(teacherMnameTxt.value) || !isStringEmpty(teacherLnameTxt.value) || !isStringEmpty(teacherSubjectTxt.value) || !isStringEmpty(teacherEmailTxt.value) || !isStringEmpty(teacherPasswordTxt.value) || !isStringEmpty(teacherConfirmPasswordTxt.value) || !isStringEmpty(teacherClassCodeTxt.value)){
+    if (!isStringEmpty(teacherFnameTxt.value) || !isStringEmpty(teacherMnameTxt.value) || !isStringEmpty(teacherLnameTxt.value) || !isStringEmpty(teacherEmailTxt.value) || !isStringEmpty(teacherPasswordTxt.value) || !isStringEmpty(teacherConfirmPasswordTxt.value)){
         return false;
     }else{
         return true;
@@ -1034,36 +977,6 @@ function checkIfAllStudentFieldsAreEmpty(){
     }
 }
 
-function fetchClassCode(el){
-    let classCodeElement = document.querySelector('.js-field-isCodeValid');
-    let url = '/checkClassCode';
-    let jsonData = JSON.stringify({inputCode: el.value});
-    const options = {
-        method: 'POST',
-        headers:{
-            'Accept': 'application/json',
-            'Content-Type': 'application/json;charset=UTF-8',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: jsonData
-    };
-    fetch(url, options)
-        .then((response)=>{
-            return response.text();
-        })
-        .then((body)=>{
-            if(body === 'true'){
-                classCodeElement.style.display = 'block';
-                addClass(el, 'form-error');
-            }else{
-                classCodeElement.style.display = 'none';
-                removeClass(el, 'form-error');
-            }
-    })
-        .catch(error=>{
-        console.log(error);
-    });
-}
 function fetchEmail(el){
     let classEmailElement = el.parentNode.querySelector('.js-field-email-taken');
     let url = '/checkEmail';

@@ -1,0 +1,217 @@
+.form--secondary
+    position: relative
+    &__title
+        font-size: 20px
+        line-height: 1.5
+        text-transform: capitalize
+        @extend %font-extrabold
+        margin-bottom: 60px
+        position: relative
+        color: $txt-primary-2
+        @include brk_md
+            font-size: 31.25px
+        &::before
+            content: ''
+            position: absolute
+            background-color: $txt-primary-2
+            height: 5px
+            width: 30%
+            bottom: -10px
+            border-radius: 10px
+            @include brk_md
+                width: 60%
+    &__group
+        margin-bottom: 45px
+        &:last-of-type
+            margin-bottom: 0
+        input,
+        textarea
+            margin-top: 12px
+            display: block
+            background-color: #ececec
+            padding: 10px
+            @extend %font-bold
+            font-family: inherit
+            color: #3a3a3a
+            font-size: 14px
+            width: 100%
+            border-radius: 5px
+            border: 2px solid #d0d0d0
+            &:focus
+                outline: none
+                box-shadow: 0 0 0 3px rgba(249, 0, 0, 0.22)
+                background-color: #fff4f6
+                border-color: #fff4f6
+            @include brk_md
+                width: 50%
+                font-size: 14px
+        textarea
+            resize: none
+            height: 145px
+        [type="date"]::-webkit-inner-spin-button
+            display: none
+        select
+            background-color: #ececec
+            padding: 5px
+            @extend %font-bold
+            font-family: inherit
+            color: #3a3a3a
+            font-size: 14px
+            border-radius: 5px
+            border: 2px solid #d0d0d0
+            cursor: pointer
+            &:focus
+                outline: none
+                box-shadow: 0 0 0 3px rgba(249, 0, 0, 0.22)
+                background-color: #fff4f6
+                border-color: #fff4f6
+            @include brk_md
+                font-size: 16px
+
+    &__schedule-wrapper
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        border-bottom: 2px solid #9c9c9c
+        padding-bottom: 30px
+        &:last-of-type
+            padding-bottom: 0
+            border-bottom: none
+        @include brk_md
+            -webkit-flex-direction: row
+            flex-direction: row
+            border: none
+            padding-bottom: 0
+    &__bttn
+        background-color: $color-new-secondary
+        margin: 40px auto 0 auto
+        color: white
+        font-family: inherit
+        text-transform: uppercase
+        @extend %font-bold
+        padding: 13px 20px
+        border-radius: 7px
+        width: 80%
+        display: block
+        font-size: 14px
+        position: relative
+        &:hover
+            background-color: $color-new-secondary-dark
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 3px rgba(249, 0, 0, 0.22)
+        @include brk_md
+            font-size: 16px
+    &__schedule-bttn,
+    &__schedule-bttn--removed
+        margin: 35px auto 0 auto
+        font-family: inherit
+        text-transform: uppercase
+        @extend %font-bold
+        padding: 8px 13px
+        border-radius: 7px
+        font-size: 14px
+        &:hover
+            background-color: $color-new-secondary-dark
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 3px rgba(249, 0, 0, 0.22)
+    &__schedule-bttn
+        background-color: $color-new-secondary
+        color: white
+        margin-right: 10px
+    &__schedule-bttn--removed
+        border: 2px solid $color-new-secondary-dark
+        color: $color-new-secondary-dark
+        margin-top: 10px
+        display: none
+        &:hover
+            background-color: $color-new-secondary-dark
+            color: white
+    &__warning-txt
+        font-size: 16px
+        text-align: center
+        background-color: #ffe1e1
+        color: #ff5858
+        @extend %font-semibold
+        padding: 15px
+        border-radius: 10px
+        width: 100%
+        margin: 0 auto 40px auto
+        display: none
+        line-height: 1.5
+        @include brk_md
+            width: 70%
+    &__warning-code
+        color: #ff5858
+        font-size: 16px
+        margin-top: 18px
+        @extend %font-semibold
+        display: none
+    &__close-panel
+        position: absolute
+        right: 50px
+        top: 45px
+        font-size: 16px
+        font-family: inherit
+        @extend %font-semibold
+        text-decoration: underline
+        color: red
+        cursor: pointer
+        z-index: 10
+label
+    @extend %font-bold
+    font-size: 15px
+    color: #4e4d4d
+    @include brk_md
+        font-size: 18px
+
+.date--wrapper
+    margin-right: 25px
+.form--secondary__day-label
+    margin: 25px 0 10px 0
+    display: block
+    font-size: 14px
+    @include brk_md
+        font-size: 16px
+.time-wrapper
+    input
+        background-color: #ececec
+        padding: 6px 10px
+        width: 100%
+        max-width: 220px
+        @extend %font-bold
+        font-family: inherit
+        color: #3a3a3a
+        font-size: 14px
+        border-radius: 5px
+        border: 2px solid #d0d0d0
+        margin-top: 0
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 3px rgba(249, 0, 0, 0.22)
+            background-color: #fff4f6
+            border-color: #fff4f6
+        @include brk_lrg
+            font-size: 16px
+
+.bttn--changed-loc
+    margin: 50px auto 0 30px
+    display: block
+    background-color: inherit
+.class-note
+    font-size: 15px
+    margin: 12px 0
+    font-weight: 700
+    color: #9a9a9a
+    line-height: 1.5
+
+.loading
+    background-color: #ffa7bc
+    cursor: not-allowed
+    &:hover
+        background-color: #ffa7bc
+    .loader-wrapper
+        display: block
+.show-create-panel
+    display: none

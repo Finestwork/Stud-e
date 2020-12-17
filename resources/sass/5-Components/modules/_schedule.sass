@@ -1,0 +1,74 @@
+.schedule
+    background-color: white
+    padding: 15px 25px
+    border-radius: 15px
+    position: relative
+    overflow: hidden
+    margin-bottom: 50px
+    &__form-group
+        @extend %display_flex
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+        -webkit-align-items: center
+        align-items: center
+        margin-bottom: 25px
+        &:last-of-type
+            margin-bottom: 0
+    &__line
+        position: absolute
+        width: 100%
+        height: 13px
+        background-color: $color-primary
+        top: 0
+        left: 0
+    &__title
+        margin: 35px 0
+        position: relative
+        z-index: 1
+        color: $color-primary
+        &::before
+            content: ""
+            position: absolute
+            width: 185px
+            height: 12px
+            background-color: #f0e5ff
+            z-index: -1
+            bottom: 8px
+    &__txt
+        @extend %font-semibold
+    &__default-sched,
+    &__lbl
+        color: #031463
+    &__lbl
+        @extend %font-bold
+        margin-right: 5px
+        font-size: 18px
+    &__default-sched
+        @extend %font-semibold
+    &__form-wrap
+        margin-top: 10px
+        -webkit-flex-basis: 100%
+        flex-basis: 100%
+    &__default-sched
+        margin-bottom: 5px
+        &:last-of-type
+            margin-bottom: 0
+.bttn--schedule
+    margin: 30px 0 30px auto
+    display: block
+    font-size: 12px
+    padding: 10px 15px
+    text-transform: uppercase
+    font-family: inherit
+    font-weight: 700
+    background-color: #7f2aff
+    color: white
+    border-radius: 10px
+    &:hover
+        background-color: $color-primary-hover
+    &:focus
+        outline: none
+    @include brk_md
+        font-size: 14px
+        padding: 13px 20px
+

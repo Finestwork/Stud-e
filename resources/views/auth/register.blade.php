@@ -175,12 +175,6 @@
                     <div class="form--primary__lrg--right">
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
-                            <label for="teacherSubjectTxt" class="form--primary__n-lbl">Enter your subject name: </label>
-                            <input type="text" id="teacherSubjectTxt" placeholder="Place your subject name here" name="teacherSubjectTxt" autocomplete="off">
-                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
-                        </div>
-                        <div class="form--primary__group">
-                            <span class="form--primary__note--required">Required</span>
                             <label for="teacherEmailTxt" class="form--primary__n-lbl">Enter your email: </label>
                             <input type="email" id="teacherEmailTxt" placeholder="Enter your email" name="teacherEmailTxt" autocomplete="off">
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
@@ -202,14 +196,6 @@
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
                             <p class="form--primary__note--error js-password-length">• Your password should be more than 8 characters.</p>
                             <p class="form--primary__note--error_c js-password-not-match">• Password Does not Match</p>
-                        </div>
-                        <div class="form--primary__group mb-5">
-                            <span class="form--primary__note--required">Required</span>
-                            <label for="teacherClassCodeTxt" class="form--primary__n-lbl">Class code for the subject: </label>
-                            <input type="text" id="teacherClassCodeTxt" placeholder="Enter your class code" name="teacherClassCodeTxt" autocomplete="off">
-                            <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
-                            <p class="form--primary__note--error js-field-code">• Code should be 6 characters long.</p>
-                            <p class="form--primary__note--error js-field-isCodeValid">• Your code has already been taken.</p>
                         </div>
                     </div>
                 </div>

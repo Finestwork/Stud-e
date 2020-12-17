@@ -1,0 +1,67 @@
+.card-list
+    width: 100%
+    margin-top: 25px
+    &__item
+        background-color: white
+        margin-bottom: 12px
+        padding: 15px 20px
+        -webkit-flex-direction: column
+        flex-direction: column
+        text-align: center
+        -webkit-backface-visibility: hidden
+        backface-visibility: hidden
+        @include animation(fadeInUp .8s both ease-in-out)
+        @include custom_breakpoint(400)
+            display: -webkit-flex
+            display: flex
+            -webkit-flex-direction: row
+            flex-direction: row
+            -webkit-justify-content: space-between
+            justify-content: space-between
+            -webkit-align-items: center
+            align-items: center
+            text-align: left
+        &:last-of-type
+            margin-bottom: 0
+    &__lbl
+        @extend %font-bold
+        margin-bottom: 5px
+        font-size: 14px
+        color: #464646
+    &__name
+        @extend %font-semibold
+        color: #7d0ff7
+        font-size: 14px
+        &:hover
+            color: $color-new-secondary
+        @include brk_md
+            font-size: 16px
+    &__member-ctr
+        @extend %font-bold
+        color: #464646
+        font-size: 14px
+        @include brk_md
+            font-size: 16px
+    &__subject-box
+        max-width: 135px
+        line-height: 1.3
+        margin: auto
+        word-break: break-word
+        @include custom_breakpoint(460)
+            width: 250px
+            max-width: unset
+            margin: 0
+
+    &__date
+        color: #464646
+        @extend %font-semibold
+        font-size: 14px
+        @include brk_md
+            font-size: 16px
+    &__subject-members-box
+        margin: 15px 0
+        @include custom_breakpoint(400)
+            -webkit-flex-basis: 40%
+            flex-basis: 40%
+            text-align: center
+            margin: 0

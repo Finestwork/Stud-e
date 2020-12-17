@@ -5,31 +5,26 @@
         @include brk_md
             margin-left: 35px
             margin-top: 15px
+    &__link-wrapper
+        overflow: hidden
+        padding-bottom: 10px
+        @include brk_md
+            padding-bottom: 0
     &__links-container
         @extend %display_flex
         -webkit-justify-content: space-between
         justify-content: space-between
-        border-bottom: 2px solid #b7b7b7
-        margin-bottom: 20px
-        padding-bottom: 10px
         @include brk_md
             -webkit-flex-direction: column
             flex-direction: column
             -webkit-justify-content: unset
             justify-content: unset
-            margin-bottom: 0
-            border-bottom: none
     &__links-item
         -webkit-flex-basis: 100%
         flex-basis: 100%
         text-align: center
         font-size: 14px
-        @include custom_breakpoint(350)
-            margin: 0 10px
-            &:first-of-type
-                margin-left: 0
-            &:last-of-type
-                margin-right: 0
+        margin-right: 10px
         @include brk_md
             text-align: left
             margin-left: 0

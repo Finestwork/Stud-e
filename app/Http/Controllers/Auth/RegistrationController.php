@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Mail\MailController;
+use App\Models\Classroom;
+use App\Models\Relations\RequestStudent;
+use App\Models\Relations\StudentClassroom;
 use App\Models\Relations\StudentSubject;
 use App\Models\Relations\TeacherSubject;
 use App\Models\Subject;
@@ -49,19 +51,16 @@ class RegistrationController extends Controller
             'teacherFnameTxt'=> 'required',
             'teacherMnameTxt'=> 'required',
             'teacherLnameTxt'=> 'required',
-            'teacherSubjectTxt'=> 'required',
             'teacherEmailTxt'=> 'required|email|unique:teacher,email',
             'teacherPasswordTxt'=> 'required_with:teacherConfirmPasswordTxt|min:6|same:teacherConfirmPasswordTxt',
             'teacherConfirmPasswordTxt'=> 'min:6',
-            'teacherClassCodeTxt'=> 'required',
         ]);
 
         if($validator->fails()){
             return redirect()->back()->with('error', 'Something went wrong, please check make sure that all fields are valid.');
         }else{
             $teacher = new Teacher();
-            $subject = new Subject();
-            $teacherSubject = new TeacherSubject();
+            $classroom = new Classroom();
             $teacher->f_name = strtolower($request['teacherFnameTxt']);
             $teacher->m_name = strtolower($request['teacherMnameTxt']);
             $teacher->l_name = strtolower($request['teacherLnameTxt']);
@@ -70,23 +69,16 @@ class RegistrationController extends Controller
             $teacher->isSubscribed = 0;
             $teacher->role_id = 2;
 
-            $checkClassCode = $subject::select('class_code')->where('class_code', $request['teacherClassCodeTxt'])->first();
+            $checkClassCode = $classroom::select('class_code')->where('class_code', $request['teacherClassCodeTxt'])->first();
             if(!$this->isEmailTaken($request['teacherEmailTxt']) && !$checkClassCode){
-                $subject->subject_name = $request['teacherSubjectTxt'];
-                $subject->class_code = $request['teacherClassCodeTxt'];
-                //SEND EMAIL HERE
-                if($teacher->save() && $subject->save()){
-                    $teacherSubject->teacher_id = $teacher->id;
-                    $teacherSubject->subject_id = $subject->id;
-                    if($teacherSubject->save()){
-                        $user_data = array(
-                            'email' => $request->input('teacherEmailTxt'),
-                            'password' => $request->input('teacherPasswordTxt')
-                        );
-                        if(Auth::guard('teacher')->attempt($user_data)){
-                            $user = Auth::guard('teacher')->user();
-                            return view('auth.verify', ['user'=>$user]);
-                        }
+                if($teacher->save()){
+                    $user_data = array(
+                        'email' => $request->input('teacherEmailTxt'),
+                        'password' => $request->input('teacherPasswordTxt')
+                    );
+                    if(Auth::guard('teacher')->attempt($user_data)){
+                        $user = Auth::guard('teacher')->user();
+                        return view('auth.verify', ['user'=>$user]);
                     }
                 }
             }
@@ -112,20 +104,20 @@ class RegistrationController extends Controller
             return redirect()->back()->with('error', 'Something went wrong, please check make sure that all fields are valid.');
         }else{
             $student = new Student();
-            $subject = new Subject();
-            $studentSubject = new StudentSubject();
+            $classroom = new Classroom();
+            $requestStudent = new RequestStudent();
             $student->f_name = strtolower($request['studFnameTxt']);
             $student->m_name = strtolower($request['studMnameTxt']);
             $student->l_name = strtolower($request['studLnameTxt']);
             $student->email = $request['studentEmailTxt'];
             $student->password = Hash::make($request['studentPasswordTxt']);
             $student->role_id = 3;
-            $class = $subject::select('id')->where('class_code', $request['studentClassCodeTxt'])->first();
+            $class = $classroom::select('id')->where('class_code', $request['studentClassCodeTxt'])->first();
             if(!$this->isEmailTaken($request['studentEmailTxt']) && $class){
                 if($student->save()){
-                    $studentSubject->student_id = $student->id;
-                    $studentSubject->subject_id = $class->id;
-                    if($studentSubject->save()){
+                    $requestStudent->student_id = $student->id;
+                    $requestStudent->classroom_id = $class->id;
+                    if($requestStudent->save()){
                         $user_data = array(
                             'email' => $request->input('studentEmailTxt'),
                             'password' => $request->input('studentPasswordTxt')

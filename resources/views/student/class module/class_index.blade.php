@@ -54,293 +54,46 @@
                             <div class="loader"></div>
                             <p class="loader__text">Please wait while we set things up for you!</p>
                         </div>
-                    </div>
-                    <!-- CURRENT CLASS AND COMPLETED CLASS IS JUST TEMPORARY (PROTOTYPE), SHOWING OF SUBJECTS WILL BE DONE WITH AXIOS (FETCH) -->
-                    <div class="current" id="current">
-                        <div class="col-sm-12 col-md-12 col-lrg-12">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
+                        <div class="current" id="current">
+                            <div class="col-sm-12 col-md-12 col-lrg-12">
+                                <div class="row">
+                                    @foreach($teachers as $key => $row)
+                                        <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
+                                            <div class="class-card">
+                                                <div class="class-card__top">
+                                                    <div class="class-card__left">
+                                                        <!-- IMAGE WILL BE REPLACED AFTER I FX PROFILE PAGE -->
+                                                        <div class="class-card__img-border">
+                                                            <div class="class-card__img-box">
+                                                                <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
+                                                            </div>
+                                                        </div>
+                                                        <div class="class-card__img-name">{{ ucfirst($row['f_name']) .' '.ucfirst($row['l_name']) }}</div>
+                                                        <div class="class-card__img-lbl">Teacher</div>
+                                                    </div>
+                                                    <div class="class-card__right">
+                                                        <p class="class-card__subject">{{ $classrooms[$key]->classroom_name }}</p>
+                                                        <p class="class-card__more-info">{{ $classrooms[$key]->classroom_section }}</p>
+                                                        <a href="{{ route('classroom.home', $classrooms[$key]->classroom_unique_url) }}" class="bttn-link--primary"> View Classroom </a>
+                                                    </div>
                                                 </div>
+                                                <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($classrooms[$key]->created_at)) }}</p>
                                             </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
                                         </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Free section</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2020</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Section A701</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Free section</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Section A701</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Free section</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Section A701</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Free section</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2020</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Section A701</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2020</p>
-                                        </div>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="completed" id="completed">
+                            <div class="col-sm-12 col-md-12 col-lrg-12">
+                                <div class="row">
+                                    <p>Under construction</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="completed" id="completed">
-                        <div class="col-sm-12 col-md-12 col-lrg-12">
-                            <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Free section</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: December 5, 2019</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Section A701</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: November 5, 2019</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Free section</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: October 5, 2019</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Section A701</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: October 5, 2018</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                    <div class="class-card">
-                                        <div class="class-card__left">
-                                            <div class="class-card__img-border">
-                                                <div class="class-card__img-box">
-                                                    <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
-                                                </div>
-                                            </div>
-                                            <div class="class-card__img-name">Guil Hernandez</div>
-                                            <div class="class-card__img-lbl">Teacher</div>
-                                        </div>
-                                        <div class="class-card__right">
-                                            <p class="class-card__subject">Psychology with Drugs, HIV/AIDS, and SARS Education</p>
-                                            <p class="class-card__more-info">Free section</p>
-                                            <a href="{{ route('student.modules') }}" class="bttn-link--primary">View this class</a>
-                                        </div>
-                                        <div class="class-card__footer">
-                                            <p class="class-card__footer__text">Date created: September 14, 2019</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         </main>

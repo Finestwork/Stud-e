@@ -1,7 +1,9 @@
 @extends('partials.base')
 
 @section('title')
-    Modules - Psychology with Drugs, HIV/AIDS, and SARS Education
+    @foreach($classrooms as $classroom )
+        Schedule - {{ $classroom->classroom_name }}
+    @endforeach
 @endsection
 
 @section('cs-css')
@@ -27,7 +29,7 @@
                     <div class="col-sm-12 col-md-2 col-lrg-1">
                         <ul class="classroom__links-container">
                             <li class="classroom__links-item">
-                                <a href="{{ route('student.modules') }}" class="classroom__links link--active">Modules</a>
+                                <a href="#" class="classroom__links link--active">Modules</a>
                             </li>
                             <li class="classroom__links-item" >
                                 <a href="{{ route('student.tasks') }}" class="classroom__links ">Tasks</a>
@@ -35,7 +37,6 @@
                             <li class="classroom__links-item" >
                                 <a href="{{ route('student.discussion') }}" class="classroom__links">Discussion</a>
                             </li>
-
                             <li class="classroom__links-item">
                                 <a href="{{ route('student.members') }}" class="classroom__links ">Members</a>
                             </li>

@@ -5,7 +5,7 @@
 @endsection
 
 @section('cs-css')
-    <link rel="stylesheet" href="/css/student/student.home.style.css">
+    <link rel="stylesheet" href="/css/teacher/home.style.css">
 @endsection
 
 @section('cs-js')
@@ -325,7 +325,7 @@
 
 @section('script')
     <script src="/assets/js/helpers/navbar-with-sidebar.js"></script>
-    <script src="/assets/js/modules/student/student.index.js"></script>
     <script src="/assets/js/helpers/calendar.js"></script>
     <script src="/assets/js/helpers/tasks.js"></script>
+    <script src="/assets/js/modules/teacher/home.js"></script>
 @endsection

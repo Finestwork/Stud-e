@@ -12,6 +12,9 @@ use \App\Http\Controllers\UserController;
 use \App\Http\Controllers\Auth\RegistrationController;
 use \App\Http\Controllers\Teacher\RenderViewsController;
 use \App\Http\Controllers\UnAuthorizedController;
+use \App\Http\Controllers\Teacher\ClassroomController;
+use \App\Http\Controllers\Globals\ClassroomController as GlobalClassroomController;
+use \App\Http\Controllers\Globals\MemberController as GlobalMemberController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,8 +41,7 @@ Route::group(['middleware' => ['auth:student'],'prefix'=>'/student'],function(){
     //HOMEPAGE OF EVERY NAVIGATION LINKS
     Route::get('/', [HomepageController::class, 'index'])->name('student.home');
 
-    Route::get('/class', [ClassController::class, 'index'])->name('student.class');
-    Route::get('/modules', [ClassController::class, 'renderClassroom'])->name('student.modules');
+    Route::get('/classroom', [ClassController::class, 'index'])->name('student.class');
     Route::get('/tasks', [ClassController::class, 'renderTask'])->name('student.tasks');
     Route::get('/members', [ClassController::class, 'rendermember'])->name('student.members');
 
@@ -65,10 +67,21 @@ Route::group(['middleware' => ['auth:student'],'prefix'=>'/student'],function(){
 });
 
 Route::group(['middleware' => ['auth:teacher'], 'prefix'=>'/teacher'],function(){
-    //HOMEPAGE OF EVERY NAVIGATION LINKS
     Route::get('/', [RenderViewsController::class, 'index'])->name('teacher.home');
+    //CLASSROOM
+    Route::get('/classroom', [RenderViewsController::class, 'classroom'])->name('teacher.classroom');
+    Route::post('/create-classroom', [ClassroomController::class, 'createClassroom']);
 });
 
+Route::group(['middeware'=>['auth:teacher,student'], 'prefix'=>'/classroom'], function(){
+    Route::get('/{uniqueUrl}', [GlobalClassroomController::class, 'renderClassroom'])->name('classroom.schedule');
+});
+Route::group(['middeware'=>['auth:teacher,student'], 'prefix'=>'/classroom'], function(){
+    Route::get('/{uniqueUrl}/members', [GlobalMemberController::class, 'renderMembers'])->name('classroom.member');
+    Route::post('/request-member/{uniqueUrl}', [GlobalMemberController::class, 'getMembersRequest']);
+    Route::post('/get-approved-members/{uniqueUrl}', [GlobalMemberController::class, 'getApprovedMembers']);
+    Route::post('/approve-member/{uniqueUrl}', [GlobalMemberController::class, 'approveMemberRequest']);
+});
 
 
 //REGISTRATION

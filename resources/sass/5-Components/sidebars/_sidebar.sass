@@ -20,9 +20,10 @@
         font-size: 16 / $root-font-size * 1rem
         font-family: inherit
         font-weight: 700
-        padding: 10/ 16 * 1em  20 / 16 * 1em
+        padding: 13px 11px
         border-radius: 10px
         color: white
+        max-width: 170px
         &:hover
             background-color: $color-new-secondary-dark
         &-icon
@@ -30,6 +31,8 @@
             @extend %display_flex
             -webkit-align-items: center
             align-items: center
+        &-txt
+            font-size: 14px
     &__line
         background-color: $navbar-line-color
         width: 90%

@@ -22,7 +22,7 @@
 
 @section('body-content')
     @include('partials.navbar_box_shadow')
-    @include('student.optional partials.fixed_independent_sidebar')
+    @include('teacher.optional partials.sidebar--secondary')
     <main class="member">
         <div class="container--main">
             <div class="container-fluid">
@@ -75,9 +75,6 @@
                                     @include('teacher.optional partials.empty_list')
                                 </div>
                             @else
-                                <div class="member__empty" style="display: none;">
-                                    @include('teacher.optional partials.empty_list')
-                                </div>
                                 <div class="member__main-container">
                                     <div class="member__labels">
                                         <p class="member__labels-txt">Name</p>
@@ -85,7 +82,7 @@
                                     </div>
                                     <ul class="member__lists">
                                         @foreach($students as $student)
-                                            <li class="member__list">
+                                            <li class="member__list" data-identity="{{ $student[0]->id }}">
                                                 <div class="member__list-left">
                                                     <div class="member__list-img">
                                                         <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
@@ -113,6 +110,9 @@
                                             </li>
                                         @endforeach
                                     </ul>
+                                </div>
+                                <div class="member__empty" style="display: none;">
+                                    @include('teacher.optional partials.empty_list')
                                 </div>
                             @endif
                             <div class="loader-box">

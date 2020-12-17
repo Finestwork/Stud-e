@@ -69,7 +69,10 @@
                                 <span class="ghost--header__main-content__title--top__sub">Stud-e</span>
                             </p>
                             <h1 class="ghost--header__main-content__primary">Your online classroom <span class="ghost--header__main-content__primary--sub">that suits your needs.</span></h1>
-                            <p class="ghost--header__main-content__bottom">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores dicta eos, ex hic modi qui quod saepe vitae.</p>
+                            <p class="ghost--header__main-content__bottom">Micro-learn your way through your courses like a champ.
+                                Choose options from Admin, Teacher or Student sign-up.
+                                See what fits you below.
+                            </p>
                             <a href="#" class="bttn--primary ghost--header__main-content__bttn">Learn more</a>
                         </div>
                     </div>
@@ -82,8 +85,6 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
     </header>
     <section class="offer" id="offer">
@@ -98,50 +99,51 @@
                 <img src="/assets/svgs/shapes/dot-big.svg" alt="Offer Section Dotted Background" class="shape-dot-big">
             </div>
             <h2 class="heading--secondary">What do we offer?</h2>
-            <p class="paragraph--heading mt-1 mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium alias commodi consectetur, cumque debitis eaque eos error, et eveniet fugiat magni minima mollitia officia officiis quae quod, totam veniam voluptates.</p>
+            <p class="paragraph--heading mt-1 mb-3">Simple, we provide you with online services for your educational needs. Distance learning has never been easier. Try our Micro-learning platform today for your team, student or just your self. Improve your skills today with Stud-E.</p>
             <div class="card--primary">
                 <div class="row">
                     <div class="col-md-3 col-lrg-4 card--primary__container">
                         <div class="card--primary__img-box">
                             <img src="/assets/svgs/card 1.svg" alt="Card's Image Box" class="img-fluid">
                         </div>
-                        <h3 class="card--primary__title">This is a title</h3>
-                        <p class="card--primary__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cumque deserunt dicta eaque esse incidunt, maxime mollitia natus nesciunt numquam pariatur quam quis quod saepe suscipit tenetur vitae voluptate.</p>
+                        <h3 class="card--primary__title">Sign-up as Admin</h3>
+                        <p class="card--primary__txt">Do you need to arrange a team of educators/instructors to
+                            conduct and distribute resources and for a course or a special training program for your school or organization? Then Admin profile is perfect for you.</p>
                     </div>
                     <div class="col-md-3 col-lrg-4 card--primary__container">
                         <div class="card--primary__img-box">
                             <img src="/assets/svgs/card 2.svg" alt="Card's Image Box" class="img-fluid">
                         </div>
-                        <h3 class="card--primary__title">This is a title</h3>
-                        <p class="card--primary__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cumque deserunt dicta eaque esse incidunt, maxime mollitia natus nesciunt numquam pariatur quam quis quod saepe suscipit tenetur vitae voluptate.</p>
+                        <h3 class="card--primary__title">Sign-up as a Teacher</h3>
+                        <p class="card--primary__txt">If you already have a team/class code join as a teacher and start setting up your class. If you are an indipendent educator feel free to sign up just as you are (yes,everyone is welcome here) and start uploading your lessons for your class. What are you waiting for click here, Master Yoda.</p>
                     </div>
                     <div class="col-md-3 col-lrg-4 card--primary__container">
                         <div class="card--primary__img-box">
                             <img src="/assets/svgs/card 3.svg" alt="Card's Image Box" class="img-fluid">
                         </div>
-                        <h3 class="card--primary__title">This is a title</h3>
-                        <p class="card--primary__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cumque deserunt dicta eaque esse incidunt, maxime mollitia natus nesciunt numquam pariatur quam quis quod saepe suscipit tenetur vitae voluptate.</p>
+                        <h3 class="card--primary__title">Sign-up as a Student</h3>
+                        <p class="card--primary__txt">If you have a team/class code from your admin or teacher, better put that here and set up your notes, reviewers and coordinate with your teacher/instructors to sharpen your skills. You have a bright future young one.</p>
                     </div>
                     <div class="col-md-3 col-lrg-4 card--primary__container">
                         <div class="card--primary__img-box">
                             <img src="/assets/svgs/card 4.svg" alt="Card's Image Box" class="img-fluid">
                         </div>
-                        <h3 class="card--primary__title">This is a title</h3>
-                        <p class="card--primary__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cumque deserunt dicta eaque esse incidunt, maxime mollitia natus nesciunt numquam pariatur quam quis quod saepe suscipit tenetur vitae voluptate.</p>
+                        <h3 class="card--primary__title">Organize your tasks to increase your productivity</h3>
+                        <p class="card--primary__txt">Nothing says task complete like a good, clean and specific course list. Micro-Learning wants you to master each topic carefully. Take your time dear.</p>
                     </div>
                     <div class="col-md-3 col-lrg-4 card--primary__container">
                         <div class="card--primary__img-box">
                             <img src="/assets/svgs/card 5.svg" alt="Card's Image Box" class="img-fluid">
                         </div>
-                        <h3 class="card--primary__title">This is a title</h3>
-                        <p class="card--primary__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cumque deserunt dicta eaque esse incidunt, maxime mollitia natus nesciunt numquam pariatur quam quis quod saepe suscipit tenetur vitae voluptate.</p>
+                        <h3 class="card--primary__title">Learn at your own pace</h3>
+                        <p class="card--primary__txt">Are you working hard for your future, don't sweat it. Micro-Learning has you covered. Courses have been strategically taylored to fit your convenience, allowing you to complete your tasks.</p>
                     </div>
                     <div class="col-md-3 col-lrg-4 card--primary__container">
                         <div class="card--primary__img-box">
                             <img src="/assets/svgs/card 6.svg" alt="Card's Image Box" class="img-fluid">
                         </div>
-                        <h3 class="card--primary__title">This is a title</h3>
-                        <p class="card--primary__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem corporis cumque deserunt dicta eaque esse incidunt, maxime mollitia natus nesciunt numquam pariatur quam quis quod saepe suscipit tenetur vitae voluptate.</p>
+                        <h3 class="card--primary__title">Reasonable Prices</h3>
+                        <p class="card--primary__txt">Wether you wanna try our services out or you want to be a teacher or an admin for your team, features and rates are transparent so you know what you are getting. #worthit.</p>
                     </div>
                 </div>
             </div>
@@ -165,7 +167,7 @@
                            <span class="pricing-table__icon">
                                <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table__list-txt">Admin can create 5 teachers, 5 classrooms for each teachers and a maximum of 30 students per classroom</span>
+                                <span class="pricing-table__list-txt">Admin can create 15 teachers, 15 classrooms for each teachers and a maximum of 30 students per classroom</span>
                             </li>
                             <li class="pricing-table__list">
                            <span class="pricing-table__icon">
@@ -177,13 +179,25 @@
                            <span class="pricing-table__icon">
                                <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table__list-txt">More Features...</span>
+                                <span class="pricing-table__list-txt">Upload grades </span>
                             </li>
                             <li class="pricing-table__list">
                            <span class="pricing-table__icon">
                                <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table__list-txt">More Features...</span>
+                                <span class="pricing-table__list-txt">Post status updates for you and your students</span>
+                            </li>
+                            <li class="pricing-table__list">
+                           <span class="pricing-table__icon">
+                               <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
+                           </span>
+                                <span class="pricing-table__list-txt">Set homework reminders</span>
+                            </li>
+                            <li class="pricing-table__list">
+                           <span class="pricing-table__icon">
+                               <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
+                           </span>
+                                <span class="pricing-table__list-txt">Post your weekly activities in an organized manner</span>
                             </li>
                         </ul>
                         <button type="button" class="bttn pricing-table__bttn">Get now</button>
@@ -198,28 +212,34 @@
                         </div>
                         <ul class="pricing-table--colored__list-wrapper mt-2">
                             <li class="pricing-table--colored__list">
-                           <span class="pricing-table--colored__icon">
+                               <span class="pricing-table--colored__icon">
                                <img src="/assets/svgs/icons/Fat Check-white.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table--colored__list-txt">Admin can create 5 teachers, 5 classrooms for each teachers and a maximum of 30 students per classroom</span>
+                                <span class="pricing-table--colored__list-txt">Admin can create 20(change mo na lang if wrongung number) teachers, 20 classrooms for each teachers and a maximum of 30 students per classroom</span>
                             </li>
                             <li class="pricing-table--colored__list">
-                           <span class="pricing-table--colored__icon">
+                               <span class="pricing-table--colored__icon">
                                <img src="/assets/svgs/icons/Fat Check-white.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table--colored__list-txt">Admin / Teachers can upload 5 modules per class</span>
+                                <span class="pricing-table--colored__list-txt">Admin / Teachers can upload 10 modules per class</span>
                             </li>
                             <li class="pricing-table--colored__list">
-                           <span class="pricing-table--colored__icon">
+                               <span class="pricing-table--colored__icon">
                                <img src="/assets/svgs/icons/Fat Check-white.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table--colored__list-txt">More Features...</span>
+                                <span class="pricing-table--colored__list-txt">Download Records and scores of your class</span>
                             </li>
                             <li class="pricing-table--colored__list">
-                           <span class="pricing-table__icon">
+                               <span class="pricing-table--colored__icon">
                                <img src="/assets/svgs/icons/Fat Check-white.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table--colored__list-txt">More Features...</span>
+                                <span class="pricing-table--colored__list-txt">Enable game reviewers for your class</span>
+                            </li>
+                            <li class="pricing-table--colored__list">
+                               <span class="pricing-table--colored__icon">
+                               <img src="/assets/svgs/icons/Fat Check-white.svg" alt="Table Icon" class="img-fluid">
+                           </span>
+                                <span class="pricing-table--colored__list-txt">Organize your weekly task for each class you have</span>
                             </li>
                         </ul>
                         <button type="button" class="bttn pricing-table--colored__bttn">Get now</button>
@@ -233,28 +253,38 @@
                         </div>
                         <ul class="pricing-table__list-wrapper mt-2">
                             <li class="pricing-table__list">
-                           <span class="pricing-table__icon">
+                               <span class="pricing-table__icon">
                                <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table__list-txt">Admin can create 5 teachers, 5 classrooms for each teachers and a maximum of 30 students per classroom</span>
+                                <span class="pricing-table__list-txt">
+                                    Admin can create unlimited teachers, classrooms for each teachers and a maximum of 60 students per classroom
+                                </span>
                             </li>
                             <li class="pricing-table__list">
-                           <span class="pricing-table__icon">
+                               <span class="pricing-table__icon">
                                <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table__list-txt">Admin / Teachers can upload 5 modules per class</span>
+                                <span class="pricing-table__list-txt">
+                                    Admin / Teachers can upload unlimited modules per class
+                                </span>
                             </li>
                             <li class="pricing-table__list">
-                           <span class="pricing-table__icon">
+                               <span class="pricing-table__icon">
                                <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table__list-txt">More Features...</span>
+                                <span class="pricing-table__list-txt">Download Records and scores of your class</span>
                             </li>
                             <li class="pricing-table__list">
-                           <span class="pricing-table__icon">
+                               <span class="pricing-table__icon">
                                <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
                            </span>
-                                <span class="pricing-table__list-txt">More Features...</span>
+                                <span class="pricing-table__list-txt">Enable game reviewers for your class</span>
+                            </li>
+                            <li class="pricing-table__list">
+                               <span class="pricing-table__icon">
+                               <img src="/assets/svgs/icons/Fat Check.svg" alt="Table Icon" class="img-fluid">
+                           </span>
+                                <span class="pricing-table__list-txt">Organize your weekly task for each class you have</span>
                             </li>
                         </ul>
                         <button type="button" class="bttn pricing-table__bttn">Get now</button>
@@ -280,8 +310,9 @@
                                 <img src="/assets/svgs/Banner 1.svg" alt="First Banner Image of Illustration Section" class="img-fluid">
                             </div>
                             <div class="illustration__description">
-                                <h3 class="illustration__title">This is a title</h3>
-                                <p class="illustration__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consectetur distinctio dolorem earum, excepturi hic incidunt ipsa iste laboriosam laborum, maxime minima quod repellendus soluta ullam, ut veritatis vitae voluptatem?</p>
+                                <h3 class="illustration__title">Organized.</h3>
+                                <p class="illustration__txt">Organized and easy to track buttons for your classes/batches/students to be set up.
+                                    User friendly website interface is faster and more efficient for you and for me and the entire human race.</p>
                             </div>
                         </div>
                     </div>
@@ -291,8 +322,8 @@
                                 <img src="/assets/svgs/Banner 2.svg" alt="Second Banner Image of Illustration Section" class="img-fluid">
                             </div>
                             <div class="illustration__description">
-                                <h3 class="illustration__title">This is a title</h3>
-                                <p class="illustration__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consectetur distinctio dolorem earum, excepturi hic incidunt ipsa iste laboriosam laborum, maxime minima quod repellendus soluta ullam, ut veritatis vitae voluptatem?</p>
+                                <h3 class="illustration__title">User friendly.</h3>
+                                <p class="illustration__txt">Learn in a safe community, all classmates are listed for you and your teachers, feel free to browse around the community and get assistance from people you know who is part of the class. Lessons are sharable inside the platform, co create quizes, reviewers and get a study buddy to make sure that your Micro-Learning experience is fun and interactive. You go braniac.</p>
                             </div>
                         </div>
                     </div>
@@ -302,8 +333,8 @@
                                 <img src="/assets/svgs/Banner 3.svg" alt="Third Banner Image of Illustration Section" class="img-fluid">
                             </div>
                             <div class="illustration__description">
-                                <h3 class="illustration__title">This is a title</h3>
-                                <p class="illustration__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consectetur distinctio dolorem earum, excepturi hic incidunt ipsa iste laboriosam laborum, maxime minima quod repellendus soluta ullam, ut veritatis vitae voluptatem?</p>
+                                <h3 class="illustration__title">Time management.</h3>
+                                <p class="illustration__txt">Learn at your own pace at your own time, sure there is a deadline, but you still get to work, and do your usual stuff, the aim of micro learning is to provide you small chunks of information you may be able to digest, so you can learn efficiently. Take your lessons where ever you may be.</p>
                             </div>
                         </div>
                     </div>
@@ -313,8 +344,8 @@
                                 <img src="/assets/svgs/Banner 4.svg" alt="Fourth Banner Image of Illustration Section" class="img-fluid">
                             </div>
                             <div class="illustration__description">
-                                <h3 class="illustration__title">This is a title</h3>
-                                <p class="illustration__txt">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A consectetur distinctio dolorem earum, excepturi hic incidunt ipsa iste laboriosam laborum, maxime minima quod repellendus soluta ullam, ut veritatis vitae voluptatem?</p>
+                                <h3 class="illustration__title">Start now!</h3>
+                                <p class="illustration__txt">You can monitor your progress, from start to finish. Your goal is our goal. You can take the reviewers first, create a quiz then take the scheduled exams, assignments or quizzes online, you know what they say right? Practice makes perfect.You can now create a reviewer wherever you are. Making your academic plans easier for you to achieve.</p>
                             </div>
                         </div>
                     </div>

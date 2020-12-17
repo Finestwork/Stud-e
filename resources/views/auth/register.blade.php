@@ -212,21 +212,21 @@
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
-                            <input type="text" id="studFnameTxt" placeholder="Enter your email" name="studFnameTxt" autocomplete="off">
+                            <input type="text" id="studFnameTxt" placeholder="Place your first name here" name="studFnameTxt" autocomplete="off">
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
                             <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studMnameTxt" class="form--primary__n-lbl">Enter your middle name: </label>
-                            <input type="text" id="studMnameTxt" placeholder="Enter your email" name="studMnameTxt" autocomplete="off">
+                            <input type="text" id="studMnameTxt" placeholder="Place your middle name here" name="studMnameTxt" autocomplete="off">
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
                             <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>
                         <div class="form--primary__group">
                             <span class="form--primary__note--required">Required</span>
                             <label for="studLnameTxt" class="form--primary__n-lbl">Enter your last name: </label>
-                            <input type="text" id="studLnameTxt" placeholder="Enter your email" name="studLnameTxt" autocomplete="off">
+                            <input type="text" id="studLnameTxt" placeholder="Place your last name here" name="studLnameTxt" autocomplete="off">
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>
                             <p class="form--primary__note--error js-field-no-num">• Make sure that this field does not contain any special characters or numbers.</p>
                         </div>

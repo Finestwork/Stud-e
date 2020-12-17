@@ -28,7 +28,6 @@
         border-radius: 10px
         margin: 15px 0
         text-align: center
-        position: relative
         @include custom_breakpoint(400)
             text-align: left
         &-left,
@@ -47,6 +46,7 @@
             -webkit-justify-content: space-between
             justify-content: space-between
             color: $txt-secondary-2
+            position: relative
             @include brk_lrg
                 margin-left: 40px
             &-p
@@ -123,14 +123,11 @@
         text-align: center
         position: absolute
         right: 0
-        bottom: -120px
+        bottom: -60px
         z-index: 50
         background-color: white
-        @include transform(translateY(-50%))
         box-shadow: 0 0 6px 2px rgba(0,0,0,.05)
         display: none
-        @include brk_md
-            bottom: -130px
     &__panel-bttn
         border: none
         font-family: inherit

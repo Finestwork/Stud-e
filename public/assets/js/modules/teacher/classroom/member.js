@@ -6,7 +6,7 @@ let optionBttns = document.querySelectorAll('.member__bttn--option'),
 let approvedBttn = document.querySelector('.js-bttn-accepted'),
     requestBttn = document.querySelector('.js-bttn-request'),
     blockedBttn = document.querySelector('.js-bttn-blocked');
-let emptyBox = document.querySelector('.member__empty');
+let emptyBox = document.querySelector('.empty');
 let loaderBox = document.querySelector('.loader-box');
 
 let popupMssg = document.querySelector('.popup__message'),
@@ -369,7 +369,7 @@ function displayRequestList(list){
     setTimeout(function () {
         let memberContainer = document.createElement('DIV');
         memberContainer.classList.add('member__main-container');
-        let emptyBoxWrapper = document.querySelector('.member__empty');
+        let emptyBoxWrapper = document.querySelector('.empty');
         checkIfElementExist('.member__main-container');
         // LABELS
         let lblsWrapper = document.createElement('DIV'),
@@ -490,7 +490,7 @@ function displayApprovedList(list){
     setTimeout(function () {
         let memberContainer = document.createElement('DIV');
         memberContainer.classList.add('member__main-container');
-        let emptyBoxWrapper = document.querySelector('.member__empty');
+        let emptyBoxWrapper = document.querySelector('.empty');
         checkIfElementExist('.member__main-container');
         // LABELS
         let lblsWrapper = document.createElement('DIV'),
@@ -607,7 +607,7 @@ function displayBlockList(list){
     setTimeout(function () {
         let memberContainer = document.createElement('DIV');
         memberContainer.classList.add('member__main-container');
-        let emptyBoxWrapper = document.querySelector('.member__empty');
+        let emptyBoxWrapper = document.querySelector('.empty');
         checkIfElementExist('.member__main-container');
         // LABELS
         let lblsWrapper = document.createElement('DIV'),
@@ -843,9 +843,9 @@ function hideMemberContainer(){
     mainContainer.remove();
 }
 function showEmptyWrapper(mssg){
-    let emptyWrapper = document.querySelector('.member__empty');
+    let emptyWrapper = document.querySelector('.empty');
     emptyWrapper.style.display = 'block';
-    let emptyTxt = emptyWrapper.querySelector('.member__empty-txt');
+    let emptyTxt = emptyWrapper.querySelector('.empty__txt');
     emptyTxt.textContent = mssg;
     hideLoader();
 }

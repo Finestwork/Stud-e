@@ -1,12 +1,19 @@
 <aside class="sidebar" id="sidebar">
     <div class="scrollbar" id="scrollBar">
-        <a class="sidebar__bttn bttn" href="{{ route('teacher.create.classroom') }}">
-        <span class="sidebar__bttn-icon">
-            <img src="/assets/svgs/icons/sidebar/Add icon.svg" alt="Sidebar Button Icon" class="img-fluid">
-        </span>
-            <span class="sidebar__bttn-txt">Create Classroom</span>
-        </a>
-        <div class="sidebar__line"></div>
+
+        @if(Request::path() != 'teacher/classroom/create-classroom')
+            <a class="sidebar__bttn bttn" href="{{ route('teacher.create.classroom') }}">
+            <span class="sidebar__bttn-icon">
+                <img src="/assets/svgs/icons/sidebar/Add icon.svg" alt="Sidebar Button Icon" class="img-fluid">
+            </span>
+                <span class="sidebar__bttn-txt">Create Classroom</span>
+            </a>
+
+            <div class="sidebar__line"></div>
+        @endif
+
+
+
 
         @if(Request::path() == 'teacher')
             <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.home') }}">

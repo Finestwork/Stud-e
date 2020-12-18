@@ -93,7 +93,7 @@
                                         <div class="schedule__form-group">
                                             <p class="schedule__lbl">Classroom schedule: </p>
                                             <div class="schedule__form-wrap">
-                                                @foreach(json_decode($classroom->classroom_schedule) as $sched)
+                                                @foreach($classroom->classroom_schedule as $sched)
                                                     <p class="schedule__default-sched">{{ $sched[0] . ' ' . $sched[1] }}</p>
                                                 @endforeach
                                             </div>

@@ -7,6 +7,7 @@ use App\Models\Classroom;
 use App\Models\Relations\StudentClassroom;
 use App\Models\Relations\TeacherClassroom;
 use App\Models\Relations\TeacherSubject;
+use App\Models\Users\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -23,12 +24,16 @@ class RenderViewsController extends Controller
     }
 
     public function classroom() {
+        $classroom = [];
         $user = Auth::guard('teacher')->user();
-        $teacherClassroom = TeacherClassroom::all();
-        $classroom = Classroom::all();
+        $teacherClassrooms = TeacherClassroom::select('classroom_id')->where('teacher_id', $user->id)->get();
+
+        foreach($teacherClassrooms as $tcs){
+            $classroom []= Classroom::where('id', $tcs->classroom_id)->get();
+        }
         return view('teacher.classroom.index', [
             'user'=>$user,
-            'teacherClassroom' => $teacherClassroom,
+            'teacherClassroom' => $teacherClassrooms,
             'classrooms' => $classroom
         ]);
     }

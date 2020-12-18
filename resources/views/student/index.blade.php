@@ -371,6 +371,7 @@
                     </div>
                 </div>
             </div>
+            @include('student.optional partials.enroll')
         </main>
     </div>
 @endsection
@@ -378,6 +379,8 @@
 @section('script')
     <script src="/assets/js/helpers/navbar-with-sidebar.js"></script>
     <script src="/assets/js/modules/student/student.index.js"></script>
+    <script src="/assets/js/modules/student/popup.code.js"></script>
     <script src="/assets/js/helpers/calendar.js"></script>
     <script src="/assets/js/helpers/tasks.js"></script>
+
 @endsection

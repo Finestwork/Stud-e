@@ -120,98 +120,109 @@
                                     </button>
                                 </form>
                             </div>
+                        @else
+                            <div class="form--secondary create-classroom show-create-panel">
+                                <button class="form--secondary__close-panel bttn js-close-panel">Close this panel</button>
+                                <h2 class="form--secondary__title">Start creating your classroom!</h2>
+                                <p class="form--secondary__warning-txt">Bummer! Please make sure that all fields are not empty and valid.</p>
+                                <p class="form--secondary__warning-txt js-warning-wrong">Uh-oh! Something went wrong, please try again later.</p>
+                                <form>
+                                    <div class="form--secondary__group">
+                                        <label for="classnameTxt">Classroom Name:</label>
+                                        <input type="text" name="Txt" id="classnameTxt" placeholder="Place your classroom name here">
+                                        <p class="class-note">Note: This will be the name of your classroom</p>
+                                    </div>
+                                    <div class="form--secondary__group">
+                                        <label for="sectionTxt">Classroom Section:</label>
+                                        <input type="text" name="sectionTxt" id="sectionTxt" placeholder="Place your classroom's section here">
+                                        <p class="class-note">Note: It could be a section or something......</p>
+                                    </div>
+                                    <div class="form--secondary__group">
+                                        <label for="descriptionTxt">Classroom Description:</label>
+                                        <textarea id="descriptionTxt" placeholder="Place your class description here"></textarea>
+                                        <p class="class-note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequuntur expedita molestiae mollitia. Cupiditate dolorum excepturi expedita, fuga incidunt laudantium magnam maxime neque odio perferendis quasi qui, quos ut?</p>
+                                    </div>
+                                    <div class="form--secondary__group">
+                                        <label for="scheduleTxt">Schedule:</label>
+                                        <p class="class-note">Note: This will help your to super duper ******* organize your class</p>
+                                        <div class="form--secondary__group">
+                                            <div class="form--secondary__schedule-wrapper">
+                                                <div class="date--wrapper">
+                                                    <label class="form--secondary__day-label">Select a day:</label>
+                                                    <select>
+                                                        <option value="Monday">Monday</option>
+                                                        <option value="Tuesday">Tuesday</option>
+                                                        <option value="Wednesday">Wednesday</option>
+                                                        <option value="Thursday">Thursday</option>
+                                                        <option value="Friday">Friday</option>
+                                                        <option value="Saturday">Saturday</option>
+                                                        <option value="Sunday">Sunday</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form--secondary__group">
+                                                    <label class="form--secondary__day-label">Note: Place here your preferred time:</label>
+                                                    <div class="time-wrapper">
+                                                        <input type="text" placeholder="Ex. 7:00 AM - 7:00 PM" class="date-input">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button class="bttn form--secondary__schedule-bttn"  type="button" id="addScheduleBttn">Add schedule</button>
+                                            <button class="bttn form--secondary__schedule-bttn--removed"  type="button" id="removeScheduleBttn">Remove schedule</button>
+                                        </div>
+                                    </div>
+                                    <div class="form--secondary__group">
+                                        <label for="codeTxt">Classroom Code:</label>
+                                        <p class="form--secondary__warning-code js-warning-code">Your class code already exist, please choose another one.</p>
+                                        <input type="text" name="Txt" id="codeTxt" placeholder="Place your code here">
+                                        <p class="class-note">Note: In order to protect your classroom........</p>
+                                    </div>
+                                    <button type="button" class="bttn form--secondary__bttn">
+                                        <span class="form--secondary__bttn-txt">Create classroom</span>
+                                        <span class="loader-wrapper">
+                                        <span class="loader--bttn"></span>
+                                    </span>
+                                    </button>
+                                </form>
+                            </div>
                         @endif
                         @if($teacherClassroom->count() !== 0)
                             <button class="banner__bttn--create bttn bttn--changed-loc">Create classroom</button>
+                        @else
+                            <div class="empty">
+                                <div class="empty__illustration">
+                                    <img src="/assets/illustration/Empty list.svg" alt="Illustration for an empty student list" class="img-fluid">
+                                </div>
+                                <h1 class="empty__title">Empty list.</h1>
+                                <p class="empty__txt">This is because you haven't created your own classroom yet, go and make a new one.</p>
+
+                            </div>
                         @endif
                         <div class="loader-box">
                             <div class="loader"></div>
                             <p class="loader__text">Please wait while we set things up for you!</p>
                         </div>
-                        <div class="form--secondary create-classroom show-create-panel">
-                            <button class="form--secondary__close-panel bttn js-close-panel">Close this panel</button>
-                            <h2 class="form--secondary__title">Start creating your classroom!</h2>
-                            <p class="form--secondary__warning-txt">Bummer! Please make sure that all fields are not empty and valid.</p>
-                            <p class="form--secondary__warning-txt js-warning-wrong">Uh-oh! Something went wrong, please try again later.</p>
-                            <form>
-                                <div class="form--secondary__group">
-                                    <label for="classnameTxt">Classroom Name:</label>
-                                    <input type="text" name="Txt" id="classnameTxt" placeholder="Place your classroom name here">
-                                    <p class="class-note">Note: This will be the name of your classroom</p>
-                                </div>
-                                <div class="form--secondary__group">
-                                    <label for="sectionTxt">Classroom Section:</label>
-                                    <input type="text" name="sectionTxt" id="sectionTxt" placeholder="Place your classroom's section here">
-                                    <p class="class-note">Note: It could be a section or something......</p>
-                                </div>
-                                <div class="form--secondary__group">
-                                    <label for="descriptionTxt">Classroom Description:</label>
-                                    <textarea id="descriptionTxt" placeholder="Place your class description here"></textarea>
-                                    <p class="class-note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequuntur expedita molestiae mollitia. Cupiditate dolorum excepturi expedita, fuga incidunt laudantium magnam maxime neque odio perferendis quasi qui, quos ut?</p>
-                                </div>
-                                <div class="form--secondary__group">
-                                    <label for="scheduleTxt">Schedule:</label>
-                                    <p class="class-note">Note: This will help your to super duper ******* organize your class</p>
-                                    <div class="form--secondary__group">
-                                        <div class="form--secondary__schedule-wrapper">
-                                            <div class="date--wrapper">
-                                                <label class="form--secondary__day-label">Select a day:</label>
-                                                <select>
-                                                    <option value="Monday">Monday</option>
-                                                    <option value="Tuesday">Tuesday</option>
-                                                    <option value="Wednesday">Wednesday</option>
-                                                    <option value="Thursday">Thursday</option>
-                                                    <option value="Friday">Friday</option>
-                                                    <option value="Saturday">Saturday</option>
-                                                    <option value="Sunday">Sunday</option>
-                                                </select>
-                                            </div>
-                                            <div class="form--secondary__group">
-                                                <label class="form--secondary__day-label">Note: Place here your preferred time:</label>
-                                                <div class="time-wrapper">
-                                                    <input type="text" placeholder="Ex. 7:00 AM - 7:00 PM" class="date-input">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="bttn form--secondary__schedule-bttn"  type="button" id="addScheduleBttn">Add schedule</button>
-                                        <button class="bttn form--secondary__schedule-bttn--removed"  type="button" id="removeScheduleBttn">Remove schedule</button>
-                                    </div>
-                                </div>
-                                <div class="form--secondary__group">
-                                    <label for="codeTxt">Classroom Code:</label>
-                                    <p class="form--secondary__warning-code js-warning-code">Your class code already exist, please choose another one.</p>
-                                    <input type="text" name="Txt" id="codeTxt" placeholder="Place your code here">
-                                    <p class="class-note">Note: In order to protect your classroom........</p>
-                                </div>
-                                <button type="button" class="bttn form--secondary__bttn">
-                                    <span class="form--secondary__bttn-txt">Create classroom</span>
-                                    <span class="loader-wrapper">
-                                        <span class="loader--bttn"></span>
-                                    </span>
-                                </button>
-                            </form>
-                        </div>
                         <div class="current" id="current">
                             <div class="col-sm-12 col-md-12 col-lrg-12">
                                 <div class="row">
                                     <ul class="card-list">
-                                        @foreach($classrooms as $cr)
+
+                                        @foreach($classrooms as $key => $cr)
                                             <li class="card-list__item">
                                                 <div class="card-list__subject-box">
                                                     <p class="card-list__lbl">Subject name</p>
-                                                    <a href="{{ route('classroom.schedule', $cr->classroom_unique_url) }}" class="card-list__name">{{ $cr->classroom_name }}</a>
+                                                    <a href="{{ route('classroom.schedule', $cr[0]->classroom_unique_url) }}" class="card-list__name">{{ $cr[0]->classroom_name }}</a>
                                                 </div>
                                                 <div class="card-list__subject-members-box">
-                                                    @if(\App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr->id)->count() <= 1)
-                                                        <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr->id)->count() }} member</p>
+                                                    @if(\App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() <= 1)
+                                                        <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} member</p>
                                                     @else
-                                                        <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr->id)->count() }} members</p>
+                                                        <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} members</p>
                                                     @endif
 
                                                 </div>
                                                 <div class="card-list__subject-date-box">
-                                                    <p class="card-list__lbl">Subject name</p>
-                                                    <p class="card-list__date">{{ date('F j, Y', strtotime($cr->created_at)) }}</p>
+                                                    <p class="card-list__lbl">Date created</p>
+                                                    <p class="card-list__date">{{ date('F j, Y', strtotime($cr[0]->created_at)) }}</p>
                                                 </div>
                                             </li>
                                         @endforeach

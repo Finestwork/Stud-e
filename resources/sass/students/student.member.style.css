@@ -2,7 +2,7 @@
   font-weight: 800;
 }
 
-.member__bttn, .member__labels-txt, .member__list, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .breadcrumbs {
+.member__panel-bttn, .member__bttn, .member__labels-txt, .member__list, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .breadcrumbs {
   font-weight: 700;
 }
 
@@ -14,7 +14,7 @@ body {
   font-weight: 400;
 }
 
-.member__labels, .member__list-right, .member__list-left, .member__list, .sidelinks__links-container, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .breadcrumbs, .logo {
+.member__option-panel, .member__labels, .member__list-right, .member__list-left, .member__list, .sidelinks__links-container, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .breadcrumbs, .logo {
   display: -webkit-flex;
   display: flex;
 }
@@ -1173,6 +1173,7 @@ ul {
   padding: 0.625em 1.25em;
   border-radius: 10px;
   color: white;
+  max-width: 170px;
 }
 .sidebar--fixed .sidebar__bttn:hover {
   background-color: #f9285a;
@@ -1343,7 +1344,7 @@ ul {
 }
 @media only screen and (min-width: 48em) {
   .member__right {
-    margin-left: 35px;
+    margin-left: 15px;
     margin-top: 15px;
   }
 }
@@ -1389,6 +1390,7 @@ ul {
 .member__list-left {
   -webkit-align-items: center;
   align-items: center;
+  max-width: 370px;
 }
 .member__list-right {
   -webkit-align-items: center;
@@ -1396,10 +1398,11 @@ ul {
   -webkit-justify-content: space-between;
   justify-content: space-between;
   color: #535353;
+  position: relative;
 }
 @media only screen and (min-width: 64em) {
   .member__list-right {
-    margin-left: 75px;
+    margin-left: 40px;
   }
 }
 .member__list-right-p {
@@ -1443,6 +1446,7 @@ ul {
   padding-left: 10px;
 }
 .member__bttn-controls {
+  margin-top: 40px;
   margin-bottom: 25px;
 }
 .member__bttn {
@@ -1454,7 +1458,7 @@ ul {
   background-color: inherit;
 }
 .member__bttn:hover {
-  background-color: black;
+  background-color: #e4e4e4;
 }
 .member__bttn--active {
   background-color: #7F2AFF;
@@ -1465,6 +1469,81 @@ ul {
 }
 .member__bttn:focus {
   outline: none;
+}
+.member__bttn--option {
+  background-color: white;
+  position: relative;
+  height: 35px;
+  width: 25px;
+}
+.member__bttn--option:hover {
+  background-color: #efefef;
+}
+.member__bttn--option:focus {
+  outline: none;
+}
+.member__bttn--option__circle {
+  border-radius: 100%;
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  background-color: #676767;
+}
+.member__option-panel {
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  bottom: -60px;
+  z-index: 50;
+  background-color: white;
+  box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.05);
+  display: none;
+}
+.member__panel-bttn {
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  color: #535353;
+  background-color: white;
+  padding: 5px 10px;
+  margin-bottom: 4px;
+  cursor: pointer;
+}
+.member__panel-bttn:last-of-type {
+  margin-bottom: 0;
+}
+.member__panel-bttn:hover {
+  background-color: #dcdcdc;
+}
+.member__panel-bttn:focus {
+  outline: none;
+}
+
+.circle-1 {
+  top: 8px;
+}
+
+.circle-2 {
+  top: 50%;
+}
+
+.circle-3 {
+  bottom: 3px;
+}
+
+.option--active {
+  display: -webkit-flex;
+  display: flex;
+}
+
+.loader-box {
+  display: none;
+  margin-top: 100px;
 }
 
 .img-fluid {

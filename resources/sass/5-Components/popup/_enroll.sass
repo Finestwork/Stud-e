@@ -1,0 +1,135 @@
+.enroll
+    position: fixed
+    z-index: 9999
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    display: none
+    background-color: rgba(0,0,0,0)
+    transition: background-color .3s ease-in-out
+    &__group-container
+        position: absolute
+        top: 50%
+        left: 50%
+        @include transform(translate(-50%, -50%))
+        background-color: white
+        padding: 25px 20px 20px 20px
+        border-radius: 5px
+        max-height: 80vh
+        max-width: 300px
+        overflow-x: hidden
+        overflow-y: scroll
+        opacity: 0
+        transition: all .3s linear
+        position: relative
+        @include brk_md
+            min-width: 540px
+
+    &__code-group
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        width: 215px
+        margin-bottom: 20px
+        &:last-of-type
+            margin-bottom: 0
+    &__add-bttn,
+    &__submit-bttn
+        display: block
+        color: white
+        font-family: inherit
+        @extend %font-bold
+        text-transform: uppercase
+        padding: 7px 13px
+        border-radius: 5px
+        &:focus
+            outline: none
+    &__add-bttn
+        width: 100%
+        margin-top: 25px
+        background-color: $color-primary
+        &:hover
+            background-color: #6915e8
+    &__submit-bttn
+        margin: 23px 0 0 auto
+        background-color: $color-new-secondary
+        &:hover
+            background-color: $color-new-secondary-dark
+
+    label
+        @extend %font-bold
+        color: #777777
+        margin-bottom: 10px
+        -webkit-user-select: none
+        user-select: none
+        font-size: 14px
+        @include brk_lrg
+            font-size: 16px
+    input
+        font-family: inherit
+        @extend %font-semibold
+        padding: 5px 10px
+        border: 2px solid #e0dfdf
+        background-color: #f9f9f9
+        color: #717171
+        border-radius: 5px
+        &:focus
+            outline: none
+            border-color: $color-primary
+            box-shadow: 0 0 0 3px rgb(127, 42, 255,.3)
+    &__warning-empty,
+    &__warning-not-allowed,
+    &__success,
+    &__warning-not-exist,
+    &__Unsuccessful
+        margin-bottom: 13px
+        @extend %font-semibold
+        padding: 8px 15px
+        border-radius: 7px
+        line-height: 1.3
+        display: none
+    &__warning
+        &-request-exist,
+        &-empty,
+        &-not-allowed,
+        &-not-exist
+            background-color: #fff4f4
+            color: #ff3636
+    &__warning-list-container,
+    &__success-list-container,
+    &__Unsuccessful-list-container
+        margin-top: 10px
+        margin-left: 15px
+    &__warning-list,
+    &__success-list,
+    &__Unsuccessful-list
+        margin-bottom: 5px
+        &:last-of-type
+            margin-bottom: 0
+    &__success
+        color: #03847e
+        background-color: #f1fffe
+    &__Unsuccessful
+        color: #ca7800
+        background-color: #fff7eb
+    &__close-bttn
+        color: #7f2aff
+        display: block
+        margin: 0 0 10px auto
+        font-family: inherit
+        @extend %font-bold
+        padding: 5px 10px
+        background-color: white
+        font-size: 14px
+        @include brk_lrg
+            font-size: 15px
+        &:focus
+            outline: none
+        &:hover
+            background-color: #f7f1ff
+
+.enroll--active
+    background-color: rgba(0,0,0,.1)
+    > .enroll__group-container
+        opacity: 1

@@ -57,8 +57,8 @@
                         <div class="current" id="current">
                             <div class="col-sm-12 col-md-12 col-lrg-12">
                                 <div class="row">
-                                    @if($teachers)
-                                        @foreach($teachers as $key => $row)
+                                    @if($classrooms)
+                                        @foreach($classrooms as $row)
                                             <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
                                                   <div class="class-card">
                                                       <div class="class-card__top">
@@ -69,19 +69,27 @@
                                                                         <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
                                                                     </div>
                                                                 </div>
-                                                                <div class="class-card__img-name">{{ ucfirst($row['f_name']) .' '.ucfirst($row['l_name']) }}</div>
+                                                                <div class="class-card__img-name">Johnny Bravo</div>
                                                                 <div class="class-card__img-lbl">Teacher</div>
                                                             </div>
                                                             <div class="class-card__right">
-                                                                <p class="class-card__subject">{{ $classrooms[$key]->classroom_name }}</p>
-                                                                <p class="class-card__more-info">{{ $classrooms[$key]->classroom_section }}</p>
-                                                                <a href="{{ route('teacher.home', $classrooms[$key]->classroom_unique_url) }}" class="bttn-link--primary"> View Classroom </a>
+                                                                <p class="class-card__subject">{{ $row[0]['classroom_name'] }}</p>
+                                                                <p class="class-card__more-info">{{ $row[0]['classroom_section'] }}</p>
+                                                                <a href="{{ route('teacher.home', $row[0]['classroom_unique_url']) }}" class="bttn-link--primary"> View Classroom </a>
                                                             </div>
                                                       </div>
-                                                        <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($classrooms[$key]->created_at)) }}</p>
+                                                        <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($row[0]['created_at'])) }}</p>
                                                     </div>
                                             </div>
                                         @endforeach
+                                    @else
+                                        <div class="empty">
+                                            <div class="empty__illustration">
+                                                <img src="/assets/illustration/Empty list.svg" alt="Illustration for an empty class list" class="img-fluid">
+                                            </div>
+                                            <h1 class="empty__title">Empty list.</h1>
+                                            <p class="empty__txt">Your request to join a classroom was considered but not yet approved.</p>
+                                        </div>
                                     @endif
                                 </div>
                             </div>
@@ -94,10 +102,9 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
+            @include('student.optional partials.enroll')
         </main>
     </div>
 @endsection
@@ -105,4 +112,5 @@
 @section('script')
     <script src="/assets/js/helpers/navbar-with-sidebar.js"></script>
     <script src="/assets/js/modules/student/student.class.js"></script>
+    <script src="/assets/js/modules/student/popup.code.js"></script>
 @endsection

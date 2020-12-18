@@ -71,7 +71,7 @@
                                 <button type="button" class="bttn member__bttn js-bttn-blocked">Blocked</button>
                             </div>
                             @if(count($students) === 0)
-                                <div class="member__empty">
+                                <div class="empty">
                                     @include('teacher.optional partials.empty_list')
                                 </div>
                             @else

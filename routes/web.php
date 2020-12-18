@@ -106,6 +106,7 @@ Route::prefix('/signup')->group(function(){
 //PARTIALS
 Route::post('/checkClassCode',[RegistrationController::class, 'checkClassCode']);
 Route::post('/checkEmail',[RegistrationController::class, 'checkEmail']);
+Route::post('/enroll',[GlobalClassroomController::class, 'checkCode']);
 //GENERAL
 Route::get('/profile', [UserController::class, 'renderUserProfile'])->name('user.profile');
 Route::get('/logout', [UserController::class, 'logout'])->name('user.profile');

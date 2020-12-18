@@ -18,11 +18,11 @@ class ClassController extends Controller
         $classroomId = ApprovedStudent::where('student_id', $user->id)->select('classroom_id')->get();
         if ($classroomId->count() > 0){
             foreach ($classroomId as $cID){
-                $teacherID = TeacherClassroom::where('classroom_id', $cID->classroom_id)->select('id')->get();
-                $classroom = Classroom::where('id', $cID->classroom_id)->get();
+                $teacherID = TeacherClassroom::select('teacher_id')->where('classroom_id', $cID->classroom_id)->get();
+                $classroom []= Classroom::where('id', $cID->classroom_id)->get();
             }
             foreach($teacherID as $tID){
-                $teacher = Teacher::where('id', $tID->id)->get();
+                $teacher []= Teacher::where('id', $tID->teacher_id)->get();
             }
             return view('student.class module.class_index', [
                 'user'=>$user,

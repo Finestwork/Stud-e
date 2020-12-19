@@ -31,6 +31,17 @@ class RenderViewsController extends Controller
         foreach($teacherClassrooms as $tcs){
             $classroom []= Classroom::where('id', $tcs->classroom_id)->get();
         }
+
+//        $classroom = DB::table('teacher_classroom')
+//            ->join('classroom', 'teacher_classroom.classroom_id', '=', 'classroom.id')
+//            ->join('teacher', 'teacher.id', '=', 'teacher_classroom.teacher_id')
+//            ->where('classroom_id', $classroomId[0]->classroom_id)
+//            ->select('classroom.created_at', 'teacher.f_name', 'teacher.l_name','classroom_name','classroom_section'
+//                ,'classroom_description','classroom_description','classroom_unique_url')
+//            ->get();
+
+
+
         return view('teacher.classroom.index', [
             'user'=>$user,
             'teacherClassroom' => $teacherClassrooms,

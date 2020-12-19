@@ -111,7 +111,7 @@
                                         @endforeach
                                     </ul>
                                 </div>
-                                <div class="member__empty" style="display: none;">
+                                <div class="empty" style="display: none;">
                                     @include('teacher.optional partials.empty_list')
                                 </div>
                             @endif

@@ -45,8 +45,8 @@ popupNoBttn.addEventListener('click', function () {
 });
 popupYesBttn.addEventListener('click', function () {
     if(ID && type){
+        showLoadingContainer();
         setTimeout(function(){
-            showLoadingContainer();
             if(type === 'accept'){
                 approveRequestMember(ID);
             }else if(type === 'fromRequestToBlock'){
@@ -242,7 +242,7 @@ function approveRequestMember($id){
 function blockMember($id, $type){
     showLoadingContainer();
     let url = '/classroom/block-member/'+classUrl;
-    let jsonData = JSON.stringify({id: $id, type: $type});
+    let jsonData = JSON.stringify({id: $id, type: $type, inputUrl: classUrl});
     const options = {
         method: 'POST',
         headers:{
@@ -262,7 +262,7 @@ function blockMember($id, $type){
                 location.reload();
             }else{
                 showLoaderError();
-                hidePopupError();
+                hideLoadingContainer();
             }
         })
         .catch(error=>{
@@ -272,7 +272,7 @@ function blockMember($id, $type){
 }
 function cancelRequest($id){
     let url = '/classroom/cancel-member/'+classUrl;
-    let jsonData = JSON.stringify({id: $id});
+    let jsonData = JSON.stringify({id: $id, inputUrl: classUrl});
     const options = {
         method: 'POST',
         headers:{
@@ -291,9 +291,8 @@ function cancelRequest($id){
             if(result.success){
                 location.reload();
             }else{
-                //ERROR MESSAGE
                 showLoaderError();
-                hidePopupError();
+                hideLoadingContainer();
             }
         })
         .catch(error=>{
@@ -303,7 +302,7 @@ function cancelRequest($id){
 }
 function removeStudent($id){
     let url = '/classroom/remove-member/'+classUrl;
-    let jsonData = JSON.stringify({id: $id});
+    let jsonData = JSON.stringify({id: $id, inputUrl: classUrl});
     const options = {
         method: 'POST',
         headers:{
@@ -322,9 +321,8 @@ function removeStudent($id){
             if(result.success){
                 location.reload();
             }else{
-                //ERROR MESSAGE
                 showLoaderError();
-                hidePopupError();
+                hideLoadingContainer();
             }
         })
         .catch(error=>{
@@ -334,7 +332,7 @@ function removeStudent($id){
 }
 function unblockStudent($id){
     let url = '/classroom/unblock-student/'+classUrl;
-    let jsonData = JSON.stringify({id: $id});
+    let jsonData = JSON.stringify({id: $id, inputUrl: classUrl});
     const options = {
         method: 'POST',
         headers:{
@@ -353,9 +351,8 @@ function unblockStudent($id){
             if(result.success){
                 location.reload();
             }else{
-                //ERROR MESSAGE
                 showLoaderError();
-                hidePopupError();
+                hideLoadingContainer();
             }
         })
         .catch(error=>{
@@ -417,7 +414,7 @@ function displayRequestList(list){
             listPosition.classList.add('member__list-position');
 
             let fname = list.students[i][0]['f_name'],
-                lname = list.students[i][0]['m_name'];
+                lname = list.students[i][0]['l_name'];
             listName.textContent = ucfirst(fname)+ ' ' + ucfirst(lname);
             listPosition.textContent = 'Student';
 
@@ -538,7 +535,7 @@ function displayApprovedList(list){
             listPosition.classList.add('member__list-position');
 
             let fname = list.students[i][0]['f_name'],
-                lname = list.students[i][0]['m_name'];
+                lname = list.students[i][0]['l_name'];
             listName.textContent = ucfirst(fname)+ ' ' + ucfirst(lname);
             listPosition.textContent = 'Student';
 
@@ -655,7 +652,7 @@ function displayBlockList(list){
             listPosition.classList.add('member__list-position');
 
             let fname = list.students[i][0]['f_name'],
-                lname = list.students[i][0]['m_name'];
+                lname = list.students[i][0]['l_name'];
             listName.textContent = ucfirst(fname)+ ' ' + ucfirst(lname);
             listPosition.textContent = 'Student';
 
@@ -827,7 +824,6 @@ function showLoadingContainer(){
 }
 function hideLoadingContainer(){
     loaderContainer.style.display = 'none';
-    txtContainer.style.display = 'block';
 }
 function showLoaderError(){
     errorContainer.style.display = 'block';
@@ -837,6 +833,9 @@ function hideLoaderError(){
 }
 function hidePopupError(){
     popupContainer.classList.add('popup--hidden');
+    errorContainer.style.display = 'none';
+    loaderContainer.style.display = 'none';
+    txtContainer.style.display = 'block';
 }
 function hideMemberContainer(){
     let mainContainer = document.querySelector('.member__main-container');

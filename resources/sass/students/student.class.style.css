@@ -10,7 +10,7 @@
   font-weight: 700;
 }
 
-.class-card__footer, .empty__txt, .form--search__input, .banner__txt, .navbar__notif-option-item, .navbar__icon-txt, .enroll__warning-empty, .enroll__warning-not-allowed, .enroll__success, .enroll__warning-not-exist, .enroll__Unsuccessful, .enroll input {
+.class-card__footer, .empty__txt, .form--search__input, .banner__txt, .navbar__notif-option-item, .navbar__icon-txt, .enroll__warning-empty, .enroll__warning-not-allowed, .enroll__success, .enroll__already-enrolled, .enroll__warning-not-exist, .enroll__Unsuccessful, .enroll input {
   font-weight: 600;
 }
 
@@ -18,7 +18,7 @@ body {
   font-weight: 400;
 }
 
-.class-card__left, .class-card__top, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .sidebar--md .sidebar__bttn-icon, .sidebar--md .sidebar__bttn, .sidebar__bttn-icon, .sidebar__bttn, .option__top, .banner__description, .banner, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .logo, .enroll__code-group {
+.class-card__left, .class-card__top, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .sidebar--md .sidebar__bttn, .sidebar__bttn-icon, .sidebar__bttn, .option__top, .banner__description, .banner, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .logo, .enroll__code-group {
   display: -webkit-flex;
   display: flex;
 }
@@ -798,7 +798,7 @@ table {
   border-color: #7F2AFF;
   box-shadow: 0 0 0 3px rgba(127, 42, 255, 0.3);
 }
-.enroll__warning-empty, .enroll__warning-not-allowed, .enroll__success, .enroll__warning-not-exist, .enroll__Unsuccessful {
+.enroll__warning-empty, .enroll__warning-not-allowed, .enroll__success, .enroll__already-enrolled, .enroll__warning-not-exist, .enroll__Unsuccessful {
   margin-bottom: 13px;
   padding: 8px 15px;
   border-radius: 7px;
@@ -819,7 +819,7 @@ table {
 .enroll__warning-list:last-of-type, .enroll__success-list:last-of-type, .enroll__Unsuccessful-list:last-of-type {
   margin-bottom: 0;
 }
-.enroll__success {
+.enroll__success, .enroll__already-enrolled {
   color: #03847e;
   background-color: #f1fffe;
 }
@@ -1656,11 +1656,14 @@ table {
   -webkit-align-items: center;
   align-items: center;
   max-width: 170px;
+  line-height: 1.5;
+  margin: 0 10px;
 }
 .sidebar--md .sidebar__bttn-icon {
-  margin-right: 5px;
-  -webkit-align-items: center;
-  align-items: center;
+  display: none;
+}
+.sidebar--md .sidebar__bttn-txt {
+  text-align: center;
 }
 
 .fixed-bg {

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Globals;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
+use App\Models\Relations\ApprovedStudent;
 use App\Models\Relations\BlockedStudent;
 use App\Models\Relations\RequestStudent;
 use App\Models\Relations\TeacherClassroom;
@@ -50,6 +51,7 @@ class ClassroomController extends Controller
         $codesSuccess = [];
         $codeUnscuccess = [];
         $requestExist = [];
+        $requestAlreadyApproved = [];
         $codesBlocked = [];
         foreach($codes as $code){
             $classroom = Classroom::select('class_code', 'id')->where('class_code', $code)->first();
@@ -58,18 +60,25 @@ class ClassroomController extends Controller
                 if($isBlocked && $isBlocked->student_id === $user->id){
                     array_push($codesBlocked, $code);
                 }else{
-                    $doesRequestExist = RequestStudent::where('student_id', $user->id)->get()->first();
+                    $doesRequestExist = RequestStudent::where([
+                        ['student_id', $user->id],
+                        ['classroom_id', $classroom->id]
+                    ])->get()->first();
                     if(!$doesRequestExist){
-                        $requestStudent = new RequestStudent();
-                        $requestStudent->student_id = $user->id;
-                        $requestStudent->classroom_id = $classroom->id;
-                        if($requestStudent->save()){
-                            array_push($codesSuccess, $code);
+                        $isApproved = ApprovedStudent::select('student_id')->where('classroom_id', $classroom->id)->get()->first();
+                        if(!$isApproved){
+                            $requestStudent = new RequestStudent();
+                            $requestStudent->student_id = $user->id;
+                            $requestStudent->classroom_id = $classroom->id;
+                            if($requestStudent->save()){
+                                array_push($codesSuccess, $code);
+                            }
+                        }else {
+                            array_push($requestAlreadyApproved,$code);
                         }
                     }else{
                         array_push($requestExist, $code);
                     }
-
                 }
             }else{
                 array_push($codesNotExist, $code);
@@ -80,6 +89,7 @@ class ClassroomController extends Controller
             ['codeNotExist'=>$codesNotExist,
                 'codeSuccess'=>$codesSuccess,
                 'codeUnsuccess'=>$codeUnscuccess,
+                'requestAlreadyApproved'=>$requestAlreadyApproved,
                 'requestExist'=>$requestExist,
                 'codeBlock'=>$codesBlocked
             ]);

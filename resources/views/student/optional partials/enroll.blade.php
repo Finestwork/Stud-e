@@ -14,6 +14,9 @@
         <div class="enroll__Unsuccessful">
             <p>You already made a request with these codes:</p>
         </div>
+        <div class="enroll__already-enrolled">
+            <p>You are already enrolled using these codes below:</p>
+        </div>
 
         <div class="enroll__code-group">
             <label for="popCode1">Class code 1: </label>
@@ -24,4 +27,3 @@
         <button type="button" class="bttn enroll__submit-bttn" id="enrollSubmitBttn">Submit</button>
     </div>
 </div>
-<script src="/assets/js/libraries/smooth-scroll.polyfills.js"></script>

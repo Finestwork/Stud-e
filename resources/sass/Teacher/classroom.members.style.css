@@ -1740,7 +1740,7 @@ ul {
   padding: 5px;
 }
 .popup__error-bttn {
-  margin: 17px auto;
+  margin: 15px auto 0 auto;
   display: block;
   font-family: inherit;
   background-color: #5f46ff;

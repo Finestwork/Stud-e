@@ -15,13 +15,15 @@
                     </span>
                 </a>
             </div>
-            <a class="sidebar__bttn bttn" href="{{ route('teacher.create.classroom') }}">
+            @if(Request::path() != 'teacher/classroom')
+                <a class="sidebar__bttn bttn" href="{{ route('teacher.create.classroom') }}">
                 <span class="sidebar__bttn-icon">
             <img src="/assets/svgs/icons/sidebar/Add icon.svg" alt="Sidebar Button Icon" class="img-fluid">
         </span>
-                <span class="sidebar__bttn-txt">Create classroom</span>
-            </a>
-            <div class="sidebar__line"></div>
+                    <span class="sidebar__bttn-txt">Create classroom</span>
+                </a>
+                <div class="sidebar__line"></div>
+            @endif
 
             @if(Request::path() == 'student')
                 <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.home') }}">

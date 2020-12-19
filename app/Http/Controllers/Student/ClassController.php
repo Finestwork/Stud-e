@@ -10,6 +10,7 @@ use App\Models\Relations\TeacherClassroom;
 use App\Models\Users\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ClassController extends Controller
 {
@@ -17,17 +18,18 @@ class ClassController extends Controller
         $user = Auth::guard('student')->user();
         $classroomId = ApprovedStudent::where('student_id', $user->id)->select('classroom_id')->get();
         if ($classroomId->count() > 0){
-            foreach ($classroomId as $cID){
-                $teacherID = TeacherClassroom::select('teacher_id')->where('classroom_id', $cID->classroom_id)->get();
-                $classroom []= Classroom::where('id', $cID->classroom_id)->get();
-            }
-            foreach($teacherID as $tID){
-                $teacher []= Teacher::where('id', $tID->teacher_id)->get();
+            foreach($classroomId as $cID){
+                $classroom []= DB::table('teacher_classroom')
+                    ->join('classroom', 'teacher_classroom.classroom_id', '=', 'classroom.id')
+                    ->join('teacher', 'teacher.id', '=', 'teacher_classroom.teacher_id')
+                    ->where('classroom_id', $cID->classroom_id)
+                    ->select('classroom.created_at', 'teacher.f_name', 'teacher.l_name','classroom_name','classroom_section'
+                        ,'classroom_description','classroom_description','classroom_unique_url')
+                    ->get();
             }
             return view('student.class module.class_index', [
                 'user'=>$user,
                 'classrooms' => $classroom,
-                'teachers' => $teacher,
             ]);
         }
         return view('student.class module.class_index', [

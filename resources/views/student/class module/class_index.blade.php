@@ -69,16 +69,16 @@
                                                                         <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
                                                                     </div>
                                                                 </div>
-                                                                <div class="class-card__img-name">Johnny Bravo</div>
+                                                                <div class="class-card__img-name">{{ ucfirst($row[0]->f_name) . ' ' . ucfirst($row[0]->l_name) }}</div>
                                                                 <div class="class-card__img-lbl">Teacher</div>
                                                             </div>
                                                             <div class="class-card__right">
-                                                                <p class="class-card__subject">{{ $row[0]['classroom_name'] }}</p>
-                                                                <p class="class-card__more-info">{{ $row[0]['classroom_section'] }}</p>
-                                                                <a href="{{ route('teacher.home', $row[0]['classroom_unique_url']) }}" class="bttn-link--primary"> View Classroom </a>
+                                                                <p class="class-card__subject">{{ $row[0]->classroom_name }}</p>
+                                                                <p class="class-card__more-info">{{ $row[0]->classroom_section }}</p>
+                                                                <a href="{{ route('classroom.schedule', $row[0]->classroom_unique_url) }}" class="bttn-link--primary"> View Classroom </a>
                                                             </div>
                                                       </div>
-                                                        <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($row[0]['created_at'])) }}</p>
+                                                        <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($row[0]->created_at)) }}</p>
                                                     </div>
                                             </div>
                                         @endforeach

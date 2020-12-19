@@ -4,6 +4,7 @@ let enrollAddCodeBttn = document.getElementById('enrollAddCodeBttn'),
 let notExistWrapper = document.querySelector('.enroll__warning-not-exist'),
     codeBlockWrapper = document.querySelector('.enroll__warning-not-allowed'),
     successWrapper = document.querySelector('.enroll__success'),
+    alreadyApproved = document.querySelector('.enroll__already-enrolled'),
     unSuccessWrapper = document.querySelector('.enroll__Unsuccessful');
 
 let enrollMainWrapper = document.querySelector('.enroll');
@@ -22,7 +23,6 @@ enrollSubmitBttn.addEventListener('click', ()=>{
     resetCodeWarnings();
     let parentContainer = document.querySelector('.enroll__group-container');
     let inputs = parentContainer.querySelectorAll('input');
-    //BLANK VALIDATION LATER
     if(inputs.length === 0){
         toggleWarningEmpty(true);
     }else{
@@ -44,9 +44,7 @@ enrollSubmitBttn.addEventListener('click', ()=>{
 sideBarBttns.forEach(el =>{
    el.addEventListener('click',()=>{
        let isFixSeen = document.querySelector('.fixed-bg--active');
-
        if(isFixSeen !== null){
-           console.log(isFixSeen);
            bttnCtr = 0;
            isFixSeen.classList.remove('fixed-bg--active');
        }
@@ -86,9 +84,7 @@ function sendCode(codes){
             let result = JSON.parse(body);
             test = result;
             if(result.error){
-                //Something went wrong change the
                 toggleSuccess(false);
-                console.log('Javascript is altered');
             }else{
                 //Checked values
                 if(result.codeNotExist.length > 0){
@@ -102,6 +98,9 @@ function sendCode(codes){
                 }
                 if(result.requestExist.length > 0){
                     codeRequestExist(result.requestExist);
+                }
+                if(result.requestAlreadyApproved.length > 0){
+                    codeAlreadyApproved(result.requestAlreadyApproved);
                 }
                 enrollGroupContainer.scrollTop = 0;
             }
@@ -179,6 +178,18 @@ function codeSuccess(arr){
     }
     successWrapper.append(ulTag);
     successWrapper.style.display = 'block';
+}
+function codeAlreadyApproved(arr){
+    let ulTag = document.createElement('UL');
+    ulTag.classList.add('enroll__success-list-container');
+    for(let i = 0; i<arr.length; i++){
+        let el = document.createElement('LI');
+        el.classList.add('enroll__success-list');
+        el.textContent = '• '+arr[i];
+        ulTag.append(el);
+    }
+    alreadyApproved.append(ulTag);
+    alreadyApproved.style.display = 'block';
 }
 function codeRequestExist(arr){
     let ulTag = document.createElement('UL');

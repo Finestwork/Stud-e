@@ -1325,7 +1325,7 @@ ul {
 }
 @media only screen and (min-width: 48em) {
   .fill-in-the-blank::before, .fill-in-the-blank::before {
-    top: 10px;
+    top: 18px;
   }
 }
 

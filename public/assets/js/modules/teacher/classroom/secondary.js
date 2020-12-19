@@ -132,7 +132,7 @@ function addClass(el, cl){
     el.classList.add(cl);
 }
 function postData(obj){
-    let url = '/teacher/create-classroom';
+    let url = '/teacher/create';
     let jsonData = JSON.stringify(obj);
     const options = {
         method: 'POST',
@@ -149,7 +149,7 @@ function postData(obj){
         })
         .then((body)=>{
             if(body === 'true'){
-                location.reload();
+                location.href = '/teacher/classroom';
             }else{
                 if(body === '\"Code does exist\"'){
                     warningCodeTxt.style.display = 'block';

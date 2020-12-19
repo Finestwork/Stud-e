@@ -32,7 +32,7 @@
                                 <div class="classroom__links-container">
                                     @foreach($classrooms as $classroom)
                                         <div class="classroom__links-item">
-                                            <a href="{{ route('classroom.home', $classroom->classroom_unique_url) }}" class="classroom__links link--active">Schedule</a>
+                                            <a href="{{ route('classroom.schedule', $classroom->classroom_unique_url) }}" class="classroom__links link--active">Schedule</a>
                                         </div>
                                         <div class="classroom__links-item">
                                             <a href="#" class="classroom__links">Modules</a>

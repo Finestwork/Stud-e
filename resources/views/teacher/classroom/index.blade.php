@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lrg-12 col-xlrg-12">
-                        @if(Request::path() == 'teacher/classroom/create-classroom')
+                        @if(Request::path() == 'teacher/classroom/create')
                             <div class="form--secondary create-classroom">
                                 <button class="form--secondary__close-panel bttn js-close-panel">Close this panel</button>
                                 <h2 class="form--secondary__title">Start creating your classroom!</h2>
@@ -205,7 +205,6 @@
                             <div class="col-sm-12 col-md-12 col-lrg-12">
                                 <div class="row">
                                     <ul class="card-list">
-
                                         @foreach($classrooms as $key => $cr)
                                             <li class="card-list__item">
                                                 <div class="card-list__subject-box">
@@ -218,7 +217,6 @@
                                                     @else
                                                         <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} members</p>
                                                     @endif
-
                                                 </div>
                                                 <div class="card-list__subject-date-box">
                                                     <p class="card-list__lbl">Date created</p>

@@ -56,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lrg-12 col-xlrg-12">
-                        @if(Request::path() == 'teacher/classroom/create')
+                        @if(Request::path() == 'classroom/create')
                             <div class="form--secondary create-classroom">
                                 <button class="form--secondary__close-panel bttn js-close-panel">Close this panel</button>
                                 <h2 class="form--secondary__title">Start creating your classroom!</h2>
@@ -66,21 +66,21 @@
                                     <div class="form--secondary__group">
                                         <label for="classnameTxt">Classroom Name:</label>
                                         <input type="text" name="Txt" id="classnameTxt" placeholder="Place your classroom name here">
-                                        <p class="class-note">Note: This will be the name of your classroom</p>
+                                        <p class="class-note">Note: This will be the name of your classroom.</p>
                                     </div>
                                     <div class="form--secondary__group">
                                         <label for="sectionTxt">Classroom Section:</label>
                                         <input type="text" name="sectionTxt" id="sectionTxt" placeholder="Place your classroom's section here">
-                                        <p class="class-note">Note: It could be a section or something......</p>
+                                        <p class="class-note">Note: Please put your current course section or batch.</p>
                                     </div>
                                     <div class="form--secondary__group">
                                         <label for="descriptionTxt">Classroom Description:</label>
                                         <textarea id="descriptionTxt" placeholder="Place your class description here"></textarea>
-                                        <p class="class-note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequuntur expedita molestiae mollitia. Cupiditate dolorum excepturi expedita, fuga incidunt laudantium magnam maxime neque odio perferendis quasi qui, quos ut?</p>
+                                        <p class="class-note">Note: Type a short description of your course.</p>
                                     </div>
                                     <div class="form--secondary__group">
                                         <label for="scheduleTxt">Schedule:</label>
-                                        <p class="class-note">Note: This will help your to super duper ******* organize your class</p>
+                                        <p class="class-note">Note: This will help you to super duper organize your class</p>
                                         <div class="form--secondary__group">
                                             <div class="form--secondary__schedule-wrapper">
                                                 <div class="date--wrapper">
@@ -110,7 +110,7 @@
                                         <label for="codeTxt">Classroom Code:</label>
                                         <p class="form--secondary__warning-code js-warning-code">Your class code already exist, please choose another one.</p>
                                         <input type="text" name="Txt" id="codeTxt" placeholder="Place your code here">
-                                        <p class="class-note">Note: In order to protect your classroom........</p>
+                                        <p class="class-note">Note: In order to protect your classroom please avoid sharing your course code to individuals who are not involve in the said course.</p>
                                     </div>
                                     <button type="button" class="bttn form--secondary__bttn">
                                         <span class="form--secondary__bttn-txt">Create classroom</span>
@@ -130,21 +130,21 @@
                                     <div class="form--secondary__group">
                                         <label for="classnameTxt">Classroom Name:</label>
                                         <input type="text" name="Txt" id="classnameTxt" placeholder="Place your classroom name here">
-                                        <p class="class-note">Note: This will be the name of your classroom</p>
+                                        <p class="class-note">Note: This will be the name of your classroom.</p>
                                     </div>
                                     <div class="form--secondary__group">
                                         <label for="sectionTxt">Classroom Section:</label>
                                         <input type="text" name="sectionTxt" id="sectionTxt" placeholder="Place your classroom's section here">
-                                        <p class="class-note">Note: It could be a section or something......</p>
+                                        <p class="class-note">Note: Please put your current course section or batch.</p>
                                     </div>
                                     <div class="form--secondary__group">
                                         <label for="descriptionTxt">Classroom Description:</label>
                                         <textarea id="descriptionTxt" placeholder="Place your class description here"></textarea>
-                                        <p class="class-note">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusantium consequuntur expedita molestiae mollitia. Cupiditate dolorum excepturi expedita, fuga incidunt laudantium magnam maxime neque odio perferendis quasi qui, quos ut?</p>
+                                        <p class="class-note">Note: Type a short description of your course.</p>
                                     </div>
                                     <div class="form--secondary__group">
                                         <label for="scheduleTxt">Schedule:</label>
-                                        <p class="class-note">Note: This will help your to super duper ******* organize your class</p>
+                                        <p class="class-note">Note: This will help you to super duper organize your class</p>
                                         <div class="form--secondary__group">
                                             <div class="form--secondary__schedule-wrapper">
                                                 <div class="date--wrapper">
@@ -174,7 +174,7 @@
                                         <label for="codeTxt">Classroom Code:</label>
                                         <p class="form--secondary__warning-code js-warning-code">Your class code already exist, please choose another one.</p>
                                         <input type="text" name="Txt" id="codeTxt" placeholder="Place your code here">
-                                        <p class="class-note">Note: In order to protect your classroom........</p>
+                                        <p class="class-note">Note: In order to protect your classroom please avoid sharing your course code to individuals who are not involve in the said course.</p>
                                     </div>
                                     <button type="button" class="bttn form--secondary__bttn">
                                         <span class="form--secondary__bttn-txt">Create classroom</span>

@@ -31,6 +31,7 @@
             background-color: #ececec
             padding: 10px
             @extend %font-bold
+            transition: all .3s ease-in-out
             font-family: inherit
             color: #3a3a3a
             font-size: 14px
@@ -48,6 +49,9 @@
         textarea
             resize: none
             height: 145px
+            @include brk_md
+                width: 70%
+                max-width: 486px
         [type="date"]::-webkit-inner-spin-button
             display: none
         select
@@ -128,6 +132,14 @@
         &:hover
             background-color: $color-new-secondary-dark
             color: white
+    &__success-txt
+        color: #149044
+        background-color: #eefff5
+        display: none
+        text-align: center
+        padding: 10px 0
+        font-size: 16px
+        @extend %font-bold
     &__warning-txt
         font-size: 16px
         text-align: center
@@ -205,6 +217,8 @@ label
     font-weight: 700
     color: #9a9a9a
     line-height: 1.5
+    @include brk_md
+        width: 54%
 
 .loading
     background-color: #ffa7bc
@@ -215,3 +229,5 @@ label
         display: block
 .show-create-panel
     display: none
+.bttn--show
+    display: block

@@ -1,0 +1,76 @@
+.switch
+    padding: 10px
+    margin-bottom: 15px
+    &:last-of-type
+        margin-bottom: 0
+    &__main
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        cursor: pointer
+        -webkit-user-select: none
+        user-select: none
+        &:hover
+            .switch__name
+                color: #373a4a
+            .switch__bttn
+                background-color: #e0e5f5
+                &::before
+                    background-color: #a1a7c5
+    &__bttn
+        background-color: #ecf0ff
+        height: 20px
+        width: 60px
+        border-radius: 17px
+        position: relative
+        transition: all .3s cubic-bezier(0.33, 1, 0.68, 1)
+        &::before
+            content: ''
+            position: absolute
+            background-color: #B2B7D4
+            width: 22px
+            height: 100%
+            border-radius: 100%
+            @include transform(scale(1.15))
+            right: 0
+            transition: all .3s cubic-bezier(0.33, 1, 0.68, 1)
+    &__name
+        margin-left: 10px
+        @extend %font-bold
+        color: #6c718c
+        font-size: 14px
+        width: 100%
+        max-width: 150px
+        @include custom_breakpoint(390)
+            max-width: unset
+        @include brk_md
+            font-size: 16px
+    &__note
+        @extend %font-bold
+        margin-top: 10px
+        font-size: 14px
+        color: #5d606d
+        display: none
+
+
+.switch--active
+    .switch__bttn
+        background-color: #f3ebff
+        &::before
+            background-color: $color-primary
+            box-shadow: 0 0 5px 2px rgba(132, 50, 255, .25)
+            right: 60%
+    &:hover
+        .switch__bttn
+            background-color: #f3ebff
+            &::before
+                background-color: $color-primary
+                box-shadow: 0 0 2px 2px rgba(132, 50, 255, .25)
+.switch-1
+    width: 310px
+.switch-2
+    width: 295px
+.switch-3
+    width: 275px
+.switch-4
+    width: 270px

@@ -24,7 +24,11 @@ class ClassroomSeeder extends Seeder
                 'classroom_schedule'=> '[["Monday","7:00 PM - 8:00 PM"],["Thursday","8:00 PM - 9:00 PM"]]',
                 'classroom_unique_url'=> sha1('Movement or Eurythmy'),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'can_student_download' => 1,
+                'can_student_post' => 1,
+                'can_student_join' => 1,
+                'is_classroom_active' => 1
             ]);
         DB::table('classroom')->insert(
             [
@@ -35,7 +39,11 @@ class ClassroomSeeder extends Seeder
                 'classroom_schedule'=> '[["Monday","7:00 PM - 8:00 PM"],["Thursday","8:00 PM - 9:00 PM"]]',
                 'classroom_unique_url'=> sha1('Life Lab or gardening'),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'can_student_download' => 1,
+                'can_student_post' => 1,
+                'can_student_join' => 1,
+                'is_classroom_active' => 1
             ]);
         DB::table('classroom')->insert(
             [
@@ -46,7 +54,11 @@ class ClassroomSeeder extends Seeder
                 'classroom_schedule'=> '[["Monday","7:00 PM - 8:00 PM"],["Thursday","8:00 PM - 9:00 PM"]]',
                 'classroom_unique_url'=> sha1('Spanish or other foreign language'),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'can_student_download' => 1,
+                'can_student_post' => 1,
+                'can_student_join' => 1,
+                'is_classroom_active' => 1
             ]);
         DB::table('classroom')->insert(
             [
@@ -57,7 +69,11 @@ class ClassroomSeeder extends Seeder
                 'classroom_schedule'=> '[["Monday","7:00 PM - 8:00 PM"],["Thursday","8:00 PM - 9:00 PM"]]',
                 'classroom_unique_url'=> sha1('Special Education Day Class'),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'can_student_download' => 1,
+                'can_student_post' => 1,
+                'can_student_join' => 1,
+                'is_classroom_active' => 1
             ]);
         DB::table('classroom')->insert(
         [
@@ -68,7 +84,11 @@ class ClassroomSeeder extends Seeder
             'classroom_schedule'=> '[["Monday","7:00 PM - 8:00 PM"],["Thursday","8:00 PM - 9:00 PM"]]',
             'classroom_unique_url'=> sha1('Adaptive P.E.'),
             'created_at' => date('Y-m-d H:i:s'),
-            'updated_at' => date('Y-m-d H:i:s')
+            'updated_at' => date('Y-m-d H:i:s'),
+            'can_student_download' => 1,
+            'can_student_post' => 1,
+            'can_student_join' => 1,
+            'is_classroom_active' => 1
         ]);
         DB::table('classroom')->insert(
             [
@@ -79,7 +99,11 @@ class ClassroomSeeder extends Seeder
                 'classroom_schedule'=> '[["Monday","7:00 PM - 8:00 PM"],["Thursday","8:00 PM - 9:00 PM"]]',
                 'classroom_unique_url'=> sha1('Spanish or other foreign language'),
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
+                'can_student_download' => 1,
+                'can_student_post' => 1,
+                'can_student_join' => 1,
+                'is_classroom_active' => 1
             ]);
     }
 }

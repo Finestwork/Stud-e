@@ -25,7 +25,7 @@ class StudentSeeder extends Seeder
                 'role_id'=> 3,
                 'remember_token'=> null,
                 'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s')
+                'updated_at' => date('Y-m-d H:i:s'),
             ]);
         DB::table('student')->insert(
             [

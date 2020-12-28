@@ -18,6 +18,14 @@ let popupMssg = document.querySelector('.popup__message'),
     errorContainer = document.querySelector('.popup__error-message'),
     loaderContainer = document.querySelector('.popup__loader-container');
 
+let unselectBttn = document.querySelector('.js-bttn-unselect'),
+    selectBttn = document.querySelector('.js-bttn-select'),
+    doneBttn = document.querySelector('.js-bttn-all'),
+    closeSelection = document.querySelector('.js-bttn-close'),
+    totalSelectedItemsTxt = document.querySelector('.member__selection-counter');
+let multipleSelectionBttnWrapper = document.querySelector('.member__multiple-bttn-controls');
+let selectedItems = [];
+
 scrollBar(linkWrapper, linksScrollbar, false);
 
 
@@ -39,26 +47,26 @@ if(panelBttns){
 
 let targetedEl = null;
 //CLICK
-let ID = null, type = null;
+let type = null, mssg = null;
 popupNoBttn.addEventListener('click', function () {
     popupContainer.classList.add('popup--hidden');
 });
 popupYesBttn.addEventListener('click', function () {
-    if(ID && type){
+    if(selectedItems && type){
         showLoadingContainer();
         setTimeout(function(){
             if(type === 'accept'){
-                approveRequestMember(ID);
+                approveRequestMember(selectedItems);
             }else if(type === 'fromRequestToBlock'){
-                blockMember(ID, type);
+                blockMember(selectedItems, type);
             }else if(type === 'fromAcceptedToBlock'){
-                blockMember(ID, type);
+                blockMember(selectedItems, type);
             }else if(type === 'cancel'){
-                cancelRequest(ID);
+                cancelRequest(selectedItems);
             }else if(type == 'remove'){
-                removeStudent(ID);
+                removeStudent(selectedItems);
             }else if(type == 'unblock'){
-                unblockStudent(ID);
+                unblockStudent(selectedItems);
             }
         }, 1500)
 
@@ -79,6 +87,8 @@ approvedBttn.addEventListener('click', e=>{
         if(emptyBox){
             emptyBox.style.display = 'none';
         }
+        requestBttn.disabled = true;
+        blockedBttn.disabled = true;
         fetchApprovedMembers();
         displayActiveBttn(approvedBttn);
     }
@@ -88,6 +98,8 @@ requestBttn.addEventListener('click', e=>{
         if(emptyBox){
             emptyBox.style.display = 'none';
         }
+        approvedBttn.disabled = true;
+        blockedBttn.disabled = true;
         fetchRequestMembers();
         displayActiveBttn(requestBttn);
     }
@@ -97,9 +109,52 @@ blockedBttn.addEventListener('click', e=>{
         if(emptyBox){
             emptyBox.style.display = 'none';
         }
+        requestBttn.disabled = true;
+        approvedBttn.disabled = true;
         fetchBlockMembers();
         displayActiveBttn(blockedBttn);
     }
+});
+selectBttn.addEventListener('click', ()=>{
+    selectedItems = [];
+    let list = document.querySelectorAll('.member__list');
+    list.forEach(el=>{
+        el.classList.add('card--chosen');
+        el.style.cursor = 'pointer';
+        el.children[1].children[1].style.display = 'none';
+        el.addEventListener('click', chooseList);
+        selectedItems.push(el.getAttribute('data-identity'));
+    });
+    showSelectedItemsTxt();
+});
+unselectBttn.addEventListener('click', ()=>{
+    let list = document.querySelectorAll('.member__list');
+    list.forEach(el=>{
+        el.classList.remove('card--chosen');
+    });
+    selectedItems = [];
+    showSelectedItemsTxt();
+});
+doneBttn.addEventListener('click', ()=>{
+    selectedItems = [];
+    let list = document.querySelectorAll('.card--chosen');
+    list.forEach(el=>{
+        selectedItems.push(el.getAttribute('data-identity'));
+    });
+    popupMssg.textContent = mssg;
+    popupContainer.classList.remove('popup--hidden');
+});
+closeSelection.addEventListener('click', ()=>{
+    let list = document.querySelectorAll('.member__list');
+    list.forEach(el=>{
+        el.classList.remove('card--chosen');
+        el.children[1].children[1].style.display = 'block';
+        el.removeEventListener('click',chooseList);
+        el.style.cursor = 'default';
+    });
+    selectedItems = [];
+    totalSelectedItemsTxt.style.display = 'none';
+    multipleSelectionBttnWrapper.style.display = 'none';
 });
 //FUNCTIONS
 
@@ -131,10 +186,13 @@ function fetchRequestMembers(){
             }else{
                 $mssg = 'Your request list is empty, it\'s okay! no students, no headaches.';
                 showEmptyWrapper($mssg);
+                approvedBttn.disabled = false;
+                blockedBttn.disabled = false;
             }
         })
         .catch(error=>{
-            console.log(error);
+            approvedBttn.disabled = false;
+            blockedBttn.disabled = false;
             hideLoader();
         });
 }
@@ -165,10 +223,13 @@ function fetchApprovedMembers(){
             }else{
                 $mssg = 'Check your request list, your student needs your approval first before completely joining your classroom.';
                 showEmptyWrapper($mssg);
+                blockedBttn.disabled = false;
+                requestBttn.disabled = false;
             }
         })
         .catch(error=>{
-            console.log(error);
+            blockedBttn.disabled = false;
+            requestBttn.disabled = false;
             hideLoader();
         });
 }
@@ -199,10 +260,13 @@ function fetchBlockMembers(){
             }else{
                 $mssg = 'Your block list is empty this means that you haven\'t blocked any students yet';
                 showEmptyWrapper($mssg);
+                approvedBttn.disabled = false;
+                requestBttn.disabled = false;
             }
         })
         .catch(error=>{
-            console.log(error);
+            approvedBttn.disabled = false;
+            requestBttn.disabled = false;
             hideLoader();
         });
 }
@@ -229,13 +293,10 @@ function approveRequestMember($id){
             if(result.success){
                 location.reload();
             }else{
-                //ERROR MESSAGE
                 showLoaderError();
-                hidePopupError();
             }
         })
         .catch(error=>{
-            console.log(error);
             showLoaderError();
         });
 }
@@ -262,11 +323,9 @@ function blockMember($id, $type){
                 location.reload();
             }else{
                 showLoaderError();
-                hideLoadingContainer();
             }
         })
         .catch(error=>{
-            console.log(error);
             showLoaderError();
         });
 }
@@ -292,11 +351,9 @@ function cancelRequest($id){
                 location.reload();
             }else{
                 showLoaderError();
-                hideLoadingContainer();
             }
         })
         .catch(error=>{
-            console.log(error);
             showLoaderError();
         });
 }
@@ -322,11 +379,9 @@ function removeStudent($id){
                 location.reload();
             }else{
                 showLoaderError();
-                hideLoadingContainer();
             }
         })
         .catch(error=>{
-            console.log(error);
             showLoaderError();
         });
 }
@@ -352,11 +407,9 @@ function unblockStudent($id){
                 location.reload();
             }else{
                 showLoaderError();
-                hideLoadingContainer();
             }
         })
         .catch(error=>{
-            console.log(error);
             showLoaderError();
         });
 }
@@ -480,7 +533,7 @@ function displayRequestList(list){
         emptyBoxWrapper.parentNode.insertBefore(memberContainer, emptyBoxWrapper);
         refreshOptEvent();
         refreshPanelBttnEvent();
-    }, 1500);
+    }, 1000);
 }
 function displayApprovedList(list){
     let listLength = list.students.length;
@@ -723,12 +776,9 @@ function bttnOptionFunc(e){
     }else{
         showElement(nextSibling);
     }
-
 }
 function bttnPanelFunc(e){
     e.preventDefault();
-    let greatParent = e.currentTarget.parentNode.parentNode.parentNode;
-    ID = greatParent.getAttribute('data-identity');
     popupContainer.classList.add('popup--hidden');
     showPopup(e.currentTarget.textContent);
 }
@@ -739,7 +789,6 @@ function displayActiveBttn(el){
     el.classList.add('member__bttn--active');
 }
 function showPopup(str){
-    let mssg = null;
     if(str == 'Block Student'){
         let bttnText = document.querySelector('.member__bttn--active').textContent;
         if(bttnText === 'Request'){
@@ -747,22 +796,45 @@ function showPopup(str){
         }else if(bttnText === 'Accepted'){
             type = 'fromAcceptedToBlock';
         }
-        mssg = 'Are you sure you want to block this student to your class? He / she will no longer make a request to your class, however, you can unblock this student if you change your mind at a later time.'
+        mssg = 'Are you sure you want to block this student from your class? He / she will no longer make a request to your class, however, you can unblock this student if you change your mind at a later time.'
+        totalSelectedItemsTxt.textContent = 'Total of students to be blocked: 1';
     }else if(str == 'Accept Request'){
         type = 'accept';
         mssg = 'Are you sure you want to add this student to your class?'
+        totalSelectedItemsTxt.textContent = 'Total of students to be accepted: 1';
     }else if(str == 'Cancel Request'){
         type = 'cancel';
         mssg = 'Are you sure you want to cancel this student\'s request?'
+        totalSelectedItemsTxt.textContent = 'Total of student\'s request to be canceled: 1';
     }else if(str == 'Remove Student'){
         type = 'remove';
         mssg = 'Are you sure you want to remove this student from your class?'
+        totalSelectedItemsTxt.textContent = 'Total of students to be removed from your class: 1';
     }else if(str == 'Unblock Student'){
         type = 'unblock';
         mssg = 'Are you sure you want to unblock this student from your class? He / she may request again to join your class.';
+        totalSelectedItemsTxt.textContent = 'Total of students to be unblocked: 1';
     }
-    popupMssg.textContent = mssg;
-    popupContainer.classList.remove('popup--hidden');
+    totalSelectedItemsTxt.style.display = 'block';
+    showCheckBoxes();
+}
+function showCheckBoxes(){
+    let list = document.querySelectorAll('.member__list');
+    list.forEach(el => {
+       el.style.cursor = 'pointer';
+       el.addEventListener('click', chooseList);
+       el.children[1].children[1].style.display = 'none';
+    });
+    multipleSelectionBttnWrapper.style.display = 'block';
+}
+function chooseList(e){
+    e.currentTarget.classList.toggle('card--chosen');
+    let list = document.querySelectorAll('.card--chosen');
+    selectedItems = [];
+    list.forEach(el=>{
+       selectedItems.push(el.getAttribute('data-identity'));
+    });
+    showSelectedItemsTxt();
 }
 function showElement(el, pos = null){
     let activeOpt = document.querySelector('.option--active');
@@ -773,7 +845,6 @@ function showElement(el, pos = null){
     if(pos){
         el.style.bottom = pos;
     }
-
 }
 function hideElement(el) {
     el.classList.remove('option--active');
@@ -813,6 +884,9 @@ function checkIfElementExist(cls){
         let panel = document.querySelector(cls);
         if(document.body.contains(panel)){
             hideLoader();
+            approvedBttn.disabled = false;
+            blockedBttn.disabled = false;
+            requestBttn.disabled = false;
         }else{
             setTimeout(waitingTilRendered, 10);
         }
@@ -826,10 +900,8 @@ function hideLoadingContainer(){
     loaderContainer.style.display = 'none';
 }
 function showLoaderError(){
+    loaderContainer.style.display = 'none';
     errorContainer.style.display = 'block';
-}
-function hideLoaderError(){
-    errorContainer.style.display = 'none';
 }
 function hidePopupError(){
     popupContainer.classList.add('popup--hidden');
@@ -847,4 +919,17 @@ function showEmptyWrapper(mssg){
     let emptyTxt = emptyWrapper.querySelector('.empty__txt');
     emptyTxt.textContent = mssg;
     hideLoader();
+}
+function showSelectedItemsTxt(){
+    if(type == 'fromAcceptedToBlock' || type == 'fromRequestToBlock'){
+        totalSelectedItemsTxt.textContent = 'Total of students to be blocked: '+selectedItems.length;
+    }else if(type == 'accept'){
+        totalSelectedItemsTxt.textContent = 'Total of students to be accepted: '+selectedItems.length;
+    }else if(type == 'cancel'){
+        totalSelectedItemsTxt.textContent = 'Total of student\'s request to be canceled: '+selectedItems.length;
+    }else if(type == 'remove'){
+        totalSelectedItemsTxt.textContent = 'Total of students to be removed from your class: '+selectedItems.length;
+    }else if(type == 'unblock'){
+        totalSelectedItemsTxt.textContent = 'Total of students to be unblocked: '+selectedItems.length;
+    }
 }

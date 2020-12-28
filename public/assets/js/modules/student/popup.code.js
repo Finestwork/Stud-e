@@ -1,4 +1,5 @@
 let enrollAddCodeBttn = document.getElementById('enrollAddCodeBttn'),
+    enrollRemoveBttn = document.getElementById('enrollRemoveCodeBttn'),
     enrollSubmitBttn = document.getElementById('enrollSubmitBttn');
 
 let notExistWrapper = document.querySelector('.enroll__warning-not-exist'),
@@ -6,13 +7,14 @@ let notExistWrapper = document.querySelector('.enroll__warning-not-exist'),
     successWrapper = document.querySelector('.enroll__success'),
     alreadyApproved = document.querySelector('.enroll__already-enrolled'),
     unSuccessWrapper = document.querySelector('.enroll__Unsuccessful');
+    warningEmpty = document.querySelector('.enroll__warning-empty');
 
 let enrollMainWrapper = document.querySelector('.enroll');
 let enrollGroupContainer = document.querySelector('.enroll__group-container');
 let sideBarBttns = document.querySelectorAll('.sidebar__bttn'),
     closeCodePanel = document.querySelector('.enroll__close-bttn');
 
-let codeCtr = 1;
+let codeCtr = 1, removeBttnCtr = 0;
 let test = null;
 
 enrollAddCodeBttn.addEventListener('click', e=>{
@@ -21,13 +23,13 @@ enrollAddCodeBttn.addEventListener('click', e=>{
 enrollSubmitBttn.addEventListener('click', ()=>{
     let codes = [];
     resetCodeWarnings();
-    let parentContainer = document.querySelector('.enroll__group-container');
-    let inputs = parentContainer.querySelectorAll('input');
+    let inputs = enrollGroupContainer.querySelectorAll('input');
     if(inputs.length === 0){
         toggleWarningEmpty(true);
     }else{
         for(let i = 0; i<inputs.length; i++){
             if(inputs[i].value == ''){
+                enrollGroupContainer.scrollTop = 0;
                 toggleSuccess(false);
                 toggleWarningEmpty(true);
                 break;
@@ -40,6 +42,10 @@ enrollSubmitBttn.addEventListener('click', ()=>{
         sendCode(codes);
         toggleWarningEmpty(false);
     }
+});
+enrollRemoveBttn.addEventListener('click', ()=>{
+
+    removeCodeElement(enrollSubmitBttn);
 });
 sideBarBttns.forEach(el =>{
    el.addEventListener('click',()=>{
@@ -57,7 +63,10 @@ sideBarBttns.forEach(el =>{
 closeCodePanel.addEventListener('click', ()=>{
     enrollMainWrapper.classList.remove('enroll--active');
     setTimeout(()=>{
+        let popCode1 = document.getElementById('popCode1');
+        popCode1.value = '';
         enrollMainWrapper.style.display = 'none';
+        resetClosePanel(closeCodePanel);
     }, 150);
 });
 
@@ -102,6 +111,9 @@ function sendCode(codes){
                 if(result.requestAlreadyApproved.length > 0){
                     codeAlreadyApproved(result.requestAlreadyApproved);
                 }
+                if(result.requestIsNotAllowed.length > 0){
+                    codeBlock(result.requestIsNotAllowed);
+                }
                 enrollGroupContainer.scrollTop = 0;
             }
         })
@@ -111,8 +123,21 @@ function sendCode(codes){
         });
 }
 //DOM
+function removeCodeElement(child){
+    codeCtr--;
+    if(7+removeBttnCtr > 7){
+        child.parentNode.children[7+removeBttnCtr].remove();
+    }
+    if(removeBttnCtr > 0){
+        removeBttnCtr--;
+    }
+    if(removeBttnCtr === 0){
+        enrollRemoveBttn.style.display = 'none';
+    }
+}
 function makeCodeElement(child){
     codeCtr++;
+    removeBttnCtr++;
     let enrollCodeGroup = document.createElement('DIV'),
         label = document.createElement('LABEL'),
         input = document.createElement('INPUT');
@@ -125,15 +150,17 @@ function makeCodeElement(child){
     enrollCodeGroup.append(label, input);
     child.parentNode.insertBefore(enrollCodeGroup, child);
     input.focus();
-}
-function toggleWarningEmpty(cond){
-    let el = document.querySelector('.enroll__warning-empty');
-    if(cond){
-        el.style.display = 'block';
-    }else{
-        el.style.display = 'none';
+    if(removeBttnCtr > 0){
+        enrollRemoveBttn.style.display = 'block';
     }
 
+}
+function toggleWarningEmpty(cond){
+    if(cond){
+        warningEmpty.style.display = 'block';
+    }else{
+        warningEmpty.style.display = 'none';
+    }
 }
 function toggleSuccess(cond){
     let el = document.querySelector('.enroll__success');
@@ -204,21 +231,36 @@ function codeRequestExist(arr){
     unSuccessWrapper.style.display = 'block';
 }
 function resetCodeWarnings(){
+    toggleWarningEmpty(false);
     if(notExistWrapper.lastElementChild.tagName === 'UL'){
         notExistWrapper.removeChild(notExistWrapper.lastElementChild);
     }
-    if(notExistWrapper.lastElementChild.tagName === 'UL'){
+    if(codeBlockWrapper.lastElementChild.tagName === 'UL'){
         codeBlockWrapper.removeChild(codeBlockWrapper.lastElementChild);
     }
-    if(notExistWrapper.lastElementChild.tagName === 'UL'){
+    if(successWrapper.lastElementChild.tagName === 'UL'){
         successWrapper.removeChild(successWrapper.lastElementChild);
     }
-    if(notExistWrapper.lastElementChild.tagName === 'UL'){
+    if(unSuccessWrapper.lastElementChild.tagName === 'UL'){
         unSuccessWrapper.removeChild(unSuccessWrapper.lastElementChild);
     }
-    notExistWrapper.style.display = 'hidden';
-    codeBlockWrapper.style.display = 'hidden';
-    successWrapper.style.display = 'hidden';
-    unSuccessWrapper.style.display = 'hidden';
+    notExistWrapper.style.display = 'none';
+    codeBlockWrapper.style.display = 'none';
+    successWrapper.style.display = 'none';
+    unSuccessWrapper.style.display = 'none';
 }
+function resetClosePanel(child){
+    let enrollGroups = enrollGroupContainer.querySelectorAll('.enroll__code-group');
+    let totalLength = enrollGroups.length-1;
+    for(let i = 7+totalLength; 7<i; i--){
+        console.log('Loop: '+i + ', boolean: '+ (i+7));
+        console.log(child.parentNode.children[i]);
+        child.parentNode.children[i].remove();
+    }
 
+    resetCodeWarnings();
+    codeCtr = 1;
+    removeBttnCtr = 0;
+    enrollRemoveBttn.style.display = 'none';
+    //remove warning
+}

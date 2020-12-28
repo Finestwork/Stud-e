@@ -6,7 +6,7 @@
   font-weight: 800;
 }
 
-.time-wrapper input, label, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
+.time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
 .form--secondary__group textarea, .card-list__member-ctr, .card-list__lbl, .option__selected-text, .banner__bttn--create, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .bttn-link--primary {
   font-weight: 700;
 }
@@ -1848,6 +1848,7 @@ table {
   display: block;
   background-color: #ececec;
   padding: 10px;
+  transition: all 0.3s ease-in-out;
   font-family: inherit;
   color: #3a3a3a;
   font-size: 14px;
@@ -1872,6 +1873,12 @@ table {
 .form--secondary__group textarea {
   resize: none;
   height: 145px;
+}
+@media only screen and (min-width: 48em) {
+  .form--secondary__group textarea {
+    width: 70%;
+    max-width: 486px;
+  }
 }
 .form--secondary__group [type=date]::-webkit-inner-spin-button {
   display: none;
@@ -1970,6 +1977,14 @@ table {
   background-color: #f9285a;
   color: white;
 }
+.form--secondary__success-txt {
+  color: #149044;
+  background-color: #eefff5;
+  display: none;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 16px;
+}
 .form--secondary__warning-txt {
   font-size: 16px;
   text-align: center;
@@ -2067,6 +2082,11 @@ label {
   color: #9a9a9a;
   line-height: 1.5;
 }
+@media only screen and (min-width: 48em) {
+  .class-note {
+    width: 54%;
+  }
+}
 
 .loading {
   background-color: #ffa7bc;
@@ -2081,6 +2101,10 @@ label {
 
 .show-create-panel {
   display: none;
+}
+
+.bttn--show {
+  display: block;
 }
 
 .empty {

@@ -36,7 +36,7 @@
                                             <a href="{{ route('classroom.schedule', $classroom->classroom_unique_url) }}" class="classroom__links">Schedule</a>
                                         </div>
                                         <div class="classroom__links-item">
-                                            <a href="#" class="classroom__links">Modules</a>
+                                            <a href="{{ route('classroom.modules', $classroom->classroom_unique_url) }}" class="classroom__links">Modules</a>
                                         </div>
                                         <div class="classroom__links-item" >
                                             <a href="#" class="classroom__links ">Tasks</a>
@@ -56,7 +56,7 @@
                         <div class="member__right">
                             <div class="col-sm-12 col-lrg-12">
                                 <div class="breadcrumbs">
-                                    <a href="{{ route('teacher.classroom') }}" class="breadcrumbs__link">Classroom</a>
+                                    <a href="{{ route('classroom.index') }}" class="breadcrumbs__link">Classroom</a>
                                     <span class="breadcrumbs__arrow">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.5 11.5">
                                           <path id="Shape" d="M1.28.22A.75.75,0,0,0,.22,1.28l5,5a.75.75,0,0,0,1.061,0l5-5A.75.75,0,0,0,10.22.22L5.75,4.689Z" transform="translate(0 11.5) rotate(-90)" fill="#0D0417"/>
@@ -70,6 +70,13 @@
                                 <button type="button" class="bttn member__bttn js-bttn-request">Request</button>
                                 <button type="button" class="bttn member__bttn js-bttn-blocked">Blocked</button>
                             </div>
+                            <div class="member__multiple-bttn-controls">
+                                <button type="button" class="bttn bttn--multiple-options js-bttn-unselect">Unselect all</button>
+                                <button type="button" class="bttn bttn--multiple-options js-bttn-select">Select all</button>
+                                <button type="button" class="bttn bttn--multiple-options js-bttn-all">Done</button>
+                                <button type="button" class="bttn bttn--multiple-options--close js-bttn-close">Close</button>
+                            </div>
+                            <p class="member__selection-counter"></p>
                             @if(count($students) === 0)
                                 <div class="empty">
                                     @include('teacher.optional partials.empty_list')

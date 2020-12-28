@@ -35,7 +35,8 @@
         &:last-of-type
             margin-bottom: 0
     &__add-bttn,
-    &__submit-bttn
+    &__submit-bttn,
+    &__remove-bttn
         display: block
         color: white
         font-family: inherit
@@ -51,6 +52,15 @@
         background-color: $color-primary
         &:hover
             background-color: #6915e8
+    &__remove-bttn
+        width: 100%
+        margin-top: 7px
+        background-color: #e3d0ff
+        color: $color-primary
+        display: none
+        &:hover
+            background-color: $color-primary
+            color: white
     &__submit-bttn
         margin: 23px 0 0 auto
         background-color: $color-new-secondary

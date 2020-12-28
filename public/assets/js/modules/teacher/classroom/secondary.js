@@ -73,7 +73,6 @@ function displayElement(el){
     //PARENT WRAPPER
     let scheduleWrapper = document.createElement('DIV');
     addClass(scheduleWrapper, 'form--secondary__schedule-wrapper');
-    scheduleWrapper.classList.add('form--secondary__schedule-wrapper');
     //LEFT
     let dateWrapper = document.createElement('DIV'),
         dayLabel = document.createElement('LABEL'),
@@ -132,7 +131,7 @@ function addClass(el, cl){
     el.classList.add(cl);
 }
 function postData(obj){
-    let url = '/teacher/create';
+    let url = '/classroom/create';
     let jsonData = JSON.stringify(obj);
     const options = {
         method: 'POST',
@@ -149,7 +148,7 @@ function postData(obj){
         })
         .then((body)=>{
             if(body === 'true'){
-                location.href = '/teacher/classroom';
+                location.href = '/classroom';
             }else{
                 if(body === '\"Code does exist\"'){
                     warningCodeTxt.style.display = 'block';

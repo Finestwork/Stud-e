@@ -6,7 +6,7 @@
   font-weight: 800;
 }
 
-.class-card__more-info, .class-card__subject, .class-card__img-lbl, .class-card__img-name, .option__selected-text, .banner__bttn--create, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .enroll__close-bttn, .enroll label, .enroll__add-bttn, .enroll__submit-bttn, .bttn-link--primary {
+.class-card__more-info, .class-card__subject, .class-card__img-lbl, .class-card__img-name, .option__selected-text, .banner__bttn--create, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .enroll__close-bttn, .enroll label, .enroll__add-bttn, .enroll__submit-bttn, .enroll__remove-bttn, .bttn-link--primary {
   font-weight: 700;
 }
 
@@ -747,7 +747,7 @@ table {
 .enroll__code-group:last-of-type {
   margin-bottom: 0;
 }
-.enroll__add-bttn, .enroll__submit-bttn {
+.enroll__add-bttn, .enroll__submit-bttn, .enroll__remove-bttn {
   display: block;
   color: white;
   font-family: inherit;
@@ -755,7 +755,7 @@ table {
   padding: 7px 13px;
   border-radius: 5px;
 }
-.enroll__add-bttn:focus, .enroll__submit-bttn:focus {
+.enroll__add-bttn:focus, .enroll__submit-bttn:focus, .enroll__remove-bttn:focus {
   outline: none;
 }
 .enroll__add-bttn {
@@ -765,6 +765,17 @@ table {
 }
 .enroll__add-bttn:hover {
   background-color: #6915e8;
+}
+.enroll__remove-bttn {
+  width: 100%;
+  margin-top: 7px;
+  background-color: #e3d0ff;
+  color: #7F2AFF;
+  display: none;
+}
+.enroll__remove-bttn:hover {
+  background-color: #7F2AFF;
+  color: white;
 }
 .enroll__submit-bttn {
   margin: 23px 0 0 auto;

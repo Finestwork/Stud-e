@@ -14,31 +14,7 @@ use Illuminate\Support\Facades\DB;
 
 class ClassController extends Controller
 {
-    public function index() {
-        $user = Auth::guard('student')->user();
-        $classroomId = ApprovedStudent::where('student_id', $user->id)->select('classroom_id')->get();
-        if ($classroomId->count() > 0){
-            foreach($classroomId as $cID){
-                $classroom []= DB::table('teacher_classroom')
-                    ->join('classroom', 'teacher_classroom.classroom_id', '=', 'classroom.id')
-                    ->join('teacher', 'teacher.id', '=', 'teacher_classroom.teacher_id')
-                    ->where('classroom_id', $cID->classroom_id)
-                    ->select('classroom.created_at', 'teacher.f_name', 'teacher.l_name','classroom_name','classroom_section'
-                        ,'classroom_description','classroom_description','classroom_unique_url')
-                    ->get();
-            }
-            return view('student.class module.class_index', [
-                'user'=>$user,
-                'classrooms' => $classroom,
-            ]);
-        }
-        return view('student.class module.class_index', [
-            'user'=>$user,
-            'classrooms' => 0,
-            'teachers' => 0,
-        ]);
 
-    }
     //TEMPORARY
     public function renderModules() {
         $user = Auth::guard('student')->user();

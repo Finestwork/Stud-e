@@ -1,0 +1,109 @@
+.classroom-settings
+    background-color: white
+    padding: 30px 40px
+    border-radius: 15px
+    margin-bottom: 40px
+    position: relative
+    overflow: hidden
+    &__schedule
+        &-title
+            color: $color-primary
+            position: relative
+            z-index: 1
+            margin-bottom: 30px
+            margin-top: 20px
+            font-size: 40px
+            &::before
+                content: ''
+                position: absolute
+                width: 210px
+                height: 16px
+                background-color: #f2e9ff
+                bottom: 10px
+                z-index: -1
+    &__error-list
+        display: none
+        background-color: #ffeeee
+        color: #ff3a3a
+        @extend %font-bold
+        padding: 20px 30px
+        margin-bottom: 25px
+        li
+            margin-bottom: 10px
+            &:last-of-type
+                margin-bottom: 0
+    &__options
+        margin-top: 40px
+    &__bttn-box
+        @extend %display_flex
+        margin-top: 40px
+        -webkit-flex-direction: column
+        flex-direction: column
+        @include brk_md
+            -webkit-flex-direction: row
+            flex-direction: row
+            -webkit-justify-content: flex-end
+            justify-content: flex-end
+    &__save-bttn,
+    &__reset-bttn
+        font-family: inherit
+        @extend %font-bold
+        text-transform: uppercase
+        border-radius: 5px
+        padding: 10px
+        position: relative
+    &__save-bttn
+        background-color: #7f2aff
+        color: white
+        &:hover
+            background-color: #6418d8
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 3px rgba(127, 42, 255, .3)
+    &__reset-bttn
+        color: $color-new-secondary
+        margin-bottom: 15px
+        @include brk_md
+            margin-right: 30px
+            margin-bottom: 0
+        &:hover
+            background-color: #ffedf1
+            color: $color-new-secondary
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 3px rgba(255, 62, 108,.3)
+    &__schedule-bttn-controls
+        @extend %display_flex
+        margin-top: 25px
+        -webkit-flex-display: column
+        flex-direction: column
+        @include brk_md
+            -webkit-flex-direction: row
+            flex-direction: row
+    &__bttn
+        &-add-sched
+            margin: 0 0 10px 0
+            @include brk_md
+                margin: 0 12px 0 0
+        &-remove-sched
+            display: block
+            margin: 0
+    &__loading-bttn
+        background-color: #a76ffd
+        &:hover
+            background-color: #a76ffd
+    &__unable-txt
+        font-size: 16px
+        text-align: center
+        background-color: #ffe1e1
+        color: #ff5858
+        padding: 15px
+        border-radius: 10px
+        width: 100%
+        margin: 30px auto 35px auto
+        @extend %font-bold
+        backface-visibility: hidden
+        display: none
+        line-height: 1.5
+        @include brk_md
+            width: 70%

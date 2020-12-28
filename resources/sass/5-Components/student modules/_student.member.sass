@@ -28,6 +28,7 @@
         border-radius: 10px
         margin: 15px 0
         text-align: center
+        border: 2px solid transparent
         @include custom_breakpoint(400)
             text-align: left
         &-left,
@@ -144,6 +145,11 @@
             background-color: #dcdcdc
         &:focus
             outline: none
+    &__selection-counter
+        margin: 25px 0 15px 15px
+        @extend %font-bold
+        color: #6c7a89
+        display: none
 .circle-1
     top: 8px
 .circle-2
@@ -154,7 +160,31 @@
 .option--active
     display: -webkit-flex
     display: flex
-
 .loader-box
     display: none
     margin-top: 100px
+.member__multiple-bttn-controls
+    display: none
+.bttn--multiple-options--close,
+.bttn--multiple-options
+    font-family: inherit
+    @extend %font-bold
+    padding: 10px 15px
+    border-radius: 7px
+    margin: 10px 5px
+    &:focus
+        outline: none
+
+.bttn--multiple-options
+    background-color: #f2eafd
+    color: #7f2aff
+    &:hover
+        background-color: #ecdfff
+.bttn--multiple-options--close
+    background-color: #fff0f0
+    color: #ff2a2a
+    &:hover
+        background-color: #ffe5e5
+.card--chosen
+    border: 2px solid $color-primary
+    box-shadow: 0 0 5px rgba(0,0,0,0.1)

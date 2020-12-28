@@ -46,13 +46,32 @@
     &__default-sched
         @extend %font-semibold
     &__form-wrap
-        margin-top: 10px
+        margin-top: 15px
         -webkit-flex-basis: 100%
         flex-basis: 100%
     &__default-sched
-        margin-bottom: 5px
+        margin-bottom: 10px
+        margin-left: 25px
         &:last-of-type
             margin-bottom: 0
+    &__inactive-wrapper
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        margin-top: 45px
+        -webkit-justify-content: center
+        justify-content: center
+        background-color: #ffe5e5
+        padding: 15px 0
+        border-radius: 13px
+    &__inactive-img
+        width: 10px
+        @extend %display_flex
+    &__inactive-txt
+        @extend %font-bold
+        margin-left: 13px
+        font-size: 18px
+        color: #ff4747
 .bttn--schedule
     margin: 30px 0 30px auto
     display: block
@@ -71,4 +90,7 @@
     @include brk_md
         font-size: 14px
         padding: 13px 20px
+        position: sticky
+        top: 100px
+        z-index: 10
 

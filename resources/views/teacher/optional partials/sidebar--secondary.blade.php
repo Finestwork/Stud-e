@@ -16,7 +16,7 @@
                 </a>
             </div>
             @if(Request::path() != 'teacher/classroom')
-                <a class="sidebar__bttn bttn" href="{{ route('teacher.create.classroom') }}">
+                <a class="sidebar__bttn bttn" href="{{ route('classroom.index') }}">
                 <span class="sidebar__bttn-icon">
             <img src="/assets/svgs/icons/sidebar/Add icon.svg" alt="Sidebar Button Icon" class="img-fluid">
         </span>
@@ -26,7 +26,8 @@
             @endif
 
             @if(Request::path() == 'student')
-                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.home') }}">
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('classroom.index
+') }}">
         <span class="sidebar__icon-box">
             <svg class="sidebar__icon" xmlns="http://www.w3.org/2000/svg" width="21" height="19.041" viewBox="0 0 21 19.041">
                 <path id="Fill_1184" data-name="Fill 1184" d="M15.749,19.041H5.25a2.643,2.643,0,0,1-2.625-2.654V7.35l-1.235.908a.862.862,0,0,1-.514.169.876.876,0,0,1-.709-.364A.893.893,0,0,1,.36,6.827L8.955.508a2.6,2.6,0,0,1,3.089,0l8.595,6.319a.885.885,0,0,1-.515,1.6.86.86,0,0,1-.514-.169L18.374,7.35v9.038A2.643,2.643,0,0,1,15.749,19.041ZM9.625,9.312h1.75A2.642,2.642,0,0,1,14,11.965v5.308h1.75a.881.881,0,0,0,.875-.885V6.064l-5.61-4.126a.869.869,0,0,0-1.03,0L4.374,6.064V16.387a.881.881,0,0,0,.875.885H7V11.965A2.642,2.642,0,0,1,9.625,9.312Zm0,1.769a.881.881,0,0,0-.875.884v5.308h3.5V11.965a.881.881,0,0,0-.875-.884Z" fill="#172239"/>
@@ -45,8 +46,8 @@
                 </a>
             @endif
 
-            @if(Request::path() =='student/class' || Request::path() == 'teacher/classroom/create-classroom')
-                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.class') }}">
+            @if(Request::path() =='classroom' || Request::path() == 'classroom/create')
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('classroom.index') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
               <g id="Group_26" data-name="Group 26" transform="translate(0.75 -3.56)">
@@ -62,7 +63,7 @@
                     <span class="sidebar__icon-txt">Classes</span>
                 </a>
             @else
-                <a class="sidebar__icon-wrapper" href="{{ route('student.class') }}">
+                <a class="sidebar__icon-wrapper" href="{{ route('classroom.index') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
               <g id="Group_26" data-name="Group 26" transform="translate(0.75 -3.56)">

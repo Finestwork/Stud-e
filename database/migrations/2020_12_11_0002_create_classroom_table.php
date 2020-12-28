@@ -21,6 +21,10 @@ class CreateClassroomTable extends Migration
             $table->string('classroom_schedule');
             $table->string('class_code');
             $table->string('classroom_unique_url');
+            $table->boolean('can_student_download');
+            $table->boolean('can_student_post');
+            $table->boolean('can_student_join');
+            $table->boolean('is_classroom_active');
             $table->timestamps();
         });
     }

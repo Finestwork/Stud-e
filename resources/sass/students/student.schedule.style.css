@@ -2,7 +2,7 @@
   font-weight: 800;
 }
 
-.schedule__lbl, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .breadcrumbs {
+.schedule__inactive-txt, .schedule__lbl, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .breadcrumbs {
   font-weight: 700;
 }
 
@@ -14,7 +14,7 @@ body {
   font-weight: 400;
 }
 
-.classroom__links-container, .schedule__form-group, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .breadcrumbs, .logo {
+.classroom__links-container, .schedule__inactive-img, .schedule__inactive-wrapper, .schedule__form-group, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .breadcrumbs, .logo {
   display: -webkit-flex;
   display: flex;
 }
@@ -1292,15 +1292,34 @@ ul {
   font-size: 18px;
 }
 .schedule__form-wrap {
-  margin-top: 10px;
+  margin-top: 15px;
   -webkit-flex-basis: 100%;
   flex-basis: 100%;
 }
 .schedule__default-sched {
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  margin-left: 25px;
 }
 .schedule__default-sched:last-of-type {
   margin-bottom: 0;
+}
+.schedule__inactive-wrapper {
+  -webkit-align-items: center;
+  align-items: center;
+  margin-top: 45px;
+  -webkit-justify-content: center;
+  justify-content: center;
+  background-color: #ffe5e5;
+  padding: 15px 0;
+  border-radius: 13px;
+}
+.schedule__inactive-img {
+  width: 10px;
+}
+.schedule__inactive-txt {
+  margin-left: 13px;
+  font-size: 18px;
+  color: #ff4747;
 }
 
 .bttn--schedule {
@@ -1325,6 +1344,9 @@ ul {
   .bttn--schedule {
     font-size: 14px;
     padding: 13px 20px;
+    position: sticky;
+    top: 100px;
+    z-index: 10;
   }
 }
 

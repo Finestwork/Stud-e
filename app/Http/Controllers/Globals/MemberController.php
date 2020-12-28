@@ -101,129 +101,145 @@ class MemberController extends Controller
     public function approveMemberRequest(Request $request) {
         header('Content-Type: application/json');
         $validator = Validator::make($request->all(),[
-            'id'=> 'required',
+            'id'=> 'required|array|min:1',
         ]);
         if(!$validator->fails()){
-            $id = $request->input('id');
-            $selectedData = RequestStudent::where('student_id', $id)->get();
-            if(count($selectedData) > 0) {
-                foreach($selectedData as $sd){
-                    $currentUser = RequestStudent::where([
-                        ['classroom_id', $sd->classroom_id],
-                        ['student_id', $sd->student_id]
-                    ])->first();
-                    if($currentUser){
-                        $approveTable = new ApprovedStudent();
-                        $approveTable->student_id = $currentUser->student_id;
-                        $approveTable->classroom_id = $currentUser->classroom_id;
-                        if ($currentUser->delete()) {
-                            if ($approveTable->save()) {
-                                return json_encode(['success' => true]);
+            $ids = $request->input('id');
+            foreach($ids as $id){
+                $selectedData = RequestStudent::where('student_id', (int)$id)->get();
+                if(count($selectedData) > 0) {
+                    foreach ($selectedData as $sd) {
+                        $currentUser = RequestStudent::where([
+                            ['classroom_id', $sd->classroom_id],
+                            ['student_id', $sd->student_id]
+                        ])->first();
+                        if ($currentUser) {
+                            $approveTable = new ApprovedStudent();
+                            $approveTable->student_id = $currentUser->student_id;
+                            $approveTable->classroom_id = $currentUser->classroom_id;
+                            if ($currentUser->delete()) {
+                                if (!$approveTable->save()) {
+                                    return json_encode(['success' => false]);
+                                }
                             }
                         }
                     }
                 }
             }
+            return json_encode(['success' => true]);
         }
         return json_encode(['sucess' => false]);
     }
     public function blockMember(Request $request) {
         header('Content-Type: application/json');
         $validator = Validator::make($request->all(),[
-            'id'=> 'required',
+            'id'=> 'required|array|min:1',
             'type'=>'required',
             'inputUrl'=> 'required',
         ]);
         $type = $request->input('type');
         if(!$validator->fails()){
-            $id = $request->input('id');
-            if($type === 'fromRequestToBlock'){
-                $selectedData = RequestStudent::where('student_id', $id)->get();
-            }else if($type === 'fromAcceptedToBlock'){
-                $selectedData = ApprovedStudent::where('student_id', $id)->get();
-            }
-            if(count($selectedData) > 0){
-                $blockTable = new BlockedStudent();
-                $blockTable->student_id = $selectedData[0]->student_id;
-                $blockTable->classroom_id = $selectedData[0]->classroom_id;
+            $ids = $request->input('id');
+            foreach ($ids as $id){
                 if($type === 'fromRequestToBlock'){
-                    $currentUser = RequestStudent::where([
-                        ['classroom_id', $selectedData[0]->classroom_id],
-                        ['student_id', $selectedData[0]->student_id]
-                    ])->get()->first();
+                    $selectedData = RequestStudent::where('student_id', (int) $id)->get();
                 }else if($type === 'fromAcceptedToBlock'){
-                    $currentUser = ApprovedStudent::where([
-                        ['classroom_id', $selectedData[0]->classroom_id],
-                        ['student_id', $selectedData[0]->student_id]
-                    ])->get()->first();
+                    $selectedData = ApprovedStudent::where('student_id', (int) $id)->get();
                 }
-                if ($currentUser->delete()){
-                    if($blockTable->save()){
-                        return json_encode(['success'=>true]);
+                if(count($selectedData) > 0){
+                    $blockTable = new BlockedStudent();
+                    $blockTable->student_id = $selectedData[0]->student_id;
+                    $blockTable->classroom_id = $selectedData[0]->classroom_id;
+                    if($type === 'fromRequestToBlock'){
+                        $currentUser = RequestStudent::where([
+                            ['classroom_id', $selectedData[0]->classroom_id],
+                            ['student_id', $selectedData[0]->student_id]
+                        ])->get()->first();
+                    }else if($type === 'fromAcceptedToBlock'){
+                        $currentUser = ApprovedStudent::where([
+                            ['classroom_id', $selectedData[0]->classroom_id],
+                            ['student_id', $selectedData[0]->student_id]
+                        ])->get()->first();
                     }
-                }else{
-                    return json_encode(['success'=>$currentUser]);
+                    if ($currentUser->delete()){
+                        if(!$blockTable->save()){
+                            return json_encode(['success'=>false]);
+                        }
+                    }
                 }
             }
+            return json_encode(['success'=>true]);
         }
     }
     public function cancelRequest(Request $request) {
         header('Content-Type: application/json');
         $validator = Validator::make($request->all(),[
-            'id'=> 'required',
+            'id'=> 'required|array|min:1',
             'inputUrl'=> 'required',
         ]);
         if(!$validator->fails()){
-            $classroomID = Classroom::select('id')->where('classroom_unique_url', $request->input('inputUrl'))->get()->first();
-            $currentUser = RequestStudent::where([
-                ['classroom_id', $classroomID->id],
-                ['student_id', $request->input('id')]
-            ])->get()->first();
-            if($currentUser->count() > 0) {
-                if ($currentUser->delete()) {
-                    return json_encode(['success' => true]);
+            $ids = $request->input('id');
+            foreach($ids as $id){
+                $classroomID = Classroom::select('id')->where('classroom_unique_url', $request->input('inputUrl'))->get()->first();
+                $currentUser = RequestStudent::where([
+                    ['classroom_id', $classroomID->id],
+                    ['student_id', (int) $id]
+                ])->get()->first();
+                if($currentUser->count() > 0) {
+                    if (!$currentUser->delete()) {
+                        return json_encode(['success' => false]);
+                    }
                 }
             }
+            return json_encode(['success' => true]);
         }
         return json_encode(['sucess' => false]);
     }
     public function removeMember(Request $request) {
         header('Content-Type: application/json');
         $validator = Validator::make($request->all(),[
-            'id'=> 'required',
+            'id'=> 'required|array|min:1',
             'inputUrl'=> 'required',
         ]);
         if(!$validator->fails()) {
-            $classroomID = Classroom::select('id')->where('classroom_unique_url', $request->input('inputUrl'))->get()->first();
-            $currentUser = ApprovedStudent::where([
-                ['classroom_id', $classroomID->id],
-                ['student_id', $request->input('id')]
-            ])->get()->first();
-            if($currentUser->count() > 0) {
-                if ($currentUser->delete()) {
-                    return json_encode(['success' => true]);
+            $ids = $request->input('id');
+            foreach ($ids as $id){
+                $classroomID = Classroom::select('id')->where('classroom_unique_url', $request->input('inputUrl'))->get()->first();
+                $currentUser = ApprovedStudent::where([
+                    ['classroom_id', $classroomID->id],
+                    ['student_id', (int) $id]
+                ])->get()->first();
+                if($currentUser->count() > 0) {
+                    if (!$currentUser->delete()) {
+                        return json_encode(['success' => false]);
+                    }
                 }
             }
+            return json_encode(['success' => true]);
         }
         return json_encode(['sucess' => false]);
     }
     public function unblockMember(Request $request) {
         header('Content-Type: application/json');
         $validator = Validator::make($request->all(),[
-            'id'=> 'required',
+            'id'=> 'required|array|min:1',
             'inputUrl'=> 'required',
         ]);
         if(!$validator->fails()){
-            $classroomID = Classroom::select('id')->where('classroom_unique_url', $request->input('inputUrl'))->get()->first();
-            $currentUser = BlockedStudent::where([
-                ['classroom_id', $classroomID->id],
-                ['student_id', $request->input('id')]
-            ])->get()->first();
-            if($currentUser->count() > 0) {
-                if ($currentUser->delete()) {
-                    return json_encode(['success' => true]);
+            $ids = $request->input('id');
+            foreach ($ids as $id){
+                $classroomID = Classroom::select('id')->where('classroom_unique_url', $request->input('inputUrl'))->get()->first();
+                $currentUser = BlockedStudent::where([
+                    ['classroom_id', $classroomID->id],
+                    ['student_id', (int) $id]
+                ])->get()->first();
+                if($currentUser->count() > 0) {
+                    if (!$currentUser->delete()) {
+                        return json_encode(['success' => false]);
+                    }
                 }
             }
+            return json_encode(['success' => true]);
         }
         return json_encode(['sucess' => false]);
     }

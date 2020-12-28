@@ -17,13 +17,12 @@
         <div class="enroll__already-enrolled">
             <p>You are already enrolled using these codes below:</p>
         </div>
-
         <div class="enroll__code-group">
             <label for="popCode1">Class code 1: </label>
             <input type="text" placeholder="Place your code here" id="popCode1">
         </div>
         <button type="button" class="bttn enroll__add-bttn" id="enrollAddCodeBttn">Add more code</button>
-
+        <button type="button" class="bttn enroll__remove-bttn" id="enrollRemoveCodeBttn">Remove last inserted code</button>
         <button type="button" class="bttn enroll__submit-bttn" id="enrollSubmitBttn">Submit</button>
     </div>
 </div>

@@ -1,115 +1,341 @@
 .modules
-    margin-top: 40px
-    &__heading
+    margin-top: 120px
+    &__right
+        margin-top: 15px
+        margin-left: 40px
+
+    &__add-module-bttn
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        @extend %font-extrabold
+        color: white
         text-transform: uppercase
-        font-size: 16px
-        color: $txt-secondary
-        margin-bottom: 8px
-        @include brk_lrg
-            font-size: 18px
-    &__container
-        background-color: white
-        border-radius: 9px
-        overflow: hidden
-        margin-bottom: 20px
-        @include brk_md
-            margin-right: 20px
-        &-bottom
-            margin: 0 15px 0 15px
-            height: 0
-            overflow: hidden
-            transition: height .15s linear
-        &-top
-            @extend %display_flex
-            -webkit-justify-content: space-between
-            justify-content: space-between
-            -webkit-align-items: center
-            align-items: center
-            padding: 10px 15px
-            cursor: pointer
-            &:hover
-                background-color: #e8e8e8
-        &-top-icon
-            @extend %display_flex
-            -webkit-align-items: center
-            align-items: center
-            height: 5px
-            width: 8px
-            transition: transform .3s linear
-            svg
-                width: 100%
-    &__title
-        font-size: 14px
-        color: #53565b
-        @include brk_lrg
-            font-size: 16px
-    //BOTTOM
-    &__separator
-        background-color: #53565b
-        height: 2px
-        margin-top: 5px
-        margin-bottom: 20px
-        border-radius: 30px
-    &__txt
-        font-size: 16px
-        color: $txt-secondary
-        margin-bottom: 20px
-    &__download-link
-        color: #05aeff
-        @extend %font-bold
-        position: relative
-        font-size: 14px
+        font-family: inherit
+        padding: 13px 20px
+        margin: 30px auto
+        border-radius: 10px
+        background-color: #6f21e4
+        font-size: 12px
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 4px rgba(117, 16, 184,.3)
         &:hover
-         color: #40c1ff
-        &:hover::before
-            @include transform(scaleX(1))
-            transform-origin: left
+            background-color: #5204c7
+    &__add-module-bttn-icon
+        width: 10px
+        margin-right: 10px
+        @extend %display_flex
+
+
+
+    //MODULES CONTROLS
+    &__main-label
+        position: relative
+        margin-bottom: 35px
+        margin-top: 10px
+        color: $color-primary
         &::before
             position: absolute
-            content: ''
-            width: 100%
-            height: 3px
-            background-color: #40c1ff
-            bottom: 0
-            left: 0
-            @include transform(scaleX(0))
-            transition: transform .3s linear
-            transition-delay: .1s
-            transform-origin: right
-    &__task-label-container
-        margin-top: 40px
-        margin-bottom: 25px
+            content: ""
+            background-color: $color-primary
+            width: 50%
+            height: 15px
+            bottom: 6px
+            opacity: .1
+    &__controls-container
+        padding: 30px 15px 30px 35px
+        background-color: white
+        border-radius: 15px
+        margin-top: 35px
+        margin-bottom: 60px
+        position: relative
         @extend %display_flex
         -webkit-flex-direction: column
         flex-direction: column
-        @include brk_md
-            width: 410px
-    &__task-title
-        font-size: 22px
-        position: relative
-        color: $color-primary-dark
-        z-index: 1
-        text-transform: uppercase
+    &__hide-upload-container
+        position: absolute
+        right: 30px
+        cursor: pointer
+        background-color: white
+        border: none
+        color: $color-primary
+        font-family: inherit
+        @extend %font-bold
+        &:hover
+            text-decoration: underline
+        &:focus
+            outline: none
+
+    //FORM GROUP
+    &__upload-form
+        width: 100%
+    &__form-group
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        margin-bottom: 30px
+        &:last-of-type
+            margin-bottom: 0
+    label
+        @extend %font-bold
+        color: #8f8f9c
+        font-size: 18px
         margin-bottom: 10px
+    input[type="text"],
+    textarea
+        padding: 8px 10px
+        font-family: inherit
+        border: 2px solid #e1e1e2
+        border-radius: 6px
+        @extend %font-semibold
+        margin-bottom: 10px
+        &::placeholder
+            color: #8f8f9c
+        &:focus
+            outline: none
+            border-color: rgb(136, 87, 255)
+            color: #4f22bb
+            box-shadow: 0 0 0 3px rgba(136, 87, 255, .3)
+    input[type="text"]
+        width: 65%
+    textarea
+        width: 80%
+        resize: none
+        height: 150px
+    input[type="file"]
+        display: none
+    &__form-note
+        @extend %font-bold
+        color: #707079
+        font-size: 14px
+    &__drop
+        &-zone
+            padding: 20px 0
+            margin: 10px 0 25px 0
+            border: 2px solid #e1e1e2
+            width: 80%
+            border-radius: 7px
+            @extend %display_flex
+            -webkit-justify-content: center
+            justify-content: center
+            -webkit-align-items: center
+            align-items: center
+            cursor: pointer
+        &-icon
+            width: 23px
+            height: 23px
+            margin-right: 5px
+            path
+                stroke: #bbbbbb
+        &-txt
+            @extend %font-bold
+            color: #bbbbbb
+            font-size: 16px
+        &-emp-txt
+            color: $color-primary
+    &__dropped
+        &-files
+            width: 80%
+            position: relative
+            margin-bottom: 25px
+            &:last-of-type
+                margin-bottom: 0
+        &-remove-bttn
+            position: absolute
+            right: 0
+            top: 5px
+            color: #7f2aff
+            font-family: inherit
+            @extend %font-bold
+            text-transform: uppercase
+            padding: 5px 10px
+            @include transform(translateY(-50%))
+            &:hover
+                background-color: #f7f2ff
+        &-percentage
+            position: absolute
+            top: 0px
+            right: 0
+            @extend %font-bold
+            color: #5b0ad6
+        &-fname
+            @extend %font-bold
+            color: #7f2aff
+            margin-bottom: 4px
+        &-progress-bar
+            background-color: #e1cdff
+            height: 5px
+            width: 100%
+            border-radius: 10px
+            overflow: hidden
+            position: relative
+            &-image
+                position: absolute
+                width: 0
+                height: 100%
+                background-color: #7f2aff
+                transition: width .3s linear
+    &__links-wrapper
+        margin-top: 35px
+    &__remove-link
+        position: absolute
+        top: 50%
+        @include transform(translateY(-50%))
+        right: -140px
+        color: #ff3333
+        font-family: inherit
+        @extend %font-bold
+        padding: 10px
+        &:hover
+            background-color: #fff0f0
+        &:focus
+            outline: none
+    &__input-link
+        width: 50%
+        position: relative
+        margin-bottom: 25px
+        input
+            width: 100%
+            padding: 8px 10px
+            font-family: inherit
+            @extend %font-semibold
+            border: 2px solid #e1e1e2
+            border-radius: 6px
+            &::placeholder
+                color: #8f8f9c
+            &:focus
+                outline: none
+                border-color: rgb(136, 87, 255)
+                color: #4f22bb
+                box-shadow: 0 0 0 3px rgba(136, 87, 255, .3)
+    &__add-link-bttn
+        border: 2px solid $color-primary
+        color: $color-primary
+        font-family: inherit
+        @extend %font-bold
+        width: 100px
+        padding: 10px 0
+        border-radius: 8px
+        &:focus
+            outline: none
+        &:hover
+            background-color: $color-primary
+            color: white
+    &__publish-bttn
+        background-color: $color-primary
+        font-family: inherit
+        @extend %font-bold
+        color: white
+        padding: 10px 25px
+        border-radius: 5px
+        width: 150px
+        display: block
+        margin: 20px 0 0 auto
+        &:hover
+            background-color: #6716e2
+        &:focus
+            outline: none
+            border-color: rgb(136, 87, 255)
+            box-shadow: 0 0 0 3px rgba(136, 87, 255, .3)
+
+    &__container
+        margin-top: 70px
+    &__divider
+        padding-left: 15px
+        margin-bottom: 85px
+        position: relative
+    &__divider-title
+        font-size: 20px
+        color: #6b6b6b
+        position: relative
+        &:focus
+            outline: none
         &::before
             content: ''
             position: absolute
-            width: 86%
-            height: 3px
-            bottom: 2px
-            z-index: -1
-            background-color: $color-primary-dark
-        @include brk_lrg
-            font-size: 25px
-    &__task-link
-        color: #53628e
+            height: 4px
+            width: 100%
+            background-color: #9a9a9a
+            bottom: -10px
+    &__change-title-bttn,
+    &__delete-title-bttn
         @extend %font-bold
-        position: relative
-        margin: 8px 0
-        font-size: 14px
+        color: white
+        text-transform: uppercase
+        font-family: inherit
+        padding: 10px 13px
+        border-radius: 5px
+        font-size: 10px
+        margin: 0 8px
+        &-front
+            @extend %display_flex
+            -webkit-align-items: center
+            align-items: center
+    &__controls-wrapper
+        position: absolute
+        top: -5px
+        right: 0
+    &__change-title-bttn
+        background-color: #6f21e4
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 4px rgba(117, 16, 184,.3)
         &:hover
-            color: $color-secondary
+            background-color: #5204c7
+    &__delete-title-bttn
+        background-color: #f34747
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 4px rgba(243, 71, 71, .3)
+            &:hover
+                background-color: #ff3e3e
+    &__lists
+        margin: 20px 0
+    &__list
+        background-color: white
+        padding: 10px
+        &-bottom
+            margin-top: 15px
+
+
+
+
 .container--active
     .modules__container-top-icon
         transition: transform .3s linear
         @include transform(rotate(90deg))
+.list--active
+    background-color: #f6f6ff
+    &:focus
+        outline: none
+.drag-zone--hover
+    background-color: #fbfbfb
+.upload-waiting
+    opacity: .6
+.upload-done
+    @include animation(flash 1s linear)
+.upload-error
+    .modules__dropped-fname
+        color: #ff2a2a
+    .modules__dropped-progress-bar
+        background-color: #ffdcdc
+    .modules__dropped-progress-bar-image
+        background-color: #ff2a2a
+.upload-error-bttn
+        position: absolute
+        right: 0
+        top: 5px
+        color: #ff2a2a
+        font-family: inherit
+        @extend %font-bold
+        text-transform: uppercase
+        padding: 5px 10px
+        @include transform(translateY(-50%))
+        &:hover
+            background-color: #fff0f0
+        &:focus
+            outline: none
+.primary-title-loading
+    opacity: .6
+    cursor: not-allowed

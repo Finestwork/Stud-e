@@ -210,7 +210,7 @@
                 <div class="form--primary__2-col">
                     <div class="form--primary__lrg--left">
                         <div class="form--primary__group">
-                            <span class="form--primary__note--required">Required</span>
+                            <span class="form--primary__note--required">*</span>
                             <label for="studFnameTxt" class="form--primary__n-lbl">Enter your first name: </label>
                             <input type="text" id="studFnameTxt" placeholder="Place your first name here" name="studFnameTxt" autocomplete="off">
                             <p class="form--primary__note--error js-field-blank">• This field should not be empty.</p>

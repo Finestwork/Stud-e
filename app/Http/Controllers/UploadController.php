@@ -11,7 +11,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
-use function GuzzleHttp\Psr7\str;
 
 class UploadController extends Controller
 {
@@ -36,7 +35,7 @@ class UploadController extends Controller
                     $imgStorage->teacher_id = $authorID;
                     $imgStorage->original_name = $file->getClientOriginalName();
                     if($imgStorage->save()){
-                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'image'], 200);
+                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'image', 'id'=>$imgStorage->id], 200);
                     }
                 }
                 if(substr($file->getMimeType(), 0, 5) == 'audio'){
@@ -48,7 +47,7 @@ class UploadController extends Controller
                     $audioStorage->teacher_id = $authorID;
                     $audioStorage->original_name = $file->getClientOriginalName();
                     if($audioStorage->save()){
-                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'audio'], 200);
+                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'audio', 'id'=>$audioStorage->id], 200);
                     }
                 }
                 if(substr($file->getMimeType(), 0, 5) == 'video'){
@@ -60,7 +59,7 @@ class UploadController extends Controller
                     $videoStorage->teacher_id = $authorID;
                     $videoStorage->original_name = $file->getClientOriginalName();
                     if($videoStorage->save()){
-                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'video'], 200);
+                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'video', 'id'=>$videoStorage->id], 200);
                     }
                 }
                 if($file->getMimeType() === 'application/pdf'){
@@ -72,7 +71,7 @@ class UploadController extends Controller
                     $pdfStorage->teacher_id = $authorID;
                     $pdfStorage->original_name = $file->getClientOriginalName();
                     if($pdfStorage->save()){
-                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'pdf'], 200);
+                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'pdf', 'id'=>$pdfStorage->id], 200);
                     }
                 }
 
@@ -85,7 +84,7 @@ class UploadController extends Controller
                     $documentStorage->teacher_id = $authorID;
                     $documentStorage->original_name = $file->getClientOriginalName();
                     if($documentStorage->save()){
-                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'document'], 200);
+                        return json_encode(['success'=>true, 'path'=>$path,'type'=>'document', 'id'=>$documentStorage->id], 200);
                     }
                 }
             }

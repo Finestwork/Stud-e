@@ -9,12 +9,23 @@ class Modules extends Model
 {
     use HasFactory;
     protected $table = 'modules';
+    protected $casts =[
+        'document_id' => 'array',
+        'video_id' => 'array',
+        'audio_id' => 'array',
+        'image_id' => 'array',
+        'pdf_id' => 'array',
+        'external_links' => 'array',
+    ];
     protected $fillable = [
-        'module_secondary_title',
-        'module_description',
-        'module_docs',
-        'module_videos',
-        'module_sounds',
-        'primary_title_id'
+        'secondary_title',
+        'description',
+        'classroom_url',
+        'document_id',
+        'video_id',
+        'audio_id',
+        'image_id',
+        'pdf_id',
+        'external_links',
         ];
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Teacher;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classroom;
+use App\Models\Modules;
 use App\Models\Relations\ModulesPrimaryTitles;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -43,5 +44,46 @@ class CreateModuleController extends Controller
         return json_encode(['success'=>false], 500);
 
 
+    }
+
+    public function createModule(Request $request) {
+        $validator = Validator::make($request->all(), [
+           'primaryID' => 'required',
+           'classroomUrl' => 'required',
+           'title' => 'required',
+           'description' => 'required',
+        ]);
+        if(!$validator->fails()){
+            $primaryID = $request->input('primaryID');
+            $classroomUrl = $request->input('classroomUrl');
+            $secondaryTitle = $request->input('title');
+            $description = $request->input('description');
+            $audio = $request->input('audio');
+            $document = $request->input('document');
+            $image = $request->input('image');
+            $pdf = $request->input('pdf');
+            $video = $request->input('video');
+            $externalLinks = $request->input('external_links');
+
+            $modules = new Modules();
+            $modules->secondary_title = $secondaryTitle;
+            $modules->description = $description;
+            $modules->classroom_url = $classroomUrl;
+            $modules->primary_title_id = (int) $primaryID;
+            $modules->audio_id = $audio;
+            $modules->video_id = $video;
+            $modules->image_id = $image;
+            $modules->document_id = $document;
+            $modules->pdf_id = $pdf;
+            $modules->external_links = $externalLinks;
+            if($modules->save()){
+
+            }
+
+
+
+         return json_encode(['success'=>true], 500);
+        }
+        return json_encode(['success'=>false], 500);
     }
 }

@@ -97,7 +97,8 @@ Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function()
     Route::post('/remove-member/{uniqueUrl}', [GlobalMemberController::class, 'removeMember']);
     Route::post('/unblock-student/{uniqueUrl}', [GlobalMemberController::class, 'unblockMember']);
     //CREATING A MODULE
-    Route::post('/create-module', [CreateModuleController::class, 'createPrimaryTitle']);
+    Route::post('/create-title', [CreateModuleController::class, 'createPrimaryTitle']);
+    Route::post('/create-module', [CreateModuleController::class, 'createModule']);
     //UPLOADING FILES
     Route::post('/upload-modules', [UploadController::class, 'validateUploadedFiles']);
     Route::post('/delete-file', [UploadController::class, 'deleteUpload']);

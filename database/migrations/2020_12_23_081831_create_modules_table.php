@@ -17,12 +17,13 @@ class CreateModulesTable extends Migration
             $table->bigIncrements('id');
             $table->string('secondary_title');
             $table->longText('description');
+            $table->longText('classroom_url');
             $table->string('document_id');
             $table->string('video_id');
             $table->string('audio_id');
             $table->string('image_id');
             $table->string('pdf_id');
-            $table->string('txt_id');
+            $table->longText('external_links');
             $table->unsignedBigInteger('primary_title_id');
             $table->timestamps();
             $table->foreign('primary_title_id')->references('id')->on('module_primary_titles')->cascadeOnDelete();

@@ -2,7 +2,8 @@
     margin-top: 120px
     &__right
         margin-top: 15px
-        margin-left: 40px
+        @include brk_md
+            margin-left: 40px
 
     &__add-module-bttn
         @extend %display_flex
@@ -33,18 +34,21 @@
     &__main-label
         position: relative
         margin-bottom: 35px
-        margin-top: 10px
+        margin-top: 35px
         color: $color-primary
-        &::before
-            position: absolute
-            content: ""
-            background-color: $color-primary
-            width: 50%
-            height: 15px
-            bottom: 6px
-            opacity: .1
+        @include brk_md
+            &::before
+                position: absolute
+                content: ""
+                background-color: $color-primary
+                width: 50%
+                height: 15px
+                bottom: 6px
+                opacity: .1
+        @include brk_lrg
+            margin-top: 10px
     &__controls-container
-        padding: 30px 15px 30px 35px
+        padding: 30px 15px 30px 15px
         background-color: white
         border-radius: 15px
         margin-top: 35px
@@ -54,6 +58,10 @@
         -webkit-flex-direction: column
         flex-direction: column
         display: none
+        @include custom_breakpoint(500)
+            padding: 30px
+        @include brk_md
+            padding: 30px 15px 30px 35px
     &__hide-upload-container
         position: absolute
         right: 30px
@@ -63,7 +71,9 @@
         color: $color-primary
         font-family: inherit
         @extend %font-bold
-        top: 50px
+        top: 30px
+        @include brk_lrg
+            top: 50px
         &:hover
             text-decoration: underline
         &:focus
@@ -86,6 +96,7 @@
         margin-bottom: 10px
     input[type="text"],
     textarea
+        width: 100%
         padding: 8px 10px
         font-family: inherit
         border: 2px solid #e1e1e2
@@ -101,11 +112,13 @@
             color: #4f22bb
             box-shadow: 0 0 0 3px rgba(136, 87, 255, .3)
     input[type="text"]
-        width: 65%
+        @include brk_md
+            width: 65%
     textarea
-        width: 80%
         resize: none
         height: 150px
+        @include brk_md
+            width: 80%
     input[type="file"]
         display: none
     &__form-note
@@ -117,9 +130,9 @@
             margin-bottom: 50px
         &-zone
             padding: 20px 0
+            width: 100%
             margin: 10px 0 25px 0
             border: 2px solid #e1e1e2
-            width: 80%
             border-radius: 7px
             @extend %display_flex
             -webkit-justify-content: center
@@ -127,6 +140,8 @@
             -webkit-align-items: center
             align-items: center
             cursor: pointer
+            @include custom_breakpoint(500)
+                width: 80%
         &-icon
             width: 23px
             height: 23px
@@ -136,16 +151,20 @@
         &-txt
             @extend %font-bold
             color: #bbbbbb
-            font-size: 16px
+            font-size: 14px
+            @include custom_breakpoint(500)
+                font-size: 16px
         &-emp-txt
             color: $color-primary
     &__dropped
         &-files
-            width: 80%
+            width: 100%
             position: relative
             margin-bottom: 25px
             &:last-of-type
                 margin-bottom: 0
+            @include brk_md
+                width: 80%
         &-remove-bttn
             position: absolute
             right: 0
@@ -168,6 +187,8 @@
             @extend %font-bold
             color: #7f2aff
             margin-bottom: 4px
+            margin-right: 85px
+            word-break: break-word
         &-progress-bar
             background-color: #e1cdff
             height: 5px
@@ -235,7 +256,9 @@
         border-radius: 5px
         width: 150px
         display: block
-        margin: 20px 0 0 auto
+        margin: 50px 0 0 auto
+        @include custom_breakpoint(500)
+            margin-top: 20px
         &:hover
             background-color: #6716e2
         &:focus
@@ -271,15 +294,22 @@
         padding: 10px 13px
         border-radius: 5px
         font-size: 10px
-        margin: 0 8px
+        margin: 10px 8px
+        @include brk_md
+            margin-top: 0
+            margin-bottom: 0
         &-front
             @extend %display_flex
             -webkit-align-items: center
             align-items: center
     &__controls-wrapper
-        position: absolute
-        top: -5px
-        right: 0
+        margin-top: 30px
+        @include brk_md
+            margin-top: 0
+            position: absolute
+            top: -5px
+            right: 0
+
     &__change-title-bttn
         background-color: #6f21e4
         &:focus
@@ -303,8 +333,11 @@
         border-radius: 8px
         overflow: hidden
         &-title
+            font-size: 18px
             margin-bottom: 5px
             color: $color-primary
+            @include brk_md
+                font-size: 20px
         &-top
             padding: 10px 25px 5px 25px
             cursor: pointer
@@ -318,7 +351,9 @@
         margin: 30px 25px 15px 25px
         @extend %font-semibold
         color: #431688
-        font-size: 18px
+        font-size: 14px
+        @include brk_md
+            font-size: 16px
     &__description-lbl
         @extend %font-bold
     &__warning
@@ -335,6 +370,15 @@
 
     &__gallery-box
         margin: 0 25px 40px
+        @include custom_breakpoint(650)
+            display: -webkit-flex
+            display: flex
+            -webkit-flex-wrap: wrap
+            flex-wrap: wrap
+            -webkit-justify-content: space-around
+            justify-content: space-around
+            -webkit-align-items: center
+            align-items: center
     &__files-title
         width: 100%
         max-width: 250px
@@ -359,16 +403,33 @@
         overflow: hidden
 
     &__img
-        display: inline-block
-        min-width: 250px
-        max-width: 250px
-        max-height: 250px
-        margin-right: 50px
         margin-top: 20px
+        margin-left: auto
+        margin-right: auto
         vertical-align: top
+        display: block
+        @include custom_breakpoint(650)
+            margin-left: 0
+            margin-right: 0
+            min-width: 250px
+            max-width: 250px
+            max-height: 250px
+        @include brk_lrg
+            margin-right: 15px
         &:hover
             .modules__actual-img
                 border: 2px solid $color-primary
+    &__player-item
+        margin-bottom: 30px
+    &__player-name,
+    &__video-txt
+        text-align: center
+        margin-bottom: 10px
+    &__player-link,
+    &__video-link
+        color: $color-primary
+        &:hover
+            color: $color-new-secondary
     &__link-list,
     &__document-wrapper
         list-style: decimal
@@ -380,10 +441,11 @@
         margin-bottom: 10px
         &:last-of-type
             margin-bottom: 0
-    &__link,
+    &__external-link,
     &__document-link
         @extend %font-semibold
         color: $color-primary
+        word-break: break-word
         &:hover
             color: $color-new-secondary
     &__audio-wrapper,
@@ -391,8 +453,33 @@
         margin: 0 25px
     &__video
         margin: 35px auto
-
-
+    .my-video-dimensions
+        width: 100%
+        height: 264px
+        @include brk_lrg
+            width: 640px
+    &__bttn-controls
+        @extend %display_flex
+        -webkit-justify-content: flex-end
+        justify-content: flex-end
+        margin: 15px 25px
+    &__bttn--delete-module,
+    &__bttn--edit-module
+        padding: 10px 15px
+        font-family: inherit
+        @extend %font-bold
+        margin-right: 15px
+        &:focus
+            outline: none
+    &__bttn--delete-module
+        color: #fd2c2c
+        &:hover
+            background-color: #ffeded
+    &__bttn--edit-module
+        color: white
+        background-color: $color-primary
+        &:hover
+            background-color: #630de4
 .container--active
     .modules__container-top-icon
         transition: transform .3s linear
@@ -431,6 +518,14 @@
 .primary-title-loading
     opacity: .6
     cursor: not-allowed
+.green-audio-player
+    width: 100%
+    min-width: unset
+    @include custom_breakpoint(530)
+        width: 400px
+        min-width: 300px
+.volume
+    display: block
 .video-js
     margin-left: auto
     margin-right: auto
@@ -438,3 +533,5 @@
     .modules__list-bottom
         height: auto
 
+.js-edit-container
+    display: block

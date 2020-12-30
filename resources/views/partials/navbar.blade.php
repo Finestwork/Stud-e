@@ -46,7 +46,7 @@
             <div class="navbar--right">
                 <div class="navbar__icon-box" id="mssgBox">
                     <div class="navbar__mssg-icon">
-                        <img src="/assets/svgs/icons/Message icon.svg" alt="Message Icon" class="img-fluid">
+                        <img src="/assets/svgs/icons/Message Icon.svg" alt="Message Icon" class="img-fluid">
                     </div>
                     <span class="navbar__icon-ctr">9+</span>
                     <div class="navbar__mssg-item-wrapper" id="mssgItemWrapper">
@@ -171,7 +171,7 @@
                 </div>
                 <div class="navbar__icon-box" id="notifBox">
                     <div class="navbar__notif-icon">
-                       <img src="/assets/svgs/icons/Notification icon.svg" alt="Notification Icon" class="img-fluid">
+                       <img src="/assets/svgs/icons/Notification Icon.svg" alt="Notification Icon" class="img-fluid">
                     </div>
                     <span class="navbar__icon-ctr">9+</span>
                     <div class="navbar__notif-item-wrapper" id="notifItemWrapper">

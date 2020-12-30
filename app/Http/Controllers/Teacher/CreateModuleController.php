@@ -16,7 +16,6 @@ class CreateModuleController extends Controller
            'url'=>'required',
            'primaryTitle' => 'required',
         ]);
-
         if(!$validator->fails()){
             $classUrl = $request->input('url');
             $primaryTitle = $request->input('primaryTitle');
@@ -40,12 +39,35 @@ class CreateModuleController extends Controller
             }
 
         }
-
         return json_encode(['success'=>false], 500);
-
-
     }
-
+    public function deletePrimaryTitle(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'primaryTitleID' => 'required'
+        ]);
+        if(!$validator->fails()){
+            $primaryTitleID = $request->input('primaryTitleID');
+            $modules = Modules::where('primary_title_id', $primaryTitleID)->get();
+            if(count($modules) !== 0){
+                foreach($modules as $md){
+                    $currentModule = Modules::findOrFail($md->id);
+                    if (!$currentModule->delete()){
+                        return json_encode(['success'=>false,'reason'=>'deleting a module does not succeed.'], 500);
+                    }
+                }
+                $module = ModulesPrimaryTitles::findOrFail((int) $primaryTitleID);
+                if($module->delete()){
+                    return json_encode(['success'=>true], 200);
+                }
+            }else{
+                $module = ModulesPrimaryTitles::findOrFail((int) $primaryTitleID);
+                if($module->delete()){
+                    return json_encode(['success'=>true], 200);
+                }
+            }
+        }
+        return json_encode(['success'=>false], 500);
+    }
     public function createModule(Request $request) {
         $validator = Validator::make($request->all(), [
            'primaryID' => 'required',
@@ -77,12 +99,57 @@ class CreateModuleController extends Controller
             $modules->pdf_id = $pdf;
             $modules->external_links = $externalLinks;
             if($modules->save()){
-
+                return json_encode(['success'=>true], 500);
             }
+        }
+        return json_encode(['success'=>false], 500);
+    }
+    public function updateModule(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'moduleID' => 'required',
+            'classroomUrl' => 'required',
+            'title' => 'required',
+            'description' => 'required',
+        ]);
+        if(!$validator->fails()){
+            $moduleID = $request->input('moduleID');
+            $classroomUrl = $request->input('classroomUrl');
+            $secondaryTitle = $request->input('title');
+            $description = $request->input('description');
+            $audio = $request->input('audio');
+            $document = $request->input('document');
+            $image = $request->input('image');
+            $pdf = $request->input('pdf');
+            $video = $request->input('video');
+            $externalLinks = $request->input('external_links');
 
-
-
-         return json_encode(['success'=>true], 500);
+            $modules = Modules::findOrFail((int) $moduleID);
+            $modules->secondary_title = $secondaryTitle;
+            $modules->description = $description;
+            $modules->classroom_url = $classroomUrl;
+            $modules->audio_id = $audio;
+            $modules->video_id = $video;
+            $modules->image_id = $image;
+            $modules->document_id = $document;
+            $modules->pdf_id = $pdf;
+            $modules->external_links = $externalLinks;
+            if($modules->save()){
+                return json_encode(['success'=>true], 500);
+            }
+        }
+        //return json_encode(['success'=>false], 500);
+        return json_encode(['success'=>$request->all()], 500);
+    }
+    public function deleteModule(Request $request) {
+        $validator = Validator::make($request->all(), [
+           'moduleID' => 'required'
+        ]);
+        if(!$validator->fails()){
+            $moduleID = $request->input('moduleID');
+            $module = Modules::findOrFail((int) $moduleID);
+            if($module->delete()){
+                return json_encode(['success'=>true], 200);
+            }
         }
         return json_encode(['success'=>false], 500);
     }

@@ -29,6 +29,10 @@
 .green-audio-player svg,
 .green-audio-player img {
     display: block; }
+.green-audio-player svg{
+    width: 15px;
+    height: 15px;
+}
 .green-audio-player .holder {
     position: relative; }
 .green-audio-player .holder .loading .loading__spinner {
@@ -98,7 +102,8 @@
     right: -8px;
     top: -6px; }
 .green-audio-player .controls span {
-    cursor: default; }
+    cursor: default;
+    font-size: 14px;}
 .green-audio-player .controls:focus {
     outline: none; }
 .green-audio-player .volume {

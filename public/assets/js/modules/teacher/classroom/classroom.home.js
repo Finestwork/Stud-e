@@ -370,10 +370,10 @@ function changeScheduleWrapperContent(){
     sCode.textContent = classroomOrigValues[0].class_code;
 
     if(classroomOrigValues[0].is_classroom_active){
-        scheduleActiveStatus.classList.remove('schedule--active');
-
+        scheduleActiveStatus.style.display = 'none';
     }else{
-        scheduleActiveStatus.classList.add('schedule--active');
+        scheduleActiveStatus.style.display = '-webkit-flex';
+        scheduleActiveStatus.style.display = 'flex';
     }
     let schedWrapperLength = sSchedule.childElementCount;
     for(let i = schedWrapperLength - 1; i >= 0 ; i--){

@@ -15,7 +15,7 @@ body {
   font-weight: 400;
 }
 
-.classroom__links-container, .schedule--active, .schedule__inactive-img, .schedule__inactive-wrapper, .schedule__form-group, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .form--secondary__schedule-wrapper, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .breadcrumbs, .switch__main, .logo {
+.classroom__links-container, .schedule__inactive-img, .schedule__inactive-wrapper, .schedule__form-group, .sidebar--fixed .sidebar__top, .sidebar--fixed .sidebar__bttn, .classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .form--secondary__schedule-wrapper, .navbar__notif-item-link, .navbar__notif-illustration, .navbar__notif-description, .navbar__mssg-item-link, .navbar__mssg-description, .navbar__icon-ctr, .navbar__profile-link, .navbar__profile-box, .navbar--right, .navbar--mid, .navbar--left, .navbar__inner, .breadcrumbs, .switch__main, .logo {
   display: -webkit-flex;
   display: flex;
 }

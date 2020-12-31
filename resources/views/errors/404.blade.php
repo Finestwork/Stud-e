@@ -1502,7 +1502,7 @@
         <div class="error-right">
             <h1>404 PAGE NOT FOUND</h1>
             <h2>Lost in space?</h2>
-            <a href="{{ url()->previous() }}">Take me back!</a>
+            <a href="">Take me back!</a>
         </div>
     </main>
 @endsection

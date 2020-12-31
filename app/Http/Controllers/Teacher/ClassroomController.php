@@ -29,7 +29,7 @@ class ClassroomController extends Controller
             $classroom->classroom_description = $request->input('crDescription');
             $classroom->class_code = $request->input('crCode');
             $classroom->classroom_schedule = $request->input('crSchedule');
-            $classroom->classroom_unique_url = base64_encode($request->input('crName'));
+            $classroom->classroom_unique_url = sha1($request->input('crName') . date('Y-m-d H:i:s'));
             $classroom->can_student_download = 1;
             $classroom->can_student_post = 1;
             $classroom->can_student_join = 1;

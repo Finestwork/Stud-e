@@ -22,11 +22,13 @@ class ClassroomController extends Controller
         if(Auth::guard('teacher')->check()){
             $user = Auth::guard('teacher')->user();
             $classroom = Classroom::where('classroom_unique_url', $id)->get();
-            return view('teacher.classroom.schedule',
-                [
-                    'user' => $user,
-                    'classrooms' => $classroom,
-                ]);
+            if(count($classroom)>0){
+                return view('teacher.classroom.schedule',
+                    [
+                        'user' => $user,
+                        'classrooms' => $classroom,
+                    ]);
+            }
         }else if(Auth::guard('student')->check()){
             $user = Auth::guard('student')->user();
             $classroom = DB::table('classroom')->where('classroom_unique_url', $id)->get();

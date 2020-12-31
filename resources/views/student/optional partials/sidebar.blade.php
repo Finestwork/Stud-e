@@ -29,7 +29,7 @@
         @endif
 
         @if(Request::path() =='student/classroom')
-            <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.class') }}">
+            <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('classroom.index') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
               <g id="Group_26" data-name="Group 26" transform="translate(0.75 -3.56)">
@@ -45,7 +45,7 @@
                 <span class="sidebar__icon-txt">Classes</span>
             </a>
         @else
-            <a class="sidebar__icon-wrapper" href="{{ route('student.class') }}">
+            <a class="sidebar__icon-wrapper" href="{{ route('classroom.index') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
               <g id="Group_26" data-name="Group 26" transform="translate(0.75 -3.56)">
@@ -189,7 +189,7 @@
             @endif
 
             @if(Request::path() =='student/classroom')
-                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('student.class') }}">
+                <a class="sidebar__icon-wrapper sidebar--active" href="{{ route('classroom.index') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
               <g id="Group_26" data-name="Group 26" transform="translate(0.75 -3.56)">
@@ -205,7 +205,7 @@
                     <span class="sidebar__icon-txt">Classes</span>
                 </a>
             @else
-                <a class="sidebar__icon-wrapper" href="{{ route('student.class') }}">
+                <a class="sidebar__icon-wrapper" href="{{ route('classroom.index') }}">
         <span class="sidebar__icon-stroke-box">
             <svg class="sidebar__icon-stroke" xmlns="http://www.w3.org/2000/svg" width="16.255" height="20.19" viewBox="0 0 16.255 20.19">
               <g id="Group_26" data-name="Group 26" transform="translate(0.75 -3.56)">

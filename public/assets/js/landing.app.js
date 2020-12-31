@@ -1,11 +1,3 @@
-let smoothScroll = new scrollToSmooth('.ghost--header__nav-link', {
-    targetAttribute: 'href',
-    duration: 1200,
-    easing: 'easeInOutBack',
-});
-smoothScroll.init();
-
-
 let hamburgerBttn = document.getElementById('hamburgerBttn'),
     hamburgerCollapse = document.getElementById('hamburgerCollapse'),
     headerNav = document.getElementById('headerNav');
@@ -13,6 +5,13 @@ let hamburgerBttn = document.getElementById('hamburgerBttn'),
 let links = document.querySelectorAll('.ghost--header__nav-link'),
     targetDivs = [], totalDivs = 0;
 
+let smoothScroll = new scrollToSmooth('.ghost--header__nav-link', {
+    targetAttribute: 'href',
+    duration: 1000,
+    easing: 'easeOutQuad',
+    fixedHeader: '.ghost--header__nav',
+});
+smoothScroll.init();
 
 getActiveSections();
 

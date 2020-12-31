@@ -40,6 +40,7 @@ footer, header, nav, section, main {
 html,
 body {
   min-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -1242,10 +1243,9 @@ ul {
 .sidebar--fixed .sidebar__bttn {
   background-color: #ff3e6c;
   margin: 1.25em auto;
-  font-size: 1.6rem;
   font-family: inherit;
   font-weight: 700;
-  padding: 0.625em 1.25em;
+  padding: 13px 11px;
   border-radius: 10px;
   color: white;
   max-width: 170px;
@@ -1255,6 +1255,9 @@ ul {
 }
 .sidebar--fixed .sidebar__bttn-icon {
   margin-right: 0.9375em;
+}
+.sidebar--fixed .sidebar__bttn-txt {
+  font-size: 14px;
 }
 .sidebar--fixed .sidebar__line {
   background-color: #cccccc;

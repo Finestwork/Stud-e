@@ -37,7 +37,7 @@
 
 @section('body-content')
     @include('partials.navbar_box_shadow')
-    @include('student.optional partials.fixed_independent_sidebar')
+    @include('teacher.optional partials.sidebar--secondary')
     <main class="classroom">
         <div class="container--main">
             <div class="container-fluid">

@@ -42,7 +42,6 @@ class ClassroomController extends Controller
     }
     public function renderModules($id){
         if(Auth::guard('student')->check()){
-
         }else if(Auth::guard('teacher')->check()){
             $user = Auth::guard('teacher')->user();
             $classroom = Classroom::where('classroom_unique_url', $id)->get();
@@ -86,12 +85,9 @@ class ClassroomController extends Controller
             $classroom = [];
             $user = Auth::guard('teacher')->user();
             $teacherClassrooms = TeacherClassroom::select('classroom_id')->where('teacher_id', $user->id)->get();
-
             foreach($teacherClassrooms as $tcs){
                 $classroom []= Classroom::where('id', $tcs->classroom_id)->get();
             }
-
-
             return view('teacher.classroom.index', [
                 'user'=>$user,
                 'teacherClassroom' => $teacherClassrooms,

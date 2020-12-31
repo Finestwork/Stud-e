@@ -206,34 +206,59 @@
                                 <div class="row">
                                     <ul class="card-list">
                                         @foreach($classrooms as $key => $cr)
-                                            <li class="card-list__item">
-                                                <div class="card-list__subject-box">
-                                                    <p class="card-list__lbl">Subject name</p>
-                                                    <a href="{{ route('classroom.schedule', $cr[0]->classroom_unique_url) }}" class="card-list__name">{{ $cr[0]->classroom_name }}</a>
-                                                </div>
-                                                <div class="card-list__subject-members-box">
-                                                    @if(\App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() <= 1)
-                                                        <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} member</p>
-                                                    @else
-                                                        <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} members</p>
-                                                    @endif
-                                                </div>
-                                                <div class="card-list__subject-date-box">
-                                                    <p class="card-list__lbl">Date created</p>
-                                                    <p class="card-list__date">{{ date('F j, Y', strtotime($cr[0]->created_at)) }}</p>
-                                                </div>
-                                            </li>
+                                            @if($cr[0]->is_classroom_active)
+                                                <li class="card-list__item">
+                                                    <div class="card-list__subject-box">
+                                                        <p class="card-list__lbl">Subject name</p>
+                                                        <a href="{{ route('classroom.schedule', $cr[0]->classroom_unique_url) }}" class="card-list__name">{{ $cr[0]->classroom_name }}</a>
+                                                    </div>
+                                                    <div class="card-list__subject-members-box">
+                                                        @if(\App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() <= 1)
+                                                            <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} member</p>
+                                                        @else
+                                                            <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} members</p>
+                                                        @endif
+                                                    </div>
+                                                    <div class="card-list__subject-date-box">
+                                                        <p class="card-list__lbl">Date created</p>
+                                                        <p class="card-list__date">{{ date('F j, Y', strtotime($cr[0]->created_at)) }}</p>
+                                                    </div>
+                                                </li>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- CURRENT CLASS AND COMPLETED CLASS IS JUST TEMPORARY (PROTOTYPE), SHOWING OF SUBJECTS WILL BE DONE WITH AXIOS (FETCH) -->
-                    <div class="completed" id="completed">
-                        <div class="col-sm-12 col-md-12 col-lrg-12">
-                            <div class="row"></div>
-                        </div>
+                            <div class="completed" id="completed">
+                                <div class="col-sm-12 col-md-12 col-lrg-12">
+                                    <div class="row">
+                                        <ul class="card-list">
+                                            @foreach($classrooms as $key => $cr)
+                                                @if(!$cr[0]->is_classroom_active)
+                                                    <li class="card-list__item">
+                                                        <div class="card-list__subject-box">
+                                                            <p class="card-list__lbl">Subject name</p>
+                                                            <a href="{{ route('classroom.schedule', $cr[0]->classroom_unique_url) }}" class="card-list__name">{{ $cr[0]->classroom_name }}</a>
+                                                        </div>
+                                                        <div class="card-list__subject-members-box">
+                                                            @if(\App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() <= 1)
+                                                                <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} member</p>
+                                                            @else
+                                                                <p class="card-list__member-ctr">{{ \App\Models\Relations\ApprovedStudent::select('id')->where('classroom_id', $cr[0]->id)->count() }} members</p>
+                                                            @endif
+                                                        </div>
+                                                        <div class="card-list__subject-date-box">
+                                                            <p class="card-list__lbl">Date created</p>
+                                                            <p class="card-list__date">{{ date('F j, Y', strtotime($cr[0]->created_at)) }}</p>
+                                                        </div>
+                                                    </li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

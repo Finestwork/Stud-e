@@ -879,8 +879,21 @@ table {
 .sign-in__logo {
   align-items: center;
   position: absolute;
-  left: 5%;
-  top: 5%;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  width: 100%;
+  padding: 15px 15px;
+}
+@media only screen and (min-width: 64em) {
+  .sign-in__logo {
+    background-color: transparent;
+    width: auto;
+    padding: unset;
+    top: 5%;
+    left: 5%;
+  }
 }
 .sign-in__logo-box {
   width: 40px;
@@ -906,6 +919,16 @@ table {
   animation: bounce 1.5s infinite forwards linear;
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
+}
+.sign-in__left {
+  width: 80%;
+  margin: auto;
+}
+@media only screen and (min-width: 48em) {
+  .sign-in__left {
+    width: auto;
+    margin: unset;
+  }
 }
 .sign-in__description {
   margin: 7.1875em auto 2.5em auto;

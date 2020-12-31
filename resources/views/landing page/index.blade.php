@@ -200,7 +200,7 @@
                                 <span class="pricing-table__list-txt">Post your weekly activities in an organized manner</span>
                             </li>
                         </ul>
-                        <button type="button" class="bttn pricing-table__bttn">Get now</button>
+                        <a href="/signup" class="bttn pricing-table__bttn">Get now</a>
                     </div>
                 </div>
                 <div class="col-md-2 col-lrg-4 col-xlrg-4">
@@ -242,7 +242,7 @@
                                 <span class="pricing-table--colored__list-txt">Organize your weekly task for each class you have</span>
                             </li>
                         </ul>
-                        <button type="button" class="bttn pricing-table--colored__bttn">Get now</button>
+                        <a href="/signup" class="bttn pricing-table--colored__bttn">Get now</a>
                     </div>
                 </div>
                 <div class="col-md-2 col-lrg-4 col-xlrg-4">
@@ -287,7 +287,7 @@
                                 <span class="pricing-table__list-txt">Organize your weekly task for each class you have</span>
                             </li>
                         </ul>
-                        <button type="button" class="bttn pricing-table__bttn">Get now</button>
+                        <a href="/signup" class="bttn pricing-table__bttn">Get now</a>
                     </div>
                 </div>
             </div>

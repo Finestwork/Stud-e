@@ -4,8 +4,18 @@
         @extend %display_flex
         align-items: center
         position: absolute
-        left: 5%
-        top: 5%
+        left: 0
+        top: 0
+        z-index: 1000
+        background-color: white
+        width: 100%
+        padding: 15px 15px
+        @include brk_lrg
+            background-color: transparent
+            width: auto
+            padding: unset
+            top: 5%
+            left: 5%
     &__logo-box
         width: 40px
     &__logo-txt
@@ -25,6 +35,12 @@
         @include animation(bounce 1.5s infinite forwards linear)
         @include transform_origin(center bottom)
 
+    &__left
+        width: 80%
+        margin: auto
+        @include brk_md
+            width: auto
+            margin: unset
     //LOWER
     &__description
         margin: 115 / $default-font-size * 1em auto 40 / $default-font-size * 1em auto

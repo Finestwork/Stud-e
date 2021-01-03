@@ -83,6 +83,20 @@
             text-align: center
             bottom: 45px
             color: white
+    &__email-does-not-exist,
+    &__email-success
+        padding: 12px 0
+        text-align: center
+        margin-bottom: 30px
+        @extend %font-bold
+        border-radius: 10px
+        display: none
+    &__email-does-not-exist
+        background-color: #ffe9e9
+        color: #ff3333
+    &__email-success
+        background-color: #ecffec
+        color: #27bb27
     &__link
         color: white
         text-decoration: underline
@@ -113,5 +127,25 @@
             &--inner
                 width: 100%
                 max-width: 750px
+    &__resend-email-link
+        color: inherit
+        text-decoration: underline
 
-
+.password-reset__banner
+    @include brk_lrg
+        background-image: url('/assets/imgs/login/password-reset.jpg')
+        height: 100%
+        width: 45%
+        position: absolute
+        left: 0
+        background-position: center
+        background-repeat: no-repeat
+        background-size: cover
+    &--inner
+        position: absolute
+        width: 100%
+        text-align: center
+        bottom: 45px
+        color: white
+.cs-margin-bottom
+    margin-bottom: 80px

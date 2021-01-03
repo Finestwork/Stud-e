@@ -28,6 +28,7 @@ return array(
     'App\\Http\\Controllers\\Teacher\\ClassroomController' => $baseDir . '/app/Http/Controllers/Teacher/ClassroomController.php',
     'App\\Http\\Controllers\\Teacher\\CreateModuleController' => $baseDir . '/app/Http/Controllers/Teacher/CreateModuleController.php',
     'App\\Http\\Controllers\\Teacher\\RenderViewsController' => $baseDir . '/app/Http/Controllers/Teacher/RenderViewsController.php',
+    'App\\Http\\Controllers\\Teacher\\TaskController' => $baseDir . '/app/Http/Controllers/Teacher/TaskController.php',
     'App\\Http\\Controllers\\UnAuthorizedController' => $baseDir . '/app/Http/Controllers/UnAuthorizedController.php',
     'App\\Http\\Controllers\\UploadController' => $baseDir . '/app/Http/Controllers/UploadController.php',
     'App\\Http\\Controllers\\UserController' => $baseDir . '/app/Http/Controllers/UserController.php',

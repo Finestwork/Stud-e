@@ -19,6 +19,7 @@ use \App\Http\Controllers\UploadController;
 use \App\Http\Controllers\Teacher\CreateModuleController;
 use App\Http\Controllers\Globals\TaskController as GlobalTaskController;
 use \App\Http\Controllers\Teacher\TaskController as TeacherTaskController;
+use \App\Http\Controllers\PasswordResetController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -131,8 +132,13 @@ Route::prefix('/signup')->group(function(){
 //PARTIALS
 Route::post('/checkClassCode',[RegistrationController::class, 'checkClassCode']);
 Route::post('/checkEmail',[RegistrationController::class, 'checkEmail']);
+Route::get('/verify-email',[IndexController::class, 'resendEmail'])->name('resend.verification.link');
+Route::post('/resend-lost-link',[IndexController::class, 'checkIfEEmailTokenIsValid'])->name('resend.verification.link');
 Route::post('/enroll',[GlobalClassroomController::class, 'checkCode']);
 Route::post('/resend-verification', [RegistrationController::class, 'resendLink']);
+Route::post('/reset-password', [PasswordResetController::class, 'validateUserBeforePasswordReset']);
+Route::get('/verify-password-reset/{uniqueUrl}', [PasswordResetController::class, 'displayViewBeforePasswordReset'])->name('verify.password.reset');
+Route::post('/verify-password-reset', [PasswordResetController::class, 'verifyPasswordLink']);
 //GENERAL
 Route::get('/profile', [UserController::class, 'renderUserProfile'])->name('user.profile');
 Route::get('/logout', [UserController::class, 'logout'])->name('user.profile');

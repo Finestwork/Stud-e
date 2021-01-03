@@ -1,4 +1,4 @@
-.sign-in__registration-txt, .sign-in__title, .sign-in__logo-txt, .form--primary__title, .form--primary__r-lbl, .form--primary__forgot-pw, .form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
+.sign-in__email-does-not-exist, .sign-in__email-success, .sign-in__registration-txt, .sign-in__title, .sign-in__logo-txt, .form--primary__title, .form--primary__r-lbl, .form--primary__forgot-pw, .form--primary__bttn, .form--primary__choice-bttn, .form--primary__sub-bttn, .form--primary__sub-bttn--r {
   font-weight: 700;
 }
 
@@ -88,6 +88,74 @@ table {
   border-spacing: 0;
 }
 
+@-webkit-keyframes jello {
+  from, 11.1%, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  22.2% {
+    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+  33.3% {
+    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+  44.4% {
+    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+  55.5% {
+    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+  66.6% {
+    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+  77.7% {
+    -webkit-transform: skewX(0.390625deg) skewY(0.390625deg);
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+  88.8% {
+    -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+}
+@keyframes jello {
+  from, 11.1%, to {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  22.2% {
+    -webkit-transform: skewX(-12.5deg) skewY(-12.5deg);
+    transform: skewX(-12.5deg) skewY(-12.5deg);
+  }
+  33.3% {
+    -webkit-transform: skewX(6.25deg) skewY(6.25deg);
+    transform: skewX(6.25deg) skewY(6.25deg);
+  }
+  44.4% {
+    -webkit-transform: skewX(-3.125deg) skewY(-3.125deg);
+    transform: skewX(-3.125deg) skewY(-3.125deg);
+  }
+  55.5% {
+    -webkit-transform: skewX(1.5625deg) skewY(1.5625deg);
+    transform: skewX(1.5625deg) skewY(1.5625deg);
+  }
+  66.6% {
+    -webkit-transform: skewX(-0.78125deg) skewY(-0.78125deg);
+    transform: skewX(-0.78125deg) skewY(-0.78125deg);
+  }
+  77.7% {
+    -webkit-transform: skewX(0.390625deg) skewY(0.390625deg);
+    transform: skewX(0.390625deg) skewY(0.390625deg);
+  }
+  88.8% {
+    -webkit-transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+    transform: skewX(-0.1953125deg) skewY(-0.1953125deg);
+  }
+}
 .container {
   width: 100%;
   max-width: 600px;
@@ -986,6 +1054,21 @@ table {
   bottom: 45px;
   color: white;
 }
+.sign-in__email-does-not-exist, .sign-in__email-success {
+  padding: 12px 0;
+  text-align: center;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  display: none;
+}
+.sign-in__email-does-not-exist {
+  background-color: #ffe9e9;
+  color: #ff3333;
+}
+.sign-in__email-success {
+  background-color: #ecffec;
+  color: #27bb27;
+}
 .sign-in__link {
   color: white;
   text-decoration: underline;
@@ -1023,6 +1106,34 @@ table {
     max-width: 750px;
   }
 }
+.sign-in__resend-email-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+@media only screen and (min-width: 64em) {
+  .password-reset__banner {
+    background-image: url("/assets/imgs/login/password-reset.jpg");
+    height: 100%;
+    width: 45%;
+    position: absolute;
+    left: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+.password-reset__banner--inner {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: 45px;
+  color: white;
+}
+
+.cs-margin-bottom {
+  margin-bottom: 80px;
+}
 
 .bttn {
   background-color: white;
@@ -1033,6 +1144,17 @@ table {
 .line--one-h {
   background-color: #f1eef5;
   height: 2px;
+}
+
+.jello {
+  -webkit-animation-name: jello;
+  animation-name: jello;
+  -webkit-transform-origin: center;
+  transform-origin: center;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
 }
 
 .mt-1 {

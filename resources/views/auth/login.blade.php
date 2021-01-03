@@ -31,6 +31,10 @@ p;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</
                 </div>
                 <div class="sign-in__form-wrapper">
                     @include('partials.flash message.error')
+                    @if(Session::get('email'))
+                        <p class="flash--error">{{ Session::get('email') }}, <a href="{{route('resend.verification.link')}}" class="sign-in__resend-email-link">Click me to resend link</a></p>
+                    @endif
+                    <p class="sign-in__email-success js-txt-notif"></p>
                     <div class="form--primary">
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
@@ -43,7 +47,7 @@ p;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</
                                 </i>
                             </div>
                             <div class="form--primary__group">
-                                <a href="#" class="form--primary__forgot-pw">Forgot password?</a>
+                                <a href="#" class="form--primary__forgot-pw js-forgot-password">Forgot password?</a>
                                 <label for="passwordTxt" class="form--primary__n-lbl">Enter your Password: </label>
                                 <input type="password" id="passwordTxt" placeholder="Enter your password" name="passwordTxt">
                                 <i class="form--primary__icon-pw js-toggle-icon">

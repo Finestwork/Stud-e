@@ -1,38 +1,38 @@
-let passwordTxt = document.getElementById('passwordTxt'),
-    emailTxt = document.getElementById('emailTxt'),
-    pwToggleBttn = document.querySelector('.js-toggle-icon'),
-    pwCtr = 0, forgotPW = document.querySelector('.js-forgot-password');
+let emailTxt = document.getElementById('emailTxt'),
+    emailBttn = document.getElementById('resendEmailBttn');
 
 let txtNotif = document.querySelector('.js-txt-notif');
 
-pwToggleBttn.addEventListener('click', function(){
-    passwordTxt.focus();
-   if(pwCtr === 0){
-       passwordTxt.setAttribute('type', 'text');
-       pwCtr++;
-   }else{
-       passwordTxt.setAttribute('type', 'password')
-       pwCtr = 0;
-   }
-});
-forgotPW.addEventListener('click', ()=>{
+emailBttn.addEventListener('click', e=>{
+    e.preventDefault();
     txtNotif.style.display = null;
-    if(emailTxt.value.trim() === "" && emailTxt.value.trim().length === 0){
-        emailTxt.classList.add('jello');
-        setTimeout(()=>{
-            emailTxt.classList.remove('jello');
-        },1000);
+    let pattern = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+    if((emailTxt.value.trim() !== "" && emailTxt.value.trim().length !== 0)
+        && pattern.test(emailTxt.value)){
+        let data ={
+            email: emailTxt.value,
+        }
+        emailBttn.textContent = 'Please wait...';
+        emailBttn.style.opacity = '0.4';
+        emailBttn.style.cursor = 'not-allowed';
+        passwordReset(data);
     }else{
-        forgotPW.style.opacity = '.4';
-        forgotPW.style.cursor = 'not-allowed';
-        passwordReset();
+        txtNotif.classList.remove('sign-in__email-success');
+        txtNotif.classList.add('sign-in__email-does-not-exist');
+        if((emailTxt.value.trim() === "" || emailTxt.value.trim().length === 0)){
+            txtNotif.textContent = 'Your email field is empty';
+        }else if(!pattern.test(emailTxt.value)){
+            txtNotif.textContent = 'Your email is not a valid email';
+        }
+        txtNotif.style.display = 'block';
     }
+
 });
 
 
-function passwordReset(){
-    let url = '/reset-password';
-    let jsonData = JSON.stringify({email: emailTxt.value});
+function passwordReset(data){
+    let url = '/resend-lost-link';
+    let jsonData = JSON.stringify(data);
     const options = {
         method: 'POST',
         headers:{
@@ -62,17 +62,19 @@ function passwordReset(){
                     txtNotif.textContent = 'Network error, please try again later';
                 }
             }
-            forgotPW.style.opacity = '1';
-            forgotPW.style.cursor = 'pointer';
+            emailBttn.textContent = 'Resend email';
+            emailBttn.style.opacity = '1';
+            emailBttn.style.cursor = 'pointer';
             txtNotif.style.display = 'block';
         })
         .catch(error=>{
             console.log(error);
-            forgotPW.style.opacity = '1';
-            forgotPW.style.cursor = 'pointer';
             txtNotif.classList.remove('sign-in__email-success');
             txtNotif.classList.add('sign-in__email-does-not-exist');
             txtNotif.textContent = 'Network error, please try again later';
             txtNotif.style.display = 'block';
+            emailBttn.textContent = 'Resend email';
+            emailBttn.style.opacity = '1';
+            emailBttn.style.cursor = 'pointer';
         });
 }

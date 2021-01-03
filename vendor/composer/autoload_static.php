@@ -534,6 +534,7 @@ class ComposerStaticInit825ed4844e2c86862605c2a98356174b
         'App\\Http\\Controllers\\Teacher\\ClassroomController' => __DIR__ . '/../..' . '/app/Http/Controllers/Teacher/ClassroomController.php',
         'App\\Http\\Controllers\\Teacher\\CreateModuleController' => __DIR__ . '/../..' . '/app/Http/Controllers/Teacher/CreateModuleController.php',
         'App\\Http\\Controllers\\Teacher\\RenderViewsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Teacher/RenderViewsController.php',
+        'App\\Http\\Controllers\\Teacher\\TaskController' => __DIR__ . '/../..' . '/app/Http/Controllers/Teacher/TaskController.php',
         'App\\Http\\Controllers\\UnAuthorizedController' => __DIR__ . '/../..' . '/app/Http/Controllers/UnAuthorizedController.php',
         'App\\Http\\Controllers\\UploadController' => __DIR__ . '/../..' . '/app/Http/Controllers/UploadController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',

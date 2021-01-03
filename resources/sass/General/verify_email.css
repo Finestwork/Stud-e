@@ -216,6 +216,9 @@ table {
   }
 }
 
+.container-fluid {
+  width: 100%;
+}
 .container-fluid .row {
   display: -webkit-box;
   display: flex;

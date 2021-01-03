@@ -59,8 +59,7 @@ class ClassroomController extends Controller
         }
         return redirect()->intended('/');
     }
-
-    public function renderClasslist() {
+    public function renderClasslist(){
         if($user = Auth::guard('student')->user()){
             $classroomId = ApprovedStudent::where('student_id', $user->id)->select('classroom_id')->get();
             if ($classroomId->count() > 0){

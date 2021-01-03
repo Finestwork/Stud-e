@@ -17,6 +17,8 @@ use \App\Http\Controllers\Globals\ClassroomController as GlobalClassroomControll
 use \App\Http\Controllers\Globals\MemberController as GlobalMemberController;
 use \App\Http\Controllers\UploadController;
 use \App\Http\Controllers\Teacher\CreateModuleController;
+use App\Http\Controllers\Globals\TaskController as GlobalTaskController;
+use \App\Http\Controllers\Teacher\TaskController as TeacherTaskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -71,8 +73,13 @@ Route::group(['middleware' => ['auth:teacher'], 'prefix'=>'/teacher'],function()
     //CLASSROOM
     Route::post('/update-classroom', [ClassroomController::class, 'updateClassroom']);
     Route::post('/check-classroomCode', [ClassroomController::class, 'checkClassroomCode']);
+    //TASK
+    Route::get('/create-task/{uniqueUrl}', [TeacherTaskController::class, 'createTask'])->name('create.task');
 });
 
+Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function(){
+    Route::get('/create', [GlobalClassroomController::class, 'renderClasslist'])->name('classroom.create');
+});
 Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/classroom'], function(){
     Route::get('/', [GlobalClassroomController::class, 'renderClasslist'])->name('classroom.index');
     Route::get('/create', [GlobalClassroomController::class, 'renderClasslist'])->name('classroom.create');
@@ -80,6 +87,9 @@ Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/classroom'], f
 });
 Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/modules'], function(){
     Route::get('/{uniqueUrl}', [GlobalClassroomController::class, 'renderModules'])->name('classroom.modules');
+});
+Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/task'], function(){
+    Route::get('/{uniqueUrl}', [GlobalTaskController::class, 'renderTasks'])->name('classroom.task');
 });
 
 Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function(){
@@ -115,12 +125,14 @@ Route::prefix('/signup')->group(function(){
 
     Route::get('/student', [RegistrationController::class, 'redirectStudent']);
     Route::post('/student', [RegistrationController::class, 'registerStudent']);
+
+    Route::get('/verified/{uniqueUrl}', [RegistrationController::class, 'verifiedUser'])->name('getUserVerified');
 });
 //PARTIALS
 Route::post('/checkClassCode',[RegistrationController::class, 'checkClassCode']);
 Route::post('/checkEmail',[RegistrationController::class, 'checkEmail']);
 Route::post('/enroll',[GlobalClassroomController::class, 'checkCode']);
-
+Route::post('/resend-verification', [RegistrationController::class, 'resendLink']);
 //GENERAL
 Route::get('/profile', [UserController::class, 'renderUserProfile'])->name('user.profile');
 Route::get('/logout', [UserController::class, 'logout'])->name('user.profile');

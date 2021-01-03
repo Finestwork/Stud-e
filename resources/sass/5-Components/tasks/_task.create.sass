@@ -1,0 +1,470 @@
+.task-create
+    margin-top: 65px
+    &__intro
+        background-color: white
+        padding: 15px 25px
+        margin-top: 30px
+        border-radius: 15px
+        position: relative
+        overflow: hidden
+        @include custom_breakpoint(600)
+            padding: 15px 35px
+        &::before
+            content: ''
+            position: absolute
+            height: 100%
+            width: 6px
+            background-color: $color-primary
+            top: 0
+            left: 0
+            @include custom_breakpoint(600)
+                width: 10px
+        &-name
+            font-size: 25px
+            @include custom_breakpoint(600)
+                font-size: 31.25px
+        &-sub-txt
+            font-size: 14px
+            @extend %font-semibold
+            @include custom_breakpoint(600)
+                font-size: 16px
+    &__options-wrapper
+        @extend %display_flex
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+        margin-top: 50px
+        @include custom_breakpoint(600)
+            margin-top: 60px
+    &__options
+        @extend %display_flex
+        -webkit-align-items: flex-start
+        align-items: flex-start
+        -webkit-flex-direction: column
+        flex-direction: column
+        margin-bottom: 40px
+        -webkit-flex-basis: 50%
+        flex-basis: 50%
+        @include custom_breakpoint(600)
+            padding-left: 30px
+        textarea
+            width: 100%
+            max-width: 430px
+            height: 200px
+            resize: none
+            margin-top: 15px
+            border: none
+            border-bottom: 4px solid #717171
+            background-color: #f7f7f7
+            font-family: inherit
+            padding: 10px
+            @extend %font-bold
+            &:focus
+                outline: none
+                border-color: $color-primary
+                color: $color-primary
+            &::placeholder
+                @extend %font-bold
+    &__option-lbl
+        @extend %font-bold
+        margin-right: 20px
+        color: #4e4d4d
+        font-size: 14px
+        @include custom_breakpoint(600)
+            font-size: 16px
+    &__selection-wrapper
+        position: relative
+        width: 100%
+        @include custom_breakpoint(540)
+            max-width: 410px
+    &__selection-items
+        position: absolute
+        background-color: white
+        width: 100%
+        left: 0
+        box-shadow: 0 0 3px 3px rgba(0,0,0,0.05)
+        border-radius: 8px
+        display: none
+        z-index: 10
+    &__selection-txt
+        background-color: #ececec
+        padding: 5px 10px
+        @extend %font-bold
+        font-family: inherit
+        font-size: 14px
+        border-radius: 5px
+        border: 2px solid #d0d0d0
+        cursor: pointer
+        color: #8a8989
+        -webkit-user-select: none
+        user-select: none
+        overflow: hidden
+        margin-top: 10px
+        text-overflow: ellipsis
+        text-align: center
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 3px rgb(127, 42, 255, .22)
+            color: $color-primary
+            background-color: #f3ebff
+            border-color: #f3ebff
+    &__selection-item
+        @extend %font-bold
+        text-align: center
+        cursor: pointer
+        color: #a5a3a3
+        font-size: 14px
+        padding: 10px 0
+        &:hover
+            background-color: #f3ebff
+            color: $color-primary
+        &:last-of-type
+            margin-bottom: 0
+    &__note
+        margin: 10px 0
+        @extend %font-semibold
+        font-size: 14px
+        color: #717171
+    &__note-emp
+        color: $color-primary
+        @extend %font-bold
+    &__options-checkboxes
+        margin: 10px 0 10px 30px
+        @include custom_breakpoint(600)
+            margin: 10px 0 10px 20px
+        input[type="checkbox"]
+            display: none
+        label
+            position: relative
+            cursor: pointer
+            font-size: 14px
+            color: #717171
+            -webkit-user-select: none
+            user-select: none
+            @include custom_breakpoint(600)
+                font-size: 16px
+            &::before
+                content: ''
+                width: 14px
+                height: 14px
+                position: absolute
+                left: -30px
+                top: 1px
+                background-color: #ececec
+                border: 2px solid #d0d0d0
+                border-radius: 3px
+                @include custom_breakpoint(600)
+                    height: 20px
+                    width: 20px
+            &::after
+                content: url("/assets/svgs/icons/Check primary color.svg")
+                width: 8px
+                height: 8px
+                position: absolute
+                left: -27px
+                top: -4px
+                display: none
+                @include custom_breakpoint(600)
+                    width: 13px
+                    height: 13px
+                    left: -26px
+                    top: -1px
+            &:hover
+                color: $color-primary
+            &:hover::before
+                border-color: $color-primary
+        input[type="checkbox"]:checked
+            + label
+                color: $color-primary
+            + label::before
+                border-color: $color-primary
+            + label::after
+                display: block
+    &__date-deadline-wrapper
+        margin-top: 20px
+        border: 2px solid #cecece
+        border-radius: 7px
+        padding: 5px
+    &__options-radio-bttn-wrapper
+        margin-top: 15px
+    &__options-radio-bttn-group
+        margin-bottom: 17px
+        margin-left: 30px
+        @include custom_breakpoint(600)
+            margin-left: 20px
+        input[type="radio"]
+            display: none
+        label
+            font-size: 14px
+            color: #717171
+            position: relative
+            -webkit-user-select: none
+            user-select: none
+            cursor: pointer
+            @include custom_breakpoint(600)
+                font-size: 16px
+            &::before,
+            &::after
+                content: ''
+                position: absolute
+                border-radius: 100%
+                top: 50%
+                @include transform(translateY(-50%))
+            &::before
+                width: 13px
+                height: 13px
+                border: 2px solid #717171
+                left: -25px
+                @include custom_breakpoint(600)
+                    width: 18px
+                    height: 18px
+            &::after
+                width: 7px
+                height: 7px
+                left: -22px
+                background-color: $color-primary
+                display: none
+                @include custom_breakpoint(600)
+                    width: 10px
+                    height: 10px
+                    left: -21px
+            &:hover
+                color: $color-primary
+            &:hover::before
+                border-color: $color-primary
+        input[type="radio"]:checked
+            + label
+                color: $color-primary
+            + label::before
+                border-color: $color-primary
+            + label::after
+                display: block
+        input[type="text"]
+            border: none
+            border-bottom: 2px solid #717171
+            padding: 10px
+            width: 50px
+            font-family: inherit
+            @extend %font-bold
+            background-color: #e2e2e2
+            color: #717171
+            margin-left: 10px
+            cursor: not-allowed
+            -webkit-user-select: none
+            user-select: none
+            &::placeholder
+                color: #717171
+            &:focus
+                outline: none
+                border-color: $color-primary
+                color: $color-primary
+                background-color: #f2e9ff
+    &__timed-quiz-controls
+        width: 80%
+        @include custom_breakpoint(540)
+            width: unset
+    &__options-radio-bttn-wrapper--inline
+        @extend %display_flex
+        margin-top: 15px
+        -webkit-flex-direction: column
+        flex-direction: column
+        @include custom_breakpoint(540)
+            -webkit-flex-direction: row
+            flex-direction: row
+            -webkit-align-items: center
+            align-items: center
+        .task-create__options-radio-bttn-group
+            margin-bottom: 10px
+            @include custom_breakpoint(540)
+                margin-right: 50px
+                margin-bottom: 0
+        .task-create__options-cs
+            @extend %display_flex
+            -webkit-align-items: center
+            align-items: center
+
+    &__main
+        margin-top: 50px
+    &__task-description-group
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        label
+            font-size: 14px
+            @include custom_breakpoint(600)
+                font-size: 16px
+        input[type="text"]
+            border: none
+            margin-top: 10px
+            border-bottom: 3px solid #4e4d4d
+            padding: 7px
+            width: 100%
+            max-width: 400px
+            font-family: inherit
+            background-color: #f7f7f7
+            @extend %font-bold
+            &:focus
+                outline: none
+                border-color: $color-primary
+                color: $color-primary
+    &__question-counter
+        color: #ababab
+        font-size: 16px
+        margin-bottom: 10px
+    &__question-option-wrapper
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        height: 100%
+        position: relative
+    &__question-option-choice-wrapper
+        position: absolute
+    &__question-selected-item-bttn
+        @extend %font-bold
+        border: 2px solid #c5cace
+        color: hsl(210, 3%, 70%)
+        text-align: center
+        padding: 6px 0
+        margin: 0 25px
+        border-radius: 4px
+        width: 100%
+        background-color: white
+        cursor: pointer
+        font-size: 16px
+        font-family: inherit
+        &:focus
+            outline: none
+        &:hover
+            background-color: #f5f7f9
+
+    &__question-option-choice-list
+        background-color: white
+        width: 94%
+        text-align: center
+        bottom: -225px
+        left: 50%
+        box-shadow: 0 7px 9px 2px rgba(177, 179, 181, .25)
+        @include transform(translate(-50%))
+        padding: 10px 0
+        position: absolute
+        display: none
+    &__question-option-choice-list-item
+        @extend %font-semibold
+        padding: 10px 0
+        cursor: pointer
+        color: #172239
+        font-size: 14px
+        &:hover
+            background-color: #f2f3f3
+    &__question-wrapper
+        position: relative
+    &__question-maker-panel
+        background-color: white
+        width: 100%
+        height: 500px //Temporary
+        margin-top: 20px
+        border-radius: 12px
+        position: relative
+        overflow: hidden
+        padding: 35px 20px
+        &::before
+            content: ''
+            position: absolute
+            width: 100%
+            height: 6px
+            background-color: $color-primary
+            top: 0
+            left: 0
+            @include custom_breakpoint(600)
+                height: 10px
+    &__default-question-title
+        position: relative
+        input
+            border: none
+            font-family: inherit
+            @extend %font-bold
+            color: #172239
+            border-bottom: 4px solid #172239
+            padding: 5px
+            font-size: 18px
+            background-color: #f8fbfb
+            height: 50px
+            width: 100%
+            max-width: 790px
+            &:focus
+                outline: none
+                + .task-create__question-line
+                    @include transform(scaleX(1))
+    &__question-line
+        position: absolute
+        width: 100%
+        height: 4px
+        background-color: $color-primary
+        bottom: 0
+        @include transform(scaleX(0))
+        -webkit-transform-origin: center
+        transform-origin: center
+        transition: transform .3s linear
+    &__question-note
+        @extend %font-semibold
+        margin-top: 10px
+        color: #172239
+        font-size: 14px
+    &__question-button-holder
+        @extend %display_flex
+    // FILL IN THE BLANKS
+    &__question-fitb-preview
+        margin-top: 50px
+        @extend %font-bold
+        text-transform: uppercase
+        color: darkgrey
+    &__mark-correct-answer-bttn
+        font-family: inherit
+        @extend %font-bold
+        padding: 10px
+        text-transform: uppercase
+        background-color: $color-new-secondary
+        color: white
+        display: block
+        margin-top: 16px
+        font-size: 12px
+        &:hover
+            background-color: #fd3161
+        &:focus
+            outline: none
+    &__mark-correct-answer-bttn--text
+        font-family: inherit
+        @extend %font-bold
+        padding: 10px
+        text-transform: uppercase
+        color: $color-new-secondary
+        display: block
+        margin-top: 16px
+        margin-left: 20px
+        font-size: 12px
+        &:hover
+            background-color: #ffe7ed
+        &:focus
+            outline: none
+    &__preview-correct-answer-wrapper
+        margin: 5px 10px
+    &__preview-fitb-wrapper
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+        @extend %font-bold
+        font-size: 14px
+        input
+            font-family: inherit
+            padding: 5px 10px
+            font-size: inherit
+            height: 40px
+            width: 100%
+            max-width: 790px
+    &__preview-fitb-answers
+        margin-top: 40px
+        @extend %font-semibold
+        color: #172239
+.selected-item
+    background-color: #f5f7f9

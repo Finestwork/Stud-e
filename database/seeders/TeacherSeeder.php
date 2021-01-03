@@ -25,6 +25,9 @@ class TeacherSeeder extends Seeder
                 'isSubscribed'=> 0,
                 'role_id'=> 2,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'asd'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -38,6 +41,9 @@ class TeacherSeeder extends Seeder
                 'isSubscribed'=> 0,
                 'role_id'=> 2,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'Joaaqw2hnny'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -51,6 +57,9 @@ class TeacherSeeder extends Seeder
                 'isSubscribed'=> 0,
                 'role_id'=> 2,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). '1231s'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -64,6 +73,9 @@ class TeacherSeeder extends Seeder
                 'isSubscribed'=> 0,
                 'role_id'=> 2,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'qwe1'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

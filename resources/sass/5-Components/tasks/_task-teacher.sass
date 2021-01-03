@@ -1,0 +1,53 @@
+.task
+    margin-top: 40px
+    &__create-task-bttn
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        @extend %font-bold
+        background-color: #7f2aff
+        color: white
+        padding: 10px 17px
+        width: 165px
+        text-align: center
+        border-radius: 10px
+        text-transform: uppercase
+        font-size: 14px
+        margin: 0 0 20px auto
+        &:hover
+            background-color: #6511e2
+    &__create-task-icon
+        @extend %display_flex
+        margin-right: 10px
+        width: 13px
+        height: 13px
+    &__controls
+        @extend %display_flex
+    &__control-type
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        width: 160px
+        margin-right: 30px
+        &:last-of-type
+            margin-right: 0
+    &__control-label
+        @extend %font-bold
+        margin-bottom: 10px
+        color: #7b7b7b
+    &__control-selection
+        background-color: #ececec
+        padding: 5px
+        @extend %font-bold
+        font-family: inherit
+        color: #7b7b7b
+        font-size: 14px
+        border-radius: 5px
+        border: 2px solid #d0d0d0
+        cursor: pointer
+        transition: box-shadow .1s linear
+        &:focus
+            outline: none
+            box-shadow: 0 0 0 3px rgba(0, 20, 249, 0.22)
+            background-color: #eff0ff
+            border-color: #eff0ff

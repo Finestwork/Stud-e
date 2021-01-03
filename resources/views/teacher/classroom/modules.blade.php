@@ -48,7 +48,7 @@
                                             <a href="{{ route('classroom.modules', $classroom->classroom_unique_url) }}" class="classroom__links link--active">Modules</a>
                                         </div>
                                         <div class="classroom__links-item" >
-                                            <a href="#" class="classroom__links ">Tasks</a>
+                                            <a href="{{ route('classroom.task', $classroom->classroom_unique_url) }}" class="classroom__links ">Tasks</a>
                                         </div>
                                         <div class="classroom__links-item" >
                                             <a href="#" class="classroom__links">Discussion</a>
@@ -197,7 +197,7 @@
                                                                         @endforeach
                                                                     </div>
                                                                 @endif
-                                                                @if(count($module->audio_id) > 0)
+                                                                @if(count($module->video_id) > 0)
                                                                     <h3 class="modules__files-title">Video</h3>
                                                                     <div class="modules__video-wrapper">
                                                                         @foreach($module->video_id as $video_id)

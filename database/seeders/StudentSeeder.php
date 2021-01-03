@@ -24,6 +24,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'Johnny'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);
@@ -36,6 +39,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'Liam'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -48,6 +54,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). '1231231'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -60,6 +69,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). '111'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -72,6 +84,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'sqwe2'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -84,6 +99,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'Johnnqwe123y'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -96,6 +114,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'qwe123'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -108,6 +129,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). '12313r'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -120,6 +144,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). '1231s'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);
@@ -132,6 +159,9 @@ class StudentSeeder extends Seeder
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,
                 'remember_token'=> null,
+                'is_verified' => 1,
+                'verification_url' => Hash::make(time(). 'asd12'),
+                'verified_at' => now(),
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s')
             ]);

@@ -30,6 +30,6 @@ class SignupEmail extends Mailable
      * @return $this
      */
     public function build(){
-        return $this->from('2020stude2020@gmail.com', 'StudE.com')->subject('Hey There!')->view('mail.mail', ['data'=> $this->email_data]);
+        return $this->from('support@microstud-e.com', 'microstud-e.com')->subject('Email verification')->view('mail.mail', ['email_data'=>$this->email_data]);
     }
 }

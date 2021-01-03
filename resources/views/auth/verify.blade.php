@@ -40,13 +40,16 @@
             </div>
 
             <h1 class="verify__title">Almost there!</h1>
-            <p class="verify__main-txt">Hey there {{ $user->f_name }}! You just need to verify your email to at least complete the registration.</p>
+            <p class="verify__main-txt">Hey there {{ ucfirst($user->f_name) }}! You just need to verify your email to at least complete the registration.</p>
 
             <div class="verify__illustration">
                 <img src="/assets/illustration/signup/email.svg" alt="Website's illustration" class="img-fluid">
             </div>
             <p class="verify__sub-txt">An email has been sent to <span class="verify__email">{{ $user->email }}</span> with a link to verify your account. If you have not received the email after a few minutes, Please check your spam folder. Thank you.</p>
-            <button type="button" class="bttn bttn--tertiary--ghost verify__bttn">Resend code</button>
+            <button type="button" class="bttn bttn--tertiary--ghost verify__bttn js-resend-link">Resend link</button>
+            <script>
+                let classLink = '{{$user->verification_url}}'
+            </script>
         </div>
     </div>
 
@@ -69,4 +72,8 @@
             </div>
         </div>
     </footer>
+@endsection
+
+@section('script')
+    <script src="/assets/js/modules/verify.js"></script>
 @endsection

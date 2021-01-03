@@ -54,7 +54,7 @@
                                             <a href="{{ route('classroom.modules', $classroom->classroom_unique_url) }}" class="classroom__links">Modules</a>
                                         </div>
                                         <div class="classroom__links-item" >
-                                            <a href="#" class="classroom__links ">Tasks</a>
+                                            <a href="{{ route('classroom.task', $classroom->classroom_unique_url) }}" class="classroom__links ">Tasks</a>
                                         </div>
                                         <div class="classroom__links-item" >
                                             <a href="#" class="classroom__links">Discussion</a>

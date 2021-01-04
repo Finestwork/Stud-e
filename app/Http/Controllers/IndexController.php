@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 class IndexController extends Controller
 {
 
-    protected $redirectTo = '/student';
+
 
     public function index() {
         if(Auth::guard('student')->check()){

@@ -119,7 +119,7 @@ closeUpdatePanelBttn.addEventListener('click', ()=>{
         let droppedFiles = editPanelMainWrapper.querySelectorAll('.modules__dropped-files');
         let modulesLinks = editPanelMainWrapper.querySelectorAll('.modules__input-link');
         let rejectedFiles = editPanelMainWrapper.querySelectorAll('.modules__drop-rejected-files p');
-        console.log(rejectedFiles);
+
         for(let i = 0; i<droppedFiles.length; i++){
             droppedFiles[i].remove();
         }
@@ -449,7 +449,7 @@ function createDivider(){
     moduleMainWrapper.insertBefore(moduleDivider, addModuleTitleBttn);
     deleteBttn.style.right = saveChangesBttn.offsetWidth + 10 +'px';
 
-        moduleDivTitle.setAttribute('contenteditable', true);
+    moduleDivTitle.setAttribute('contenteditable', true);
     moduleDivTitle.focus();
     selectElementContents(moduleDivTitle);
     canChangeTitle = false;
@@ -490,15 +490,17 @@ function addTitleBttnEvent(){
     })
 }
 function refreshDeleteTitleEvent(){
-    let deleteBttn = moduleMainWrapper.querySelector('.js-delete-title');
-    deleteBttn.addEventListener('click', ()=>{
-        deleteBttn.parentNode.parentNode.remove();
-        addModuleTitleBttn.style.display = null;
-        if(modulesEmptyWrapper){
-            modulesEmptyWrapper.style.display = 'block';
-        }
-        canChangeTitle = true;
-    });
+    let deleteBttn = moduleMainWrapper.querySelectorAll('.js-delete-title');
+    deleteBttn.forEach(el =>{
+        el.addEventListener('click', e=>{
+            e.currentTarget.parentNode.parentNode.remove();
+            addModuleTitleBttn.style.display = null;
+            if(modulesEmptyWrapper){
+                modulesEmptyWrapper.style.display = 'block';
+            }
+            canChangeTitle = true;
+        })
+    })
 
 }
 function addAModule(e){
@@ -649,9 +651,22 @@ function prepareTitleForDeleting(e){
     }
 }
 //DRAG ZONE
+fileInputBttn.onchange = function(e){
+    if(e.target.files.length){
+        fileInputBttn.files = e.target.files;
+        initData(e.target.files);
+    }
+}
+editFileInputBttn.onchange = function(e){
+    if(e.target.files.length){
+        editFileInputBttn.files = e.target.files;
+        initData(e.target.files);
+    }
+}
 dropZone.addEventListener('click', ()=>{
     fileInputBttn.click();
-})
+});
+
 dropZone.addEventListener('dragover', e =>{
     e.preventDefault();
     dropZone.classList.add('drag-zone--hover');
@@ -673,6 +688,7 @@ dropZone.addEventListener('drop', e =>{
 editDropZone.addEventListener('click', ()=>{
     fileInputBttn.click();
 })
+
 editDropZone.addEventListener('dragover', e =>{
     e.preventDefault();
     editDropZone.classList.add('drag-zone--hover');
@@ -687,7 +703,7 @@ editDropZone.addEventListener('drop', e =>{
     e.preventDefault();
     editDropZone.classList.remove('drag-zone--hover');
     if(e.dataTransfer.files.length){
-        fileInputBttn.files = e.dataTransfer.files;
+        editFileInputBttn.files = e.dataTransfer.files;
         addNewFiles(e.dataTransfer.files);
     }
 });
@@ -703,7 +719,13 @@ function addNewFiles(files){
 function generateLoadingElements(files){
     for(let i = 0; i<files.length; i++){
         if(getFileExtension(files[i]) === 'mp4' ||getFileExtension(files[i]) === 'ogg'
-            || getFileExtension(files[i]) === 'webm'){
+            || getFileExtension(files[i]) === 'webm' || getFileExtension(files[i]) === '.mp3'
+            || getFileExtension(files[i]) === 'wav' || getFileExtension(files[i]) === 'gif'
+            || getFileExtension(files[i]) === 'jpeg' || getFileExtension(files[i]) === 'jpg'
+            || getFileExtension(files[i]) === 'png' || getFileExtension(files[i]) === 'pdf'
+            || getFileExtension(files[i]) === 'doc' || getFileExtension(files[i]) === 'docx'
+            || getFileExtension(files[i]) === 'pptx' || getFileExtension(files[i]) === 'ppt'
+            || getFileExtension(files[i]) === 'xls' || getFileExtension(files[i]) === 'xlsx'){
             uploadQueue.push(files[i]);
             let moduleWrapper = document.createElement('DIV'),
                 nameTag = document.createElement('P'),
@@ -756,7 +778,13 @@ function generateLoadingElements(files){
 function generateLoadingElementsForEditing(files){
     for(let i = 0; i<files.length; i++){
         if(getFileExtension(files[i]) === 'mp4' ||getFileExtension(files[i]) === 'ogg'
-            || getFileExtension(files[i]) === 'webm'){
+            || getFileExtension(files[i]) === 'webm' || getFileExtension(files[i]) === '.mp3'
+            || getFileExtension(files[i]) === 'wav' || getFileExtension(files[i]) === 'gif'
+            || getFileExtension(files[i]) === 'jpeg' || getFileExtension(files[i]) === 'jpg'
+            || getFileExtension(files[i]) === 'png' || getFileExtension(files[i]) === 'pdf'
+            || getFileExtension(files[i]) === 'doc' || getFileExtension(files[i]) === 'docx'
+            || getFileExtension(files[i]) === 'pptx' || getFileExtension(files[i]) === 'ppt'
+            || getFileExtension(files[i]) === 'xls' || getFileExtension(files[i]) === 'xlsx'){
             uploadQueue.push(files[i]);
             let moduleWrapper = document.createElement('DIV'),
                 nameTag = document.createElement('P'),
@@ -1135,7 +1163,6 @@ function sendAgain(index){
             xhr.onreadystatechange = function(){
                 if(xhr.readyState === XMLHttpRequest.DONE){
                     let result = JSON.parse(xhr.responseText);
-                    console.log(uploadQueue[index]);
                     if(result.success){
                         let path = result.path,
                             type = result.type;

@@ -101,6 +101,9 @@
                                                 <div class="modules__drop-note">
                                                     <p>Note: These are the files that our website only accepts:</p>
                                                     <p>For videos: .mp4, .ogg, .webm</p>
+                                                    <p>For sounds: .mp3, .wav</p>
+                                                    <p>For pictures: .gif, .jpg/.jpeg, .png</p>
+                                                    <p>For documents: .doc/docx, .pptx/ppt, .xls/xlsx</p>
                                                 </div>
                                                 <div class="modules__drop-rejected-files"></div>
                                             </div>

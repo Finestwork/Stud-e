@@ -20,6 +20,7 @@ use \App\Http\Controllers\Teacher\CreateModuleController;
 use App\Http\Controllers\Globals\TaskController as GlobalTaskController;
 use \App\Http\Controllers\Teacher\TaskController as TeacherTaskController;
 use \App\Http\Controllers\PasswordResetController;
+use \App\Http\Controllers\DownloadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -118,7 +119,9 @@ Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function()
     Route::post('/delete-file', [UploadController::class, 'deleteUpload']);
 });
 
-
+Route::prefix('/download')->group(function (){
+    Route::get('{classUrl}/{fileType}/{fileID}', [DownloadController::class, 'downloadAFile'])->name('download.file');
+});
 //REGISTRATION
 Route::prefix('/signup')->group(function(){
     Route::get('/teacher', [RegistrationController::class, 'redirectTeacher']);

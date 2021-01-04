@@ -153,43 +153,46 @@
                     <div class="col-sm-12 col-md-10 col-lrg-12">
                         <div class="task-create__main">
                             <div class="task-create__question-maker-panel">
-                                <h3 class="task-create__question-counter">Question 1</h3>
-                                <div class="container-fluid">
-                                    <div class="row">
-                                        <div class="col-lrg-8 task-create__question-wrapper">
-                                            <div class="task-create__default-question-title">
+                                <div class="task-create__question-main-content">
+                                    <div class="task-create__question-main-content--top">
+                                        <div class="task-create__question-options">
+                                            <p class="task-create__option-selected-item js-selection-pop">--Select an option --</p>
+                                            <ul class="task-create__option-selection">
+                                                <li class="task-create__option-selection-item" data-value="fitb">Fill in the blank</li>
+                                                <li class="task-create__option-selection-item" data-value="la">Long answer (Ex. Essay)</li>
+                                                <li class="task-create__option-selection-item" data-value="ma">Multiple answer</li>
+                                                <li class="task-create__option-selection-item" data-value="mc">Multiple choice</li>
+                                                <li class="task-create__option-selection-item" data-value="mc">Identification</li>
+                                            </ul>
+                                        </div>
+                                        <button type="button" class="bttn task-create__bttn-delete">Delete</button>
+                                    </div>
+                                    <div class="task-create__question-main-content">
+                                        <div class="task-create__question-main--top">
+                                            <h3 class="task-create__question-counter">Question 1</h3>
+                                            <div class="task-create__question-wrapper">
                                                 <input type="text" placeholder="Place your question here">
-                                                <div class="task-create__question-line"></div>
+                                                <div class="task-create__question-wrapper-line"></div>
                                             </div>
-                                            <p class="task-create__question-note">Note: Highlight the word that you want to be the correct answer then you can click the "Mark as correct answer" button.</p>
-
-                                            <div class="task-create__question-button-holder">
-                                                <button type="button" class="bttn task-create__mark-correct-answer-bttn js-fitb-button">Mark as correct answer</button>
-                                                <button type="button" class="bttn task-create__mark-correct-answer-bttn--text js-fitb-reset-button">Reset correct answer</button>
+                                            <p class="task-create__note">Note: Students are expected to have a long answer which can't be checked automatically.</p>
+                                        </div>
+                                        <div class="task-create__answer-preview">
+                                            <p class="task-create__answer-preview-note">
+                                                Answer preview
+                                            </p>
+                                            <textarea disabled></textarea>
+                                        </div>
+                                        <div class="task-create__question-bottom">
+                                            <div class="task-create__question-how-many-points">
+                                                <label for="pointsQuestion1">Points for this question: </label>
+                                                <input type="number" placeholder="1" min="1" id="pointsQuestion2">
                                             </div>
-                                            <p class="task-create__question-fitb-preview">Preview</p>
-                                            <div class="task-create__preview-fitb-wrapper">
-                                                <p>Preview is not available yet</p>
-                                            </div>
-                                            <p class="task-create__preview-fitb-answers">No correct answers to be displayed yet.</p>
                                         </div>
                                     </div>
-{{--                                    <div class="col-lrg-4">--}}
-{{--                                        <div class="task-create__question-option-wrapper">--}}
-{{--                                            <button type="button" class="bttn task-create__question-selected-item-bttn js-select-option-answer">Select an option here</button>--}}
-{{--                                            <ul class="task-create__question-option-choice-list">--}}
-{{--                                                <li class="task-create__question-option-choice-list-item">Fill in the blanks</li>--}}
-{{--                                                <li class="task-create__question-option-choice-list-item">Long answer ( Ex. Essay )</li>--}}
-{{--                                                <li class="task-create__question-option-choice-list-item">Multiple answers</li>--}}
-{{--                                                <li class="task-create__question-option-choice-list-item">Multiple choice</li>--}}
-{{--                                                <li class="task-create__question-option-choice-list-item">True or False</li>--}}
-{{--                                            </ul>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
                                 </div>
-                                <div class="task-create__question-footer"></div>
                             </div>
                         </div>
+                        <button type="button" class="task-create__add-more-question">Add more question</button>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lrg-12 task">
 
@@ -204,4 +207,6 @@
 @section('script')
     <script src="/assets/js/libraries/date picker/mtr-datepicker.min.js"></script>
     <script src="/assets/js/modules/teacher/classroom/task-creation.js"></script>
+    <script src="/assets/js/modules/teacher/classroom/task-generation.js"></script>
+    <script src="/assets/js/modules/teacher/classroom/task-general.js"></script>
 @endsection

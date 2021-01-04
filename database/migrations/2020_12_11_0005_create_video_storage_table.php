@@ -15,9 +15,10 @@ class CreateVideoStorageTable extends Migration
     {
         Schema::create('video_storage', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('storage_path');
-            $table->string('original_name');
-            $table->string('original_path');
+            $table->longText('storage_path');
+            $table->longText('original_name');
+            $table->longText('hashed_name');
+            $table->longText('original_path');
             $table->unsignedBigInteger('teacher_id');
             $table->timestamps();
             $table->foreign('teacher_id')->references('id')->on('teacher')->cascadeOnDelete();

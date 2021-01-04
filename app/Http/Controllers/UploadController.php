@@ -33,6 +33,7 @@ class UploadController extends Controller
                     $imgStorage->storage_path = $path;
                     $imgStorage->original_path = 'public/img/'. $fileNewName;
                     $imgStorage->teacher_id = $authorID;
+                    $imgStorage->hashed_name = $fileNewName;
                     $imgStorage->original_name = $file->getClientOriginalName();
                     if($imgStorage->save()){
                         return json_encode(['success'=>true, 'path'=>$path,'type'=>'image', 'id'=>$imgStorage->id], 200);
@@ -45,18 +46,21 @@ class UploadController extends Controller
                     $audioStorage->storage_path = $path;
                     $audioStorage->original_path = 'public/audio/'. $fileNewName;
                     $audioStorage->teacher_id = $authorID;
+                    $audioStorage->hashed_name = $fileNewName;
                     $audioStorage->original_name = $file->getClientOriginalName();
                     if($audioStorage->save()){
                         return json_encode(['success'=>true, 'path'=>$path,'type'=>'audio', 'id'=>$audioStorage->id], 200);
                     }
                 }
-                if(substr($file->getMimeType(), 0, 5) == 'video'){
+                if($file->getMimeType() == 'video/webm' || $file->getMimeType() == 'application/mp4'
+                    || $file->getMimeType() == 'video/mp4' || $file->getMimeType() == 'video/ogg' ){
                     Storage::put('public/video/'.$fileNewName, file_get_contents($file));
                     $path = '/storage/video/'.$fileNewName;
                     $videoStorage = new VideoStorage();
                     $videoStorage->storage_path = $path;
                     $videoStorage->original_path = 'public/video/'. $fileNewName;
                     $videoStorage->teacher_id = $authorID;
+                    $videoStorage->hashed_name = $fileNewName;
                     $videoStorage->original_name = $file->getClientOriginalName();
                     if($videoStorage->save()){
                         return json_encode(['success'=>true, 'path'=>$path,'type'=>'video', 'id'=>$videoStorage->id], 200);
@@ -69,6 +73,7 @@ class UploadController extends Controller
                     $pdfStorage->storage_path = $path;
                     $pdfStorage->original_path = 'public/pdf/'. $fileNewName;
                     $pdfStorage->teacher_id = $authorID;
+                    $pdfStorage->hashed_name = $fileNewName;
                     $pdfStorage->original_name = $file->getClientOriginalName();
                     if($pdfStorage->save()){
                         return json_encode(['success'=>true, 'path'=>$path,'type'=>'pdf', 'id'=>$pdfStorage->id], 200);
@@ -82,6 +87,7 @@ class UploadController extends Controller
                     $documentStorage->storage_path = $path;
                     $documentStorage->original_path = 'public/document/'. $fileNewName;
                     $documentStorage->teacher_id = $authorID;
+                    $documentStorage->hashed_name = $fileNewName;
                     $documentStorage->original_name = $file->getClientOriginalName();
                     if($documentStorage->save()){
                         return json_encode(['success'=>true, 'path'=>$path,'type'=>'document', 'id'=>$documentStorage->id], 200);
@@ -89,6 +95,7 @@ class UploadController extends Controller
                 }
             }
         }
+        //return json_encode(['success'=>$file->getMimeType()], 500);
         return json_encode(['success'=>false], 500);
     }
 

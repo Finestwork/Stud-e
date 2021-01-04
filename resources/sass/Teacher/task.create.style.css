@@ -2,12 +2,12 @@
   font-weight: 800;
 }
 
-.classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .task-create__preview-fitb-wrapper, .task-create__mark-correct-answer-bttn--text, .task-create__mark-correct-answer-bttn, .task-create__question-fitb-preview, .task-create__default-question-title input, .task-create__question-selected-item-bttn, .task-create__task-description-group input[type=text], .task-create__options-radio-bttn-group input[type=text], .task-create__note-emp, .task-create__selection-item, .task-create__selection-txt, .task-create__option-lbl, .task-create__options textarea::placeholder, .task-create__options textarea, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
+.classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .task-create__answer-preview-note, .task-create input[type=text], .task-create__question-how-many-points input[type=number], .task-create__options-radio-bttn-group input[type=text], .task-create__note-emp, .task-create__selection-item, .task-create__selection-txt, .task-create__option-lbl, .task-create__options textarea::placeholder, .task-create__options textarea, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
 .form--secondary__group textarea, .breadcrumbs, .switch__note, .switch__name {
   font-weight: 700;
 }
 
-.task-create__preview-fitb-answers, .task-create__question-note, .task-create__question-option-choice-list-item, .task-create__note, .task-create__intro-sub-txt, .form--secondary__close-panel, .form--secondary__warning-code, .form--secondary__warning-txt {
+.task-create__option-selection-item, .task-create__option-selected-item, .task-create__question-maker-panel textarea, .task-create__note, .task-create__intro-sub-txt, .form--secondary__close-panel, .form--secondary__warning-code, .form--secondary__warning-txt {
   font-weight: 600;
 }
 
@@ -15,7 +15,7 @@ body {
   font-weight: 400;
 }
 
-.classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .task-create__preview-fitb-wrapper, .task-create__question-button-holder, .task-create__question-option-wrapper, .task-create__task-description-group, .task-create__options-radio-bttn-wrapper--inline .task-create__options-cs, .task-create__options-radio-bttn-wrapper--inline, .task-create__options, .task-create__options-wrapper, .form--secondary__schedule-wrapper, .breadcrumbs, .switch__main, .logo {
+.classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .task-create__question-main-content--top, .task-create__options-radio-bttn-wrapper--inline .task-create__options-cs, .task-create__options-radio-bttn-wrapper--inline, .task-create__options, .task-create__options-wrapper, .form--secondary__schedule-wrapper, .breadcrumbs, .switch__main, .logo {
   display: -webkit-flex;
   display: flex;
 }
@@ -1479,145 +1479,146 @@ label {
 .task-create__main {
   margin-top: 50px;
 }
-.task-create__task-description-group {
-  -webkit-flex-direction: column;
-  flex-direction: column;
-}
-.task-create__task-description-group label {
-  font-size: 14px;
-}
-@media only screen and (min-width: 37.5em) {
-  .task-create__task-description-group label {
-    font-size: 16px;
-  }
-}
-.task-create__task-description-group input[type=text] {
-  border: none;
-  margin-top: 10px;
-  border-bottom: 3px solid #4e4d4d;
-  padding: 7px;
-  width: 100%;
-  max-width: 400px;
-  font-family: inherit;
-  background-color: #f7f7f7;
-}
-.task-create__task-description-group input[type=text]:focus {
-  outline: none;
-  border-color: #7F2AFF;
-  color: #7F2AFF;
-}
-.task-create__question-counter {
-  color: #ababab;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-.task-create__question-option-wrapper {
-  -webkit-align-items: center;
-  align-items: center;
-  height: 100%;
-  position: relative;
-}
-.task-create__question-option-choice-wrapper {
-  position: absolute;
-}
-.task-create__question-selected-item-bttn {
-  border: 2px solid #c5cace;
-  color: #b0b3b5;
-  text-align: center;
-  padding: 6px 0;
-  margin: 0 25px;
-  border-radius: 4px;
-  width: 100%;
-  background-color: white;
-  cursor: pointer;
-  font-size: 16px;
-  font-family: inherit;
-}
-.task-create__question-selected-item-bttn:focus {
-  outline: none;
-}
-.task-create__question-selected-item-bttn:hover {
-  background-color: #f5f7f9;
-}
-.task-create__question-option-choice-list {
-  background-color: white;
-  width: 94%;
-  text-align: center;
-  bottom: -225px;
-  left: 50%;
-  box-shadow: 0 7px 9px 2px rgba(177, 179, 181, 0.25);
-  -webkit-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  transform: translate(-50%);
-  padding: 10px 0;
-  position: absolute;
-  display: none;
-}
-.task-create__question-option-choice-list-item {
-  padding: 10px 0;
-  cursor: pointer;
-  color: #172239;
-  font-size: 14px;
-}
-.task-create__question-option-choice-list-item:hover {
-  background-color: #f2f3f3;
-}
-.task-create__question-wrapper {
-  position: relative;
-}
 .task-create__question-maker-panel {
   background-color: white;
-  width: 100%;
-  height: 500px;
-  margin-top: 20px;
-  border-radius: 12px;
+  border-radius: 10px;
   position: relative;
+  padding: 15px 20px;
   overflow: hidden;
-  padding: 35px 20px;
+  min-height: 300px;
 }
 .task-create__question-maker-panel::before {
   content: "";
   position: absolute;
   width: 100%;
-  height: 6px;
+  height: 10px;
   background-color: #7F2AFF;
   top: 0;
   left: 0;
 }
-@media only screen and (min-width: 37.5em) {
-  .task-create__question-maker-panel::before {
-    height: 10px;
-  }
-}
-.task-create__default-question-title {
-  position: relative;
-}
-.task-create__default-question-title input {
-  border: none;
-  font-family: inherit;
-  color: #172239;
-  border-bottom: 4px solid #172239;
-  padding: 5px;
-  font-size: 18px;
-  background-color: #f8fbfb;
-  height: 50px;
+.task-create__question-maker-panel textarea {
   width: 100%;
-  max-width: 790px;
+  height: 200px;
+  margin-top: 10px;
+  border: none;
+  background-color: #f8fbfb;
+  border-bottom: 4px solid #172239;
+  font-family: inherit;
+  padding: 10px 15px;
+  resize: none;
 }
-.task-create__default-question-title input:focus {
+.task-create__question-maker-panel textarea:focus {
   outline: none;
 }
-.task-create__default-question-title input:focus + .task-create__question-line {
-  -webkit-transform: scaleX(1);
-  -ms-transform: scaleX(1);
-  transform: scaleX(1);
+.task-create__bttn-delete {
+  color: white;
+  background-color: #ff2424;
+  text-transform: uppercase;
+  font-weight: 700;
+  padding: 7px 15px;
+  font-size: 10px;
 }
-.task-create__question-line {
+@media only screen and (min-width: 64em) {
+  .task-create__bttn-delete {
+    font-size: 14px;
+  }
+}
+.task-create__bttn-delete:hover {
+  background-color: #f91616;
+}
+.task-create__bttn-delete:focus {
+  outline: none;
+}
+.task-create__question-main-content--top {
+  -webkit-align-items: center;
+  align-items: center;
+  margin-top: 15px;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+.task-create__question-options {
+  position: relative;
+}
+.task-create__question-counter {
+  font-size: 16px;
+  color: #a7a7a7;
+  margin-right: 25px;
+  margin-bottom: 5px;
+}
+.task-create__option-selected-item {
+  padding: 3px 15px;
+  border: 2px solid #d0d0d0;
+  border-radius: 3px;
+  text-align: center;
+  color: #b1aeae;
+  font-size: 14px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.task-create__option-selected-item:hover {
+  background-color: #f9f9f9;
+}
+.task-create__option-selection {
+  position: absolute;
+  background-color: white;
+  box-shadow: 0 6px 6px 1px rgba(0, 0, 0, 0.1);
+  top: 35px;
+  display: none;
+  z-index: 500;
+}
+.task-create__option-selection-item {
+  font-size: 14px;
+  padding: 6px 10px;
+  margin: 10px 0;
+  text-align: center;
+  color: #868686;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.task-create__option-selection-item:hover {
+  background-color: #fbfbfb;
+}
+.task-create__question-how-many-points {
+  margin-top: 20px;
+  border-top: 2px solid #cfd4d4;
+  padding-top: 25px;
+}
+.task-create__question-how-many-points label {
+  font-size: 16px;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.task-create__question-how-many-points input[type=number] {
+  border: none;
+  margin-left: 10px;
+  border-bottom: 2px solid #172239;
+  font-family: inherit;
+  background-color: #f8fbfb;
+  padding: 10px;
+  width: 70px;
+}
+.task-create__question-how-many-points input[type=number]:focus {
+  outline: none;
+}
+.task-create__question-main--top {
+  margin: 25px 0;
+}
+.task-create__question-wrapper {
+  position: relative;
+  height: 45px;
+  background-color: #f8fbfb;
+  border-bottom: 4px solid #172239;
+}
+.task-create__question-wrapper-line {
+  content: "";
   position: absolute;
   width: 100%;
   height: 4px;
+  left: 0;
+  bottom: -4px;
   background-color: #7F2AFF;
-  bottom: 0;
   -webkit-transform: scaleX(0);
   -ms-transform: scaleX(0);
   transform: scaleX(0);
@@ -1625,73 +1626,73 @@ label {
   transform-origin: center;
   transition: transform 0.3s linear;
 }
-.task-create__question-note {
-  margin-top: 10px;
+.task-create input[type=text] {
+  border: none;
+  font-family: inherit;
+  background-color: inherit;
   color: #172239;
-  font-size: 14px;
-}
-.task-create__question-fitb-preview {
-  margin-top: 50px;
-  text-transform: uppercase;
-  color: darkgrey;
-}
-.task-create__mark-correct-answer-bttn {
-  font-family: inherit;
-  padding: 10px;
-  text-transform: uppercase;
-  background-color: #ff3e6c;
-  color: white;
-  display: block;
-  margin-top: 16px;
-  font-size: 12px;
-}
-.task-create__mark-correct-answer-bttn:hover {
-  background-color: #fd3161;
-}
-.task-create__mark-correct-answer-bttn:focus {
-  outline: none;
-}
-.task-create__mark-correct-answer-bttn--text {
-  font-family: inherit;
-  padding: 10px;
-  text-transform: uppercase;
-  color: #ff3e6c;
-  display: block;
-  margin-top: 16px;
-  margin-left: 20px;
-  font-size: 12px;
-}
-.task-create__mark-correct-answer-bttn--text:hover {
-  background-color: #ffe7ed;
-}
-.task-create__mark-correct-answer-bttn--text:focus {
-  outline: none;
-}
-.task-create__preview-correct-answer-wrapper {
-  margin: 5px 10px;
-}
-.task-create__preview-fitb-wrapper {
-  -webkit-align-items: center;
-  align-items: center;
-  -webkit-flex-wrap: wrap;
-  flex-wrap: wrap;
-  font-size: 14px;
-}
-.task-create__preview-fitb-wrapper input {
-  font-family: inherit;
-  padding: 5px 10px;
-  font-size: inherit;
-  height: 40px;
   width: 100%;
-  max-width: 790px;
+  height: 100%;
+  padding: 0 10px;
+  font-size: 14px;
 }
-.task-create__preview-fitb-answers {
-  margin-top: 40px;
-  color: #172239;
+@media only screen and (min-width: 48em) {
+  .task-create input[type=text] {
+    font-size: 20px;
+  }
+}
+.task-create input[type=text]:focus {
+  outline: none;
+}
+.task-create input[type=text]:focus + .task-create__question-wrapper-line {
+  -webkit-transform: scaleX(1);
+  -ms-transform: scaleX(1);
+  transform: scaleX(1);
+}
+.task-create__answer-preview {
+  margin-top: 25px;
+}
+.task-create__answer-preview-note {
+  color: #a7a7a7;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.task-create__answer-preview textarea {
+  cursor: not-allowed;
+  width: 100%;
+  height: 140px;
+}
+@media only screen and (min-width: 48em) {
+  .task-create__answer-preview textarea {
+    width: 50%;
+  }
+}
+.task-create__options-cs input[type=text] {
+  font-size: 14px;
+  background-color: #f7f7f7;
+  width: 65px;
+  height: 40px;
+  border-bottom: 4px solid #717171;
+}
+.task-create__options-cs input[type=text]:focus {
+  border-bottom-color: #7F2AFF;
+}
+.task-create__task-description-group input[type=text] {
+  font-size: 14px;
+  background-color: #f7f7f7;
+  margin-top: 10px;
+  height: 40px;
+  border-bottom: 4px solid #717171;
+}
+.task-create__task-description-group input[type=text]:focus {
+  outline: none;
+  border-color: #7F2AFF;
+  color: #7F2AFF;
+  background-color: #f2e9ff;
 }
 
-.selected-item {
-  background-color: #f5f7f9;
+.dropdown--active {
+  display: block;
 }
 
 .classroom-settings {

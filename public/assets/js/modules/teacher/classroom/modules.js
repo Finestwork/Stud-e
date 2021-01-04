@@ -94,11 +94,15 @@ closePanelBttn.addEventListener('click', ()=>{
     if(confirm('Are you sure you want to close this panel?')){
         let droppedFiles = modulesUploaderMainWrapper.querySelectorAll('.modules__dropped-files');
         let modulesLinks = modulesUploaderMainWrapper.querySelectorAll('.modules__input-link');
+        let rejectedFiles = modulesUploaderMainWrapper.querySelectorAll('.modules__drop-rejected-files p');
         for(let i = 0; i<droppedFiles.length; i++){
             droppedFiles[i].remove();
         }
         for(let i = 0; i<modulesLinks.length; i++){
             modulesLinks[i].remove();
+        }
+        for(let i = 0; i<rejectedFiles.length; i++){
+            rejectedFiles[i].remove();
         }
         uploadQueue = [];
         fileCtr = 0;
@@ -114,11 +118,16 @@ closeUpdatePanelBttn.addEventListener('click', ()=>{
     if(confirm('Are you sure you want to close this panel?')){
         let droppedFiles = editPanelMainWrapper.querySelectorAll('.modules__dropped-files');
         let modulesLinks = editPanelMainWrapper.querySelectorAll('.modules__input-link');
+        let rejectedFiles = editPanelMainWrapper.querySelectorAll('.modules__drop-rejected-files p');
+        console.log(rejectedFiles);
         for(let i = 0; i<droppedFiles.length; i++){
             droppedFiles[i].remove();
         }
         for(let i = 0; i<modulesLinks.length; i++){
             modulesLinks[i].remove();
+        }
+        for(let i = 0; i<rejectedFiles.length; i++){
+            rejectedFiles[i].remove();
         }
         uploadQueue = [];
         fileCtr = 0;
@@ -640,7 +649,6 @@ function prepareTitleForDeleting(e){
     }
 }
 //DRAG ZONE
-//DRAGGING
 dropZone.addEventListener('click', ()=>{
     fileInputBttn.click();
 })
@@ -686,57 +694,117 @@ editDropZone.addEventListener('drop', e =>{
 
 function initData(files){
     generateLoadingElements(files);
-    if(uploadCtr === 0){
-        uploadModules(files);
-        uploadCtr++;
-    }
 }
 function addNewFiles(files){
-    generateNewLoadingElements(files);
-    if(addFilesCtr === 0){
-        addFiles(files);
-        addFilesCtr++;
-    }
+    generateLoadingElementsForEditing(files);
 }
 
 //GENERATE
 function generateLoadingElements(files){
-    let fileLength = files.length;
-    for(let i = 0; i<fileLength; i++){
-        uploadQueue.push(files[i]);
-        let moduleWrapper = document.createElement('DIV'),
-            nameTag = document.createElement('P'),
-            removeFileBttn = document.createElement('BUTTON'),
-            resendBttn = document.createElement('BUTTON'),
-            loadingTag = document.createElement('P'),
-            loadingWrapper = document.createElement('DIV'),
-            loadingWrapperChild = document.createElement('DIV');
+    for(let i = 0; i<files.length; i++){
+        if(getFileExtension(files[i]) === 'mp4' ||getFileExtension(files[i]) === 'ogg'
+            || getFileExtension(files[i]) === 'webm'){
+            uploadQueue.push(files[i]);
+            let moduleWrapper = document.createElement('DIV'),
+                nameTag = document.createElement('P'),
+                removeFileBttn = document.createElement('BUTTON'),
+                resendBttn = document.createElement('BUTTON'),
+                loadingTag = document.createElement('P'),
+                loadingWrapper = document.createElement('DIV'),
+                loadingWrapperChild = document.createElement('DIV');
 
-        moduleWrapper.classList.add('modules__dropped-files', 'upload-waiting');
-        nameTag.classList.add('modules__dropped-fname');
-        removeFileBttn.classList.add('bttn','modules__dropped-remove-bttn', 'js-remove-file');
-        resendBttn.classList.add('bttn','upload-error-bttn', 'js-resend-file');
-        removeFileBttn.setAttribute('type', 'button');
-        resendBttn.setAttribute('type', 'button');
-        loadingTag.classList.add('modules__dropped-percentage');
-        loadingWrapper.classList.add('modules__dropped-progress-bar');
-        loadingWrapperChild.classList.add('modules__dropped-progress-bar-image');
-        removeFileBttn.textContent = 'remove';
-        resendBttn.textContent = 'resend';
-        nameTag.textContent = files[i].name;
-        loadingTag.textContent = '0%';
+            moduleWrapper.classList.add('modules__dropped-files', 'upload-waiting');
+            nameTag.classList.add('modules__dropped-fname');
+            removeFileBttn.classList.add('bttn','modules__dropped-remove-bttn', 'js-remove-file');
+            resendBttn.classList.add('bttn','upload-error-bttn', 'js-resend-file');
+            removeFileBttn.setAttribute('type', 'button');
+            resendBttn.setAttribute('type', 'button');
+            loadingTag.classList.add('modules__dropped-percentage');
+            loadingWrapper.classList.add('modules__dropped-progress-bar');
+            loadingWrapperChild.classList.add('modules__dropped-progress-bar-image');
+            removeFileBttn.textContent = 'remove';
+            resendBttn.textContent = 'resend';
+            nameTag.textContent = files[i].name;
+            loadingTag.textContent = '0%';
 
-        removeFileBttn.style.display = 'none';
-        resendBttn.style.display = 'none';
+            removeFileBttn.style.display = 'none';
+            resendBttn.style.display = 'none';
 
-        loadingWrapper.append(loadingWrapperChild);
-        moduleWrapper.append(nameTag);
-        moduleWrapper.append(removeFileBttn);
-        moduleWrapper.append(resendBttn);
-        moduleWrapper.append(loadingTag)
-        moduleWrapper.append(loadingWrapper);
-        dropZone.parentNode.append(moduleWrapper);
+            loadingWrapper.append(loadingWrapperChild);
+            moduleWrapper.append(nameTag);
+            moduleWrapper.append(removeFileBttn);
+            moduleWrapper.append(resendBttn);
+            moduleWrapper.append(loadingTag)
+            moduleWrapper.append(loadingWrapper);
+            dropZone.parentNode.append(moduleWrapper);
+            if(uploadCtr === 0){
+                uploadModules(files);
+            }
+        }else {
+            let parent = dropZone.parentNode;
+            let rejectedFileContainer = parent.querySelector('.modules__drop-rejected-files');
+            let pTag = document.createElement('P');
+            pTag.textContent = 'We do not support this file ' + files[i].name;
+            rejectedFileContainer.append(pTag);
+            if(files.length === 1){
+                uploadCtr = 0;
+            }
+        }
     }
+    uploadCtr++;
+}
+function generateLoadingElementsForEditing(files){
+    for(let i = 0; i<files.length; i++){
+        if(getFileExtension(files[i]) === 'mp4' ||getFileExtension(files[i]) === 'ogg'
+            || getFileExtension(files[i]) === 'webm'){
+            uploadQueue.push(files[i]);
+            let moduleWrapper = document.createElement('DIV'),
+                nameTag = document.createElement('P'),
+                removeFileBttn = document.createElement('BUTTON'),
+                resendBttn = document.createElement('BUTTON'),
+                loadingTag = document.createElement('P'),
+                loadingWrapper = document.createElement('DIV'),
+                loadingWrapperChild = document.createElement('DIV');
+
+            moduleWrapper.classList.add('modules__dropped-files', 'upload-waiting');
+            nameTag.classList.add('modules__dropped-fname');
+            removeFileBttn.classList.add('bttn','modules__dropped-remove-bttn', 'js-remove-file');
+            resendBttn.classList.add('bttn','upload-error-bttn', 'js-resend-file');
+            removeFileBttn.setAttribute('type', 'button');
+            resendBttn.setAttribute('type', 'button');
+            loadingTag.classList.add('modules__dropped-percentage');
+            loadingWrapper.classList.add('modules__dropped-progress-bar');
+            loadingWrapperChild.classList.add('modules__dropped-progress-bar-image');
+            removeFileBttn.textContent = 'remove';
+            resendBttn.textContent = 'resend';
+            nameTag.textContent = files[i].name;
+            loadingTag.textContent = '0%';
+
+            removeFileBttn.style.display = 'none';
+            resendBttn.style.display = 'none';
+
+            loadingWrapper.append(loadingWrapperChild);
+            moduleWrapper.append(nameTag);
+            moduleWrapper.append(removeFileBttn);
+            moduleWrapper.append(resendBttn);
+            moduleWrapper.append(loadingTag)
+            moduleWrapper.append(loadingWrapper);
+            editDropZone.parentNode.append(moduleWrapper);
+            if(addFilesCtr === 0){
+                addFiles(files);
+            }
+        }else {
+            let parent = editDropZone.parentNode;
+            let rejectedFileContainer = parent.querySelector('.modules__drop-rejected-files');
+            let pTag = document.createElement('P');
+            pTag.textContent = 'We do not support this file ' + files[i].name;
+            rejectedFileContainer.append(pTag);
+            if(files.length === 1){
+                addFilesCtr = 0;
+            }
+        }
+    }
+    addFilesCtr++;
 }
 function generateNewLoadingElements(files){
     let fileLength = files.length;
@@ -849,6 +917,7 @@ function uploadModules(files){
     let droppedFilesWrapper = dropZone.parentNode.querySelectorAll('.modules__dropped-files');
     let removeFileBttn = dropZone.parentNode.querySelectorAll('.modules__dropped-remove-bttn');
     let resendFileBttn = dropZone.parentNode.querySelectorAll('.js-resend-file');
+
     if(uploadQueue.length !== fileCtr){
         droppedFilesWrapper[elCtr].classList.remove('upload-waiting');
         let url = '/classroom/upload-modules';
@@ -912,7 +981,6 @@ function addFiles(files){
     if(uploadedFilesCtr === 0){
         uploadedFilesCtr = uploadedFilesCtr + totalUploadedFile;
     }
-    console.log(uploadedFilesCtr);
     if(uploadQueue.length !== fileCtr){
         droppedFilesWrapper[uploadedFilesCtr].classList.remove('upload-waiting');
         let url = '/classroom/upload-modules';
@@ -1157,8 +1225,9 @@ function deletePrimaryTitle(id, bttn){
             console.log(error);
         });
 }
-
-
+function getFileExtension(file){
+    return file.name.substring(file.name.lastIndexOf('.') + 1)
+}
 (function audio(){
     let audioPlayers = document.querySelectorAll('.audio-player');
     audioPlayers.forEach(el=>{
@@ -1168,6 +1237,5 @@ function deletePrimaryTitle(id, bttn){
             stopOthersOnPlay: true
         });
     });
-
 })();
 

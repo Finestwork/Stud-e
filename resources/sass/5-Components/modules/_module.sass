@@ -156,6 +156,18 @@
                 font-size: 16px
         &-emp-txt
             color: $color-primary
+        &-note
+            margin-bottom: 30px
+            p
+                font-size: 14px
+                @extend %font-semibold
+                color: #5d5d96
+        &-rejected-files
+            margin-bottom: 35px
+            p
+                color: #ff6262
+                @extend %font-semibold
+                margin-bottom: 5px
     &__dropped
         &-files
             width: 100%
@@ -242,6 +254,7 @@
         width: 100px
         padding: 10px 0
         border-radius: 8px
+        margin-top: 15px
         &:focus
             outline: none
         &:hover
@@ -304,11 +317,6 @@
             align-items: center
     &__controls-wrapper
         margin-top: 30px
-        @include brk_md
-            margin-top: 0
-            position: absolute
-            top: -5px
-            right: 0
 
     &__change-title-bttn
         background-color: #6f21e4
@@ -326,20 +334,19 @@
                 background-color: #ff3e3e
     &__links-wrapper
         margin-top: 20px
-    &__lists
-        margin: 35px 0
+    &__lists-wrapper
+        margin-top: 50px
     &__list
         background-color: white
-        border-radius: 8px
         overflow: hidden
         &-title
-            font-size: 18px
+            font-size: 14px
             margin-bottom: 5px
             color: $color-primary
             @include brk_md
-                font-size: 20px
+                font-size: 15px
         &-top
-            padding: 10px 25px 5px 25px
+            padding: 15px 25px 5px 25px
             cursor: pointer
             border-bottom: 2px solid $color-primary
             &:hover

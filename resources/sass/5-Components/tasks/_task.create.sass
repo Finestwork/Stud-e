@@ -28,6 +28,7 @@
             @extend %font-semibold
             @include custom_breakpoint(600)
                 font-size: 16px
+
     &__options-wrapper
         @extend %display_flex
         -webkit-flex-wrap: wrap
@@ -64,6 +65,7 @@
                 color: $color-primary
             &::placeholder
                 @extend %font-bold
+
     &__option-lbl
         @extend %font-bold
         margin-right: 20px
@@ -284,187 +286,184 @@
 
     &__main
         margin-top: 50px
-    &__task-description-group
-        @extend %display_flex
-        -webkit-flex-direction: column
-        flex-direction: column
-        label
-            font-size: 14px
-            @include custom_breakpoint(600)
-                font-size: 16px
-        input[type="text"]
-            border: none
-            margin-top: 10px
-            border-bottom: 3px solid #4e4d4d
-            padding: 7px
-            width: 100%
-            max-width: 400px
-            font-family: inherit
-            background-color: #f7f7f7
-            @extend %font-bold
-            &:focus
-                outline: none
-                border-color: $color-primary
-                color: $color-primary
-    &__question-counter
-        color: #ababab
-        font-size: 16px
-        margin-bottom: 10px
-    &__question-option-wrapper
-        @extend %display_flex
-        -webkit-align-items: center
-        align-items: center
-        height: 100%
-        position: relative
-    &__question-option-choice-wrapper
-        position: absolute
-    &__question-selected-item-bttn
-        @extend %font-bold
-        border: 2px solid #c5cace
-        color: hsl(210, 3%, 70%)
-        text-align: center
-        padding: 6px 0
-        margin: 0 25px
-        border-radius: 4px
-        width: 100%
-        background-color: white
-        cursor: pointer
-        font-size: 16px
-        font-family: inherit
-        &:focus
-            outline: none
-        &:hover
-            background-color: #f5f7f9
-
-    &__question-option-choice-list
-        background-color: white
-        width: 94%
-        text-align: center
-        bottom: -225px
-        left: 50%
-        box-shadow: 0 7px 9px 2px rgba(177, 179, 181, .25)
-        @include transform(translate(-50%))
-        padding: 10px 0
-        position: absolute
-        display: none
-    &__question-option-choice-list-item
-        @extend %font-semibold
-        padding: 10px 0
-        cursor: pointer
-        color: #172239
-        font-size: 14px
-        &:hover
-            background-color: #f2f3f3
-    &__question-wrapper
-        position: relative
     &__question-maker-panel
         background-color: white
-        width: 100%
-        height: 500px //Temporary
-        margin-top: 20px
-        border-radius: 12px
+        border-radius: 10px
         position: relative
+        padding: 15px 20px
         overflow: hidden
-        padding: 35px 20px
+        min-height: 300px
         &::before
             content: ''
             position: absolute
             width: 100%
-            height: 6px
+            height: 10px
             background-color: $color-primary
             top: 0
             left: 0
-            @include custom_breakpoint(600)
-                height: 10px
-    &__default-question-title
-        position: relative
-        input
-            border: none
-            font-family: inherit
-            @extend %font-bold
-            color: #172239
-            border-bottom: 4px solid #172239
-            padding: 5px
-            font-size: 18px
-            background-color: #f8fbfb
-            height: 50px
+        textarea
             width: 100%
-            max-width: 790px
+            height: 200px
+            margin-top: 10px
+            border: none
+            background-color: #f8fbfb
+            border-bottom: 4px solid #172239
+            font-family: inherit
+            @extend %font-semibold
+            padding: 10px 15px
+            resize: none
             &:focus
                 outline: none
-                + .task-create__question-line
-                    @include transform(scaleX(1))
-    &__question-line
+    &__bttn-delete
+        color: white
+        background-color: #ff2424
+        text-transform: uppercase
+        font-weight: 700
+        padding: 7px 15px
+        font-size: 10px
+        @include brk_lrg
+            font-size: 14px
+        &:hover
+            background-color: #f91616
+        &:focus
+            outline: none
+    //TOP
+    &__question-main-content--top
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        margin-top: 15px
+        -webkit-justify-content: space-between
+        justify-content: space-between
+    &__question-options
+        position: relative
+    &__question-counter
+        font-size: 16px
+        color: #a7a7a7
+        margin-right: 25px
+        margin-bottom: 5px
+    &__option-selected-item
+        padding: 3px 15px
+        border: 2px solid #d0d0d0
+        border-radius: 3px
+        text-align: center
+        @extend %font-semibold
+        color: #b1aeae
+        font-size: 14px
+        cursor: pointer
+        -webkit-user-select: none
+        user-select: none
+        &:hover
+            background-color: #f9f9f9
+    &__option-selection
+        position: absolute
+        background-color: white
+        box-shadow: 0 6px 6px 1px rgba(0,0,0,0.1)
+        top: 35px
+        display: none
+        z-index: 500
+    &__option-selection-item
+        font-size: 14px
+        padding: 6px 10px
+        margin: 10px 0
+        text-align: center
+        @extend %font-semibold
+        color: #868686
+        cursor: pointer
+        -webkit-user-select: none
+        user-select: none
+        &:hover
+            background-color: #fbfbfb
+    //BOTTOM
+    &__question-how-many-points
+        margin-top: 20px
+        border-top: 2px solid #cfd4d4
+        padding-top: 25px
+        label
+            font-size: 16px
+            -webkit-user-select: none
+            user-select: none
+        input[type="number"]
+            border: none
+            margin-left: 10px
+            border-bottom: 2px solid #172239
+            font-family: inherit
+            @extend %font-bold
+            background-color: #f8fbfb
+            padding: 10px
+            width: 70px
+            &:focus
+                outline: none
+    //QUESTION WRAPPER
+    &__question-main--top
+        margin: 25px 0
+    &__question-wrapper
+        position: relative
+        height: 45px
+        background-color: #f8fbfb
+        border-bottom: 4px solid #172239
+    &__question-wrapper-line
+        content: ''
         position: absolute
         width: 100%
         height: 4px
+        left: 0
+        bottom: -4px
         background-color: $color-primary
-        bottom: 0
         @include transform(scaleX(0))
         -webkit-transform-origin: center
         transform-origin: center
         transition: transform .3s linear
-    &__question-note
-        @extend %font-semibold
-        margin-top: 10px
+    input[type='text']
+        border: none
+        font-family: inherit
+        @extend %font-bold
+        background-color: inherit
         color: #172239
+        width: 100%
+        height: 100%
+        padding: 0 10px
         font-size: 14px
-    &__question-button-holder
-        @extend %display_flex
-    // FILL IN THE BLANKS
-    &__question-fitb-preview
-        margin-top: 50px
-        @extend %font-bold
-        text-transform: uppercase
-        color: darkgrey
-    &__mark-correct-answer-bttn
-        font-family: inherit
-        @extend %font-bold
-        padding: 10px
-        text-transform: uppercase
-        background-color: $color-new-secondary
-        color: white
-        display: block
-        margin-top: 16px
-        font-size: 12px
-        &:hover
-            background-color: #fd3161
+        @include brk_md
+            font-size: 20px
         &:focus
             outline: none
-    &__mark-correct-answer-bttn--text
-        font-family: inherit
-        @extend %font-bold
-        padding: 10px
-        text-transform: uppercase
-        color: $color-new-secondary
-        display: block
-        margin-top: 16px
-        margin-left: 20px
-        font-size: 12px
-        &:hover
-            background-color: #ffe7ed
-        &:focus
-            outline: none
-    &__preview-correct-answer-wrapper
-        margin: 5px 10px
-    &__preview-fitb-wrapper
-        @extend %display_flex
-        -webkit-align-items: center
-        align-items: center
-        -webkit-flex-wrap: wrap
-        flex-wrap: wrap
-        @extend %font-bold
-        font-size: 14px
-        input
-            font-family: inherit
-            padding: 5px 10px
-            font-size: inherit
-            height: 40px
+        &:focus + .task-create__question-wrapper-line
+            @include transform(scaleX(1))
+    &__answer-preview
+        margin-top: 25px
+        &-note
+            @extend %font-bold
+            color: #a7a7a7
+            text-transform: uppercase
+            font-size: 14px
+        textarea
+            cursor: not-allowed
             width: 100%
-            max-width: 790px
-    &__preview-fitb-answers
-        margin-top: 40px
-        @extend %font-semibold
-        color: #172239
-.selected-item
-    background-color: #f5f7f9
+            height: 140px
+            @include brk_md
+                width: 50%
+    //OVERRIDES
+    &__options-cs
+        input[type="text"]
+            font-size: 14px
+            background-color: rgb(247, 247, 247)
+            width: 65px
+            height: 40px
+            border-bottom: 4px solid rgb(113, 113, 113)
+            &:focus
+                border-bottom-color: $color-primary
+    &__task-description-group
+        input[type="text"]
+            font-size: 14px
+            background-color: #f7f7f7
+            margin-top: 10px
+            height: 40px
+            border-bottom: 4px solid #717171
+            &:focus
+                outline: none
+                border-color: $color-primary
+                color: $color-primary
+                background-color: #f2e9ff
+.dropdown--active
+    display: block

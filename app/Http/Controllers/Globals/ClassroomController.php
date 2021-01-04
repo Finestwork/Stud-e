@@ -46,16 +46,24 @@ class ClassroomController extends Controller
         if(Auth::guard('student')->check()){
         }else if(Auth::guard('teacher')->check()){
             $user = Auth::guard('teacher')->user();
-            $classroom = Classroom::where('classroom_unique_url', $id)->get();
-            $primaryTitles = ModulesPrimaryTitles::where('classroom_id', $classroom[0]->id)->get();
-            //TEMPORARY
-            //IMPLEMENT RETRIEVING OF MODULES AFTERWARDS
-            return view('teacher.classroom.modules',
-                [
-                    'user' => $user,
-                    'classrooms' => $classroom,
-                    'primaryTitles'=>$primaryTitles
-                ]);
+            $doesClassroomExist = Classroom::where('classroom_unique_url', $id)->get()->first();
+            if($doesClassroomExist){
+                $classroomBelongsToMe = TeacherClassroom::where([
+                    ['teacher_id', Auth::guard('teacher')->id()],
+                    ['classroom_id', $doesClassroomExist->id]
+                ])->get()->first();
+                if($classroomBelongsToMe){
+                    $primaryTitles = ModulesPrimaryTitles::where('classroom_id', $doesClassroomExist->id)->get();
+                    return view('teacher.classroom.modules',
+                        [
+                            'user' => $user,
+                            'classrooms' => $doesClassroomExist,
+                            'primaryTitles'=>$primaryTitles
+                        ]);
+                }
+            }
+            return view('errors.404');
+
         }
         return redirect()->intended('/');
     }

@@ -31,7 +31,12 @@ use \App\Http\Controllers\DownloadController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+//DELETE LATER
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('config:cache');
+    return 'DONE'; //Return anything
+});
 Route::get('/', [IndexController::class, 'index']);
 
 Route::get('/signin', [IndexController::class, 'showLoginForm']);

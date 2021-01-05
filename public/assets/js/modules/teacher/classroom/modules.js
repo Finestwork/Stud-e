@@ -334,9 +334,7 @@ function createTitle(frontTxt, backTxt, bttn, data){
                     backTxtBttn.style.display = 'none';
                     frontTxtBttn.style.display = null;
                     saveDataInDOM(result.id, mainBttn);
-                    let deleteBttn = moduleMainWrapper.querySelector('.js-delete-title');
                     let addModuleBttn = mainBttn.parentNode.querySelector('.js-add-modules');
-                    deleteBttn.style.display = 'none';
                     addModuleBttn.style.display = null;
                     let moduleBttns = document.querySelectorAll('.js-add-modules');
                     moduleBttns.forEach(el =>{
@@ -719,7 +717,7 @@ function addNewFiles(files){
 function generateLoadingElements(files){
     for(let i = 0; i<files.length; i++){
         if(getFileExtension(files[i]) === 'mp4' ||getFileExtension(files[i]) === 'ogg'
-            || getFileExtension(files[i]) === 'webm' || getFileExtension(files[i]) === '.mp3'
+            || getFileExtension(files[i]) === 'webm' || getFileExtension(files[i]) === 'mp3'
             || getFileExtension(files[i]) === 'wav' || getFileExtension(files[i]) === 'gif'
             || getFileExtension(files[i]) === 'jpeg' || getFileExtension(files[i]) === 'jpg'
             || getFileExtension(files[i]) === 'png' || getFileExtension(files[i]) === 'pdf'
@@ -778,7 +776,7 @@ function generateLoadingElements(files){
 function generateLoadingElementsForEditing(files){
     for(let i = 0; i<files.length; i++){
         if(getFileExtension(files[i]) === 'mp4' ||getFileExtension(files[i]) === 'ogg'
-            || getFileExtension(files[i]) === 'webm' || getFileExtension(files[i]) === '.mp3'
+            || getFileExtension(files[i]) === 'webm' || getFileExtension(files[i]) === 'mp3'
             || getFileExtension(files[i]) === 'wav' || getFileExtension(files[i]) === 'gif'
             || getFileExtension(files[i]) === 'jpeg' || getFileExtension(files[i]) === 'jpg'
             || getFileExtension(files[i]) === 'png' || getFileExtension(files[i]) === 'pdf'

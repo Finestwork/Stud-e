@@ -162,12 +162,12 @@
                                             <div class="modules__divider">
                                                 <h2 class="modules__divider-title">{{ $pt->module_primary_title }}</h2>
                                                 <div class="modules__controls-wrapper" data-id="{{ $pt->id }}">
-                                                    <button type="button" class="bttn modules__delete-title-bttn js-delete-title">Delete title</button>
                                                     <button type="button" class="bttn modules__change-title-bttn js-edit-title">
                                                         <span class="modules__change-title-bttn-front">Edit Title</span>
                                                         <span class="modules__change-title-bttn-back" style="display: none;">Save changes</span>
                                                     </button>
                                                     <button type="button" class="bttn modules__change-title-bttn js-add-modules">Add module</button>
+                                                    <button type="button" class="bttn modules__delete-title-bttn js-delete-title">Delete title</button>
                                                 </div>
                                                 <div class="modules__lists-wrapper">
                                                     @foreach(\App\Models\Modules::select('id', 'secondary_title', 'description', 'document_id', 'video_id', 'audio_id', 'image_id', 'pdf_id', 'external_links')->where('primary_title_id', $pt->id)->get() as $module)

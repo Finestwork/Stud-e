@@ -36,6 +36,33 @@
         margin-top: 50px
         @include custom_breakpoint(600)
             margin-top: 60px
+        &--left
+            width: 100%
+            -webkit-align-items: center
+            align-items: center
+            -webkit-flex-direction: column
+            flex-direction: column
+            @extend %display_flex
+            @include custom_breakpoint(1238)
+                -webkit-align-items: flex-start
+                align-items: flex-start
+                -webkit-flex-direction: column
+                flex-direction: column
+                width: 43%
+        &--right
+            width: 100%
+            -webkit-align-items: center
+            align-items: center
+            -webkit-flex-direction: column
+            flex-direction: column
+            @extend %display_flex
+            @include custom_breakpoint(1238)
+                -webkit-align-items: flex-start
+                align-items: flex-start
+                -webkit-flex-direction: column
+                flex-direction: column
+                margin-left: 30px
+                width: unset
     &__options
         @extend %display_flex
         -webkit-align-items: flex-start
@@ -45,7 +72,7 @@
         margin-bottom: 40px
         -webkit-flex-basis: 50%
         flex-basis: 50%
-        @include custom_breakpoint(600)
+        @include brk_md
             padding-left: 30px
         textarea
             width: 100%
@@ -54,7 +81,7 @@
             resize: none
             margin-top: 15px
             border: none
-            border-bottom: 4px solid #717171
+            border-bottom: 7px solid #717171
             background-color: #f7f7f7
             font-family: inherit
             padding: 10px
@@ -443,6 +470,113 @@
             height: 140px
             @include brk_md
                 width: 50%
+    &__attachment-wrapper
+        input[type="file"]
+            display: none
+        p
+            font-size: 14px
+            @extend %font-semibold
+    &__attachment-area
+        margin: 40px 0
+        @extend %display_flex
+    &__attachment-box
+        width: 140px
+        height: auto
+        overflow: hidden
+        border-radius: 20px
+        border: 2px solid #1b1d1d
+    &__attachment-holder
+        margin-right: 25px
+        position: relative
+        &:last-of-type
+            margin-right: 0
+    &__attach-bttn
+        font-family: inherit
+        @extend %font-bold
+        text-transform: uppercase
+        background-color: #7f2aff
+        color: white
+        padding: 7px 12px
+        font-size: 14px
+        margin-bottom: 10px
+        &:hover
+            background-color: #7622f5
+        &:focus
+            outline: none
+    &__attachment-remove-bttn
+        position: absolute
+        width: 30px
+        height: 30px
+        background-color: #f8fbfb
+        border-radius: 100%
+        top: -13px
+        right: -10px
+        padding: 0
+        overflow: hidden
+        &:focus
+            outline: none
+    &__attachment-bttn-line-wrapper
+        width: 100%
+        height: 100%
+        background-color: #f8fbfb
+        display: block
+        position: relative
+        &:hover
+            background-color: #ebf5f5
+        &::before,
+        &::after
+            content: ''
+            position: absolute
+            background-color: #172239
+            width: 2px
+            height: 57%
+            border-radius: 5px
+            top: 50%
+        &::before
+            @include transform(translateY(-50%) rotate(45deg))
+        &::after
+            @include transform(translateY(-50%) rotate(-45deg))
+
+    //TIMER
+    &__options-timer-wrapper
+        @extend %display_flex
+        input[type="number"]
+            width: 75px
+            border: none
+            border-bottom: 4px solid #717171
+            background-color: #f7f7f7
+            font-family: inherit
+            padding: 10px
+            @extend %font-bold
+            color: #717171
+            font-size: 14px
+            &:focus
+                outline: none
+                border-color: $color-primary
+                color: $color-primary
+        label
+            margin-left: 5px
+            text-transform: uppercase
+            font-size: 14px
+    &__options-timer-hour
+        margin-right: 25px
+    &__add-more-question
+        width: 100%
+        margin: 35px auto 10px auto
+        background-color: #7f2aff
+        color: white
+        @extend %font-bold
+        font-family: inherit
+        text-transform: uppercase
+        padding: 10px 0
+        display: block
+        font-size: 12px
+        max-width: 600px
+        @include brk_md
+            width: 60%
+            font-size: 14px
+            padding: 15px 0
+            margin-top: 50px
     //OVERRIDES
     &__options-cs
         input[type="text"]
@@ -465,5 +599,23 @@
                 border-color: $color-primary
                 color: $color-primary
                 background-color: #f2e9ff
+.no-mb-submission
+    margin-bottom: 40px
+    @include custom_breakpoint(1238)
+        margin-bottom: 0
+.adjust-height
+    -webkit-flex-basis: 100%
+    flex-basis: 100%
+//EMPTY
+.no-modules
+    height: 80px
+    @extend %font-bold
+    @extend %display_flex
+    -webkit-align-items: center
+    align-items: center
+    -webkit-justify-content: center
+    justify-content: center
+    color: $color-primary
+//SWITCH
 .dropdown--active
     display: block

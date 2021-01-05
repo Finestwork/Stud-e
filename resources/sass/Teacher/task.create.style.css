@@ -2,12 +2,12 @@
   font-weight: 800;
 }
 
-.classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .task-create__answer-preview-note, .task-create input[type=text], .task-create__question-how-many-points input[type=number], .task-create__options-radio-bttn-group input[type=text], .task-create__note-emp, .task-create__selection-item, .task-create__selection-txt, .task-create__option-lbl, .task-create__options textarea::placeholder, .task-create__options textarea, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
+.classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .no-modules, .task-create__add-more-question, .task-create__options-timer-wrapper input[type=number], .task-create__attach-bttn, .task-create__answer-preview-note, .task-create input[type=text], .task-create__question-how-many-points input[type=number], .task-create__options-radio-bttn-group input[type=text], .task-create__note-emp, .task-create__selection-item, .task-create__selection-txt, .task-create__option-lbl, .task-create__options textarea::placeholder, .task-create__options textarea, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
 .form--secondary__group textarea, .breadcrumbs, .switch__note, .switch__name {
   font-weight: 700;
 }
 
-.task-create__option-selection-item, .task-create__option-selected-item, .task-create__question-maker-panel textarea, .task-create__note, .task-create__intro-sub-txt, .form--secondary__close-panel, .form--secondary__warning-code, .form--secondary__warning-txt {
+.task-create__attachment-wrapper p, .task-create__option-selection-item, .task-create__option-selected-item, .task-create__question-maker-panel textarea, .task-create__note, .task-create__intro-sub-txt, .form--secondary__close-panel, .form--secondary__warning-code, .form--secondary__warning-txt {
   font-weight: 600;
 }
 
@@ -15,7 +15,7 @@ body {
   font-weight: 400;
 }
 
-.classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .task-create__question-main-content--top, .task-create__options-radio-bttn-wrapper--inline .task-create__options-cs, .task-create__options-radio-bttn-wrapper--inline, .task-create__options, .task-create__options-wrapper, .form--secondary__schedule-wrapper, .breadcrumbs, .switch__main, .logo {
+.classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .no-modules, .task-create__options-timer-wrapper, .task-create__attachment-area, .task-create__question-main-content--top, .task-create__options-radio-bttn-wrapper--inline .task-create__options-cs, .task-create__options-radio-bttn-wrapper--inline, .task-create__options, .task-create__options-wrapper--right, .task-create__options-wrapper--left, .task-create__options-wrapper, .form--secondary__schedule-wrapper, .breadcrumbs, .switch__main, .logo {
   display: -webkit-flex;
   display: flex;
 }
@@ -1158,6 +1158,39 @@ label {
     margin-top: 60px;
   }
 }
+.task-create__options-wrapper--left {
+  width: 100%;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+@media only screen and (min-width: 77.375em) {
+  .task-create__options-wrapper--left {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    width: 43%;
+  }
+}
+.task-create__options-wrapper--right {
+  width: 100%;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+@media only screen and (min-width: 77.375em) {
+  .task-create__options-wrapper--right {
+    -webkit-align-items: flex-start;
+    align-items: flex-start;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+    margin-left: 30px;
+    width: unset;
+  }
+}
 .task-create__options {
   -webkit-align-items: flex-start;
   align-items: flex-start;
@@ -1167,7 +1200,7 @@ label {
   -webkit-flex-basis: 50%;
   flex-basis: 50%;
 }
-@media only screen and (min-width: 37.5em) {
+@media only screen and (min-width: 48em) {
   .task-create__options {
     padding-left: 30px;
   }
@@ -1179,7 +1212,7 @@ label {
   resize: none;
   margin-top: 15px;
   border: none;
-  border-bottom: 4px solid #717171;
+  border-bottom: 7px solid #717171;
   background-color: #f7f7f7;
   font-family: inherit;
   padding: 10px;
@@ -1667,6 +1700,130 @@ label {
     width: 50%;
   }
 }
+.task-create__attachment-wrapper input[type=file] {
+  display: none;
+}
+.task-create__attachment-wrapper p {
+  font-size: 14px;
+}
+.task-create__attachment-area {
+  margin: 40px 0;
+}
+.task-create__attachment-box {
+  width: 140px;
+  height: auto;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 2px solid #1b1d1d;
+}
+.task-create__attachment-holder {
+  margin-right: 25px;
+  position: relative;
+}
+.task-create__attachment-holder:last-of-type {
+  margin-right: 0;
+}
+.task-create__attach-bttn {
+  font-family: inherit;
+  text-transform: uppercase;
+  background-color: #7f2aff;
+  color: white;
+  padding: 7px 12px;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+.task-create__attach-bttn:hover {
+  background-color: #7622f5;
+}
+.task-create__attach-bttn:focus {
+  outline: none;
+}
+.task-create__attachment-remove-bttn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #f8fbfb;
+  border-radius: 100%;
+  top: -13px;
+  right: -10px;
+  padding: 0;
+  overflow: hidden;
+}
+.task-create__attachment-remove-bttn:focus {
+  outline: none;
+}
+.task-create__attachment-bttn-line-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: #f8fbfb;
+  display: block;
+  position: relative;
+}
+.task-create__attachment-bttn-line-wrapper:hover {
+  background-color: #ebf5f5;
+}
+.task-create__attachment-bttn-line-wrapper::before, .task-create__attachment-bttn-line-wrapper::after {
+  content: "";
+  position: absolute;
+  background-color: #172239;
+  width: 2px;
+  height: 57%;
+  border-radius: 5px;
+  top: 50%;
+}
+.task-create__attachment-bttn-line-wrapper::before {
+  -webkit-transform: translateY(-50%) rotate(45deg);
+  -ms-transform: translateY(-50%) rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
+}
+.task-create__attachment-bttn-line-wrapper::after {
+  -webkit-transform: translateY(-50%) rotate(-45deg);
+  -ms-transform: translateY(-50%) rotate(-45deg);
+  transform: translateY(-50%) rotate(-45deg);
+}
+.task-create__options-timer-wrapper input[type=number] {
+  width: 75px;
+  border: none;
+  border-bottom: 4px solid #717171;
+  background-color: #f7f7f7;
+  font-family: inherit;
+  padding: 10px;
+  color: #717171;
+  font-size: 14px;
+}
+.task-create__options-timer-wrapper input[type=number]:focus {
+  outline: none;
+  border-color: #7F2AFF;
+  color: #7F2AFF;
+}
+.task-create__options-timer-wrapper label {
+  margin-left: 5px;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.task-create__options-timer-hour {
+  margin-right: 25px;
+}
+.task-create__add-more-question {
+  width: 100%;
+  margin: 35px auto 10px auto;
+  background-color: #7f2aff;
+  color: white;
+  font-family: inherit;
+  text-transform: uppercase;
+  padding: 10px 0;
+  display: block;
+  font-size: 12px;
+  max-width: 600px;
+}
+@media only screen and (min-width: 48em) {
+  .task-create__add-more-question {
+    width: 60%;
+    font-size: 14px;
+    padding: 15px 0;
+    margin-top: 50px;
+  }
+}
 .task-create__options-cs input[type=text] {
   font-size: 14px;
   background-color: #f7f7f7;
@@ -1689,6 +1846,29 @@ label {
   border-color: #7F2AFF;
   color: #7F2AFF;
   background-color: #f2e9ff;
+}
+
+.no-mb-submission {
+  margin-bottom: 40px;
+}
+@media only screen and (min-width: 77.375em) {
+  .no-mb-submission {
+    margin-bottom: 0;
+  }
+}
+
+.adjust-height {
+  -webkit-flex-basis: 100%;
+  flex-basis: 100%;
+}
+
+.no-modules {
+  height: 80px;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  color: #7F2AFF;
 }
 
 .dropdown--active {

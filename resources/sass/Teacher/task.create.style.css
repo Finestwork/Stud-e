@@ -90,6 +90,34 @@ ul {
   list-style: none;
 }
 
+@-webkit-keyframes waitingUpload {
+  0% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+@keyframes waitingUpload {
+  0% {
+    opacity: 0.2;
+  }
+  40% {
+    opacity: 0.4;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
 @-webkit-keyframes radioAnimation {
   from {
     -webkit-transform: scale(1, 1, 1) translate(-50%, -50%);
@@ -1519,6 +1547,7 @@ label {
   padding: 15px 20px;
   overflow: hidden;
   min-height: 300px;
+  margin-bottom: 50px;
 }
 .task-create__question-maker-panel::before {
   content: "";
@@ -1548,6 +1577,7 @@ label {
   background-color: #ff2424;
   text-transform: uppercase;
   font-weight: 700;
+  font-family: inherit;
   padding: 7px 15px;
   font-size: 10px;
 }
@@ -1707,17 +1737,28 @@ label {
   font-size: 14px;
 }
 .task-create__attachment-area {
-  margin: 40px 0;
+  margin: 40px 0 0 0;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+@media only screen and (min-width: 48em) {
+  .task-create__attachment-area {
+    -webkit-justify-content: flex-start;
+    justify-content: flex-start;
+  }
 }
 .task-create__attachment-box {
   width: 140px;
-  height: auto;
+  height: 85px;
   overflow: hidden;
-  border-radius: 20px;
+  border-radius: 5px;
   border: 2px solid #1b1d1d;
 }
 .task-create__attachment-holder {
   margin-right: 25px;
+  margin-bottom: 25px;
   position: relative;
 }
 .task-create__attachment-holder:last-of-type {
@@ -1824,6 +1865,12 @@ label {
     margin-top: 50px;
   }
 }
+.task-create__add-more-question:focus {
+  outline: none;
+}
+.task-create__add-more-question:hover {
+  background-color: #630be8;
+}
 .task-create__options-cs input[type=text] {
   font-size: 14px;
   background-color: #f7f7f7;
@@ -1873,6 +1920,12 @@ label {
 
 .dropdown--active {
   display: block;
+}
+
+.show-loading {
+  -webkit-animation: waitingUpload 1.8s both infinite linear;
+  animation: waitingUpload 1.8s both infinite linear;
+  cursor: not-allowed;
 }
 
 .classroom-settings {

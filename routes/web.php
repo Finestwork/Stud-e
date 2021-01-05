@@ -121,6 +121,8 @@ Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function()
     Route::post('/delete-module', [CreateModuleController::class, 'deleteModule']);
     //UPLOADING FILES
     Route::post('/upload-modules', [UploadController::class, 'validateUploadedFiles']);
+    Route::post('/upload-task-picture', [UploadController::class, 'uploadTaskPicture']);
+    Route::post('/delete-task-picture', [UploadController::class, 'deleteTaskPicture']);
     Route::post('/delete-file', [UploadController::class, 'deleteUpload']);
 });
 

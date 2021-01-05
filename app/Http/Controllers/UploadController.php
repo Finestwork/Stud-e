@@ -18,10 +18,6 @@ class UploadController extends Controller
     public function validateUploadedFiles(Request $request){
         $files = $request->file();
         $authorID = Auth::guard('teacher')->id();
-        //WILL IMPLEMENT LATER
-        $validator = Validator::make($request->all(), [
-           'file' => 'mimes:jpeg,jpg,png,gif,audio/mpeg,mpga,mp3,wav,mov,mpg,mpeg,mp4,wmv,flv,f4v,pdf,doc,docx,pptx,ppt,xls,xlsx'
-        ]);
         if(!empty($files)){
             $path = null;
             foreach ($files as $file){
@@ -95,11 +91,8 @@ class UploadController extends Controller
                 }
             }
         }
-        //return json_encode(['success'=>$file->getMimeType()], 500);
         return json_encode(['success'=>false], 500);
     }
-
-
     public function deleteUpload(Request $request) {
         $validator = Validator::make($request->all(),[
            'url' => 'required',
@@ -113,7 +106,7 @@ class UploadController extends Controller
                 $doesIDMatch = ImageStorage::where([['teacher_id', $userID], ['storage_path', $url]])->get()->first();
                 if(Storage::delete(stripcslashes($doesIDMatch->original_path))){
                     if($doesIDMatch->delete()){
-                        return json_encode(['success'=>true]);
+                        return json_encode(['success'=>true], 200);
                     }
                 }
             }else if($fileType === 'audio'){
@@ -149,6 +142,48 @@ class UploadController extends Controller
 
         return json_encode(['success'=>false]);
 
+    }
+    public function uploadTaskPicture(Request $request) {
+        $authorID = Auth::guard('teacher')->id();
+        $files = $request->file('file');
+        $orderID = $request->input('orderID');
+        $classUrl = $request->input('classUrl');
+
+        $fileNewName = sha1(date("m-d-Y H:i:s.u").$files->getClientOriginalName()).'.'.$files->getClientOriginalExtension();
+        Storage::put('public/img/'. $fileNewName, file_get_contents($files));
+        $path = '/storage/img/'. $fileNewName;
+        $imgStorage = new ImageStorage();
+        $imgStorage->storage_path = $path;
+        $imgStorage->original_path = 'public/img/'. $fileNewName;
+        $imgStorage->teacher_id = $authorID;
+        $imgStorage->hashed_name = $fileNewName;
+        $imgStorage->original_name = $files->getClientOriginalName();
+        if($imgStorage->save()){
+            return json_encode([
+                'success'=>true,
+                'orderID'=> $orderID,
+                'imageID'=>$imgStorage->id,
+                'storagePath'=>$imgStorage->storage_path
+            ], 200);
+        }
+        return $request->all();
+    }
+    public function deleteTaskPicture(Request $request) {
+        $validator = Validator::make($request->all(), [
+           'path' => 'required'
+        ]);
+        if(!$validator->fails()){
+            $path = $request->input('path');
+            $userID = Auth::guard('teacher')->id();
+            $doesIDMatch = ImageStorage::where([['teacher_id', $userID], ['storage_path', $path]])->get()->first();
+            if(Storage::delete(stripcslashes($doesIDMatch->original_path))) {
+                if ($doesIDMatch->delete()) {
+                    return json_encode(['success' => true], 200);
+                }
+            }
+        }
+        //return json_encode(['success'=>false], 500);
+        return $request->all();
     }
 
     protected function isDocumentValid($str){

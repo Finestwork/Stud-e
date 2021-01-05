@@ -19,6 +19,9 @@
     <script src="/assets/js/helpers/image-checker.js"></script>
     <script src="/assets/js/libraries/smooth-scrollbar.js"></script>
     <script src="/assets/js/helpers/scroll-bar-builder.js"></script>
+    <script>
+        let classroomUrl = '{{$classrooms[0]->classroom_unique_url}}'
+    </script>
 @endsection
 
 
@@ -195,32 +198,8 @@
                                         </div>
                                         <div class="task-create__attachment-wrapper">
                                             <div class="task-create__attachment-area">
-                                                <div class="task-create__attachment-holder">
-                                                    <div class="task-create__attachment-box">
-                                                        <img src="/assets/imgs/login/password-reset.jpg" alt="Attachment picture 1" class="img-fluid">
-                                                    </div>
-                                                    <button class="task-create__attachment-remove-bttn bttn">
-                                                        <span class="task-create__attachment-bttn-line-wrapper"></span>
-                                                    </button>
-                                                </div>
-                                                <div class="task-create__attachment-holder">
-                                                    <div class="task-create__attachment-box">
-                                                        <img src="/assets/imgs/login/password-reset.jpg" alt="Attachment picture 1" class="img-fluid">
-                                                    </div>
-                                                    <button class="task-create__attachment-remove-bttn bttn">
-                                                        <span class="task-create__attachment-bttn-line-wrapper"></span>
-                                                    </button>
-                                                </div>
-                                                <div class="task-create__attachment-holder">
-                                                    <div class="task-create__attachment-box">
-                                                        <img src="/assets/imgs/login/password-reset.jpg" alt="Attachment picture 1" class="img-fluid">
-                                                    </div>
-                                                    <button class="task-create__attachment-remove-bttn bttn">
-                                                        <span class="task-create__attachment-bttn-line-wrapper"></span>
-                                                    </button>
-                                                </div>
                                             </div>
-                                            <input type="file" name="pictureAttachment[]" multiple>
+                                            <input type="file" name="pictureAttachment[]" class="js-upload-picture" multiple>
                                             <button type="button" class="task-create__attach-bttn bttn">Add a picture</button>
                                             <p>Teachers are only allowed to upload pictures with following extensions: .gif, .png, .jpeg/jpg</p>
                                         </div>

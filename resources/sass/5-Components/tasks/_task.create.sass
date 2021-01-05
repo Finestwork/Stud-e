@@ -320,6 +320,7 @@
         padding: 15px 20px
         overflow: hidden
         min-height: 300px
+        margin-bottom: 50px
         &::before
             content: ''
             position: absolute
@@ -346,6 +347,7 @@
         background-color: #ff2424
         text-transform: uppercase
         font-weight: 700
+        font-family: inherit
         padding: 7px 15px
         font-size: 10px
         @include brk_lrg
@@ -477,16 +479,24 @@
             font-size: 14px
             @extend %font-semibold
     &__attachment-area
-        margin: 40px 0
+        margin: 40px 0 0 0
         @extend %display_flex
+        -webkit-flex-wrap: wrap
+        flex-wrap: wrap
+        -webkit-justify-content: center
+        justify-content: center
+        @include brk_md
+            -webkit-justify-content: flex-start
+            justify-content: flex-start
     &__attachment-box
         width: 140px
-        height: auto
+        height: 85px
         overflow: hidden
-        border-radius: 20px
+        border-radius: 5px
         border: 2px solid #1b1d1d
     &__attachment-holder
         margin-right: 25px
+        margin-bottom: 25px
         position: relative
         &:last-of-type
             margin-right: 0
@@ -577,6 +587,10 @@
             font-size: 14px
             padding: 15px 0
             margin-top: 50px
+        &:focus
+            outline: none
+        &:hover
+            background-color: #630be8
     //OVERRIDES
     &__options-cs
         input[type="text"]
@@ -619,3 +633,6 @@
 //SWITCH
 .dropdown--active
     display: block
+.show-loading
+    @include animation(waitingUpload 1.8s both infinite linear)
+    cursor: not-allowed

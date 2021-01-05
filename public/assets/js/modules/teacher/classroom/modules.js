@@ -937,64 +937,76 @@ function galleryMaker(e){
     gallery.init();
 }
 //FETCH
+let shouldContinue = true;
 function uploadModules(files){
-    let loaderTxts = dropZone.parentNode.querySelectorAll('.modules__dropped-percentage');
-    let loaderIndicators = dropZone.parentNode.querySelectorAll('.modules__dropped-progress-bar-image');
-    let droppedFilesWrapper = dropZone.parentNode.querySelectorAll('.modules__dropped-files');
-    let removeFileBttn = dropZone.parentNode.querySelectorAll('.modules__dropped-remove-bttn');
-    let resendFileBttn = dropZone.parentNode.querySelectorAll('.js-resend-file');
-
     if(uploadQueue.length !== fileCtr){
+        let loaderTxts = dropZone.parentNode.querySelectorAll('.modules__dropped-percentage');
+        let loaderIndicators = dropZone.parentNode.querySelectorAll('.modules__dropped-progress-bar-image');
+        let droppedFilesWrapper = dropZone.parentNode.querySelectorAll('.modules__dropped-files');
+        let removeFileBttn = dropZone.parentNode.querySelectorAll('.modules__dropped-remove-bttn');
+        let resendFileBttn = dropZone.parentNode.querySelectorAll('.js-resend-file');
         droppedFilesWrapper[elCtr].classList.remove('upload-waiting');
+
+
         let url = '/classroom/upload-modules';
         const xhr = new XMLHttpRequest();
         xhr.open('POST', url);
-        xhr.upload.addEventListener('progress', e =>{
-            const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
-            loaderTxts[elCtr].textContent = percent.toFixed(2) +'%';
-            loaderIndicators[elCtr].style.width = percent.toFixed(2) +'%';
-            if(percent === 100){
-                xhr.onreadystatechange = function(){
-                    if(xhr.readyState === XMLHttpRequest.DONE){
-                        let result = JSON.parse(xhr.responseText);
-                        if(result.success){
-                            let path = result.path,
-                                type = result.type,
-                                identity = result.id;
-                            loaderTxts[elCtr].style.display = 'none';
-                            droppedFilesWrapper[elCtr].classList.add('upload-done');
-                            droppedFilesWrapper[elCtr].setAttribute('data-path', path);
-                            droppedFilesWrapper[elCtr].setAttribute('data-type', type);
-                            droppedFilesWrapper[elCtr].setAttribute('data-identity', identity);
-                            removeFileBttn[elCtr].style.display = 'block';
-                            removeFileBttn[elCtr].addEventListener('click', deleteFile);
-                            fileCtr++;
-                            elCtr++;
-                            uploadModules(files);
-                        }else{
-                            droppedFilesWrapper[elCtr].classList.remove('primary-title-loading');
-                            droppedFilesWrapper[elCtr].classList.add('upload-error');
-                            loaderTxts[elCtr].style.display = 'none';
-                            resendFileBttn[elCtr].style.display = null;
-                            resendFileBttn[elCtr].addEventListener('click', resendFile);
-                            if(uploadQueue.length !== fileCtr){
-                                fileCtr++;
-                                elCtr++;
-                                uploadModules(files);
+        xhr.upload.onprogress = function(e){
+            if(shouldContinue){
+                const percent = e.lengthComputable ? (e.loaded / e.total) * 100 : 0;
+                loaderTxts[elCtr].textContent = percent.toFixed(2) +'%';
+                loaderIndicators[elCtr].style.width = percent.toFixed(2) +'%';
+                if(percent === 100){
+                    shouldContinue = false;
+                    xhr.onreadystatechange = function(){
+                        if(xhr.readyState === XMLHttpRequest.DONE){
+                            if(xhr.status === 200){
+                                let result = JSON.parse(xhr.responseText);
+                                if(result.success){
+                                    let path = result.path,
+                                        type = result.type,
+                                        identity = result.id;
+                                    loaderTxts[elCtr].style.display = 'none';
+                                    droppedFilesWrapper[elCtr].classList.add('upload-done');
+                                    droppedFilesWrapper[elCtr].setAttribute('data-path', path);
+                                    droppedFilesWrapper[elCtr].setAttribute('data-type', type);
+                                    droppedFilesWrapper[elCtr].setAttribute('data-identity', identity);
+                                    removeFileBttn[elCtr].style.display = 'block';
+                                    removeFileBttn[elCtr].addEventListener('click', deleteFile);
+                                    fileCtr++;
+                                    elCtr++;
+                                    shouldContinue = true;
+                                    uploadModules(files);
+                                }else{
+                                    droppedFilesWrapper[elCtr].classList.remove('primary-title-loading');
+                                    droppedFilesWrapper[elCtr].classList.add('upload-error');
+                                    loaderTxts[elCtr].style.display = 'none';
+                                    resendFileBttn[elCtr].style.display = null;
+                                    resendFileBttn[elCtr].addEventListener('click', resendFile);
+                                    if(uploadQueue.length !== fileCtr){
+                                        fileCtr++;
+                                        elCtr++;
+                                        shouldContinue = true;
+                                        uploadModules(files);
+                                    }
+                                }
+                                if(uploadQueue.length === fileCtr){
+                                    uploadCtr = 0;
+                                }
+
                             }
-                        }
-                        if(uploadQueue.length === fileCtr){
-                            uploadCtr = 0;
                         }
                     }
                 }
-
             }
-        });
-        xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
-        let formData = new FormData();
-        formData.append('file', uploadQueue[fileCtr]);
-        xhr.send(formData);
+        };
+
+        if(shouldContinue){
+            xhr.setRequestHeader('X-CSRF-TOKEN', document.querySelector('meta[name="csrf-token"]').getAttribute('content'));
+            let formData = new FormData();
+            formData.append('file', uploadQueue[fileCtr]);
+            xhr.send(formData);
+        }
     }
 }
 function addFiles(files){

@@ -166,59 +166,9 @@
 
                     <div class="col-sm-12 col-md-12 col-lrg-12 col-xlrg-12">
                         <div class="task-create__main">
-                            <div class="task-create__question-maker-panel">
-                                <div class="task-create__question-main-content">
-                                    <div class="task-create__question-main-content--top">
-                                        <div class="task-create__question-options">
-                                            <p class="task-create__option-selected-item js-selection-pop">--Select an option --</p>
-                                            <ul class="task-create__option-selection">
-                                                <li class="task-create__option-selection-item" data-value="fitb">Fill in the blank</li>
-                                                <li class="task-create__option-selection-item" data-value="la">Long answer (Ex. Essay)</li>
-                                                <li class="task-create__option-selection-item" data-value="ma">Multiple answer</li>
-                                                <li class="task-create__option-selection-item" data-value="mc">Multiple choice</li>
-                                                <li class="task-create__option-selection-item" data-value="mc">Identification</li>
-                                            </ul>
-                                        </div>
-                                        <button type="button" class="bttn task-create__bttn-delete">Delete</button>
-                                    </div>
-                                    <div class="task-create__question-main-content">
-                                        <div class="task-create__question-main--top">
-                                            <h3 class="task-create__question-counter">Question 1</h3>
-                                            <div class="task-create__question-wrapper">
-                                                <input type="text" placeholder="Place your question here">
-                                                <div class="task-create__question-wrapper-line"></div>
-                                            </div>
-                                            <p class="task-create__note">Note: Students are expected to have a long answer which can't be checked automatically.</p>
-                                        </div>
-                                        <div class="task-create__answer-preview">
-                                            <p class="task-create__answer-preview-note">
-                                                Answer preview
-                                            </p>
-                                            <textarea disabled></textarea>
-                                        </div>
-                                        <div class="task-create__attachment-wrapper">
-                                            <div class="task-create__attachment-area">
-                                            </div>
-                                            <input type="file" name="pictureAttachment[]" class="js-upload-picture" multiple>
-                                            <button type="button" class="task-create__attach-bttn bttn">Add a picture</button>
-                                            <p>Teachers are only allowed to upload pictures with following extensions: .gif, .png, .jpeg/jpg</p>
-                                        </div>
-                                    </div>
-                                    <div class="task-create__question-bottom">
-                                        <div class="task-create__question-how-many-points">
-                                            <label for="pointsQuestion1">Points for this question: </label>
-                                            <input type="number" placeholder="1" min="1" id="pointsQuestion2">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         <button type="button" class="bttn task-create__add-more-question">Add more question</button>
                     </div>
-                    <div class="col-sm-12 col-md-12 col-lrg-12 task">
-
-                    </div>
-                    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                 </div>
             </div>
         </div>

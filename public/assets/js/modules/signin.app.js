@@ -4,6 +4,69 @@ let passwordTxt = document.getElementById('passwordTxt'),
     pwCtr = 0, forgotPW = document.querySelector('.js-forgot-password');
 
 let txtNotif = document.querySelector('.js-txt-notif');
+let resendEmailBttn = document.querySelector('.sign-in__resend-email-link');
+
+
+if(resendEmailBttn){
+    resendEmailBttn.addEventListener('click', e=>{
+       e.preventDefault();
+        let pattern = new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$");
+        if(emailTxt.value.trim() === "" && emailTxt.value.trim().length === 0
+            && !pattern.test(emailTxt.value)){
+            emailTxt.classList.add('jello');
+            setTimeout(()=>{
+                emailTxt.classList.remove('jello');
+            },1000);
+        }else{
+            let txt = e.currentTarget.parentNode;
+            txt.textContent = 'Please wait';
+            txt.style.opacity = '0.6';
+            let data ={
+                email: emailTxt.value,
+            }
+            let url = '/resend-lost-link';
+            let jsonData = JSON.stringify(data);
+            const options = {
+                method: 'POST',
+                headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json;charset=UTF-8',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: jsonData
+            };
+            fetch(url, options)
+                .then((response)=>{
+                    return response.text();
+                })
+                .then((body)=>{
+                    let result = JSON.parse(body);
+                    txt.style.opacity = '1';
+                    txt.style.display = 'block';
+                    if(result.success){
+                        txt.classList.remove('sign-in__email-does-not-exist');
+                        txt.classList.add('sign-in__email-success');
+                        txt.textContent = 'A verification link has been sent to your email.';
+                    }else{
+                        txt.classList.remove('sign-in__email-success');
+                        txt.classList.add('sign-in__email-does-not-exist');
+                        if(result.reason === 'does not exist'){
+                            txt.textContent = 'Your email does not match our records.';
+                        }else if(result.reason === 'failure'){
+                            txt.textContent = 'Network error, please try again later';
+                        }
+                    }
+                })
+                .catch(error=>{
+                    console.log(error);
+                    txt.classList.remove('sign-in__email-success');
+                    txt.classList.add('sign-in__email-does-not-exist');
+                    txt.textContent = 'Network error, please try again later';
+                    txt.style.display = 'block';
+                });
+        }
+    });
+}
 
 pwToggleBttn.addEventListener('click', function(){
     passwordTxt.focus();

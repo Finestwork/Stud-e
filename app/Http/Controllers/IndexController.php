@@ -54,7 +54,7 @@ class IndexController extends Controller
                 return redirect('/teacher');
             }else{
                 Auth::guard('teacher')->logout();
-                return redirect()->back()->with('email');
+                return redirect()->back()->with('email', 'Please verify your email address first');
             }
         }
         return redirect()->back()->with('error', 'Your credentials does not match our records.');
@@ -90,9 +90,9 @@ class IndexController extends Controller
                     ];
                     MailController::sendSignupEmail($email_data);
                     return json_encode(['success'=>true], 200);
-                }else{
-                    return json_encode(['success'=>false, 'reason'=>'does not exist'], 500);
                 }
+                //return json_encode(['success'=>false, 'reason'=>'does not exist'], 500);
+                return json_encode($request->all(), 500);
             }
         }
 

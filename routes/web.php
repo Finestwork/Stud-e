@@ -123,7 +123,9 @@ Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function()
     Route::post('/upload-modules', [UploadController::class, 'validateUploadedFiles']);
     Route::post('/upload-task-picture', [UploadController::class, 'uploadTaskPicture']);
     Route::post('/delete-task-picture', [UploadController::class, 'deleteTaskPicture']);
+    Route::post('/upload-checkbox-picture', [UploadController::class, 'uploadCheckboxPicture']);
     Route::post('/delete-file', [UploadController::class, 'deleteUpload']);
+    Route::post('/delete-multiple-picture', [UploadController::class, 'deleteMultiplePictures']);
 });
 
 Route::prefix('/download')->group(function (){
@@ -142,7 +144,7 @@ Route::prefix('/signup')->group(function(){
 //PARTIALS
 Route::post('/checkClassCode',[RegistrationController::class, 'checkClassCode']);
 Route::post('/checkEmail',[RegistrationController::class, 'checkEmail']);
-Route::get('/verify-email',[IndexController::class, 'resendEmail'])->name('resend.verification.link');
+Route::get('/verify-email',[IndexController::class, 'resendEmail']);
 Route::post('/resend-lost-link',[IndexController::class, 'checkIfEEmailTokenIsValid'])->name('resend.verification.link');
 Route::post('/enroll',[GlobalClassroomController::class, 'checkCode']);
 Route::post('/resend-verification', [RegistrationController::class, 'resendLink']);

@@ -19,8 +19,16 @@ class RenderViewsController extends Controller
     }
 
     public function index() {
-        $user = Auth::guard('teacher')->user();
-        return view('teacher.index', ['user'=>$user]);
+        if(Auth::guard('teacher')->check()){
+            $user = Auth::guard('teacher')->user();
+            if(!$user->is_verified){
+                Auth::guard('teacher')->logout();
+                return redirect()->intended('/signin');
+            }else{
+                return view('teacher.index', ['user'=>$user]);
+            }
+        }
+        return view('auth.login');
     }
 
     public function classroom() {

@@ -82,15 +82,20 @@ function passwordReset(data){
         })
         .then((body)=>{
             let result = JSON.parse(body);
+            txtNotif.style.display = 'block';
             if(result.success){
-                //SENT
-                location.href = '/signin';
+                txtNotif.classList.remove('sign-in__email-does-not-exist');
+                txtNotif.classList.add('sign-in__email-success');
+                txtNotif.textContent = 'Successfully reset the password, please wait while we redirect you to the signin page.';
+                setTimeout(()=>{
+                    location.href = '/signin';
+                }, 1000);
             }else{
                 txtNotif.classList.remove('sign-in__email-success');
                 txtNotif.classList.add('sign-in__email-does-not-exist');
                 txtNotif.textContent = 'Something went wrong, please try again.';
             }
-            txtNotif.style.display = 'block';
+
         })
         .catch(error=>{
             console.log(error);

@@ -8,8 +8,15 @@ use Illuminate\Support\Facades\Auth;
 class HomepageController extends Controller
 {
     public function index(){
-        $user = Auth::guard('student')->user();
-        return view('student.index', ['user'=>$user]);
+        if(Auth::guard('student')->check()){
+            $user = Auth::guard('student')->user();
+            if(!$user->is_verified){
+                Auth::guard('student')->logout();
+                return redirect()->intended('/signin');
+            }else{
+                return view('student.index', ['user'=>$user]);
+            }
+        }
     }
 
 

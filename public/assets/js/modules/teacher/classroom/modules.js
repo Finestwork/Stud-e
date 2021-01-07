@@ -26,6 +26,7 @@ let imgs = document.querySelectorAll('.modules__img');
 let editModuleBttns = document.querySelectorAll('.js-edit-module');
 let saveChangesInModuleBttn = document.querySelector('.js-save-modules-changes-bttn');
 
+let shouldContinue = true;
 let links = [], origNames = [], ids = [];
 let canChangeTitle = true;
 let uploadQueue = [];
@@ -111,6 +112,7 @@ closePanelBttn.addEventListener('click', ()=>{
         uploadCtr = 0;
         uploadedFilesCtr = 0;
         primaryTitleID = null;
+        shouldContinue = true;
         modulesUploaderMainWrapper.style.display = 'none';
     }
 });
@@ -135,6 +137,7 @@ closeUpdatePanelBttn.addEventListener('click', ()=>{
         addFilesCtr = 0;
         uploadCtr = 0;
         uploadedFilesCtr = 0;
+        shouldContinue = true;
         secondaryTitleID = null;
         editPanelMainWrapper.style.display = 'none';
     }
@@ -937,7 +940,6 @@ function galleryMaker(e){
     gallery.init();
 }
 //FETCH
-let shouldContinue = true;
 function uploadModules(files){
     if(uploadQueue.length !== fileCtr){
         let loaderTxts = dropZone.parentNode.querySelectorAll('.modules__dropped-percentage');

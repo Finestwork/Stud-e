@@ -11,7 +11,11 @@ resendLinkBttn.addEventListener('click', ()=>{
 
 function fetchEmail(){
     let url = '/resend-verification';
-    let jsonData = JSON.stringify({url: classLink});
+    let data = {
+        inputUrl: classLink,
+        inputName: fname,
+        inputEmail: email
+    }
     const options = {
         method: 'POST',
         headers:{
@@ -19,24 +23,27 @@ function fetchEmail(){
             'Content-Type': 'application/json;charset=UTF-8',
             'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
         },
-        body: jsonData
+        body: JSON.stringify(data)
     };
     fetch(url, options)
         .then((response)=>{
             return response.text();
         })
         .then((body)=>{
-            setTimeout(()=>{
+            let result = JSON.parse(body);
+            if(result.success){
+                resendLinkBttn.remove();
+            }else{
                 resendLinkBttn.textContent = 'Resend link';
-                resendLinkBttn.style.cursor = 'cursor';
+                resendLinkBttn.style.cursor = 'pointer';
                 resendLinkBttn.disabled = false;
-            }, 7200);
+            }
         })
         .catch(error=>{
             console.log(error);
             setTimeout(()=>{
                 resendLinkBttn.textContent = 'Resend link';
-                resendLinkBttn.style.cursor = 'cursor';
+                resendLinkBttn.style.cursor = 'pointer';
                 resendLinkBttn.disabled = false;
             }, 7200);
         });

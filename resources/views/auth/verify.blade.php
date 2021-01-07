@@ -45,10 +45,12 @@
             <div class="verify__illustration">
                 <img src="/assets/illustration/signup/email.svg" alt="Website's illustration" class="img-fluid">
             </div>
-            <p class="verify__sub-txt">An email has been sent to <span class="verify__email">{{ $user->email }}</span> with a link to verify your account. If you have not received the email after a few minutes, Please check your spam folder. Thank you.</p>
+            <p class="verify__sub-txt">An email has been sent to <span class="verify__email">{{$user->email}}</span> with a link to verify your account. If you have not received the email after a few minutes, Please check your spam folder. Thank you.</p>
             <button type="button" class="bttn bttn--tertiary--ghost verify__bttn js-resend-link">Resend link</button>
             <script>
-                let classLink = '{{$user->verification_url}}'
+                let classLink = '{{$user->verification_url}}',
+                    fname = '{{ucfirst($user->f_name)}}',
+                    email = '{{$user->email}}';
             </script>
         </div>
     </div>

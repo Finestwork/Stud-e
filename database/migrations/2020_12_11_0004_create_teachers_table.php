@@ -24,7 +24,7 @@ class CreateTeachersTable extends Migration
             $table->unsignedBigInteger('role_id');
             $table->boolean('is_verified');
             $table->longText('verification_url');
-            $table->dateTime('verified_at');
+            $table->string('verified_at');
             $table->rememberToken();
             $table->timestamps();
             $table->foreign('role_id')->references('id')->on('roles')->cascadeOnDelete();

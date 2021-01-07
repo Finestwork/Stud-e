@@ -21,6 +21,9 @@ class CreateAdminTable extends Migration
             $table->string('email', 320)->unique();
             $table->string('password', 128);
             $table->boolean('isSubscribed');
+            $table->boolean('is_verified');
+            $table->longText('verification_url');
+            $table->string('verified_at');
             $table->unsignedBigInteger('role_id');
             $table->rememberToken();
             $table->timestamps();

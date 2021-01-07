@@ -6,7 +6,7 @@
   font-weight: 700;
 }
 
-.footer--secondary__link, .verify__sub-txt, .verify__main-txt, .form--primary__note--tip, .form--primary__note--optional, .form--primary__note--required, .form--primary__n-lbl {
+.footer--secondary__link, .verify__main-txt, .form--primary__note--tip, .form--primary__note--optional, .form--primary__note--required, .form--primary__n-lbl {
   font-weight: 600;
 }
 
@@ -997,11 +997,10 @@ table {
   text-align: center;
   line-height: 1.5;
 }
-@media only screen and (min-width: 64em) {
-  .verify__sub-txt {
-    max-width: 500px;
-    margin: auto;
-  }
+.verify__sub-txt verify__illustration {
+  max-width: 500px;
+  margin: auto;
+  margin-bottom: 40px;
 }
 @media only screen and (min-width: 90em) {
   .verify__sub-txt {

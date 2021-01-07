@@ -366,13 +366,15 @@
         justify-content: space-between
     &__question-options
         position: relative
-    &__question-counter
+    &__question-counter,
+    &__correct-ans-counter
         font-size: 16px
         color: #a7a7a7
         margin-right: 25px
         margin-bottom: 5px
     &__option-selected-item
         padding: 3px 15px
+        max-width: 165px
         border: 2px solid #d0d0d0
         border-radius: 3px
         text-align: center
@@ -382,6 +384,9 @@
         cursor: pointer
         -webkit-user-select: none
         user-select: none
+        @include custom_breakpoint(370)
+            max-width: unset
+            min-width: 180px
         &:hover
             background-color: #f9f9f9
     &__option-selection
@@ -424,14 +429,20 @@
             &:focus
                 outline: none
     //QUESTION WRAPPER
-    &__question-main--top
+    &__question-main--top,
+    &__ans-question-top
         margin: 25px 0
-    &__question-wrapper
+    &__question-wrapper,
+    &__correct-ans-wrapper
         position: relative
-        height: 45px
+        height: 50px
         background-color: #f8fbfb
         border-bottom: 4px solid #172239
-    &__question-wrapper-line
+    &__correct-ans-wrapper
+        max-width: 500px
+        height: 40px
+    &__question-wrapper-line,
+    &__correct-ans-wrapper-line
         content: ''
         position: absolute
         width: 100%
@@ -443,22 +454,69 @@
         -webkit-transform-origin: center
         transform-origin: center
         transition: transform .3s linear
-    input[type='text']
-        border: none
+    &__question-wrapper
+        input[type='text']
+            border: none
+            font-family: inherit
+            @extend %font-bold
+            background-color: inherit
+            color: #172239
+            width: 100%
+            height: 100%
+            padding: 0 10px
+            font-size: 14px
+            @include brk_md
+                font-size: 20px
+            &:focus
+                outline: none
+            &:focus + .task-create__question-wrapper-line
+                @include transform(scaleX(1))
+    &__correct-ans-wrapper
+        input[type='text']
+            border: none
+            font-family: inherit
+            @extend %font-bold
+            background-color: inherit
+            color: #172239
+            width: 100%
+            height: 100%
+            padding: 0 10px
+            font-size: 14px
+            @include brk_md
+                font-size: 16px
+            &:focus
+                outline: none
+            &:focus + .task-create__correct-ans-wrapper-line
+                @include transform(scaleX(1))
+    &__question-bttn-controls
+        margin-top: 20px
+        @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
+        @include custom_breakpoint(460)
+            -webkit-flex-direction: row
+            flex-direction: row
+    &__reset-question-bttn,
+    &__mark-as-correct-ans-bttn
         font-family: inherit
         @extend %font-bold
-        background-color: inherit
-        color: #172239
-        width: 100%
-        height: 100%
-        padding: 0 10px
-        font-size: 14px
-        @include brk_md
-            font-size: 20px
+        padding: 12px 10px
         &:focus
             outline: none
-        &:focus + .task-create__question-wrapper-line
-            @include transform(scaleX(1))
+    &__mark-as-correct-ans-bttn
+        background-color: #f8f5fd
+        color: $color-primary
+        margin-bottom: 15px
+        @include custom_breakpoint(460)
+            margin-bottom: 0
+            margin-right: 20px
+        &:hover
+            background-color: #f3eff9
+    &__reset-question-bttn
+        background-color: #fff2f2
+        color: #fd2f2f
+        &:hover
+            background-color: #ffe4e4
     &__answer-preview
         margin-top: 25px
         &-note
@@ -472,6 +530,9 @@
             height: 140px
             @include brk_md
                 width: 50%
+    &__answer-key
+        @extend %font-bold
+        margin-top: 10px
     &__attachment-wrapper
         input[type="file"]
             display: none
@@ -507,7 +568,7 @@
         background-color: #7f2aff
         color: white
         padding: 7px 12px
-        font-size: 14px
+        font-size: 12px
         margin-bottom: 10px
         &:hover
             background-color: #7622f5
@@ -546,7 +607,182 @@
             @include transform(translateY(-50%) rotate(45deg))
         &::after
             @include transform(translateY(-50%) rotate(-45deg))
-
+    &__bttn-controls
+        margin-top: 18px
+        margin-bottom: 10px
+        position: relative
+        z-index: 1
+        max-width: 210px
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        overflow: hidden
+    &__bttn-checkbox
+        padding: 10px
+        font-family: inherit
+        @extend %font-bold
+        color: #7f2aff
+        background-color: transparent
+        transition: color .6s linear
+        &:hover
+            color: $color-new-secondary
+        &:focus
+            outline: none
+    &__bttn-checkbox-bg
+        background-color: $color-primary
+        top: 0
+        left: 0
+        height: 100%
+        position: absolute
+        z-index: -1
+        transition: all .6s linear
+    &__checkbox-note
+        font-size: 14px
+        @extend %font-bold
+        color: #172239
+    &__ma-wrapper
+        margin-top: 35px
+    &__ma-wrapper-bttn
+        font-family: inherit
+        @extend %font-bold
+        text-transform: uppercase
+        background-color: #fbf8ff
+        color: #7f2aff
+        padding: 10px 20px
+        &:focus
+            outline: none
+            background-color: #f6f0ff
+        &:hover
+            background-color: #f2ebfb
+    &__ma-choice-wrapper
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        margin-bottom: 35px
+    &__ma-checkbox-wrapper
+        position: relative
+        margin-left: 30px
+        input[type="checkbox"]
+            display: none
+        label
+            position: relative
+            cursor: pointer
+            font-size: 14px
+            color: #717171
+            -webkit-user-select: none
+            user-select: none
+            @include custom_breakpoint(600)
+                font-size: 16px
+            &::before
+                content: ''
+                width: 14px
+                height: 14px
+                position: absolute
+                left: -30px
+                top: 0
+                background-color: #ececec
+                border: 2px solid #d0d0d0
+                border-radius: 3px
+                @include transform(translateY(-50%))
+                @include custom_breakpoint(600)
+                    height: 20px
+                    width: 20px
+            &::after
+                content: url("/assets/svgs/icons/Check primary color.svg")
+                width: 8px
+                height: 8px
+                position: absolute
+                left: -27px
+                top: -5px
+                display: none
+                @include transform(translateY(-50%))
+                @include custom_breakpoint(600)
+                    width: 13px
+                    height: 13px
+                    left: -26px
+            &:hover
+                color: $color-primary
+            &:hover::before
+                border-color: $color-primary
+        input[type="checkbox"]:checked
+            + label
+                color: $color-primary
+            + label::before
+                border-color: $color-primary
+            + label::after
+                display: block
+    &__ma-txt-input
+        width: 100%
+        background-color: #f8fbfb
+        @extend %font-semibold
+        padding: 10px 0 7px 10px
+        font-size: 16px
+        border-bottom: 4px solid #172239
+        color: #172239
+        cursor: pointer
+        &:focus
+            outline: none
+            cursor: auto
+            + .task-create__ma-checkinput-wrapper-line
+                @include transform(scaleX(1))
+    &__ma-checkinput-wrapper
+        width: 100%
+        position: relative
+    &__ma-checkinput-wrapper-line
+        width: 100%
+        height: 4px
+        position: absolute
+        background-color: $color-primary
+        bottom: 0
+        left: 0
+        transition: transform .3s linear
+        @include transform(scaleX(0))
+        -webkit-transform-origin: center
+        transform-origin: center
+    &__choice-close-bttn
+        width: 30px
+        height: 30px
+        background-color: #f1f7f7
+        border-radius: 100%
+        margin: 0 10px
+        overflow: hidden
+        padding: 0
+        &:hover
+            background-color: #e5d4ff
+            > span::before,
+            > span::after
+                background-color: $color-primary
+        &:focus
+            outline: none
+    &__choice-close-bttn-line
+        position: relative
+        display: block
+        width: 100%
+        height: 100%
+        background-color: inherit
+        &::before,
+        &::after
+            content: ""
+            position: absolute
+            width: 3px
+            height: 60%
+            background-color: #172239
+            border-radius: 10px
+        &::before
+            @include transform(rotate(45deg))
+            top: 6px
+            left: 13px
+        &::after
+            @include transform(rotate(-45deg))
+            top: 6px
+            left: 13px
+    &__checkbox-img-wrapper
+        width: 150px
+        cursor: pointer
+    &__checkbox-img
+        width: 100%
+        border: 3px solid #172239
+        border-radius: 15px
     //TIMER
     &__options-timer-wrapper
         @extend %display_flex

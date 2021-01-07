@@ -32,7 +32,7 @@ p;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</
                 <div class="sign-in__form-wrapper">
                     @include('partials.flash message.error')
                     @if(Session::get('email'))
-                        <p class="flash--error">{{ Session::get('email') }}, <a href="{{route('resend.verification.link')}}" class="sign-in__resend-email-link">Click me to resend link</a></p>
+                        <p class="flash--error">{{ Session::get('email') }}, <a href="#" class="sign-in__resend-email-link">Click here to send email</a></p>
                     @endif
                     <p class="sign-in__email-success js-txt-notif"></p>
                     <div class="form--primary">

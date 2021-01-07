@@ -17,7 +17,7 @@
     <main class="main-content">
         <h1>Almost there, <span class="user-name">{{ucfirst($email_data['fname'])}}!</span></h1>
         <p class="mail-text">Your online microsystem that suits your needs, you have to verify your identity by clicking the button below and this will redirect you back to our site.</p>
-        <a href="{{route('getUserVerified',$email_data['verification_url'])}}" class="mail-link">Click me to verify</a>
+        <a href="{{route('getUserVerified',$email_data['verification_url'])}}" class="mail-link" style="color:white;">Click me to verify</a>
         <p class="mail-note">Note: This is an automated message please do not respond to it. Contact our email support instead at <span class="mail-email-support">customer-support@microstud-e.com</span> for further assistance, thank you.</p>
     </main>
 </body>

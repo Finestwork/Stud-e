@@ -168,6 +168,29 @@ class UploadController extends Controller
         }
         return $request->all();
     }
+    public function uploadCheckboxPicture(Request $request) {
+        $authorID = Auth::guard('teacher')->id();
+        $files = $request->file('file');
+        $classUrl = $request->input('classUrl');
+
+        $fileNewName = sha1(date("m-d-Y H:i:s.u").$files->getClientOriginalName()).'.'.$files->getClientOriginalExtension();
+        Storage::put('public/img/'. $fileNewName, file_get_contents($files));
+        $path = '/storage/img/'. $fileNewName;
+        $imgStorage = new ImageStorage();
+        $imgStorage->storage_path = $path;
+        $imgStorage->original_path = 'public/img/'. $fileNewName;
+        $imgStorage->teacher_id = $authorID;
+        $imgStorage->hashed_name = $fileNewName;
+        $imgStorage->original_name = $files->getClientOriginalName();
+        if($imgStorage->save()){
+            return json_encode([
+                'success'=>true,
+                'imageID'=>$imgStorage->id,
+                'storagePath'=>$imgStorage->storage_path
+            ], 200);
+        }
+        return $request->all();
+    }
     public function deleteTaskPicture(Request $request) {
         $validator = Validator::make($request->all(), [
            'path' => 'required'
@@ -184,6 +207,26 @@ class UploadController extends Controller
         }
         //return json_encode(['success'=>false], 500);
         return $request->all();
+    }
+    public function deleteMultiplePictures(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'data' => 'required'
+        ]);
+        if(!$validator->fails()){
+            $path = $request->input('data');
+            foreach($path as $pt){
+                $userID = Auth::guard('teacher')->id();
+                $doesIDMatch = ImageStorage::where([['teacher_id', $userID], ['storage_path', $pt]])->get()->first();
+                if(Storage::delete(stripcslashes($doesIDMatch->original_path))) {
+                    if (!$doesIDMatch->delete()) {
+                        return json_encode(['success' => false], 500);
+                    }
+                }else{
+                    return json_encode(['success' => false], 500);
+                }
+            }
+        }
+        return json_encode(['success' => true], 500);
     }
 
     protected function isDocumentValid($str){

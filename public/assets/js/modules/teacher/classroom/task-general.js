@@ -15,7 +15,7 @@ function addEventInputFile(){
         });
     }
 }
-function  addAttachmentPicture() {
+function addAttachmentPicture() {
     let attachmentPictureBttns = document.querySelectorAll('.task-create__attach-bttn')
     if(attachmentPictureBttns){
         attachmentPictureBttns.forEach(el=>{

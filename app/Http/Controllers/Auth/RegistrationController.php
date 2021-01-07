@@ -31,30 +31,30 @@ class RegistrationController extends Controller
         return view('auth.register');
     }
 
-    public function showVerificationEmail() {
-        $guards = ['admin', 'teacher', 'student'];
-        foreach ($guards as $guard){
-            if(Auth::guard($guard)->check()){
-                if($user = Auth::guard($guard)->user()){
-                    return view('auth.verify', ['user'=>$user]);
-                }
-            }
-        }
-        return view('auth.register');
-    }
-    public function showSubscriptionForm() {
-        return view('auth.subscription');
-    }
 
     public function verifiedUser($url) {
-        if(Auth::guard('student')->check()){
-            $userID = Auth::guard('student')->id();
-            $currentUser = Student::findOrFail((int) $userID);
-            if($currentUser->verification_url === $url){
-                $currentUser->verified_at = now();
-                $currentUser->is_verified = 1;
-                if($currentUser->save()){
-                    Auth::guard('student')->login($currentUser, true);
+        if(Auth::guard('teacher')->check()){
+            Auth::guard('teacher')->logout();
+        }else if(Auth::guard('student')->check()){
+            Auth::guard('student')->logout();
+        }
+        $isFound = Teacher::where('verification_url', $url)->get()->first();
+        if($isFound){
+            $isFound = Teacher::findOrFail($isFound->id);
+            $isFound->verified_at = now();
+            $isFound->is_verified = 1;
+                if($isFound->save()){
+                    Auth::guard('teacher')->login($isFound, true);
+                    return view('auth.subscription');
+                }
+        }else{
+            $isFound = Student::where('verification_url', $url)->get()->first();
+            if($isFound){
+                $isFound = Student::findOrFail($isFound->id);
+                $isFound->verified_at = now();
+                $isFound->is_verified = 1;
+                if($isFound->save()){
+                    Auth::guard('student')->login($isFound, true);
                     return redirect('/student');
                 }
             }
@@ -82,21 +82,20 @@ class RegistrationController extends Controller
             $teacher->email = $request['teacherEmailTxt'];
             $teacher->password = Hash::make($request['teacherPasswordTxt']);
             $teacher->isSubscribed = 0;
+            $teacher->role_id = 2;
             $teacher->is_verified = 0;
             $teacher->verification_url = sha1(time(). strtolower($request['teacherFnameTxt'])).substr(0, 20);
             $teacher->verified_at = "";
-            $teacher->role_id = 2;
             $checkClassCode = $classroom::select('class_code')->where('class_code', $request['teacherClassCodeTxt'])->first();
             if(!$this->isEmailTaken($request['teacherEmailTxt']) && !$checkClassCode){
                 if($teacher->save()){
-                    $user_data = array(
-                        'email' => $request->input('teacherEmailTxt'),
-                        'password' => $request->input('teacherPasswordTxt')
-                    );
-                    if(Auth::guard('teacher')->attempt($user_data)){
-                        $user = Auth::guard('teacher')->user();
-                        return view('auth.verify', ['user'=>$user]);
-                    }
+                    $email_data = [
+                        'fname'=>strtolower($request['teacherFnameTxt']),
+                        'email'=>$request['teacherEmailTxt'],
+                        'verification_url' =>$teacher->verification_url
+                    ];
+                    MailController::sendSignupEmail($email_data);
+                    return view('auth.verify', ['user'=>$teacher]);
                 }
             }
             return redirect()->back()->with('error', 'Something went wrong, please check make sure that all fields are valid.');
@@ -195,18 +194,19 @@ class RegistrationController extends Controller
     }
     public function resendLink(Request $request) {
         $validator = Validator::make($request->all(),[
-           'url'=>'required'
+           'inputUrl'=>'required',
+           'inputName'=>'required',
+           'inputEmail'=>'required'
         ]);
         if(!$validator->fails()){
-            $user = Auth::guard('student')->user();
             $email_data = [
-                'fname'=>$user->f_name,
-                'email'=>$user->email,
-                'verification_url' =>$user->verification_url
+                'fname'=>$request->input('inputName'),
+                'email'=>$request->input('inputEmail'),
+                'verification_url' =>$request->input('inputUrl')
             ];
             MailController::sendSignupEmail($email_data);
-            return json_encode(['success'=>true], 200);
+            return json_encode(['success'=>$email_data], 200);
         }
-        return json_encode(['success'=>false], 500);
+        return json_encode(['success'=> false], 500);
     }
 }

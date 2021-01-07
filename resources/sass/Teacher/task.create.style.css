@@ -2,12 +2,12 @@
   font-weight: 800;
 }
 
-.classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .no-modules, .task-create__add-more-question, .task-create__options-timer-wrapper input[type=number], .task-create__ma-wrapper-bttn, .task-create__checkbox-note, .task-create__bttn-checkbox, .task-create__attach-bttn, .task-create__answer-key, .task-create__answer-preview-note, .task-create__reset-question-bttn, .task-create__mark-as-correct-ans-bttn, .task-create__correct-ans-wrapper input[type=text], .task-create__question-wrapper input[type=text], .task-create__question-how-many-points input[type=number], .task-create__options-radio-bttn-group input[type=text], .task-create__note-emp, .task-create__selection-item, .task-create__selection-txt, .task-create__option-lbl, .task-create__options textarea::placeholder, .task-create__options textarea, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
+.classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .no-modules, .task-create__task-description-group input[type=text], .task-create__add-more-question, .task-create__options-timer-wrapper input[type=number], .task-create__hide-settings-bttn, .task-create__ma-wrapper-bttn, .task-create__checkbox-note, .task-create__bttn-checkbox, .task-create__attach-bttn, .task-create__answer-key, .task-create__answer-preview-note, .task-create__reset-question-bttn, .task-create__mark-as-correct-ans-bttn, .task-create__correct-ans-wrapper input[type=text], .task-create__question-wrapper input[type=text], .task-create__question-how-many-points input[type=number], .task-create__options-radio-bttn-group input[type=text], .task-create__note-emp, .task-create__selection-item, .task-create__selection-txt, .task-create__option-lbl, .task-create__options textarea::placeholder, .task-create__options textarea, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
 .form--secondary__group textarea, .breadcrumbs, .switch__note, .switch__name {
   font-weight: 700;
 }
 
-.task-create__ma-txt-input, .task-create__attachment-wrapper p, .task-create__option-selection-item, .task-create__option-selected-item, .task-create__question-maker-panel textarea, .task-create__note, .task-create__intro-sub-txt, .form--secondary__close-panel, .form--secondary__warning-code, .form--secondary__warning-txt {
+.task-create__ma-txt-input, .task-create__mc-txt-input, .task-create__attachment-wrapper p, .task-create__option-selection-item, .task-create__option-selected-item, .task-create__question-maker-panel textarea, .task-create__note, .task-create__intro-sub-txt, .form--secondary__close-panel, .form--secondary__warning-code, .form--secondary__warning-txt {
   font-weight: 600;
 }
 
@@ -15,7 +15,7 @@ body {
   font-weight: 400;
 }
 
-.classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .no-modules, .task-create__options-timer-wrapper, .task-create__ma-choice-wrapper, .task-create__bttn-controls, .task-create__attachment-area, .task-create__question-bttn-controls, .task-create__question-main-content--top, .task-create__options-radio-bttn-wrapper--inline .task-create__options-cs, .task-create__options-radio-bttn-wrapper--inline, .task-create__options, .task-create__options-wrapper--right, .task-create__options-wrapper--left, .task-create__options-wrapper, .form--secondary__schedule-wrapper, .breadcrumbs, .switch__main, .logo {
+.classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .no-modules, .task-create__bttn-bottom, .task-create__options-timer-wrapper, .task-create__ma-choice-wrapper, .task-create__mc-choice-wrapper, .task-create__bttn-controls, .task-create__attachment-area, .task-create__question-bttn-controls, .task-create__question-main-content--top, .task-create__options-radio-bttn-wrapper--inline .task-create__options-cs, .task-create__options-radio-bttn-wrapper--inline, .task-create__options, .task-create__options-wrapper--right, .task-create__options-wrapper--left, .task-create__options-wrapper, .form--secondary__schedule-wrapper, .breadcrumbs, .switch__main, .logo {
   display: -webkit-flex;
   display: flex;
 }
@@ -1182,10 +1182,12 @@ label {
 }
 .task-create__intro-name {
   font-size: 25px;
+  margin-top: 40px;
 }
 @media only screen and (min-width: 37.5em) {
   .task-create__intro-name {
     font-size: 31.25px;
+    margin-top: 25px;
   }
 }
 .task-create__intro-sub-txt {
@@ -1298,6 +1300,8 @@ label {
   border-radius: 8px;
   display: none;
   z-index: 10;
+  -webkit-flex-direction: column;
+  flex-direction: column;
 }
 .task-create__selection-txt {
   background-color: #ececec;
@@ -1328,6 +1332,9 @@ label {
   color: #a5a3a3;
   font-size: 14px;
   padding: 10px 0;
+  width: 100%;
+  -webkit-user-select: none;
+  user-select: none;
 }
 .task-create__selection-item:hover {
   background-color: #f3ebff;
@@ -1671,7 +1678,8 @@ label {
   background-color: #fbfbfb;
 }
 .task-create__question-how-many-points {
-  margin-top: 20px;
+  margin-top: 40px;
+  margin-bottom: 20px;
   border-top: 2px solid #cfd4d4;
   padding-top: 25px;
 }
@@ -1954,7 +1962,7 @@ label {
   font-size: 14px;
   color: #172239;
 }
-.task-create__ma-wrapper {
+.task-create__ma-wrapper, .task-create__mc-wrapper {
   margin-top: 35px;
 }
 .task-create__ma-wrapper-bttn {
@@ -1971,7 +1979,7 @@ label {
 .task-create__ma-wrapper-bttn:hover {
   background-color: #f2ebfb;
 }
-.task-create__ma-choice-wrapper {
+.task-create__ma-choice-wrapper, .task-create__mc-choice-wrapper {
   -webkit-align-items: center;
   align-items: center;
   margin-bottom: 35px;
@@ -2050,7 +2058,51 @@ label {
 .task-create__ma-checkbox-wrapper input[type=checkbox]:checked + label::after {
   display: block;
 }
-.task-create__ma-txt-input {
+.task-create__mc-checkbox-wrapper {
+  position: relative;
+  margin-left: 10px;
+  min-width: 20px;
+  min-height: 20px;
+}
+.task-create__mc-checkbox-wrapper input[type=radio] {
+  display: none;
+}
+.task-create__mc-checkbox-wrapper label {
+  border: 2px solid #172239;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+  border-radius: 100%;
+  cursor: pointer;
+}
+.task-create__mc-checkbox-wrapper label::before {
+  content: "";
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #7F2AFF;
+  left: 8px;
+  top: 2px;
+  display: none;
+  -webkit-transform: translate(-50%);
+  -ms-transform: translate(-50%);
+  transform: translate(-50%);
+  border-radius: 100%;
+}
+.task-create__mc-checkbox-wrapper input[type=radio]:checked + label {
+  border-color: #7F2AFF;
+}
+.task-create__mc-checkbox-wrapper input[type=radio]:checked + label::before {
+  display: block;
+  border-color: #7F2AFF;
+}
+.task-create__ma-txt-input, .task-create__mc-txt-input {
   width: 100%;
   background-color: #f8fbfb;
   padding: 10px 0 7px 10px;
@@ -2059,20 +2111,20 @@ label {
   color: #172239;
   cursor: pointer;
 }
-.task-create__ma-txt-input:focus {
+.task-create__ma-txt-input:focus, .task-create__mc-txt-input:focus {
   outline: none;
   cursor: auto;
 }
-.task-create__ma-txt-input:focus + .task-create__ma-checkinput-wrapper-line {
+.task-create__ma-txt-input:focus + .task-create__ma-checkinput-wrapper-line, .task-create__mc-txt-input:focus + .task-create__ma-checkinput-wrapper-line {
   -webkit-transform: scaleX(1);
   -ms-transform: scaleX(1);
   transform: scaleX(1);
 }
-.task-create__ma-checkinput-wrapper {
+.task-create__ma-checkinput-wrapper, .task-create__mc-checkinput-wrapper {
   width: 100%;
   position: relative;
 }
-.task-create__ma-checkinput-wrapper-line {
+.task-create__ma-checkinput-wrapper-line, .task-create__mc-checkinput-wrapper-line {
   width: 100%;
   height: 4px;
   position: absolute;
@@ -2143,6 +2195,23 @@ label {
   border: 3px solid #172239;
   border-radius: 15px;
 }
+.task-create__hide-settings-bttn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 25px;
+  font-family: inherit;
+  text-transform: uppercase;
+  background-color: #9959f9;
+  color: white;
+  border-bottom-left-radius: 15px;
+}
+.task-create__hide-settings-bttn:hover {
+  background-color: #7F2AFF;
+}
+.task-create__hide-settings-bttn:focus {
+  outline: none;
+}
 .task-create__options-timer-wrapper input[type=number] {
   width: 75px;
   border: none;
@@ -2168,7 +2237,7 @@ label {
 }
 .task-create__add-more-question {
   width: 100%;
-  margin: 35px auto 10px auto;
+  margin: 0;
   background-color: #7f2aff;
   color: white;
   font-family: inherit;
@@ -2180,10 +2249,8 @@ label {
 }
 @media only screen and (min-width: 48em) {
   .task-create__add-more-question {
-    width: 60%;
+    width: 18%;
     font-size: 14px;
-    padding: 15px 0;
-    margin-top: 50px;
   }
 }
 .task-create__add-more-question:focus {
@@ -2207,13 +2274,21 @@ label {
   background-color: #f7f7f7;
   margin-top: 10px;
   height: 40px;
+  width: 100%;
+  border: none;
+  font-family: inherit;
+  padding-left: 10px;
   border-bottom: 4px solid #717171;
 }
 .task-create__task-description-group input[type=text]:focus {
   outline: none;
   border-color: #7F2AFF;
   color: #7F2AFF;
-  background-color: #f2e9ff;
+}
+.task-create__bttn-bottom {
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  margin-bottom: 50px;
 }
 
 .no-mb-submission {

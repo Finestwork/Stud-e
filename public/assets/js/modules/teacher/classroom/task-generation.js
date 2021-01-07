@@ -1,12 +1,13 @@
 let taskIntroWrapper = document.querySelector('.task-create__intro');
-
 //DROPDOWN INTRO
 let taskSelectionDrpdwn = taskIntroWrapper.querySelector('.js-task-dropdown'),
     taskSelectionItems = taskIntroWrapper.querySelector('.js-task-dropdown-items'),
     taskTypeSelectionDrpdwn = taskIntroWrapper.querySelector('.js-type-task-dropdown'),
     taskTypeSelectionItems = taskIntroWrapper.querySelector('.js-type-task-dropdown-items');
 
-let taskTypeSelectionItem = taskTypeSelectionDrpdwn.parentNode.querySelectorAll('.task-create__selection-item');
+let taskTypeSelectionItem = taskTypeSelectionDrpdwn.parentNode.querySelectorAll('.task-create__selection-item'),
+    taskModuleSelection = document.querySelectorAll('.js-modules-selection');
+
 let taskTypeSelectionDrpdwnParent = taskTypeSelectionDrpdwn.parentNode,
     taskSelectionDrpdwnParent = taskSelectionDrpdwn.parentNode;
 
@@ -17,7 +18,12 @@ let radioSubmissionBttn1 = document.getElementById('radioSubmissionBttn1'),
     radioSubmissionBttn2 = document.getElementById('radioSubmissionBttn2'),
     radioSubmissionBttn3 = document.getElementById('radioSubmissionBttn3'),
     radioSubmissionOthers = document.getElementById('radioSubmissionOthers'),
-    customerSubmissionAttemptTxt = document.getElementById('customerSubmissionAttemptTxt');
+    customerSubmissionAttemptTxt = document.getElementById('customerSubmissionAttemptTxt'),
+    cheatingAttempTxt = document.getElementById('cheatingAttemptTxt');
+let radioCheatingBttn1 = document.getElementById('radioCheatingBttn1'),
+    radioCheatingBttn2 = document.getElementById('radioCheatingBttn2'),
+    radioCheatingBttn3 = document.getElementById('radioCheatingBttn3'),
+    radioCheatingOthersBttm = document.getElementById('radioCheatingOthersBttn');
 
 let hourTxt = document.getElementById('hourTimerTxt'),
     minuteTxt = document.getElementById('minuteTimerTxt');
@@ -42,10 +48,34 @@ let config = {
         step: 1
     }
 }
-let isOthersSubmissionClicked = false, isShowAnswerOptionBttnClicked = false;
+let isOthersSubmissionClicked = false, isCheatingAttemptClicked = false,isShowAnswerOptionBttnClicked = false;
 
 let taskDropdownCtr = 0, taskTypeDropdownCtr = 0;
 let deadlinePicker = new MtrDatepicker(config);
+
+let timedRadBttn = document.getElementById('yesRadBttn'),
+    noRadBttn = document.getElementById('noRadBttn'),
+    quizTimerWrapper = document.querySelector('.js-quiz-timer-wrapper');
+let hideSettingsBttn = document.querySelector('.js-hide-settings');
+
+let isSettingsHidden = false;
+hideSettingsBttn.addEventListener('click', e=>{
+    let current = e.currentTarget;
+    if(!isSettingsHidden){
+        current.parentNode.style.height = '0';
+        current.style.paddingTop = '5px';
+        current.style.paddingBottom = '5px';
+        hideSettingsBttn.textContent = 'Show Settings';
+        isSettingsHidden = true;
+    }else{
+        current.parentNode.style.height = null;
+        isSettingsHidden = false;
+        current.style.paddingTop = '10px';
+        current.style.paddingBottom = '10px';
+        hideSettingsBttn.textContent = 'Hide Settings';
+    }
+
+});
 
 dateTxt.textContent = deadlinePicker.format('MMM DD, YYYY');
 timeTxt.textContent = deadlinePicker.format('h:mm A');
@@ -57,6 +87,11 @@ if(taskTypeSelectionItem){
 if(showAnswerOptionBttn){
     showAnswerOptionBttn.forEach(el=>{
         el.addEventListener('click', showSelectionAnswerType);
+    });
+}
+if(taskModuleSelection){
+    taskModuleSelection.forEach(el =>{
+        el.addEventListener('click', getSelectedModule);
     });
 }
 if(selectionAnswerList){
@@ -118,6 +153,39 @@ radioSubmissionOthers.addEventListener('click', ()=>{
     }
 });
 
+radioCheatingBttn1.addEventListener('click', ()=>{
+    if(isCheatingAttemptClicked){
+        isCheatingAttemptClicked = false;
+        cheatingAttempTxt.disabled = true;
+        cheatingAttempTxt.style.cursor = 'not-allowed';
+        cheatingAttempTxt.value = '';
+    }
+});
+radioCheatingBttn2.addEventListener('click', ()=>{
+    if(isCheatingAttemptClicked){
+        isCheatingAttemptClicked = false;
+        cheatingAttempTxt.disabled = true;
+        cheatingAttempTxt.style.cursor = 'not-allowed';
+        cheatingAttempTxt.value = '';
+    }
+});
+radioCheatingBttn3.addEventListener('click', ()=>{
+    if(isCheatingAttemptClicked){
+        isCheatingAttemptClicked = false;
+        cheatingAttempTxt.disabled = true;
+        cheatingAttempTxt.style.cursor = 'not-allowed';
+        cheatingAttempTxt.value = '';
+    }
+});
+radioCheatingOthersBttm.addEventListener('click', ()=>{
+    if(!isCheatingAttemptClicked){
+        isCheatingAttemptClicked = true;
+        cheatingAttempTxt.disabled = false;
+        cheatingAttempTxt.style.cursor = 'auto';
+        cheatingAttempTxt.focus();
+    }
+});
+
 //ON CHANGE
 deadlinePicker.onChange('all', function() {
     let date = deadlinePicker.format('MMM DD, YYYY');
@@ -129,7 +197,7 @@ deadlinePicker.onChange('all', function() {
 });
 hourTxt.addEventListener('keyup', acceptNumbersOnly);
 hourTxt.onchange = (e)=>{
-    if(parseInt(e.currentTarget.value) === 1){
+    if(parseInt(e.currentTarget.value) <= 1){
         e.currentTarget.nextElementSibling.textContent = 'hour';
     }else{
         e.currentTarget.nextElementSibling.textContent = 'hours';
@@ -143,7 +211,17 @@ minuteTxt.onchange = (e)=>{
         e.currentTarget.nextElementSibling.textContent = 'minutes';
     }
 }
-
+timedRadBttn.onchange = (e)=>{
+    quizTimerWrapper.style.display = '-webkit-flex';
+    quizTimerWrapper.style.display = 'flex';
+}
+noRadBttn.onchange = (e)=>{
+    quizTimerWrapper.style.display = 'none';
+    let input = quizTimerWrapper.querySelectorAll('input[type="number"]');
+    for(let i = 0; i<input.length; i++){
+        input[i].value = "";
+    }
+}
 //ON BLUR
 customerSubmissionAttemptTxt.onblur = function (){
     if(parseInt(this.value) === 1){
@@ -157,6 +235,18 @@ customerSubmissionAttemptTxt.onblur = function (){
         this.value = '';
     }
 }
+cheatingAttempTxt.onblur = function (){
+    if(parseInt(this.value) === 1){
+        radioCheatingBttn1.click();
+        this.value = '';
+    }else if(parseInt(this.value) === 2){
+        radioCheatingBttn2.click();
+        this.value = '';
+    }else if(parseInt(this.value) === 3){
+        radioCheatingBttn3.click();
+        this.value = '';
+    }
+}
 //DOM HELPERS
 function getSelectedTaskItem(e){
     taskTypeSelectionDrpdwn.textContent = e.currentTarget.textContent;
@@ -165,6 +255,12 @@ function getSelectedTaskItem(e){
     });
     taskTypeSelectionItems.style.display = null;
     taskTypeDropdownCtr = 0;
+}
+function getSelectedModule(e){
+    let selectedTxt = e.currentTarget.parentNode.parentNode.querySelector('.task-create__selection-txt');
+    selectedTxt.textContent = e.currentTarget.textContent;
+    selectedTxt.setAttribute('data-module-id', e.currentTarget.getAttribute('data-module-id'));
+    e.currentTarget.parentNode.style.display = null;
 }
 function showSelectionAnswerType(e){
     let nextEl = e.currentTarget.nextElementSibling;
@@ -178,3 +274,9 @@ function showSelectionAnswerType(e){
         isShowAnswerOptionBttnClicked = false;
     }
 }
+function getFileExtension(file){
+    return file.name.substring(file.name.lastIndexOf('.') + 1)
+}
+
+
+//BEFORE REMOVING THE QUESTION PANEL REMOVE THE PICTURES FIRST

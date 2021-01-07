@@ -22,7 +22,8 @@ class UploadController extends Controller
             $path = null;
             foreach ($files as $file){
                 $fileNewName = sha1(date("m-d-Y H:i:s.u").$file->getClientOriginalName()).'.'.$file->getClientOriginalExtension();
-                if(substr($file->getMimeType(), 0, 5) == 'image'){
+                if($file->getMimeType() == 'image/gif' || $file->getMimeType() == 'image/png'
+                    || $file->getMimeType() == 'image/jpeg' || $file->getMimeType() == 'image/pjpeg'){
                     Storage::put('public/img/'. $fileNewName, file_get_contents($file));
                     $path = '/storage/img/'. $fileNewName;
                     $imgStorage = new ImageStorage();
@@ -35,7 +36,9 @@ class UploadController extends Controller
                         return json_encode(['success'=>true, 'path'=>$path,'type'=>'image', 'id'=>$imgStorage->id], 200);
                     }
                 }
-                if(substr($file->getMimeType(), 0, 5) == 'audio'){
+                if($file->getMimeType() == 'audio/wav' || $file->getMimeType() == 'audio/x-wav'
+                    || $file->getMimeType() == 'audio/mpeg3' || $file->getMimeType() == 'audio/x-mpeg-3'
+                    || $file->getMimeType() == 'audio/mpeg'){
                     Storage::put('public/audio/'.$fileNewName, file_get_contents($file));
                     $path = '/storage/audio/'.$fileNewName;
                     $audioStorage = new AudioStorage();
@@ -148,48 +151,52 @@ class UploadController extends Controller
         $files = $request->file('file');
         $orderID = $request->input('orderID');
         $classUrl = $request->input('classUrl');
-
-        $fileNewName = sha1(date("m-d-Y H:i:s.u").$files->getClientOriginalName()).'.'.$files->getClientOriginalExtension();
-        Storage::put('public/img/'. $fileNewName, file_get_contents($files));
-        $path = '/storage/img/'. $fileNewName;
-        $imgStorage = new ImageStorage();
-        $imgStorage->storage_path = $path;
-        $imgStorage->original_path = 'public/img/'. $fileNewName;
-        $imgStorage->teacher_id = $authorID;
-        $imgStorage->hashed_name = $fileNewName;
-        $imgStorage->original_name = $files->getClientOriginalName();
-        if($imgStorage->save()){
-            return json_encode([
-                'success'=>true,
-                'orderID'=> $orderID,
-                'imageID'=>$imgStorage->id,
-                'storagePath'=>$imgStorage->storage_path
-            ], 200);
+        if($files->getMimeType() == 'image/gif' || $files->getMimeType() == 'image/png'
+            || $files->getMimeType() == 'image/jpeg' || $files->getMimeType() == 'image/pjpeg'){
+            $fileNewName = sha1(date("m-d-Y H:i:s.u").$files->getClientOriginalName()).'.'.$files->getClientOriginalExtension();
+            Storage::put('public/img/'. $fileNewName, file_get_contents($files));
+            $path = '/storage/img/'. $fileNewName;
+            $imgStorage = new ImageStorage();
+            $imgStorage->storage_path = $path;
+            $imgStorage->original_path = 'public/img/'. $fileNewName;
+            $imgStorage->teacher_id = $authorID;
+            $imgStorage->hashed_name = $fileNewName;
+            $imgStorage->original_name = $files->getClientOriginalName();
+            if($imgStorage->save()){
+                return json_encode([
+                    'success'=>true,
+                    'orderID'=> $orderID,
+                    'imageID'=>$imgStorage->id,
+                    'storagePath'=>$imgStorage->storage_path
+                ], 200);
+            }
         }
-        return $request->all();
+        return json_encode(['success'=>false], 500);
     }
     public function uploadCheckboxPicture(Request $request) {
         $authorID = Auth::guard('teacher')->id();
         $files = $request->file('file');
         $classUrl = $request->input('classUrl');
-
-        $fileNewName = sha1(date("m-d-Y H:i:s.u").$files->getClientOriginalName()).'.'.$files->getClientOriginalExtension();
-        Storage::put('public/img/'. $fileNewName, file_get_contents($files));
-        $path = '/storage/img/'. $fileNewName;
-        $imgStorage = new ImageStorage();
-        $imgStorage->storage_path = $path;
-        $imgStorage->original_path = 'public/img/'. $fileNewName;
-        $imgStorage->teacher_id = $authorID;
-        $imgStorage->hashed_name = $fileNewName;
-        $imgStorage->original_name = $files->getClientOriginalName();
-        if($imgStorage->save()){
-            return json_encode([
-                'success'=>true,
-                'imageID'=>$imgStorage->id,
-                'storagePath'=>$imgStorage->storage_path
-            ], 200);
+        if($files->getMimeType() == 'image/gif' || $files->getMimeType() == 'image/png'
+            || $files->getMimeType() == 'image/jpeg' || $files->getMimeType() == 'image/pjpeg'){
+            $fileNewName = sha1(date("m-d-Y H:i:s.u").$files->getClientOriginalName()).'.'.$files->getClientOriginalExtension();
+            Storage::put('public/img/'. $fileNewName, file_get_contents($files));
+            $path = '/storage/img/'. $fileNewName;
+            $imgStorage = new ImageStorage();
+            $imgStorage->storage_path = $path;
+            $imgStorage->original_path = 'public/img/'. $fileNewName;
+            $imgStorage->teacher_id = $authorID;
+            $imgStorage->hashed_name = $fileNewName;
+            $imgStorage->original_name = $files->getClientOriginalName();
+            if($imgStorage->save()){
+                return json_encode([
+                    'success'=>true,
+                    'imageID'=>$imgStorage->id,
+                    'storagePath'=>$imgStorage->storage_path
+                ], 200);
+            }
         }
-        return $request->all();
+        return json_encode(['success'=>false], 500);
     }
     public function deleteTaskPicture(Request $request) {
         $validator = Validator::make($request->all(), [

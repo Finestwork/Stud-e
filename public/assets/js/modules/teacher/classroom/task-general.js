@@ -39,36 +39,92 @@ function createAttachElement(input){
         files = input.files,
         attachmentWrapper = targetedInput.parentNode,
         attachmentArea = attachmentWrapper.querySelector('.task-create__attachment-area');
-    for(let i = 0; i < files.length; i++){
-        let attachmentHolder = document.createElement('DIV'),
-            attachmentBox = document.createElement('DIV'),
-            attachmentImg = document.createElement('IMG'),
-            attachmentDelBttn = document.createElement('BUTTON'),
-            attachmentDelBttnLine = document.createElement('SPAN');
+    let whatAttachment = targetedInput.parentNode.parentNode.parentNode.querySelector('.task-create__option-selected-item').getAttribute('data-question-type');
+    if(whatAttachment === 'ao'){
+        for (let i = 0; i < files.length; i++){
+            let extensionName = getFileExtension(files[i]);
+            if(extensionName === 'gif' || extensionName === 'jpeg' || extensionName === 'jpg'){
+                let attachmentHolder = document.createElement('DIV'),
+                    attachmentBox = document.createElement('DIV'),
+                    attachmentImg = document.createElement('IMG'),
+                    attachmentDelBttn = document.createElement('BUTTON'),
+                    attachmentDelBttnLine = document.createElement('SPAN');
 
-        attachmentDelBttnLine.classList.add('task-create__attachment-bttn-line-wrapper');
-        attachmentDelBttn.classList.add('task-create__attachment-remove-bttn', 'bttn');
-        attachmentDelBttn.setAttribute('type', 'button');
-        attachmentDelBttn.disabled = true;
-        attachmentDelBttn.style.display = 'none';
-        attachmentDelBttn.append(attachmentDelBttnLine);
-        attachmentBox.classList.add('task-create__attachment-box');
-        attachmentImg.classList.add('img-fluid');
+                attachmentDelBttnLine.classList.add('task-create__attachment-bttn-line-wrapper');
+                attachmentDelBttn.classList.add('task-create__attachment-remove-bttn', 'bttn');
+                attachmentDelBttn.setAttribute('type', 'button');
+                attachmentDelBttn.disabled = true;
+                attachmentDelBttn.style.display = 'none';
+                attachmentDelBttn.append(attachmentDelBttnLine);
+                attachmentBox.classList.add('task-create__attachment-box');
+                attachmentImg.classList.add('img-fluid');
 
-        const reader = new FileReader();
-        reader.addEventListener('load', function(){
-            attachmentImg.setAttribute('src', this.result);
-            attachmentImg.setAttribute('alt', 'Uploaded image');
-        });
-        reader.readAsDataURL(files[i]);
+                const reader = new FileReader();
+                reader.addEventListener('load', function(){
+                    attachmentImg.setAttribute('src', this.result);
+                    attachmentImg.setAttribute('alt', 'Uploaded image');
+                });
+                reader.readAsDataURL(files[i]);
 
-        attachmentBox.append(attachmentImg);
-        attachmentHolder.classList.add('task-create__attachment-holder', 'show-loading');
-        attachmentHolder.append(attachmentBox, attachmentDelBttn);
-        attachmentArea.appendChild(attachmentHolder);
+                attachmentBox.append(attachmentImg);
+                attachmentHolder.classList.add('task-create__attachment-holder', 'show-loading');
+                attachmentHolder.append(attachmentBox, attachmentDelBttn);
+                attachmentArea.appendChild(attachmentHolder);
+            }else if(extensionName === 'png' || extensionName === 'pdf'
+            || extensionName === 'doc' || extensionName === 'docx'){
+                let attachmentHolder = document.createElement('DIV'),
+                    attachmentBox = document.createElement('DIV'),
+                    attachmentTxt = document.createElement('P');
+
+                attachmentBox.classList.add('task-create__attachment-box');
+                attachmentTxt.textContent = files[i].name;
+
+                attachmentBox.append(attachmentTxt);
+                attachmentHolder.classList.add('task-create__attachment-holder', 'show-loading');
+                attachmentHolder.append(attachmentBox);
+                attachmentArea.appendChild(attachmentHolder);
+            }
+            targetedInput.value = "";
+            removeAttachedPicture();
+            }
+    }else{
+        for(let i = 0; i < files.length; i++){
+            let extensionName = getFileExtension(files[i]);
+            if(extensionName === 'png' ||extensionName === 'gif' || extensionName === 'jpg' ||
+                extensionName === 'jpeg' ){
+                let attachmentHolder = document.createElement('DIV'),
+                    attachmentBox = document.createElement('DIV'),
+                    attachmentImg = document.createElement('IMG'),
+                    attachmentDelBttn = document.createElement('BUTTON'),
+                    attachmentDelBttnLine = document.createElement('SPAN');
+
+                attachmentDelBttnLine.classList.add('task-create__attachment-bttn-line-wrapper');
+                attachmentDelBttn.classList.add('task-create__attachment-remove-bttn', 'bttn');
+                attachmentDelBttn.setAttribute('type', 'button');
+                attachmentDelBttn.disabled = true;
+                attachmentDelBttn.style.display = 'none';
+                attachmentDelBttn.append(attachmentDelBttnLine);
+                attachmentBox.classList.add('task-create__attachment-box');
+                attachmentImg.classList.add('img-fluid');
+
+                const reader = new FileReader();
+                reader.addEventListener('load', function(){
+                    attachmentImg.setAttribute('src', this.result);
+                    attachmentImg.setAttribute('alt', 'Uploaded image');
+                });
+                reader.readAsDataURL(files[i]);
+
+                attachmentBox.append(attachmentImg);
+                attachmentHolder.classList.add('task-create__attachment-holder', 'show-loading');
+                attachmentHolder.append(attachmentBox, attachmentDelBttn);
+                attachmentArea.appendChild(attachmentHolder);
+            }
+            targetedInput.value = "";
+            removeAttachedPicture();
+        }
     }
-    targetedInput.value = "";
-    removeAttachedPicture();
+
+
 }
 
 //FILES UPLOADING
@@ -152,10 +208,6 @@ function removePicture(e){
         console.log(error);
     });
 }
-
-
-
-
 
 
 

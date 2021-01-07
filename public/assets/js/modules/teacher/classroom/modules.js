@@ -1148,7 +1148,7 @@ function deleteFileEdit(e){
 }
 function resendFile(e){
     let node = e.currentTarget;
-    let index = Array.from(node.parentNode.parentNode.children).indexOf(node.parentNode) - 2;
+    let index = Array.from(node.parentNode.parentNode.children).indexOf(node.parentNode) - 4;
     node.parentNode.classList.remove('upload-error');
     let percentageTxt = node.parentNode.querySelector('.modules__dropped-percentage');
     let resendBttn = node.parentNode.querySelector('.js-resend-file');
@@ -1158,6 +1158,7 @@ function resendFile(e){
     sendAgain(index);
 }
 function sendAgain(index){
+    console.log(index);
     let loaderTxts = dropZone.parentNode.querySelectorAll('.modules__dropped-percentage');
     let loaderIndicators = dropZone.parentNode.querySelectorAll('.modules__dropped-progress-bar-image');
     let droppedFilesWrapper = dropZone.parentNode.querySelectorAll('.modules__dropped-files');
@@ -1193,7 +1194,6 @@ function sendAgain(index){
                     }
                 }
             }
-
         }
     });
 

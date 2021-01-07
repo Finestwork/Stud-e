@@ -21,8 +21,10 @@
                 width: 10px
         &-name
             font-size: 25px
+            margin-top: 40px
             @include custom_breakpoint(600)
                 font-size: 31.25px
+                margin-top: 25px
         &-sub-txt
             font-size: 14px
             @extend %font-semibold
@@ -114,6 +116,8 @@
         border-radius: 8px
         display: none
         z-index: 10
+        -webkit-flex-direction: column
+        flex-direction: column
     &__selection-txt
         background-color: #ececec
         padding: 5px 10px
@@ -143,6 +147,9 @@
         color: #a5a3a3
         font-size: 14px
         padding: 10px 0
+        width: 100%
+        -webkit-user-select: none
+        user-select: none
         &:hover
             background-color: #f3ebff
             color: $color-primary
@@ -410,7 +417,8 @@
             background-color: #fbfbfb
     //BOTTOM
     &__question-how-many-points
-        margin-top: 20px
+        margin-top: 40px
+        margin-bottom: 20px
         border-top: 2px solid #cfd4d4
         padding-top: 25px
         label
@@ -640,7 +648,8 @@
         font-size: 14px
         @extend %font-bold
         color: #172239
-    &__ma-wrapper
+    &__ma-wrapper,
+    &__mc-wrapper
         margin-top: 35px
     &__ma-wrapper-bttn
         font-family: inherit
@@ -654,7 +663,8 @@
             background-color: #f6f0ff
         &:hover
             background-color: #f2ebfb
-    &__ma-choice-wrapper
+    &__ma-choice-wrapper,
+    &__mc-choice-wrapper
         @extend %display_flex
         -webkit-align-items: center
         align-items: center
@@ -711,7 +721,44 @@
                 border-color: $color-primary
             + label::after
                 display: block
-    &__ma-txt-input
+    &__mc-checkbox-wrapper
+        position: relative
+        margin-left: 10px
+        min-width: 20px
+        min-height: 20px
+        input[type="radio"]
+            display: none
+        label
+            border: 2px solid #172239
+            width: 100%
+            height: 100%
+            display: block
+            position: absolute
+            left: 0
+            top: 0
+            @include transform(translate(-50%))
+            border-radius: 100%
+            cursor: pointer
+            &::before
+                content: ""
+                position: absolute
+                width: 12px
+                height: 12px
+                background-color: $color-primary
+                left: 8px
+                top: 2px
+                display: none
+                @include transform(translate(-50%))
+                border-radius: 100%
+        input[type="radio"]:checked
+            + label
+                border-color: $color-primary
+            + label::before
+                display: block
+                border-color: $color-primary
+
+    &__ma-txt-input,
+    &__mc-txt-input
         width: 100%
         background-color: #f8fbfb
         @extend %font-semibold
@@ -725,10 +772,12 @@
             cursor: auto
             + .task-create__ma-checkinput-wrapper-line
                 @include transform(scaleX(1))
-    &__ma-checkinput-wrapper
+    &__ma-checkinput-wrapper,
+    &__mc-checkinput-wrapper
         width: 100%
         position: relative
-    &__ma-checkinput-wrapper-line
+    &__ma-checkinput-wrapper-line,
+    &__mc-checkinput-wrapper-line
         width: 100%
         height: 4px
         position: absolute
@@ -783,6 +832,21 @@
         width: 100%
         border: 3px solid #172239
         border-radius: 15px
+    &__hide-settings-bttn
+        position: absolute
+        top: 0
+        right: 0
+        padding: 10px 25px
+        font-family: inherit
+        @extend %font-bold
+        text-transform: uppercase
+        background-color: #9959f9
+        color: white
+        border-bottom-left-radius: 15px
+        &:hover
+            background-color: $color-primary
+        &:focus
+            outline: none
     //TIMER
     &__options-timer-wrapper
         @extend %display_flex
@@ -808,7 +872,7 @@
         margin-right: 25px
     &__add-more-question
         width: 100%
-        margin: 35px auto 10px auto
+        margin: 0
         background-color: #7f2aff
         color: white
         @extend %font-bold
@@ -819,10 +883,8 @@
         font-size: 12px
         max-width: 600px
         @include brk_md
-            width: 60%
+            width: 18%
             font-size: 14px
-            padding: 15px 0
-            margin-top: 50px
         &:focus
             outline: none
         &:hover
@@ -843,12 +905,21 @@
             background-color: #f7f7f7
             margin-top: 10px
             height: 40px
+            width: 100%
+            border: none
+            font-family: inherit
+            @extend %font-bold
+            padding-left: 10px
             border-bottom: 4px solid #717171
             &:focus
                 outline: none
                 border-color: $color-primary
                 color: $color-primary
-                background-color: #f2e9ff
+    &__bttn-bottom
+        @extend %display_flex
+        -webkit-justify-content: space-between
+        justify-content: space-between
+        margin-bottom: 50px
 .no-mb-submission
     margin-bottom: 40px
     @include custom_breakpoint(1238)

@@ -46,9 +46,9 @@
                         <span class="breadcrumbs__txt">Creating a task</span>
                     </div>
                     <div class="col-sm-12 col-md-12 col-lrg-12 col-xlrg-12 task-create__intro">
+                        <button type="button" class="bttn task-create__hide-settings-bttn js-hide-settings">Hide Settings</button>
                         <h1 class="task-create__intro-name">Hola! Teacher {{ $user->f_name }}!</h1>
                         <p class="task-create__intro-sub-txt">You can now create a task.... tins I need more texts or something na friendly 'yung text dito</p>
-
                         <div class="task-create__options-wrapper">
                             <div class="task-create__options-wrapper--left">
                                 <div class="task-create__options">
@@ -66,7 +66,7 @@
                                         @else
                                             <ul class="task-create__selection-items js-task-dropdown-items">
                                                 @foreach($modules as $module)
-                                                    <li class="task-create__selection-item" data-module-id="{{ $module->id }}">{{ $module->secondary_title }}</li>
+                                                    <li class="task-create__selection-item js-modules-selection" data-module-id="{{ $module->id }}">{{ $module->secondary_title }}</li>
                                                 @endforeach
                                             </ul>
                                         @endif
@@ -106,20 +106,20 @@
                                     <p class="task-create__option-lbl">5.) Oh wait, is it a timed <span class="task-create__task-description-title">task</span>?</p>
                                     <div class="task-create__options-radio-bttn-wrapper task-create__timed-quiz-controls">
                                         <div class="task-create__options-radio-bttn-group">
-                                            <input type="radio" value="yes" name="timedRadBttn" id="yesRadBttn">
+                                            <input type="radio" value="yes" name="timedRadBttn" id="yesRadBttn" checked>
                                             <label for="yesRadBttn">Yes, it is a timed quiz.</label>
                                         </div>
                                         <div class="task-create__options-radio-bttn-group">
                                             <input type="radio" value="no" name="timedRadBttn" id="noRadBttn">
                                             <label for="noRadBttn">No, I do not want this to be a timed quiz.</label>
                                         </div>
-                                        <div class="task-create__options-timer-wrapper">
+                                        <div class="task-create__options-timer-wrapper js-quiz-timer-wrapper">
                                             <div class="task-create__options-timer-hour">
-                                                <input type="number" min="1" placeholder="Ex. 1" id="hourTimerTxt">
+                                                <input type="number" min="1" value="1" id="hourTimerTxt">
                                                 <label for="hourTimerTxt">hour</label>
                                             </div>
                                             <div class="task-create__options-timer-minutes">
-                                                <input type="number" min="1" placeholder="1" id="minuteTimerTxt">
+                                                <input type="number" min="0" value="0" id="minuteTimerTxt">
                                                 <label for="minuteTimerTxt">minute</label>
                                             </div>
                                         </div>
@@ -156,18 +156,41 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="task-create__options no-mb-submission">
+                                    <p class="task-create__option-lbl">8.) How many cheating attempts do you want to accept?</p>
+                                    <div class="task-create__options-radio-bttn-wrapper--inline">
+                                        <div class="task-create__options-radio-bttn-group">
+                                            <input type="radio" value="1" name="radioCheatingBttn" id="radioCheatingBttn1">
+                                            <label for="radioCheatingBttn1">1</label>
+                                        </div>
+                                        <div class="task-create__options-radio-bttn-group">
+                                            <input type="radio" value="2" name="radioCheatingBttn" id="radioCheatingBttn2">
+                                            <label for="radioCheatingBttn2">2</label>
+                                        </div>
+                                        <div class="task-create__options-radio-bttn-group">
+                                            <input type="radio" value="3" name="radioCheatingBttn" id="radioCheatingBttn3">
+                                            <label for="radioCheatingBttn3">3</label>
+                                        </div>
+                                        <div class="task-create__options-radio-bttn-group task-create__options-cs">
+                                            <input type="radio" value="others" name="radioCheatingBttn" id="radioCheatingOthersBttn">
+                                            <label for="radioCheatingOthersBttn">Let me decide</label>
+                                            <input type="text" placeholder="Ex. 5" id="cheatingAttemptTxt" disabled>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="task-create__options adjust-height">
-                                    <label class="task-create__option-lbl" for="instructionTxt">8.) Lastly, tell us your instructions about this <span class="task-create__task-description-title">task</span>.</label>
+                                    <label class="task-create__option-lbl" for="instructionTxt">9.) Lastly, tell us your instructions about this <span class="task-create__task-description-title">task</span>.</label>
                                     <textarea placeholder="Place your instructions here" id="instructionTxt"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-sm-12 col-md-12 col-lrg-12 col-xlrg-12">
-                        <div class="task-create__main">
+                        <div class="task-create__main"></div>
+                        <div class="task-create__bttn-bottom">
+                            <button type="button" class="bttn task-create__add-more-question js-add-more-question">Add more question</button>
+                            <button type="button" class="bttn task-create__add-more-question js-publish-bttn">Publish</button>
                         </div>
-                        <button type="button" class="bttn task-create__add-more-question">Add more question</button>
                     </div>
                 </div>
             </div>

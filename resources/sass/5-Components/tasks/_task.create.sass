@@ -797,7 +797,7 @@
         overflow: hidden
         padding: 0
         &:hover
-            background-color: #e5d4ff
+            background-color: #f6f1ff
             > span::before,
             > span::after
                 background-color: $color-primary
@@ -917,9 +917,45 @@
                 color: $color-primary
     &__bttn-bottom
         @extend %display_flex
+        -webkit-flex-direction: column
+        flex-direction: column
         -webkit-justify-content: space-between
         justify-content: space-between
         margin-bottom: 50px
+        -webkit-align-items: center
+        align-items: center
+        @include brk_md
+            -webkit-flex-direction: row
+            flex-direction: row
+        &--right
+            @extend %display_flex
+            -webkit-flex-direction: column
+            flex-direction: column
+            margin-top: 15px
+            width: 100%
+            -webkit-align-items: center
+            align-items: center
+            @include brk_md
+                -webkit-flex-direction: row
+                flex-direction: row
+                -webkit-justify-content: space-between
+                justify-content: space-between
+                margin-top: 0
+                width: 390px
+.js-view-bttn,
+.js-publish-bttn
+    @include brk_md
+        width: 100%
+.js-view-bttn
+    @include brk_md
+        margin-right: 15px
+.js-publish-bttn
+    margin-top: 15px
+    @include brk_md
+        margin-top: 0
+.js-add-more-question
+    @include brk_md
+        width: 200px
 .no-mb-submission
     margin-bottom: 40px
     @include custom_breakpoint(1238)
@@ -927,6 +963,17 @@
 .adjust-height
     -webkit-flex-basis: 100%
     flex-basis: 100%
+.preview__task
+    position: fixed
+    width: 100%
+    height: 100%
+    z-index: 500
+    background-color: white
+    top: 0
+    left: 0
+    display: none
+    //display: block
+    overflow-y: scroll
 //EMPTY
 .no-modules
     height: 80px
@@ -943,3 +990,4 @@
 .show-loading
     @include animation(waitingUpload 1.8s both infinite linear)
     cursor: not-allowed
+

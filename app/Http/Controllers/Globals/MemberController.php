@@ -8,7 +8,9 @@ use App\Models\Relations\ApprovedStudent;
 use App\Models\Relations\BlockedStudent;
 use App\Models\Relations\RequestStudent;
 use App\Models\Relations\StudentClassroom;
+use App\Models\Relations\TeacherClassroom;
 use App\Models\Users\Student;
+use App\Models\Users\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,26 +23,55 @@ class MemberController extends Controller
         if(Auth::guard('teacher')->check()){
             $user = Auth::guard('teacher')->user();
             $classroom = DB::table('classroom')->where('classroom_unique_url', $id)->get();
-            $classroomID = Classroom::select('id')->where('classroom_unique_url', $id)->get();
-            $studentsID = ApprovedStudent::select('student_id')->where('classroom_id', $classroomID[0]['id'])->get();
-            foreach($studentsID as $sID){
-                $students []= Student::select('id', 'f_name', 'm_name', 'l_name', 'created_at')->where('id', $sID->student_id)->get();
-            }
-            return view('teacher.classroom.members',
-                [
-                    'user' => $user,
-                    'students' => $students,
-                    'classrooms' => $classroom,
-                ]);
-        }else if(Auth::guard('student')->check()){
-            $user = Auth::guard('student')->user();
-            $classroom = DB::table('classroom')->where('classroom_unique_url', $id)->get();
-            if($classroom->count() !== 0){
-                return view('student.class module.schedule',
+            $classroomBelongsToMe = TeacherClassroom::where([
+                ['teacher_id', Auth::guard('teacher')->id()],
+                ['classroom_id', $classroom[0]->id]
+            ])->get()->first();
+            if($classroomBelongsToMe){
+                $classroomID = Classroom::select('id')->where('classroom_unique_url', $id)->get();
+                $studentsID = ApprovedStudent::select('student_id')->where('classroom_id', $classroomID[0]['id'])->get();
+                foreach($studentsID as $sID){
+                    $students []= Student::select('id', 'f_name', 'm_name', 'l_name', 'created_at')->where('id', $sID->student_id)->get();
+                }
+                return view('teacher.classroom.members',
                     [
                         'user' => $user,
+                        'students' => $students,
                         'classrooms' => $classroom,
                     ]);
+            }
+        }else if(Auth::guard('student')->check()){
+            $user = Auth::guard('student')->user();
+            $classroom = Classroom::where('classroom_unique_url', $id)->get()->first();
+            $classroomBelongsToMe = ApprovedStudent::where([
+                ['student_id', Auth::guard('student')->id()],
+                ['classroom_id', $classroom->id]
+            ])->get()->first();
+            if($classroomBelongsToMe){
+                if($classroom->is_classroom_active){
+                    if($classroom->count() !== 0){
+                        $teacherID = TeacherClassroom::select('teacher_id')->where('classroom_id', $classroom->id)->get()->first();
+                        $teacher = Teacher::where('id', $teacherID->teacher_id)->get()->first();
+                        $studentsID = ApprovedStudent::select('student_id')->where('classroom_id', $classroom->id)->get();
+                        foreach($studentsID as $sID){
+                            $students []= Student::select('id', 'f_name', 'm_name', 'l_name', 'created_at')->where('id', $sID->student_id)->get();
+                        }
+
+                        return view('student.class module.members',
+                            [
+                                'user' => $user,
+                                'classrooms' => $classroom,
+                                'teacher'=>$teacher,
+                                'students'=>$studentsID,
+                            ]);
+                    }
+                }else{
+                    return view('student.class module.schedule',
+                        [
+                            'user' => $user,
+                            'classrooms' => $classroom,
+                        ]);
+                }
             }
         }
         return view('errors.404');

@@ -6,7 +6,7 @@
   font-weight: 800;
 }
 
-.teachers__name, .task__link-ctr, .cld-days, .enrolled-subjects__item-link, .enrolled-subjects__item-lbl, .schedule__item-link, .schedule__item-lbl, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .bttn--link-read-more, .bttn-link--default {
+.teachers__name, .task__link-ctr, .cld-days, .enrolled-subjects__item-link, .enrolled-subjects__item-lbl, .schedule__no-classes, .schedule__item-link, .schedule__item-lbl, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .bttn--link-read-more, .bttn-link--default {
   font-weight: 700;
 }
 
@@ -1507,6 +1507,11 @@ table {
 }
 .schedule__lbl-subject, .schedule__lbl-teacher, .schedule__item-teacher, .schedule__lbl-day, .schedule__lbl-time, .schedule__item-subject, .schedule__item-day, .schedule__item-time, .schedule__item-date {
   text-align: center;
+}
+.schedule__no-classes {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .teachers-note {

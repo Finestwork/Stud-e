@@ -27,7 +27,7 @@ p;utm_medium=referral&amp;utm_content=creditCopyText" target="_blank">Unsplash</
             <div class="sign-in__left--inner">
                 <div class="sign-in__description">
                     <h1 class="sign-in__title">We love learning!</h1>
-                    <p class="sign-in__txt">This is an online platform that helps you to lorem ipsum lorem ipsum lorem ipsum</p>
+                    <p class="sign-in__txt">A micro-learning platform, feel free to join our community. Learn at your own pace with stud-e.</p>
                 </div>
                 <div class="sign-in__form-wrapper">
                     @include('partials.flash message.error')

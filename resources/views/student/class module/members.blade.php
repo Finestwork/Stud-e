@@ -1,7 +1,7 @@
 @extends('partials.base')
 
 @section('title')
-   Members - Psychology with Drugs, HIV/AIDS, and SARS Education
+   Members - {{$classrooms->classroom_name}}
 @endsection
 
 @section('cs-css')
@@ -26,34 +26,44 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-2 col-lrg-1">
                         <ul class="sidelinks__links-container">
-                            <li class="sidelinks__links-item">
-                                <a href="#" class="sidelinks__links">Modules</a>
-                            </li>
-                            <li class="sidelinks__links-item">
-                                <a href="{{ route('student.tasks') }}" class="sidelinks__links">Tasks</a>
-                            </li>
-                            <li class="sidelinks__links-item">
-                                <a href="{{ route('student.discussion') }}" class="sidelinks__links">Discussion</a>
-                            </li>
-                            <li class="sidelinks__links-item">
-                                <a href="{{ route('student.members') }}" class="sidelinks__links link--active">Members</a>
-                            </li>
+                            @if($classrooms->is_classroom_active)
+                                <div class="classroom__links-item">
+                                    <a href="{{ route('classroom.schedule', $classrooms->classroom_unique_url) }}" class="classroom__links">Schedule</a>
+                                </div>
+                                <div class="classroom__links-item">
+                                    <a href="{{route('classroom.modules', $classrooms->classroom_unique_url)}}" class="classroom__links">Modules</a>
+                                </div>
+                                <div class="classroom__links-item" >
+                                    <a href="#" class="classroom__links ">Tasks</a>
+                                </div>
+                                <div class="classroom__links-item" >
+                                    <a href="#" class="classroom__links">Discussion</a>
+                                </div>
+                                <div class="classroom__links-item">
+                                    <a href="{{route('classroom.member', $classrooms->classroom_unique_url)}}" class="classroom__links link--active">Members</a>
+                                </div>
+                            @else
+                                <div class="classroom__links-item">
+                                    <a href="{{ route('classroom.schedule', $classrooms->classroom_unique_url) }}" class="classroom__links link--active">Schedule</a>
+                                </div>
+                            @endif
                         </ul>
                     </div>
                     <div class="col-sm-12 col-md-10 col-lrg-11">
                         <div class="member__right">
                             <div class="col-sm-12 col-lrg-12">
                                 <div class="breadcrumbs">
-                                    <a href="{{ route('student.class') }}" class="breadcrumbs__link">Classroom</a>
+                                    <a href="{{ route('classroom.index') }}" class="breadcrumbs__link">Classroom</a>
                                     <span class="breadcrumbs__arrow">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.5 11.5">
                                           <path id="Shape" d="M1.28.22A.75.75,0,0,0,.22,1.28l5,5a.75.75,0,0,0,1.061,0l5-5A.75.75,0,0,0,10.22.22L5.75,4.689Z" transform="translate(0 11.5) rotate(-90)" fill="#0D0417"/>
                                         </svg>
                                     </span>
-                                    <span class="breadcrumbs__txt">Psychology with Drugs, HIV/AIDS, and SARS Education</span>
+                                    <span class="breadcrumbs__txt">{{$classrooms->classroom_name}}</span>
                                 </div>
                             </div>
                             <div class="member__main-container">
+
                                 <div class="member__labels">
                                     <p class="member__labels-txt">Name</p>
                                     <p class="member__labels-txt">Date of join</p>
@@ -65,105 +75,39 @@
                                                 <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
                                             </div>
                                             <div class="member__list-info">
-                                                <p class="member__list-name">Juan Dela Cruz</p>
-                                                <p class="member__list-position">Student</p>
+                                                <p class="member__list-name">{{ucfirst($teacher->f_name) . ' ' . ucfirst($teacher->m_name) . ' ' . ucfirst($teacher->l_name)}} </p>
+                                                <p class="member__list-position">Teacher</p>
                                             </div>
                                         </div>
                                         <div class="member__list-right">
-                                            <p class="member__list-right-p">November 08, 2020</p>
+                                            <p class="member__list-right-p">{{date('F j, Y', strtotime($classrooms->created_at))}}</p>
                                             <a href="{{ route('user.profile') }}" class="link--bttn--primary">View profile</a>
                                         </div>
+
                                     </li>
-                                    <li class="member__list">
-                                        <div class="member__list-left">
-                                            <div class="member__list-img">
-                                                <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
-                                            </div>
-                                            <div class="member__list-info">
-                                                <p class="member__list-name">Juan Dela Cruz</p>
-                                                <p class="member__list-position">Student</p>
-                                            </div>
-                                        </div>
-                                        <div class="member__list-right">
-                                            <p class="member__list-right-p">November 08, 2020</p>
-                                            <a href="{{ route('user.profile') }}" class="link--bttn--primary">View profile</a>
-                                        </div>
-                                    </li>
-                                    <li class="member__list">
-                                        <div class="member__list-left">
-                                            <div class="member__list-img">
-                                                <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
-                                            </div>
-                                            <div class="member__list-info">
-                                                <p class="member__list-name">Juan Dela Cruz</p>
-                                                <p class="member__list-position">Student</p>
-                                            </div>
-                                        </div>
-                                        <div class="member__list-right">
-                                            <p class="member__list-right-p">November 08, 2020</p>
-                                            <a href="{{ route('user.profile') }}" class="link--bttn--primary">View profile</a>
-                                        </div>
-                                    </li>
-                                    <li class="member__list">
-                                        <div class="member__list-left">
-                                            <div class="member__list-img">
-                                                <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
-                                            </div>
-                                            <div class="member__list-info">
-                                                <p class="member__list-name">Juan Dela Cruz</p>
-                                                <p class="member__list-position">Student</p>
-                                            </div>
-                                        </div>
-                                        <div class="member__list-right">
-                                            <p class="member__list-right-p">November 08, 2020</p>
-                                            <a href="{{ route('user.profile') }}" class="link--bttn--primary">View profile</a>
-                                        </div>
-                                    </li>
-                                    <li class="member__list">
-                                        <div class="member__list-left">
-                                            <div class="member__list-img">
-                                                <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
-                                            </div>
-                                            <div class="member__list-info">
-                                                <p class="member__list-name">Juan Dela Cruz</p>
-                                                <p class="member__list-position">Student</p>
-                                            </div>
-                                        </div>
-                                        <div class="member__list-right">
-                                            <p class="member__list-right-p">November 08, 2020</p>
-                                            <a href="{{ route('user.profile') }}" class="link--bttn--primary">View profile</a>
-                                        </div>
-                                    </li>
-                                    <li class="member__list">
-                                        <div class="member__list-left">
-                                            <div class="member__list-img">
-                                                <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
-                                            </div>
-                                            <div class="member__list-info">
-                                                <p class="member__list-name">Juan Dela Cruz</p>
-                                                <p class="member__list-position">Student</p>
-                                            </div>
-                                        </div>
-                                        <div class="member__list-right">
-                                            <p class="member__list-right-p">November 08, 2020</p>
-                                            <a href="{{ route('user.profile') }}" class="link--bttn--primary">View profile</a>
-                                        </div>
-                                    </li>
-                                    <li class="member__list">
-                                        <div class="member__list-left">
-                                            <div class="member__list-img">
-                                                <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
-                                            </div>
-                                            <div class="member__list-info">
-                                                <p class="member__list-name">Juan Dela Cruz</p>
-                                                <p class="member__list-position">Student</p>
-                                            </div>
-                                        </div>
-                                        <div class="member__list-right">
-                                            <p class="member__list-right-p">November 08, 2020</p>
-                                            <a href="{{ route('user.profile') }}" class="link--bttn--primary">View profile</a>
-                                        </div>
-                                    </li>
+                                    @foreach($students as $sID)
+                                        <li class="member__list">
+                                            @foreach(\App\Models\Users\Student::select('f_name', 'm_name', 'l_name')->where('id', $sID->student_id)->get() as $stud)
+                                                <div class="member__list-left">
+                                                    <div class="member__list-img">
+                                                        <img src="/assets/imgs/test images/professor.jpg" alt="A picture of a member in this class" class="adjust-img-js">
+                                                    </div>
+                                                    <div class="member__list-info">
+                                                        <p class="member__list-name">{{ucfirst($stud->f_name) . ' ' . ucfirst($stud->m_name) . ' ' . ucfirst($stud->l_name)}} </p>
+                                                        <p class="member__list-position">Student</p>
+                                                    </div>
+                                                </div>
+                                            @endforeach
+                                            @foreach(\App\Models\Relations\ApprovedStudent::select('created_at')->where([['student_id', $sID->student_id], ['classroom_id', $classrooms->id]])->get() as $stud)
+                                                <div class="member__list-right">
+                                                    <p class="member__list-right-p">{{date('F j, Y', strtotime($sID->created_at))}}</p>
+                                                    <a href="{{ route('user.profile') }}" class="link--bttn--primary">View profile</a>
+                                                </div>
+                                            @endforeach
+                                        </li>
+                                    @endforeach
+
+
                                 </ul>
                             </div>
                         </div>

@@ -214,6 +214,9 @@ minuteTxt.onchange = (e)=>{
 timedRadBttn.onchange = (e)=>{
     quizTimerWrapper.style.display = '-webkit-flex';
     quizTimerWrapper.style.display = 'flex';
+    let input = quizTimerWrapper.querySelectorAll('input[type="number"]');
+    input[0].value = "1";
+    input[1].value = "0";
 }
 noRadBttn.onchange = (e)=>{
     quizTimerWrapper.style.display = 'none';
@@ -233,6 +236,8 @@ customerSubmissionAttemptTxt.onblur = function (){
     }else if(parseInt(this.value) === 3){
         radioSubmissionBttn3.click();
         this.value = '';
+    }else{
+        radioSubmissionOthers.value = customerSubmissionAttemptTxt.value;
     }
 }
 cheatingAttempTxt.onblur = function (){
@@ -245,8 +250,17 @@ cheatingAttempTxt.onblur = function (){
     }else if(parseInt(this.value) === 3){
         radioCheatingBttn3.click();
         this.value = '';
+    }else{
+        radioCheatingOthersBttm.value = cheatingAttempTxt.value;
     }
 }
+// KEYUPS
+customerSubmissionAttemptTxt.addEventListener('keyup', ()=>{
+    radioSubmissionOthers.value = customerSubmissionAttemptTxt.value;
+});
+cheatingAttempTxt.addEventListener('keyup', ()=>{
+    radioCheatingOthersBttm.value = cheatingAttempTxt.value;
+});
 //DOM HELPERS
 function getSelectedTaskItem(e){
     taskTypeSelectionDrpdwn.textContent = e.currentTarget.textContent;

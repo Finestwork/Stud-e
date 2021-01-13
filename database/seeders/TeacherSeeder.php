@@ -17,9 +17,9 @@ class TeacherSeeder extends Seeder
     {
         DB::table('teacher')->insert(
             [
-                'f_name'=>'John',
-                'm_name'=>'Dela',
-                'l_name'=>'Cruz',
+                'f_name'=>'Liam',
+                'm_name'=>'Dimero',
+                'l_name'=>'Orencia',
                 'email'=>'teacher@gmail.com',
                 'password'=> Hash::make('qwe123123'),
                 'isSubscribed'=> 0,
@@ -33,7 +33,7 @@ class TeacherSeeder extends Seeder
             ]);
         DB::table('teacher')->insert(
             [
-                'f_name'=>'John',
+                'f_name'=>'John Michael',
                 'm_name'=>'Dela',
                 'l_name'=>'Cruz',
                 'email'=>'teacher1@gmail.com',
@@ -49,9 +49,9 @@ class TeacherSeeder extends Seeder
             ]);
         DB::table('teacher')->insert(
             [
-                'f_name'=>'Younes',
-                'm_name'=>'Padica',
-                'l_name'=>'Espiritu',
+                'f_name'=>'Roberto',
+                'm_name'=>'Sinnawe',
+                'l_name'=>'Lipaya',
                 'email'=>'teacher2@gmail.com',
                 'password'=> Hash::make('qwe123123'),
                 'isSubscribed'=> 0,
@@ -65,9 +65,9 @@ class TeacherSeeder extends Seeder
             ]);
         DB::table('teacher')->insert(
             [
-                'f_name'=>'Nicole',
-                'm_name'=>'John',
-                'l_name'=>'Torres',
+                'f_name'=>'Roland',
+                'm_name'=>'Manalo',
+                'l_name'=>'Bautista',
                 'email'=>'teacher3@gmail.com',
                 'password'=> Hash::make('qwe123123'),
                 'isSubscribed'=> 0,

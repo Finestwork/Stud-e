@@ -18,8 +18,8 @@ class StudentSeeder extends Seeder
         DB::table('student')->insert(
             [
                 'f_name'=>'Johnny',
-                'm_name'=>'Eclie',
-                'l_name'=>'Bravo',
+                'm_name'=>'Mandalera',
+                'l_name'=>'Mauruto',
                 'email'=>'student@gmail.com',
                 'password'=> Hash::make('qwe123123'),
                 'role_id'=> 3,

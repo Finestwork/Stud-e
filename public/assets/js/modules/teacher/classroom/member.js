@@ -796,23 +796,23 @@ function showPopup(str){
         }else if(bttnText === 'Accepted'){
             type = 'fromAcceptedToBlock';
         }
-        mssg = 'Are you sure you want to block this student from your class? He / she will no longer make a request to your class, however, you can unblock this student if you change your mind at a later time.'
+        mssg = 'Are you sure you want to block this/these student/s from your class? He / she will no longer make a request to your class, however, you can unblock this student if you change your mind at a later time.'
         totalSelectedItemsTxt.textContent = 'Total of students to be blocked: 1';
     }else if(str == 'Accept Request'){
         type = 'accept';
-        mssg = 'Are you sure you want to add this student to your class?'
+        mssg = 'Are you sure you want to add this/these student/s to your class?'
         totalSelectedItemsTxt.textContent = 'Total of students to be accepted: 1';
     }else if(str == 'Cancel Request'){
         type = 'cancel';
-        mssg = 'Are you sure you want to cancel this student\'s request?'
-        totalSelectedItemsTxt.textContent = 'Total of student\'s request to be canceled: 1';
+        mssg = 'Are you sure you want to cancel this/these student/s request?'
+        totalSelectedItemsTxt.textContent = 'Total of students request to be canceled: 1';
     }else if(str == 'Remove Student'){
         type = 'remove';
-        mssg = 'Are you sure you want to remove this student from your class?'
+        mssg = 'Are you sure you want to remove this/these student/s from your class?'
         totalSelectedItemsTxt.textContent = 'Total of students to be removed from your class: 1';
     }else if(str == 'Unblock Student'){
         type = 'unblock';
-        mssg = 'Are you sure you want to unblock this student from your class? He / she may request again to join your class.';
+        mssg = 'Are you sure you want to unblock this/these student/s from your class? He / she may request again to join your class.';
         totalSelectedItemsTxt.textContent = 'Total of students to be unblocked: 1';
     }
     totalSelectedItemsTxt.style.display = 'block';

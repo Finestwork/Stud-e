@@ -37,8 +37,4 @@ class ClassController extends Controller
         $user = Auth::guard('student')->user();
         return view('student.class module.discussion_forum_create',['user'=>$user]);
     }
-    public function rendermember() {
-        $user = Auth::guard('student')->user();
-        return view('student.class module.members',['user'=>$user]);
-    }
 }

@@ -1475,12 +1475,12 @@ ul {
 .task-viewing__bttn:hover, .task-viewing__start-quiz-bttn:hover {
   background-color: #6913ea;
 }
-.task-viewing__bttn {
+.task-viewing__bttn, .task-viewing__delete-bttn {
   font-size: 12px;
   padding: 7px 10px;
 }
 @media only screen and (min-width: 48em) {
-  .task-viewing__bttn {
+  .task-viewing__bttn, .task-viewing__delete-bttn {
     font-size: 14px;
   }
 }
@@ -1488,6 +1488,20 @@ ul {
   font-size: 16px;
   text-transform: uppercase;
   padding: 7px 15px;
+}
+.task-viewing__delete-bttn {
+  background-color: #ffebeb;
+  font-weight: 700;
+  color: #ff3636;
+  font-family: inherit;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.task-viewing__delete-bttn:hover {
+  background-color: #ffdddd;
+}
+.task-viewing__delete-bttn:focus {
+  outline: none;
 }
 
 .status--default {

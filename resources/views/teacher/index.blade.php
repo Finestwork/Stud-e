@@ -16,6 +16,9 @@
     <script src="/assets/js/helpers/scroll-bar-builder.js"></script>
     <script src="/assets/js/helpers/image-checker.js"></script>
 
+    <script>
+        let classrooms = {!! $classrooms !!};
+    </script>
 @endsection
 
 @section('body-content')
@@ -37,25 +40,8 @@
                             <ul class="schedule__item-wrapper">
                                 <li class="schedule__item-lbl">
                                     <span class="schedule__lbl-subject">Subject name</span>
-                                    <span class="schedule__lbl-teacher">Teacher</span>
                                     <span class="schedule__lbl-day">Day</span>
                                     <span class="schedule__lbl-time">Time</span>
-                                </li>
-                                <li class="schedule__item">
-                                    <a href="/class/1231321321" class="schedule__item-link">
-                                        <span class="schedule__item-subject">Philosophy of man</span>
-                                        <span class="schedule__item-teacher">Juan Dela Cruz</span>
-                                        <span class="schedule__item-day">Monday / Thursday</span>
-                                        <span class="schedule__item-time">1:00pm - 2:00pm</span>
-                                    </a>
-                                </li>
-                                <li class="schedule__item">
-                                    <a href="/class/1231321321" class="schedule__item-link">
-                                        <span class="schedule__item-subject">Psychology with Drugs, HIV/AIDS, and SARS Education</span>
-                                        <span class="schedule__item-teacher">Juan Dela Cruz</span>
-                                        <span class="schedule__item-day">Monday / Thursday</span>
-                                        <span class="schedule__item-time">1:00pm - 2:00pm</span>
-                                    </a>
                                 </li>
                             </ul>
                         </section>
@@ -74,7 +60,7 @@
                                         </span>
                                         <span class="teachers-note__teacher-description">
                                             <h2 class="teachers-note__teacher-name">Juan Dela Cruz</h2>
-                                            <p class="teachers-note__teacher-mssg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquam commodi, consectetur cumert .......</p>
+                                            <p class="teachers-note__teacher-mssg">Please submit your final paper on time to prevent scoring delay.</p>
                                             <a href="#" class="bttn--link-read-more">Read more</a>
                                         </span>
                                     </li>
@@ -84,7 +70,7 @@
                                         </span>
                                         <span class="teachers-note__teacher-description">
                                             <h2 class="teachers-note__teacher-name">Juan Dela Cruz</h2>
-                                            <p class="teachers-note__teacher-mssg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquam commodi, consectetur cumert .......</p>
+                                            <p class="teachers-note__teacher-mssg">Hi guys! Your class for Eurythmy will be moved on monday, next week.</p>
                                             <a href="#" class="bttn--link-read-more">Read more</a>
                                         </span>
                                     </li>
@@ -94,7 +80,7 @@
                                         </span>
                                         <span class="teachers-note__teacher-description">
                                             <h2 class="teachers-note__teacher-name">Juan Dela Cruz</h2>
-                                            <p class="teachers-note__teacher-mssg">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A alias aliquam commodi, consectetur cumert .......</p>
+                                            <p class="teachers-note__teacher-mssg">Please see your modules under Eurythmy and watch the latest videos I posted.</p>
                                             <a href="#" class="bttn--link-read-more">Read more</a>
                                         </span>
                                     </li>
@@ -105,98 +91,39 @@
                         <section class="enrolled-subjects">
                             <div class="enrolled-subjects__top">
                                 <div class="enrolled-subjects__left">
-                                    <h1 class="enrolled-subjects__title-lbl">Currently Enrolled Subjects</h1>
-                                    <h2 class="enrolled-subjects__date-lbl">Still thinking about what should be the title, watcha think guys?</h2>
+                                    <h1 class="enrolled-subjects__title-lbl">Currently Handled Courses</h1>
+                                    <h2 class="enrolled-subjects__date-lbl">Click below to see more information about your course/s.</h2>
                                 </div>
                             </div>
                             <div class="enrolled-subjects-scrollbar">
                                 <ul class="schedule__item-wrapper">
-                                    <li class="enrolled-subjects__item-lbl">
-                                        <span class="enrolled-subjects__lbl-subject">Subject name</span>
-                                        <span class="enrolled-subjects__lbl-teacher">Teacher</span>
-                                        <span class="enrolled-subjects__lbl-day">Day</span>
-                                        <span class="enrolled-subjects__lbl-time">Time</span>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Philosophy of man</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Psychology with Drugs, HIV/AIDS, and SARS Education</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Philosophy of man</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Psychology with Drugs, HIV/AIDS, and SARS Education</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Philosophy of man</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Psychology with Drugs, HIV/AIDS, and SARS Education</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Philosophy of man</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Psychology with Drugs, HIV/AIDS, and SARS Education</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Philosophy of man</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
-                                    <li class="enrolled-subjects__item">
-                                        <a href="/class/1231321321" class="enrolled-subjects__item-link">
-                                            <span class="enrolled-subjects__item-subject">Psychology with Drugs, HIV/AIDS, and SARS Education</span>
-                                            <span class="enrolled-subjects__item-teacher">Juan Dela Cruz</span>
-                                            <span class="enrolled-subjects__item-day">Monday / Thursday</span>
-                                            <span class="enrolled-subjects__item-time">1:00pm - 2:00pm</span>
-                                        </a>
-                                    </li>
+                                    @if($classrooms->count() !== 0)
+                                        @foreach($classrooms as $cl)
+                                            <li class="enrolled-subjects__item">
+                                                <a href="{{ route('classroom.modules', $cl->classroom_unique_url) }}" class="enrolled-subjects__item-link">
+                                                    <span class="enrolled-subjects__item-subject">{{$cl->classroom_name}}</span>
+                                                    <span class="enrolled-subjects__item-day">
+                                                @foreach(json_decode($cl->classroom_schedule) as $cls)
+                                                            {{$cls[0]}}
+                                                            @unless($loop->last)
+                                                                /
+                                                            @endunless
+                                                        @endforeach
+                                            </span>
+                                                    <span class="enrolled-subjects__item-time">
+                                                @foreach(json_decode($cl->classroom_schedule) as $cls)
+                                                            {{$cls[1]}}
+                                                            @unless($loop->last)
+                                                                /
+                                                            @endunless
+                                                        @endforeach
+                                            </span>
+                                                </a>
+                                            </li>
+                                        @endforeach
+                                    @else
+                                        <p class="schedule__no-classes">No classes for today.</p>
+                                    @endif
                                 </ul>
                             </div>
                             <a href="#" class="enrolled-subjects__view-all">View all subjects</a>

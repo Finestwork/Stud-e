@@ -18,20 +18,6 @@
     <script src="/assets/js/libraries/smooth-scrollbar.js"></script>
     <script src="/assets/js/helpers/scroll-bar-builder.js"></script>
 
-    @foreach($classrooms as $cr)
-        <script>
-            let classroomOrigValues = @json($classrooms, JSON_PRETTY_PRINT);
-            let classroomName = '{{ $cr->classroom_name }}',
-                classroomSection = '{{ $cr->classroom_section }}',
-                classroomDescription = '{{ $cr->classroom_description }}',
-                classroomSchedule = {!! json_encode($cr->classroom_schedule) !!},
-                classroomCode = {!! json_encode($cr->class_code) !!},
-                canDownload = {{$cr ->can_student_download}},
-                canPost = {{$cr->can_student_post}},
-                canRequest = {{$cr->can_student_join}},
-                isActive = {{$cr->is_classroom_active}};
-        </script>
-    @endforeach
 @endsection
 
 
@@ -90,6 +76,7 @@
                                     <div class="task__control-type">
                                         <p class="task__control-label">Type of task:</p>
                                         <select class="task__control-selection">
+                                            <option class="task__control-selection-item" value="all">All</option>
                                             <option class="task__control-selection-item" value="quiz">Quiz</option>
                                             <option class="task__control-selection-item" value="assignment">Assignment</option>
                                             <option class="task__control-selection-item" value="seatwork">Seatwork</option>
@@ -104,6 +91,40 @@
                                             <option class="task__control-selection-item" value="done">Done</option>
                                             <option class="task__control-selection-item" value="pending">Pending</option>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="task__table-wrapper">
+                                    <div class="task__table-container js-toggle-assigned">
+                                        <div class="table__scrollbar" id="js-scrollbar-table">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Title</th>
+                                                        <th scope="col">Topic</th>
+                                                        <th scope="col">Type</th>
+                                                        <th scope="col">Status</th>
+                                                        <th scope="col">Starting Date</th>
+                                                        <th scope="col">Deadline</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @foreach($quiz as $q)
+                                                        <tr>
+                                                            <th scope="row" class="table__row-head">
+                                                                <a href="{{ route('task.view.teacher', ['quiz', $q->hashedUrl]) }}" class="table__link">{{$q->title}}</a>
+                                                            </th>
+                                                            @foreach(\App\Models\Modules::select('secondary_title')->where('id', (int)$q->submodule)->get() as $module)
+                                                                <td><a href="{{ route('classroom.modules', $classrooms[0]->classroom_unique_url . '#'.$q->submodule) }}" class="table__link">{{$module->secondary_title}}</a></td>
+                                                            @endforeach
+                                                            <td class="table__type">Quiz</td>
+                                                            <td class="table__type">{{$q->status}}</td>
+                                                            <td class="table__start-date">{{date('F d, Y g:i A', strtotime(\Carbon\Carbon::parse($q->created_at, 'd/m/Y H:i:s')->timezone('Asia/Manila')))}}</td>
+                                                            <td class="table__duedate">{{date('F d, Y g:i A', strtotime(\Carbon\Carbon::parse($q->deadline)->timezone('Asia/Manila')))}}</td>
+                                                        </tr>
+                                                    @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

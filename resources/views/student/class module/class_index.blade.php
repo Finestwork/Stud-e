@@ -59,9 +59,10 @@
                                 <div class="row">
                                     @if($classrooms)
                                         @foreach($classrooms as $row)
-                                            <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
-                                                  <div class="class-card">
-                                                      <div class="class-card__top">
+                                            @if($row[0]->is_classroom_active)
+                                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
+                                                    <div class="class-card">
+                                                        <div class="class-card__top">
                                                             <div class="class-card__left">
                                                                 <!-- IMAGE WILL BE REPLACED AFTER I FX PROFILE PAGE -->
                                                                 <div class="class-card__img-border">
@@ -77,10 +78,11 @@
                                                                 <p class="class-card__more-info">{{ $row[0]->classroom_section }}</p>
                                                                 <a href="{{ route('classroom.schedule', $row[0]->classroom_unique_url) }}" class="bttn-link--primary"> View Classroom </a>
                                                             </div>
-                                                      </div>
+                                                        </div>
                                                         <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($row[0]->created_at)) }}</p>
                                                     </div>
-                                            </div>
+                                                </div>
+                                            @endif
                                         @endforeach
                                     @else
                                         <div class="empty">
@@ -97,7 +99,42 @@
                         <div class="completed" id="completed">
                             <div class="col-sm-12 col-md-12 col-lrg-12">
                                 <div class="row">
-                                    <p>Under construction</p>
+                                    @if($classrooms)
+                                        @foreach($classrooms as $row)
+                                            @if(!$row[0]->is_classroom_active)
+                                                <div class="col-sm-12 col-md-6 col-lrg-6 col-xlrg-4">
+                                                    <div class="class-card">
+                                                        <div class="class-card__top">
+                                                            <div class="class-card__left">
+                                                                <!-- IMAGE WILL BE REPLACED AFTER I FX PROFILE PAGE -->
+                                                                <div class="class-card__img-border">
+                                                                    <div class="class-card__img-box">
+                                                                        <img src="/assets/imgs/test images/professor.jpg" alt="Teacher's profile picture" class="adjust-img-js">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="class-card__img-name">{{ ucfirst($row[0]->f_name) . ' ' . ucfirst($row[0]->l_name) }}</div>
+                                                                <div class="class-card__img-lbl">Teacher</div>
+                                                            </div>
+                                                            <div class="class-card__right">
+                                                                <p class="class-card__subject">{{ $row[0]->classroom_name }}</p>
+                                                                <p class="class-card__more-info">{{ $row[0]->classroom_section }}</p>
+                                                                <a href="{{ route('classroom.schedule', $row[0]->classroom_unique_url) }}" class="bttn-link--primary"> View Classroom </a>
+                                                            </div>
+                                                        </div>
+                                                        <p class="class-card__footer">Date created: {{date('F j, Y', strtotime($row[0]->created_at)) }}</p>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    @else
+                                        <div class="empty">
+                                            <div class="empty__illustration">
+                                                <img src="/assets/illustration/Empty list.svg" alt="Illustration for an empty class list" class="img-fluid">
+                                            </div>
+                                            <h1 class="empty__title">Empty list.</h1>
+                                            <p class="empty__txt">No inactive classrooms.</p>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>

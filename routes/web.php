@@ -52,7 +52,6 @@ Route::group(['middleware' => ['auth:student'],'prefix'=>'/student'],function(){
 
     Route::get('/modules', [ClassController::class, 'renderModules'])->name('student.modules');
     Route::get('/tasks', [ClassController::class, 'renderTask'])->name('student.tasks');
-    Route::get('/members', [ClassController::class, 'rendermember'])->name('student.members');
 
     Route::get('/view-discussion/{discussionUniqueID}', [ClassController::class, 'renderDiscussionForum'])->name('student.forum');
     Route::get('/discussion-board', [ClassController::class, 'renderDiscussion'])->name('student.discussion');
@@ -71,6 +70,7 @@ Route::group(['middleware' => ['auth:student'],'prefix'=>'/student'],function(){
 
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('student.schedule');
 
+
     Route::get('/schedule', [ScheduleController::class, 'index'])->name('student.schedule');
 });
 //SEPARATE ACTIONS INCLUDE STUDENT IN AUTHENTICATION WITH
@@ -84,9 +84,8 @@ Route::group(['middleware' => ['auth:teacher'], 'prefix'=>'/teacher'],function()
     Route::get('/create-task/{uniqueUrl}', [TeacherTaskController::class, 'createTask'])->name('create.task');
 });
 
-Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function(){
-    Route::get('/create', [GlobalClassroomController::class, 'renderClasslist'])->name('classroom.create');
-});
+
+//TEACHER & STUDENT
 Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/classroom'], function(){
     Route::get('/', [GlobalClassroomController::class, 'renderClasslist'])->name('classroom.index');
     Route::get('/create', [GlobalClassroomController::class, 'renderClasslist'])->name('classroom.create');
@@ -98,12 +97,24 @@ Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/modules'], fun
 Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/task'], function(){
     Route::get('/{uniqueUrl}', [GlobalTaskController::class, 'renderTasks'])->name('classroom.task');
 });
+Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/members'], function(){
+    Route::get('/{uniqueUrl}', [GlobalMemberController::class, 'renderMembers'])->name('classroom.member');
+});
+Route::group(['middeware'=>['auth:teacher, student'], 'prefix'=>'/task'], function(){
+    Route::get('/{uniqueUrl}', [GlobalTaskController::class, 'renderTasks'])->name('classroom.task');
+});
 
+//TEACHER
+Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function(){
+    Route::get('/create', [GlobalClassroomController::class, 'renderClasslist'])->name('classroom.create');
+});
+Route::group(['middleware'=>['auth:teacher'], 'prefix'=>'/task'],function(){
+    Route::post('/publish', [TeacherTaskController::class, 'generateTask']);
+    Route::get('/view/{type}/{uniqueUrl}', [TeacherTaskController::class, 'renderTask'])->name('task.view.teacher');
+});
 Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function(){
     Route::post('/create', [ClassroomController::class, 'createClassroom'])->name('classroom.create');
-
     //RETRIEVE
-    Route::get('/{uniqueUrl}/members', [GlobalMemberController::class, 'renderMembers'])->name('classroom.member');
     Route::post('/request-member/{uniqueUrl}', [GlobalMemberController::class, 'getMembersRequest']);
     Route::post('/get-approved-members/{uniqueUrl}', [GlobalMemberController::class, 'getApprovedMembers']);
     Route::post('/get-blocked-members/{uniqueUrl}', [GlobalMemberController::class, 'getBlockedMembers']);

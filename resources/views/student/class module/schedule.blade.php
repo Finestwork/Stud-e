@@ -1,9 +1,7 @@
 @extends('partials.base')
 
 @section('title')
-    @foreach($classrooms as $classroom )
-        Schedule - {{ $classroom->classroom_name }}
-    @endforeach
+    Schedule - {{ $classrooms->classroom_name }}
 @endsection
 
 @section('cs-css')
@@ -30,12 +28,12 @@
                         <div class="classroom__link-wrapper">
                             <div class="classroom__link-scrollbar">
                                 <div class="classroom__links-container">
-                                    @foreach($classrooms as $classroom)
+                                    @if($classrooms->is_classroom_active)
                                         <div class="classroom__links-item">
-                                            <a href="{{ route('classroom.schedule', $classroom->classroom_unique_url) }}" class="classroom__links link--active">Schedule</a>
+                                            <a href="{{ route('classroom.schedule', $classrooms->classroom_unique_url) }}" class="classroom__links link--active">Schedule</a>
                                         </div>
                                         <div class="classroom__links-item">
-                                            <a href="#" class="classroom__links">Modules</a>
+                                            <a href="{{route('classroom.modules', $classrooms->classroom_unique_url)}}" class="classroom__links">Modules</a>
                                         </div>
                                         <div class="classroom__links-item" >
                                             <a href="#" class="classroom__links ">Tasks</a>
@@ -44,9 +42,13 @@
                                             <a href="#" class="classroom__links">Discussion</a>
                                         </div>
                                         <div class="classroom__links-item">
-                                            <a href="#" class="classroom__links">Members</a>
+                                            <a href="{{route('classroom.member', $classrooms->classroom_unique_url)}}" class="classroom__links">Members</a>
                                         </div>
-                                    @endforeach
+                                    @else
+                                        <div class="classroom__links-item">
+                                            <a href="{{ route('classroom.schedule', $classrooms->classroom_unique_url) }}" class="classroom__links link--active">Schedule</a>
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -55,55 +57,58 @@
                         <div class="classroom__right">
                             <div class="col-sm-12 col-md-12 col-lrg-12">
                                 <div class="breadcrumbs">
-                                    <a href="{{ route('student.class') }}" class="breadcrumbs__link">Classroom</a>
+                                    <a href="{{ route('classroom.index') }}" class="breadcrumbs__link">Classroom</a>
                                     <span class="breadcrumbs__arrow">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 6.5 11.5">
                                           <path id="Shape" d="M1.28.22A.75.75,0,0,0,.22,1.28l5,5a.75.75,0,0,0,1.061,0l5-5A.75.75,0,0,0,10.22.22L5.75,4.689Z" transform="translate(0 11.5) rotate(-90)" fill="#0D0417"/>
                                         </svg>
                                     </span>
-                                    @foreach($classrooms as $classroom)
-                                        <span class="breadcrumbs__txt">{{ $classroom->classroom_name }}</span>
-                                    @endforeach
+                                    <span class="breadcrumbs__txt">{{ $classrooms->classroom_name }}</span>
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-12 col-lrg-12 mt-5">
                                 <div class="schedule">
                                     <div class="schedule__line"></div>
+                                    @if(!$classrooms->is_classroom_active)
+                                        <p class="schedule__inactive-wrapper">
+                                        <span class="schedule__inactive-img">
+                                            <img src="/assets/svgs/icons/Notif icon.svg" alt="Icon for inactive classroom" class="img-fluid">
+                                        </span>
+                                        <span class="schedule__inactive-txt">Notice: This classroom is currently inactive.</span></p>
+                                    @endif
                                     <h1 class="schedule__title">Schedule</h1>
-                                    @foreach($classrooms as $classroom)
-                                        <div class="schedule__form-group">
-                                            <p class="schedule__txt">
-                                                <span class="schedule__lbl">Classroom name:</span>
-                                                {{ $classroom->classroom_name }}
-                                            </p>
+                                    <div class="schedule__form-group">
+                                        <p class="schedule__txt">
+                                            <span class="schedule__lbl">Classroom name:</span>
+                                            {{ $classrooms->classroom_name }}
+                                        </p>
+                                    </div>
+                                    <div class="schedule__form-group">
+                                        <p class="schedule__txt">
+                                            <span class="schedule__lbl">Classroom section</span>
+                                            {{ $classrooms->classroom_section }}
+                                        </p>
+                                    </div>
+                                    <div class="schedule__form-group">
+                                        <p class="schedule__txt">
+                                            <span class="schedule__lbl">Classroom description:</span>
+                                            {{ $classrooms->classroom_description }}
+                                        </p>
+                                    </div>
+                                    <div class="schedule__form-group">
+                                        <p class="schedule__lbl">Classroom schedule: </p>
+                                        <div class="schedule__form-wrap">
+                                            @foreach($classrooms->classroom_schedule as $sched)
+                                                <p class="schedule__default-sched">{{ $sched[0] . ' ' . $sched[1] }}</p>
+                                            @endforeach
                                         </div>
-                                        <div class="schedule__form-group">
-                                            <p class="schedule__txt">
-                                                <span class="schedule__lbl">Classroom section</span>
-                                                {{ $classroom->classroom_section }}
-                                            </p>
-                                        </div>
-                                        <div class="schedule__form-group">
-                                            <p class="schedule__txt">
-                                                <span class="schedule__lbl">Classroom description:</span>
-                                                {{ $classroom->classroom_description }}
-                                            </p>
-                                        </div>
-                                        <div class="schedule__form-group">
-                                            <p class="schedule__lbl">Classroom schedule: </p>
-                                            <div class="schedule__form-wrap">
-                                                @foreach(json_decode($classroom->classroom_schedule) as $sched)
-                                                    <p class="schedule__default-sched">{{ $sched[0] . ' ' . $sched[1] }}</p>
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                        <div class="schedule__form-group">
-                                            <p class="schedule__txt">
-                                                <span class="schedule__lbl">Classroom code:</span>
-                                                {{ $classroom->class_code }}
-                                            </p>
-                                        </div>
-                                    @endforeach
+                                    </div>
+                                    <div class="schedule__form-group">
+                                        <p class="schedule__txt">
+                                            <span class="schedule__lbl">Classroom code:</span>
+                                            {{ $classrooms->class_code }}
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>

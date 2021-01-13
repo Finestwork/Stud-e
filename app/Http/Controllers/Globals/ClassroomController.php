@@ -19,31 +19,71 @@ use function PHPUnit\Framework\isEmpty;
 class ClassroomController extends Controller
 {
     public function renderClassroom($id) {
-        if(Auth::guard('teacher')->check()){
-            $user = Auth::guard('teacher')->user();
-            $classroom = Classroom::where('classroom_unique_url', $id)->get();
-            if(count($classroom)>0){
-                return view('teacher.classroom.schedule',
-                    [
-                        'user' => $user,
-                        'classrooms' => $classroom,
-                    ]);
-            }
-        }else if(Auth::guard('student')->check()){
+        if(Auth::guard('student')->check()){
             $user = Auth::guard('student')->user();
-            $classroom = DB::table('classroom')->where('classroom_unique_url', $id)->get();
-            if($classroom->count() !== 0){
-                return view('student.class module.schedule',
-                    [
-                        'user' => $user,
-                        'classrooms' => $classroom,
-                    ]);
+            $doesClassroomExist = Classroom::where('classroom_unique_url', $id)->get()->first();
+            if($doesClassroomExist){
+                $classroomBelongsToMe = ApprovedStudent::where([
+                    ['student_id', Auth::guard('student')->id()],
+                    ['classroom_id', $doesClassroomExist->id]
+                ])->get()->first();
+                if($classroomBelongsToMe){
+                    return view('student.class module.schedule',
+                        [
+                            'user' => $user,
+                            'classrooms' => $doesClassroomExist,
+                        ]);
+                }
             }
+        }else if(Auth::guard('teacher')->check()){
+            $user = Auth::guard('teacher')->user();
+            $doesClassroomExist = Classroom::where('classroom_unique_url', $id)->get()->first();
+            if($doesClassroomExist){
+                $classroomBelongsToMe = TeacherClassroom::where([
+                    ['teacher_id', Auth::guard('teacher')->id()],
+                    ['classroom_id', $doesClassroomExist->id]
+                ])->get()->first();
+                if($classroomBelongsToMe){
+                    return view('teacher.classroom.schedule',
+                        [
+                            'user' => $user,
+                            'classrooms' => $doesClassroomExist,
+                        ]);
+                }
+            }
+            return view('errors.404');
         }
-        return view('errors.404');
+        return redirect()->intended('/');
+
     }
     public function renderModules($id){
         if(Auth::guard('student')->check()){
+            $user = Auth::guard('student')->user();
+            $doesClassroomExist = Classroom::where('classroom_unique_url', $id)->get()->first();
+            if($doesClassroomExist){
+                $classroomBelongsToMe = ApprovedStudent::where([
+                    ['student_id', Auth::guard('student')->id()],
+                    ['classroom_id', $doesClassroomExist->id]
+                ])->get()->first();
+                if($classroomBelongsToMe){
+                    if($doesClassroomExist->is_classroom_active){
+                        $primaryTitles = ModulesPrimaryTitles::where('classroom_id', $doesClassroomExist->id)->get();
+                        return view('student.class module.classroom',
+                            [
+                                'user' => $user,
+                                'classrooms' => $doesClassroomExist,
+                                'primaryTitles'=>$primaryTitles
+                            ]);
+                    }else{
+                        return view('student.class module.schedule',
+                            [
+                                'user' => $user,
+                                'classrooms' => $doesClassroomExist,
+                            ]);
+                    }
+
+                }
+            }
         }else if(Auth::guard('teacher')->check()){
             $user = Auth::guard('teacher')->user();
             $doesClassroomExist = Classroom::where('classroom_unique_url', $id)->get()->first();
@@ -63,7 +103,6 @@ class ClassroomController extends Controller
                 }
             }
             return view('errors.404');
-
         }
         return redirect()->intended('/');
     }
@@ -77,7 +116,7 @@ class ClassroomController extends Controller
                         ->join('teacher', 'teacher.id', '=', 'teacher_classroom.teacher_id')
                         ->where('classroom_id', $cID->classroom_id)
                         ->select('classroom.created_at', 'teacher.f_name', 'teacher.l_name','classroom_name','classroom_section'
-                            ,'classroom_description','classroom_description','classroom_unique_url')
+                            ,'classroom_description','classroom_description','classroom_unique_url', 'is_classroom_active')
                         ->get();
                 }
                 return view('student.class module.class_index', [

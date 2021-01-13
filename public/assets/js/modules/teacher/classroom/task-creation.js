@@ -55,7 +55,7 @@ addMoreQuestion.addEventListener('click', e=>{
         optionSelection = document.createElement('UL');
 
     optionSelection.classList.add('task-create__option-selection');
-    for(let i = 0; i<6; i++){
+    for(let i = 0; i<5; i++){
         let liTag = document.createElement('LI');
         liTag.classList.add('task-create__option-selection-item');
         if(i === 0){
@@ -73,9 +73,6 @@ addMoreQuestion.addEventListener('click', e=>{
         }else if(i === 4) {
             liTag.setAttribute('data-value', 'id');
             liTag.textContent = 'Identification';
-        }else if(i === 5) {
-            liTag.setAttribute('data-value', 'ao');
-            liTag.textContent = 'Attachment only';
         }
         optionSelection.append(liTag);
     }
@@ -129,12 +126,13 @@ addMoreQuestion.addEventListener('click', e=>{
         questionPointsLbl = document.createElement('LABEL'),
         questionPointsInput = document.createElement('INPUT');
 
-    questionPointsLbl.setAttribute('for', 'pointsQuestion1') //CHANGE LETTER
+    questionPointsLbl.setAttribute('for', 'pointsTxt') //CHANGE LETTER
     questionPointsLbl.textContent = 'Points for this question: ';
     questionPointsInput.setAttribute('type', 'number');
     questionPointsInput.setAttribute('placeholder', '1');
     questionPointsInput.setAttribute('min', '1');
-    questionPointsInput.setAttribute('id', 'pointsQuestion1'); //CHANGE LETTER
+    questionPointsInput.setAttribute('value', '1');
+    questionPointsInput.setAttribute('id', 'pointsTxt'); //CHANGE LETTER
 
     questionPointsHolder.classList.add('task-create__question-how-many-points');
     questionPointsHolder.append(questionPointsLbl, questionPointsInput);
@@ -146,135 +144,155 @@ addMoreQuestion.addEventListener('click', e=>{
 
     let parent = e.currentTarget.parentNode.parentNode;
     parent.children[0].append(questionMakerPanel);
-
+    deleteQuestionBttn.addEventListener('click', deleteQuestion);
     refreshSelectionTaskTypeDrpdwn();
     refreshselectionTaskItems();
-    refreshDeleteQuestion();
     addEventInputFile();
     addAttachmentPicture();
     removeAttachedPicture();
 });
+let classroomSettings = {};
 publishBttn.addEventListener('click', e=>{
     let child = e.currentTarget;
     //TASK INTRO
     //SETTINGS
-    let taskIntro = child.parentNode.parentNode.parentNode.querySelector('.task-create__intro');
-    let title = document.getElementById('descriptionTitleTxt').value,
-        underModule = taskIntro.querySelector('.task-create__selection-txt').getAttribute('data-module-id'),
-        taskType = taskIntro.querySelector('.js-type-task-dropdown').textContent.toLowerCase(),
-        sharedClasses = [],
+    let sharedClasses = [],
         timer = [],
         deadline = [];
 
-    let otherClasses = taskIntro.querySelectorAll('.task-create__options-checkboxes input[type="checkbox"]:checked');
+    classroomSettings['taskTitle'] =  document.getElementById('descriptionTitleTxt').value;
+    classroomSettings['underModule'] = taskIntroWrapper.querySelector('.task-create__selection-txt').getAttribute('data-module-id');
+    classroomSettings['taskType'] = taskIntroWrapper.querySelector('.js-type-task-dropdown').textContent.toLowerCase();
+
+    let otherClasses = taskIntroWrapper.querySelectorAll('.task-create__options-checkboxes input[type="checkbox"]:checked');
     if(otherClasses.length !== 0){
         for(let i = 0; i<otherClasses.length; i++){
             sharedClasses.push(otherClasses[i].value);
         }
-    }else{
-        console.log(otherClasses);
     }
-    let timeRadBttns = taskIntro.querySelector('.task-create__options-radio-bttn-group input[type="radio"]:checked');
+    classroomSettings['sharedClasses'] = sharedClasses;
+
+    let timeRadBttns = taskIntroWrapper.querySelector('.task-create__options-radio-bttn-group input[type="radio"]:checked');
     if(timeRadBttns.value === 'yes'){
         let hour = document.getElementById('hourTimerTxt').value,
             minute = document.getElementById('minuteTimerTxt').value;
         timer.push([hour,minute]);
     }
-    let dateDeadline = taskIntro.querySelector('.js-date-txt'),
-        timeDeadline = taskIntro.querySelector('.js-time-txt');
+    classroomSettings['timer'] = timer;
+
+    let dateDeadline = taskIntroWrapper.querySelector('.js-date-txt'),
+        timeDeadline = taskIntroWrapper.querySelector('.js-time-txt');
     if(dateDeadline && timeDeadline){
         deadline.push(dateDeadline.textContent, timeDeadline.textContent);
     }
-    console.log(title, underModule, taskType, sharedClasses, timer, deadline);
+    classroomSettings['deadline'] = deadline;
+
+    let submission = taskIntroWrapper.querySelector('.js-submission input[type="radio"]:checked').value;
+    let cheatingAttempt = taskIntroWrapper.querySelector('.js-cheating-attempt input[type="radio"]:checked').value;
+    let instruction = document.getElementById('instructionTxt').value;
+    if(submission){
+        classroomSettings['submission'] = submission;
+    }else{
+        classroomSettings['submission'] = '';
+    }
+    if(cheatingAttempt){
+        classroomSettings['cheatingAttempt'] = cheatingAttempt;
+    }else{
+        classroomSettings['cheatingAttempt'] = '';
+    }
+    if(instruction){
+        classroomSettings['instruction'] = instruction;
+    }else{
+        classroomSettings['instruction'] = '';
+    }
+
+    getAllQuestions();
+
+    //CHANGE THE VALIDATION LATER
+    if(true){
+        publishTask();
+    }else{
+        //THROW AN ERROR
+    }
 });
 //CLICK FUNCTIONS
-function refreshDeleteQuestion(){
-    let deleteBttn = taskMainContainer.querySelectorAll('.js-delete-question');
-    deleteBttn.forEach(el=>{
-       el.addEventListener('click', e=>{
-           let questionPanelCtr = taskMainContainer.querySelectorAll('.task-create__question-maker-panel');
-           let rootParent = e.currentTarget.parentNode.parentNode.parentNode;
-           let attachmentPicBox = rootParent.querySelectorAll('.task-create__attachment-holder');
-           let checkboxImgBox = rootParent.querySelectorAll('.task-create__ma-choice-wrapper');
-           if(attachmentPicBox.length !== 0 || checkboxImgBox.length !== 0){
-               let imgPath = [];
-               rootParent.classList.add('show-loading');
-               if(attachmentPicBox){
-                   let attachmentLength = attachmentPicBox.length;
-                   for(let i = attachmentLength -1; i>=0; i--){
-                       imgPath.push(attachmentPicBox[i].getAttribute('data-img-path'));
-                       attachmentPicBox[1].disabled = true;
-                   }
-               }
-               if(checkboxImgBox){
-                   let checkboxImgBoxLength = checkboxImgBox.length;
-                   for(let i = checkboxImgBoxLength -1; i>=0; i--){
-                       imgPath.push(checkboxImgBox[i].children[1].getAttribute('data-img-path'));
-                       checkboxImgBox[i].querySelector('.task-create__choice-close-bttn').disabled = true;
-                   }
-               }
-
-
-               let url = '/classroom/delete-multiple-picture';
-               const options = {
-                   method: 'POST',
-                   headers:{
-                       'Accept': 'application/json',
-                       'Content-Type': 'application/json;charset=UTF-8',
-                       'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-                   },
-                   body: JSON.stringify({data: imgPath})
-               };
-               fetch(url, options)
-                   .then((response)=>{
-                       return response.text();
-                   })
-                   .then((body)=>{
-                       let result = JSON.parse(body);
-                       if(result.success){
-                           rootParent.classList.add('anim-fadeOutBigRight');
-                           setTimeout(()=>{
-                               rootParent.remove();
-                               questionPanelCtr.forEach(el=>{
-                                   let questionCtr = el.querySelector('.task-create__question-counter');
-                                   let index = Array.from(taskMainContainer.children).indexOf(el);
-                                   if(questionCtr){
-                                       questionCtr.textContent = 'Question '+(index+1);
-                                   }
-                               });
-                           }, 600);
-                       }else{
-                           //FAILED
-                           if(attachmentPicBox){
-                               rootParent.classList.remove('show-loading');
-                               let attachmentLength = attachmentPicBox.length;
-                               for(let i = attachmentLength -1; i>=0; i--){
-                                   attachmentPicBox[1].disabled = false;
-                               }
-                           }
-                       }
-                   })
-                   .catch(error=>{
-                       console.log(error);
-                   });
-           }else{
-               rootParent.classList.add('anim-fadeOutBigRight');
-               setTimeout(()=>{
-                   rootParent.remove();
-                   questionPanelCtr.forEach(el=>{
-                       let questionCtr = el.querySelector('.task-create__question-counter');
-                       let index = Array.from(taskMainContainer.children).indexOf(el);
-                       if(questionCtr){
-                           questionCtr.textContent = 'Question '+(index+1);
-                       }
-                   });
-               }, 600);
-           }
-
-
-
-       })
-    });
+function deleteQuestion(e){
+    let questionPanelCtr = taskMainContainer.querySelectorAll('.task-create__question-maker-panel');
+    let rootParent = e.currentTarget.parentNode.parentNode.parentNode;
+    let attachmentPicBox = rootParent.querySelectorAll('.task-create__attachment-holder');
+    let checkboxImgBox = rootParent.querySelectorAll('.task-create__ma-choice-wrapper');
+    if(attachmentPicBox.length !== 0 || checkboxImgBox.length !== 0){
+        let imgPath = [];
+        rootParent.classList.add('show-loading');
+        if(attachmentPicBox){
+            let attachmentLength = attachmentPicBox.length;
+            for(let i = attachmentLength - 1; i>=0; i--){
+                imgPath.push(attachmentPicBox[i].getAttribute('data-img-path'));
+                attachmentPicBox[i].children[1].disabled = true;
+            }
+        }
+        if(checkboxImgBox){
+            let checkboxImgBoxLength = checkboxImgBox.length;
+            for(let i = checkboxImgBoxLength -1; i>=0; i--){
+                imgPath.push(checkboxImgBox[i].children[1].getAttribute('data-img-path'));
+                checkboxImgBox[i].querySelector('.task-create__choice-close-bttn').disabled = true;
+            }
+        }
+        let url = '/classroom/delete-multiple-picture';
+        const options = {
+            method: 'POST',
+            headers:{
+                'Accept': 'application/json',
+                'Content-Type': 'application/json;charset=UTF-8',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            },
+            body: JSON.stringify({data: imgPath})
+        };
+        fetch(url, options)
+            .then((response)=>{
+                return response.text();
+            })
+            .then((body)=>{
+                let result = JSON.parse(body);
+                if(result.success){
+                    rootParent.classList.add('anim-fadeOutBigRight');
+                    setTimeout(()=>{
+                        rootParent.remove();
+                        questionPanelCtr.forEach(el=>{
+                            let questionCtr = el.querySelector('.task-create__question-counter');
+                            let index = Array.from(taskMainContainer.children).indexOf(el);
+                            if(questionCtr){
+                                questionCtr.textContent = 'Question '+(index+1);
+                            }
+                        });
+                    }, 600);
+                }else{
+                    //FAILED
+                    if(attachmentPicBox){
+                        rootParent.classList.remove('show-loading');
+                        let attachmentLength = attachmentPicBox.length;
+                        for(let i = attachmentLength -1; i>=0; i--){
+                            attachmentPicBox[1].disabled = false;
+                        }
+                    }
+                }
+            })
+            .catch(error=>{
+                console.log(error);
+            });
+    }else{
+        rootParent.classList.add('anim-fadeOutBigRight');
+        setTimeout(()=>{
+            rootParent.remove();
+            questionPanelCtr.forEach(el=>{
+                let questionCtr = el.querySelector('.task-create__question-counter');
+                let index = Array.from(taskMainContainer.children).indexOf(el);
+                if(questionCtr){
+                    questionCtr.textContent = 'Question '+(index+1);
+                }
+            });
+        }, 600);
+    }
 }
 function chooseQuestionType(e){
     let nextElSibling = e.currentTarget.nextElementSibling;
@@ -296,30 +314,39 @@ function selectItemInDrpdwn(e){
     e.currentTarget.parentNode.classList.remove('dropdown--active');
 }
 function markTheCorrectAns(e){
-    let highlightedTxt = window.getSelection().toString().trim();
-    if(highlightedTxt !== "" && highlightedTxt.length !== 0){
+    let highlightedTxt = window.getSelection().toString();
+    if(highlightedTxt !== "" && highlightedTxt !== " " && highlightedTxt.length !== 0){
         let rootParentNode = e.currentTarget.parentNode.parentNode;
         let answerKey = rootParentNode.parentNode.querySelector('.task-create__answer-key');
         let input = rootParentNode.querySelector('input');
         window.getSelection().removeAllRanges();
         let pastValue = input.getAttribute('data-past-value'),
             getStoredAnsKey = input.getAttribute('data-answer-key');
-        let selectionStart = input.selectionStart, selectionEnd = input.selectionEnd;
-        if(pastValue){
-            //BELOW COMMENT IS NEEDED TO CHECK THE LOCATION OF THE STRING
-            //pastValue.slice(0,96) + pastValue.slice(96,102).replace(pastValue.substring(selectionStart,selectionEnd), '*') + pastValue.slice(102);
-            pastValue = pastValue + `[${selectionStart},${selectionEnd}]`;
-            input.setAttribute('data-past-value', pastValue);
+        let selectionStart = 0, selectionEnd = 0;
+        if(highlightedTxt.charAt(highlightedTxt.length - 1) === ' '){
+            selectionStart = input.selectionStart - 1;
+            selectionEnd = input.selectionEnd - 1;
         }else{
-            input.setAttribute('data-past-value', `[${selectionStart},${selectionEnd}]`);
+            selectionStart = input.selectionStart;
+            selectionEnd = input.selectionEnd;
+        }
+        if(pastValue){
+            let arrLoc = JSON.parse(pastValue);
+            arrLoc.push([selectionStart,selectionEnd]);
+            arrLoc.sort((a,b)=>{
+                return a[0]-b[0]
+            });
+            input.setAttribute('data-past-value', JSON.stringify(arrLoc));
+        }else{
+            input.setAttribute('data-past-value', JSON.stringify([[selectionStart, selectionEnd]]));
         }
         if(getStoredAnsKey){
-            getStoredAnsKey = getStoredAnsKey +', '+ highlightedTxt;
+            getStoredAnsKey = getStoredAnsKey +', '+ highlightedTxt.trim();
             input.setAttribute('data-answer-key', getStoredAnsKey);
             answerKey.textContent = 'Answer keys: '+getStoredAnsKey;
         }else{
-            input.setAttribute('data-answer-key', highlightedTxt);
-            answerKey.textContent = 'Answer key: '+highlightedTxt;
+            input.setAttribute('data-answer-key', highlightedTxt.trim());
+            answerKey.textContent = 'Answer key: '+highlightedTxt.trim();
         }
     }
 }
@@ -619,7 +646,6 @@ function addChoicesInMAFormat(e){
 }
 //MANIPULATORS
 function whichQuestionTypeToDisplay(target){
-    txtOnly = false;
     let rootParentNode = target.parentNode.parentNode.parentNode.parentNode;
     let answerPreviewContainer = rootParentNode.querySelector('.task-create__answer-preview');
     let questionHolder = rootParentNode.querySelector('.task-create__question-main--top');
@@ -643,6 +669,7 @@ function whichQuestionTypeToDisplay(target){
         }
     }
     let type = target.getAttribute('data-value');
+    rootParentNode.parentNode.setAttribute('data-question-type', type);
     switch (type) {
         case 'fitb':
             showFITBFormat(target,answerPreviewContainer, questionPanelCtr);
@@ -664,12 +691,93 @@ function whichQuestionTypeToDisplay(target){
             showMCFormat(target, answerPreviewContainer, questionPanelCtr);
             attachmentTxt.textContent = 'Teachers are only allowed to upload pictures with following extensions: .gif, .png, .jpeg/.jpg';
             break;
-        case 'ao':
-            showAOFormat(target, answerPreviewContainer, questionPanelCtr);
-            attachmentTxt.textContent = 'Teachers are only allowed to upload pictures with following extensions: .gif, .png, .jpeg/.jpg, .docs, .docx, .pdf';
-            break;
         default:
             break;
+    }
+}
+let content = [];
+function getAllQuestions(){
+    content = [];
+    let questions = document.querySelectorAll('.task-create__question-maker-panel');
+    if(questions.length !== 0){
+        for (let i = 0; i < questions.length; i++){
+            let type = questions[i].getAttribute('data-question-type');
+            let attachments = questions[i].querySelectorAll('.task-create__attachment-holder');
+            let attachmentsID = [];
+            if(attachments.length !== 0){
+                for(let i = 0;i<attachments.length; i++){
+                    attachmentsID.push(attachments[i].getAttribute('data-img-id'));
+                }
+            }
+            if(type === 'fitb'){
+                let input = questions[i].querySelector('.task-create__question-wrapper input[type="text"]');
+                let points = questions[i].querySelector('.task-create__question-how-many-points input[type="number"]').value;
+                content.push(['fitb', input.value, input.getAttribute('data-past-value'), points, attachmentsID]);
+            }else if(type === 'la'){
+                let input = questions[i].querySelector('.task-create__question-wrapper input[type="text"]');
+                let points = questions[i].querySelector('.task-create__question-how-many-points input[type="number"]').value;
+                content.push(['la', input.value, points, attachmentsID]);
+            }else if(type === 'ma'){
+                let txtOnly = questions[i].querySelector('.task-create__bttn-controls').getAttribute('data-txt-only');
+                let answerValues = [], choices = [];
+                let checkboxes = questions[i].querySelectorAll('.task-create__ma-wrapper input[type="checkbox"]');
+                let points = questions[i].querySelector('.task-create__question-how-many-points input[type="number"]').value;
+                if(txtOnly === 'true'){
+                    if(checkboxes.length !== 0){
+                        for(let i = 0; i<checkboxes.length; i++){
+                            choices.push(checkboxes[i].value);
+                            if(checkboxes[i].checked){
+                                answerValues.push(checkboxes[i].value);
+                            }
+                        }
+                    }
+                    content.push(['ma', 'true', choices, answerValues, points, attachmentsID]);
+                }else if(txtOnly === 'false'){
+                    if(checkboxes.length !== 0){
+                        for(let i = 0; i<checkboxes.length; i++){
+                            let img = checkboxes[i].parentNode.parentNode.querySelector('.task-create__checkbox-img-wrapper').getAttribute('data-img-id');
+                            choices.push(img);
+                            if(checkboxes[i].checked){
+                                answerValues.push(img);
+                            }
+                        }
+                    }
+                    content.push(['ma', 'false', choices, answerValues, points, attachmentsID]);
+                }
+            }else if(type === 'mc'){
+                let txtOnly = questions[i].querySelector('.task-create__bttn-controls').getAttribute('data-txt-only');
+                let answerValues = [], choices = [];
+                let radios = questions[i].querySelectorAll('.task-create__mc-choice-wrapper input[type="radio"]');
+                let points = questions[i].querySelector('.task-create__question-how-many-points input[type="number"]').value;
+                if(txtOnly === 'true'){
+                    if(radios.length !== 0){
+                        for(let i = 0; i<radios.length; i++){
+                            choices.push(radios[i].value);
+                            if(radios[i].checked){
+                                answerValues.push(radios[i].value);
+                            }
+                        }
+                    }
+                    content.push(['mc', 'true', choices, answerValues, points, attachmentsID]);
+                }else if(txtOnly === 'false'){
+                    if(radios.length !== 0){
+                        for(let i = 0; i<radios.length; i++){
+                            let img = radios[i].parentNode.parentNode.querySelector('.task-create__checkbox-img-wrapper').getAttribute('data-img-id');
+                            choices.push(img);
+                            if(radios[i].checked){
+                                answerValues.push(img);
+                            }
+                        }
+                    }
+                    content.push(['mc', 'false', choices, answerValues, points, attachmentsID]);
+                }
+            }else if(type === 'id'){
+                let input = questions[i].querySelector('.task-create__question-wrapper input[type="text"]');
+                let correctAns = questions[i].querySelector('.task-create__correct-ans-wrapper input[type="text"]');
+                let points = questions[i].querySelector('.task-create__question-how-many-points input[type="number"]').value;
+                content.push(['id', input.value, correctAns.value, points, attachmentsID]);
+            }
+        }
     }
 }
 //AUTO GENERATE
@@ -918,34 +1026,6 @@ function showMCFormat(target, answerPreviewContainer, questionPanelCtr){
     bttnBG.style.height = plainTxtBttn.offsetHeight + 'px';
     bttnBG.style.top = plainTxtBttn.offsetTop + 'px';
     bttnBG.style.left = plainTxtBttn.offsetLeft + 'px';
-}
-function showAOFormat(target, answerPreviewContainer, questionPanelCtr){
-    let parentNode = answerPreviewContainer.parentNode;
-    let questionMainHolderTop = document.createElement('DIV');
-    questionMainHolderTop.classList.add('task-create__question-main--top');
-
-    let questionCounter = document.createElement('H3'),
-        questionWrapper = document.createElement('DIV'),
-        questionInput = document.createElement('TEXTAREA'),
-        questionLine = document.createElement('DIV'),
-        questionNote = document.createElement('DIV');
-
-    questionCounter.classList.add('task-create__question-counter');
-    //questionCounter.textContent = 'Question '+questionPanelCtr;
-    questionCounter.textContent = 'Instruction:';
-    questionWrapper.classList.add('task-create__question-wrapper');
-    questionWrapper.style.height = '165px';
-    questionInput.style.height = '100%';
-    questionInput.style.fontWeight = '700';
-    questionInput.setAttribute('type', 'text');
-    questionInput.setAttribute('placeholder', 'Place your instructions here');
-    questionLine.classList.add('task-create__question-wrapper-line');
-    questionNote.classList.add('task-create__note');
-    questionNote.textContent = 'Note: Dummy text here';
-
-    questionWrapper.append(questionInput, questionLine);
-    questionMainHolderTop.append(questionCounter, questionWrapper, questionNote);
-    parentNode.insertBefore(questionMainHolderTop, answerPreviewContainer);
 }
 function mcPlainTxtBttn(e){
     let currentBttn = e.currentTarget;
@@ -1231,4 +1311,33 @@ function mcChoicesInMAFormat(e) {
             }
         }
     }
+}
+
+//FETCH
+function publishTask(){
+    let url = '/task/publish';
+    const options = {
+        method: 'POST',
+        headers:{
+            'Accept': 'application/json',
+            'Content-Type': 'application/json;charset=UTF-8',
+            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+        },
+        body: JSON.stringify({settings: classroomSettings, contents: content, cID: classID})
+    };
+    fetch(url, options)
+        .then((response)=>{
+            return response.text();
+        })
+        .then((body)=>{
+            let result = JSON.parse(body);
+            if(result.success) {
+                location.href = '/task/'+classroomUrl;
+            }else{
+                //ERROR SCROLL TO TOP
+            }
+        })
+        .catch(error=>{
+            console.log(error);
+        });
 }

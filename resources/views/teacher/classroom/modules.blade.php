@@ -82,12 +82,11 @@
                                             <div class="modules__form-group">
                                                 <label for="moduleTitleTxt">Module title</label>
                                                 <input type="text" name="moduleTitleTxt" id="moduleTitleTxt" placeholder="Place your module's title here">
-                                                <p class="modules__form-note">Note: This will be a title of your module</p>
                                             </div>
                                             <div class="modules__form-group">
                                                 <label for="descriptionTxt">Module description</label>
                                                 <textarea name="descriptionTxt" id="descriptionTxt" placeholder="Place your module's descripiton here"></textarea>
-                                                <p class="modules__form-note">Note: This will be a title of your module</p>
+                                                <p class="modules__form-note">Note: Feel free to write a short description to guide your students with their modules.</p>
                                             </div>
                                             <div class="modules__drop-form">
                                                 <label>File uploader</label>
@@ -121,12 +120,11 @@
                                             <div class="modules__form-group">
                                                 <label for="updateTitleTxt">Module title</label>
                                                 <input type="text" name="updateTitleTxt" id="updateTitleTxt" placeholder="Place your module's title here">
-                                                <p class="modules__form-note">Note: This will be a title of your module</p>
                                             </div>
                                             <div class="modules__form-group">
                                                 <label for="updateDescriptionTxt">Module description</label>
                                                 <textarea name="updateDescriptionTxt" id="updateDescriptionTxt" placeholder="Place your module's descripiton here"></textarea>
-                                                <p class="modules__form-note">Note: This will be a title of your module</p>
+                                                <p class="modules__form-note">Note: Write a short description of your module to guide your students.</p>
                                             </div>
                                             <div class="modules__drop-form">
                                                 <label>File uploader</label>
@@ -172,7 +170,7 @@
                                                 <div class="modules__lists-wrapper">
                                                     @foreach(\App\Models\Modules::select('id', 'secondary_title', 'description', 'document_id', 'video_id', 'audio_id', 'image_id', 'pdf_id', 'external_links')->where('primary_title_id', $pt->id)->get() as $module)
                                                         <div class="modules__lists">
-                                                            <div class="modules__list" data-id="{{ $module->id }}">
+                                                            <div class="modules__list" data-id="{{ $module->id }}" id="{{$module->id}}">
                                                                 <div class="modules__list-top">
                                                                     <h3 class="modules__list-title">{{ $module->secondary_title }}</h3>
                                                                 </div>
@@ -196,6 +194,7 @@
                                                                             @foreach($module->audio_id as $audio_id)
                                                                                 @foreach(\App\Models\AudioStorage::select('id', 'storage_path', 'original_name', 'hashed_name')->where('id', (int)$audio_id)->get() as $audio)
                                                                                     <div class="modules__player-item" data-audio-path="{{$audio->storage_path}}" data-audio-id="{{$audio->id}}" data-audio-name="{{$audio->original_name}}">
+
                                                                                         <p class="modules__player-name"><a href="{{route('download.file', [$classrooms->classroom_unique_url, 'audio', $audio->hashed_name])}}" class="modules__player-link">{{$audio->original_name}}</a></p>
                                                                                         <div class="audio-player">
                                                                                             <audio>
@@ -335,4 +334,8 @@
     <script src="/assets/js/helpers/navbar-with-fixed-sidebar.js"></script>
     <script src="/assets/js/libraries/audio/audio.js"></script>
     <script src="/assets/js/modules/teacher/classroom/modules.js"></script>
+    <script>
+        let hashedLink = window.location.hash;
+        let showModule = document.getElementById(hashedLink.substring(1)).classList.toggle('module-card--active');
+    </script>
 @endsection

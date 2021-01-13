@@ -11,10 +11,31 @@
         margin-left: 35px
         margin-bottom: 50px
     &__list-item
-        margin-bottom: 30px
+        margin-bottom: 60px
         &:last-of-type
             margin-bottom: 0
-
+            .question__attachment-wrapper
+                border-bottom: none
+    &__note
+        color: #7b7f88
+        font-size: 14px
+    &__attachment-wrapper
+        margin-top: 35px
+        @extend %display_flex
+        border-bottom: 2px solid #d6d6d6
+        padding-bottom: 16px
+    &__attachment-img
+        margin-right: 10px
+        width: 140px
+        height: 85px
+        overflow: hidden
+        border-radius: 5px
+        border: 2px solid #1b1d1d
+        cursor: pointer
+        &:hover
+            border-color: $color-new-secondary
+        &:last-of-type
+            margin-right: 0
     &__textarea
         width: 100%
         max-width: 550px
@@ -45,7 +66,7 @@
         @include brk_md
             width: 25%
         @include brk_lrg
-            margin-top: 0
+            margin-top: 5px
             width: 100%
             max-width: unset
             -webkit-justify-content: flex-start
@@ -60,6 +81,7 @@
             opacity: 0
         label
             cursor: pointer
+            position: relative
             &:hover
                 color: $color-new-secondary
                 &::before
@@ -71,7 +93,7 @@
             content: ''
             position: absolute
             border-radius: 100%
-            left: 10px
+            left: -11px
             top: 50%
             @include transform(translate(-50%, -50%))
         label::before
@@ -89,6 +111,62 @@
                 &::after
                     @include animation(radioAnimation .8s both linear)
                     background-color: $color-new-secondary
+    &__checkbox-main-wrapper
+        margin-top: 20px
+    &__checkbox-wrapper
+        position: relative
+        margin-left: 30px
+        margin-bottom: 20px
+        &:last-of-type
+            margin-bottom: 0
+        input[type="checkbox"]
+            display: none
+        label
+            position: relative
+            cursor: pointer
+            font-size: 14px
+            color: #717171
+            -webkit-user-select: none
+            user-select: none
+            @include custom_breakpoint(600)
+                font-size: 16px
+            &::before
+                content: ''
+                width: 14px
+                height: 14px
+                position: absolute
+                left: -30px
+                top: 0
+                background-color: #ececec
+                border: 2px solid #d0d0d0
+                border-radius: 3px
+                @include custom_breakpoint(600)
+                    height: 20px
+                    width: 20px
+            &::after
+                content: url("/assets/svgs/icons/Check secondary color.svg")
+                width: 8px
+                height: 8px
+                position: absolute
+                left: -27px
+                top: -2px
+                display: none
+                @include custom_breakpoint(600)
+                    width: 12px
+                    height: 10px
+                    left: -26px
+            &:hover
+                color: $color-new-secondary
+            &:hover::before
+                border-color: $color-new-secondary
+        input[type="checkbox"]:checked
+            + label
+                color: $color-new-secondary
+            + label::before
+                border-color: $color-new-secondary
+                background-color: white
+            + label::after
+                display: block
     &__footer
         @extend %display_flex
         -webkit-align-items: center
@@ -123,6 +201,35 @@
         z-index: 999
     &__cheating-attempt
         margin: 10px 0
+    &__img-wrapper
+        @extend %display_flex
+        -webkit-align-items: center
+        align-items: center
+        margin: 40px 0
+    &__img-box
+        width: 150px
+        margin-left: 10px
+        cursor: pointer
+        &:hover img
+            border-color: $color-new-secondary
+    &__id
+        margin-top: 15px
+        max-width: 800px
+        input[type="text"]
+            font-family: inherit
+            @extend %font-bold
+            border: none
+            background-color: #f8fbfb
+            color: #172239
+            padding: 10px 10px
+            border-bottom: 5px solid #172239
+            width: 100%
+            font-size: 14px
+            &:focus
+                outline: none
+                border-color: $color-new-secondary
+            &::placeholder
+                color: #172239
 .active
     background-color: $color-primary
     color: white
@@ -132,6 +239,8 @@
     backface-visibility: hidden
 
 .fill-in-the-blank
+    padding-left: 10px
+    padding-right: 15px
     p
         @extend %display_flex
         -webkit-align-items: center
@@ -142,7 +251,7 @@
         border: none
         resize: none
         font-size: 16px
-        width: 220px
+        width: 190px
         height: 35px
         @extend %font-semibold
         font-family: inherit
@@ -151,7 +260,7 @@
         padding-bottom: 5px
         padding-top: 5px
         padding-left: 10px
-        margin: 10px 13px
+        margin: 10px 0
         &:focus
             outline: none
             border-color: $color-new-secondary
@@ -160,3 +269,9 @@
         @include brk_md
             top: 10px
 
+    span
+        margin: 0 10px
+        &:first-of-type
+            margin-left: 0
+.img-adjust-mc
+    margin-right: 40px

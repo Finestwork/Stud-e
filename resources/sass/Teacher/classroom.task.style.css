@@ -2,7 +2,7 @@
   font-weight: 800;
 }
 
-.task__control-selection, .task__control-label, .task__create-task-bttn, .classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
+.table tbody, .task__control-selection, .task__control-label, .task__create-task-bttn, .classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
 .form--secondary__group textarea, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name, .breadcrumbs, .switch__note, .switch__name {
   font-weight: 700;
 }
@@ -2110,6 +2110,63 @@ label {
   box-shadow: 0 0 0 3px rgba(0, 20, 249, 0.22);
   background-color: #eff0ff;
   border-color: #eff0ff;
+}
+.task__table-wrapper {
+  margin-top: 70px;
+}
+
+.table {
+  color: #172239;
+  width: 900px;
+}
+@media only screen and (min-width: 73.75em) {
+  .table {
+    width: 100%;
+  }
+}
+.table tr {
+  border-bottom: 2px solid #EDF0F3;
+}
+.table thead {
+  border-bottom: 2px solid #EDF0F3;
+}
+.table thead th {
+  padding-bottom: 10px;
+}
+.table tbody th {
+  display: block;
+  margin: 15px;
+}
+.table tbody tr {
+  font-size: 14px;
+}
+.table tbody tr:hover {
+  background-color: #EDF0F3;
+}
+.table tbody tr:last-of-type {
+  border-bottom: none;
+}
+.table__row-head, .table__link {
+  text-align: left;
+}
+.table__type, .table__start-date, .table__duedate, .table__score {
+  text-align: center;
+}
+.table__start-date, .table__duedate {
+  padding: 0 10px;
+}
+.table__checkbox-box {
+  width: 18px;
+  height: 18px;
+}
+.table__score {
+  width: 8%;
+}
+.table__link {
+  color: #4c6cf7;
+}
+.table__link:hover {
+  color: #0030ff;
 }
 
 .classroom {

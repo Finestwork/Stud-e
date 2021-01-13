@@ -44,7 +44,7 @@ let changeSettingsBttn = document.querySelector('.js-schedule-bttn'),
 
 let errorWrapper = document.querySelector('.classroom-settings__error-list');
 
-let childCtr = classroomOrigValues[0].classroom_schedule.length - 1;
+let childCtr = classroomOrigValues.classroom_schedule.length - 1;
 addScheduleBttn.addEventListener('click', e=>{
     childCtr++;
     removeScheduleBttn.style.display = 'inline';
@@ -77,15 +77,15 @@ closeSettingsBttn.addEventListener('click', ()=>{
             schedules.push([day, time]);
         }
     }
-    if(classroomNameTxt.value !== classroomOrigValues[0].classroom_name
-        || classroomSectionTxt.value !== classroomOrigValues[0].classroom_section
-        || classroomDescriptionTxt.value !== classroomOrigValues[0].classroom_description
-        || !isArrayTheSame(schedules, classroomOrigValues[0].classroom_schedule)
-        || codeTxt.value !== classroomOrigValues[0].class_code
-        || canDownload !== classroomOrigValues[0].can_student_download
-        || canPost !== classroomOrigValues[0].can_student_post
-        || canRequest !== classroomOrigValues[0].can_student_join
-        || isActive !== classroomOrigValues[0].is_classroom_active){
+    if(classroomNameTxt.value !== classroomOrigValues.classroom_name
+        || classroomSectionTxt.value !== classroomOrigValues.classroom_section
+        || classroomDescriptionTxt.value !== classroomOrigValues.classroom_description
+        || !isArrayTheSame(schedules, classroomOrigValues.classroom_schedule)
+        || codeTxt.value !== classroomOrigValues.class_code
+        || canDownload !== classroomOrigValues.can_student_download
+        || canPost !== classroomOrigValues.can_student_post
+        || canRequest !== classroomOrigValues.can_student_join
+        || isActive !== classroomOrigValues.is_classroom_active){
         if(confirm("Your changes are not saved yet. Are you sure you want to continue?")){
             hideSettingsWrapper();
             resetAllFields();
@@ -204,16 +204,16 @@ function changeSwitchValues(el, str){
     }
 }
 function resetAllFields(){
-    classroomNameTxt.value = classroomOrigValues[0].classroom_name;
-    classroomSectionTxt.value = classroomOrigValues[0].classroom_section;
-    classroomDescriptionTxt.value = classroomOrigValues[0].classroom_description;
-    codeTxt.value = classroomOrigValues[0].class_code;
-    canDownload = classroomOrigValues[0].can_student_download;
-    canPost = classroomOrigValues[0].can_student_post;
-    canRequest = classroomOrigValues[0].can_student_join;
-    isActive = classroomOrigValues[0].is_classroom_active;
+    classroomNameTxt.value = classroomOrigValues.classroom_name;
+    classroomSectionTxt.value = classroomOrigValues.classroom_section;
+    classroomDescriptionTxt.value = classroomOrigValues.classroom_description;
+    codeTxt.value = classroomOrigValues.class_code;
+    canDownload = classroomOrigValues.can_student_download;
+    canPost = classroomOrigValues.can_student_post;
+    canRequest = classroomOrigValues.can_student_join;
+    isActive = classroomOrigValues.is_classroom_active;
     resetScheduleForm();
-    if(classroomOrigValues[0].can_student_download){
+    if(classroomOrigValues.can_student_download){
         switchBttn1.classList.add('switch--active');
         showElement(switchBttn1TurnOn);
         hideElement(switchBttn1TurnOff);
@@ -222,7 +222,7 @@ function resetAllFields(){
         showElement(switchBttn1TurnOff);
         hideElement(switchBttn1TurnOn);
     }
-    if(classroomOrigValues[0].can_student_post){
+    if(classroomOrigValues.can_student_post){
         switchBttn2.classList.add('switch--active');
         hideElement(switchBttn2TurnOff);
         showElement(switchBttn2TurnOn);
@@ -231,7 +231,7 @@ function resetAllFields(){
         hideElement(switchBttn2TurnOn);
         showElement(switchBttn2TurnOff);
     }
-    if(classroomOrigValues[0].can_student_join){
+    if(classroomOrigValues.can_student_join){
         switchBttn3.classList.add('switch--active');
         hideElement(switchBttn3TurnOff);
         showElement(switchBttn3TurnOn);
@@ -240,7 +240,7 @@ function resetAllFields(){
         hideElement(switchBttn3TurnOff);
         showElement(switchBttn3TurnOn);
     }
-    if(classroomOrigValues[0].is_classroom_active){
+    if(classroomOrigValues.is_classroom_active){
         switchBttn4.classList.add('switch--active');
         hideElement(switchBttn4TurnOff);
         showElement(switchBttn4TurnOn);
@@ -345,14 +345,14 @@ function isArrayTheSame(arr1, arr2){
     return false;
 }
 function getLatestValues(result){
-    classroomOrigValues[0].classroom_name = result.classroom_name;
-    classroomOrigValues[0].classroom_section = result.classroom_section;
-    classroomOrigValues[0].classroom_description = result.classroom_description;
-    classroomOrigValues[0].classroom_unique_url = result.classroom_unique_url;
-    classroomOrigValues[0].can_student_download = result.can_student_download;
-    classroomOrigValues[0].can_student_post = result.can_student_post;
-    classroomOrigValues[0].can_student_join = result.can_student_join;
-    classroomOrigValues[0].is_classroom_active = result.is_classroom_active;
+    classroomOrigValues.classroom_name = result.classroom_name;
+    classroomOrigValues.classroom_section = result.classroom_section;
+    classroomOrigValues.classroom_description = result.classroom_description;
+    classroomOrigValues.classroom_unique_url = result.classroom_unique_url;
+    classroomOrigValues.can_student_download = result.can_student_download;
+    classroomOrigValues.can_student_post = result.can_student_post;
+    classroomOrigValues.can_student_join = result.can_student_join;
+    classroomOrigValues.is_classroom_active = result.is_classroom_active;
     let schedules = [];
     let scheduleLength = Object.keys(result.classroom_schedule).length;
     test = result;
@@ -361,15 +361,15 @@ function getLatestValues(result){
             time = result.classroom_schedule[i][1];
         schedules.push([day, time]);
     }
-    classroomOrigValues[0].classroom_schedule = schedules;
+    classroomOrigValues.classroom_schedule = schedules;
 }
 function changeScheduleWrapperContent(){
-    sName.textContent = classroomOrigValues[0].classroom_name;
-    sSection.textContent = classroomOrigValues[0].classroom_section;
-    sDescription.textContent = classroomOrigValues[0].classroom_description;
-    sCode.textContent = classroomOrigValues[0].class_code;
+    sName.textContent = classroomOrigValues.classroom_name;
+    sSection.textContent = classroomOrigValues.classroom_section;
+    sDescription.textContent = classroomOrigValues.classroom_description;
+    sCode.textContent = classroomOrigValues.class_code;
 
-    if(classroomOrigValues[0].is_classroom_active){
+    if(classroomOrigValues.is_classroom_active){
         scheduleActiveStatus.style.display = 'none';
     }else{
         scheduleActiveStatus.style.display = '-webkit-flex';
@@ -380,11 +380,11 @@ function changeScheduleWrapperContent(){
         sSchedule.children[i].remove();
     }
 
-    let scheduleLength = classroomOrigValues[0].classroom_schedule.length;
+    let scheduleLength = classroomOrigValues.classroom_schedule.length;
     for(let i = 0; i<scheduleLength; i++){
         let pTag = document.createElement('P');
         pTag.classList.add('schedule__default-sched');
-        pTag.textContent = classroomOrigValues[0].classroom_schedule[i][0] + " ( " +classroomOrigValues[0].classroom_schedule[0][1] +" )";
+        pTag.textContent = classroomOrigValues.classroom_schedule[i][0] + " ( " +classroomOrigValues.classroom_schedule[0][1] +" )";
         sSchedule.append(pTag);
     }
 }
@@ -468,9 +468,9 @@ function resetScheduleForm() {
     for (let i = childCtr; i >= 0; i--) {
         parent.children[i].remove();
     }
-    childCtr = classroomOrigValues[0].classroom_schedule.length - 1;
-    for (let i = 0; i < classroomOrigValues[0].classroom_schedule.length; i++) {
-        resetDisplayForms(child, classroomOrigValues[0].classroom_schedule[i][0], classroomOrigValues[0].classroom_schedule[i][1]);
+    childCtr = classroomOrigValues.classroom_schedule.length - 1;
+    for (let i = 0; i < classroomOrigValues.classroom_schedule.length; i++) {
+        resetDisplayForms(child, classroomOrigValues.classroom_schedule[i][0], classroomOrigValues.classroom_schedule[i][1]);
     }
 }
 function populateOption(el, txt) {
@@ -499,7 +499,7 @@ function validateForm() {
         crSection = classroomSectionTxt.value,
         crDescription = classroomDescriptionTxt.value,
         crCode = codeTxt.value,
-        crUrl = classroomOrigValues[0].classroom_unique_url;
+        crUrl = classroomOrigValues.classroom_unique_url;
     let scheduleWrapper = document.querySelectorAll('.form--secondary__schedule-wrapper');
     let schedule = [];
     let downloadStatus = canDownload,
@@ -588,7 +588,7 @@ function updateClassroom(obj){
 }
 function checkCode(code){
     let url = '/teacher/check-classroomCode';
-    let jsonData = JSON.stringify({inputCode: code, inputUrl: classroomOrigValues[0].classroom_unique_url});
+    let jsonData = JSON.stringify({inputCode: code, inputUrl: classroomOrigValues.classroom_unique_url});
     const options = {
         method: 'POST',
         headers:{

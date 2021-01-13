@@ -9,18 +9,24 @@
 @section('cs-css')
     <link rel="stylesheet" href="/css/libraries/date picker/mtr-datepicker.min.css">
     <link rel="stylesheet" href="/css/libraries/date picker/mtr-datepicker.default-theme.min.css">
+    <link rel="stylesheet" href="/css/libraries/photoswipe/photoswipe.css">
+    <link rel="stylesheet" href="/css/libraries/photoswipe/default-skin/default-skin.css">
     <link rel="stylesheet" href="/css/teacher/task.create.style.css">
 @endsection
 
 @section('cs-js')
     <!-- JS CDN Libraries -->
     <script src="https://cdn.jsdelivr.net/combine/npm/jquery@3.3.1,npm/smooth-scrollbar@8.2.7,npm/smooth-scrollbar@8.2.7/dist/plugins/overscroll.min.js"></script>
+    <script src="/assets/js/libraries/photoswipe/photoswipe.min.js"></script>
+    <script src="/assets/js/libraries/photoswipe/photoswipe-ui-default.min.js"></script>
     <script src="/assets/js/libraries/smooth-scroll.polyfills.js"></script>
     <script src="/assets/js/helpers/image-checker.js"></script>
     <script src="/assets/js/libraries/smooth-scrollbar.js"></script>
     <script src="/assets/js/helpers/scroll-bar-builder.js"></script>
+
     <script>
-        let classroomUrl = '{{$classrooms[0]->classroom_unique_url}}'
+        let classroomUrl = '{{$classrooms[0]->classroom_unique_url}}',
+            classID = '{{$classrooms[0]->id}}'
     </script>
 @endsection
 
@@ -134,11 +140,11 @@
                                         <div class="task-create__date-picker" id="task-deadline-picker"></div>
                                     </div>
                                 </div>
-                                <div class="task-create__options no-mb-submission">
+                                <div class="task-create__options no-mb-submission js-submission">
                                     <p class="task-create__option-lbl">7.) How many submissions do you want to accept?</p>
                                     <div class="task-create__options-radio-bttn-wrapper--inline">
                                         <div class="task-create__options-radio-bttn-group">
-                                            <input type="radio" value="1" name="submissionRadBttn" id="radioSubmissionBttn1">
+                                            <input type="radio" value="1" name="submissionRadBttn" id="radioSubmissionBttn1" checked>
                                             <label for="radioSubmissionBttn1">1</label>
                                         </div>
                                         <div class="task-create__options-radio-bttn-group">
@@ -156,11 +162,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="task-create__options no-mb-submission">
+                                <div class="task-create__options no-mb-submission js-cheating-attempt">
                                     <p class="task-create__option-lbl">8.) How many cheating attempts do you want to accept?</p>
                                     <div class="task-create__options-radio-bttn-wrapper--inline">
                                         <div class="task-create__options-radio-bttn-group">
-                                            <input type="radio" value="1" name="radioCheatingBttn" id="radioCheatingBttn1">
+                                            <input type="radio" value="1" name="radioCheatingBttn" id="radioCheatingBttn1" checked>
                                             <label for="radioCheatingBttn1">1</label>
                                         </div>
                                         <div class="task-create__options-radio-bttn-group">
@@ -189,13 +195,57 @@
                         <div class="task-create__main"></div>
                         <div class="task-create__bttn-bottom">
                             <button type="button" class="bttn task-create__add-more-question js-add-more-question">Add more question</button>
-                            <button type="button" class="bttn task-create__add-more-question js-publish-bttn">Publish</button>
+                            <div class="task-create__bttn-bottom--right">
+                                <button type="button" class="bttn task-create__add-more-question js-view-bttn">View as a student</button>
+                                <button type="button" class="bttn task-create__add-more-question js-publish-bttn">Publish</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
+    <div class="preview__task" id="preview-wrapper">
+        <div class="preview__task-children-wrapper">
+            <button type="button" class="bttn preview__close-bttn">Close</button>
+        </div>
+    </div>
+    <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="pswp__bg"></div>
+        <div class="pswp__scroll-wrap">
+            <div class="pswp__container">
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+                <div class="pswp__item"></div>
+            </div>
+            <div class="pswp__ui pswp__ui--hidden">
+                <div class="pswp__top-bar">
+                    <div class="pswp__counter"></div>
+                    <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                    <button class="pswp__button pswp__button--share" title="Share"></button>
+                    <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                    <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                    <div class="pswp__preloader">
+                        <div class="pswp__preloader__icn">
+                            <div class="pswp__preloader__cut">
+                                <div class="pswp__preloader__donut"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                    <div class="pswp__share-tooltip"></div>
+                </div>
+                <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                </button>
+                <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                </button>
+                <div class="pswp__caption">
+                    <div class="pswp__caption__center"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @section('script')
@@ -203,4 +253,5 @@
     <script src="/assets/js/modules/teacher/classroom/task-general.js"></script>
     <script src="/assets/js/modules/teacher/classroom/task-creation.js"></script>
     <script src="/assets/js/modules/teacher/classroom/task-generation.js"></script>
+    <script src="/assets/js/modules/teacher/classroom/task-preview.js"></script>
 @endsection

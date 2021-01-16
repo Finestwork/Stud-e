@@ -2,7 +2,7 @@
   font-weight: 800;
 }
 
-.task-viewing__bttn, .task-viewing__start-quiz-bttn, .task-viewing__info-label, .task-viewing__tag--status, .task-viewing__tag--task, .answer-sheet__item, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name {
+.task-viewing__save-bttn, .task-viewing__bttn, .task-viewing__start-quiz-bttn, .task-viewing__info-label, .task-viewing__tag--status, .task-viewing__tag--task, .answer-sheet__item, .navbar__notif-date, .navbar__mssg-date, .navbar__notif-info, .navbar__mssg-info, .navbar__notif-title, .navbar__mssg-title, .navbar__profile-box__name {
   font-weight: 700;
 }
 
@@ -1416,7 +1416,7 @@ ul {
 .task-viewing__tag--task {
   background-color: #ebf9ff;
   color: #03A9F4;
-  border: 1px solid #03A9F4;
+  border: 2px solid #03A9F4;
 }
 .task-viewing__info-container {
   color: #172239;
@@ -1475,12 +1475,12 @@ ul {
 .task-viewing__bttn:hover, .task-viewing__start-quiz-bttn:hover {
   background-color: #6913ea;
 }
-.task-viewing__bttn, .task-viewing__delete-bttn {
+.task-viewing__bttn, .task-viewing__delete-bttn, .task-viewing__light-bttn {
   font-size: 12px;
   padding: 7px 10px;
 }
 @media only screen and (min-width: 48em) {
-  .task-viewing__bttn, .task-viewing__delete-bttn {
+  .task-viewing__bttn, .task-viewing__delete-bttn, .task-viewing__light-bttn {
     font-size: 14px;
   }
 }
@@ -1501,6 +1501,45 @@ ul {
   background-color: #ffdddd;
 }
 .task-viewing__delete-bttn:focus {
+  outline: none;
+}
+.task-viewing__light-bttn {
+  background-color: #f2eaff;
+  font-weight: 700;
+  color: #7F2AFF;
+  font-family: inherit;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+.task-viewing__light-bttn:hover {
+  background-color: #e9daff;
+}
+.task-viewing__light-bttn:focus {
+  outline: none;
+}
+.task-viewing__light-bttn:first-of-type {
+  margin-left: 0;
+}
+.task-viewing__edit-container {
+  background-color: white;
+  width: 80%;
+  margin: 20px auto;
+  padding: 1px 0 1px 85px;
+}
+.task-viewing__save-bttn {
+  font-family: inherit;
+  text-transform: uppercase;
+  background-color: #7f2aff;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  display: block;
+  margin: 20px 40px 20px auto;
+}
+.task-viewing__save-bttn:hover {
+  background-color: #7019f3;
+}
+.task-viewing__save-bttn:focus {
   outline: none;
 }
 

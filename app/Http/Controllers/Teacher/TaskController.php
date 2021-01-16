@@ -61,7 +61,7 @@ class TaskController extends Controller
                 }else if($type === 'la'){
                     $totalitems += $ct[2];
                 }else if($type === 'ma' || $type === 'mc'){
-                    $totalitems += $ct[4];
+                    $totalitems += $ct[5];
                 }else if($type === 'id'){
                     $totalitems += $ct[3];
                 }
@@ -91,22 +91,33 @@ class TaskController extends Controller
             }else if($taskType === 'project'){
 
             }else if($taskType === 'assignment'){
-
             }
-
         }
-
         return json_encode(['success'=>false], 500);
     }
-    public function renderTask($type, $taskID) {
+    public function editTask(Request $request){
+
+    }
+    public function renderTask($type, $taskID, $classUrl) {
         if(Auth::guard('teacher')->check()){
             if($type === 'quiz'){
                 $user = Auth::guard('teacher')->user();
                 $quiz = Quiz::where('hashedUrl', $taskID)->get()->first();
+                $classroom = Classroom::where('classroom_unique_url', $classUrl)->get()->first();
+                $modules = Modules::select('id', 'secondary_title')->where('classroom_url', $classroom->classroom_unique_url)->get();
+                $typeTasks = ['quiz', 'exam', 'seatwork', 'project', 'assignment'];
+                $sectionIDs = TeacherClassroom::select('classroom_id')->where('teacher_id', $user->id)->get();
+                foreach($sectionIDs as $sID){
+                    $section []= Classroom::select('id', 'classroom_name', 'is_classroom_active')->where('id', $sID->classroom_id)->get()->first();
+                }
                 return view('teacher.classroom.Task.view-task',[
                     'user'=>$user,
                     'quiz'=>$quiz,
-                    'type'=>'quiz'
+                    'modules'=>$modules,
+                    'classrooms'=>$classroom,
+                    'type'=>'quiz',
+                    'sections' => $section,
+                    'typeTasks'=>$typeTasks
                 ]);
             }
         }

@@ -2,8 +2,8 @@
   font-weight: 800;
 }
 
-.classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .question__id input[type=text], .question__extra, .question__page-nav, .question__list-wrapper, .preview__close-bttn, .no-modules, .task-create__task-description-group input[type=text], .task-create__add-more-question, .task-create__options-timer-wrapper input[type=number], .task-create__hide-settings-bttn, .task-create__ma-wrapper-bttn, .task-create__checkbox-note, .task-create__bttn-checkbox, .task-create__attach-bttn, .task-create__answer-key, .task-create__answer-preview-note, .task-create__reset-question-bttn, .task-create__mark-as-correct-ans-bttn, .task-create__correct-ans-wrapper input[type=text], .task-create__question-wrapper input[type=text], .task-create__question-how-many-points input[type=number], .task-create__options-radio-bttn-group input[type=text], .task-create__note-emp, .task-create__selection-item, .task-create__selection-txt, .task-create__option-lbl, .task-create__options textarea::placeholder, .task-create__options textarea, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
-.form--secondary__group textarea, .breadcrumbs, .switch__note, .switch__name {
+.classroom-settings__unable-txt, .classroom-settings__save-bttn, .classroom-settings__reset-bttn, .classroom-settings__error-list, .question__id input[type=text], .question__extra, .question__page-nav, .question__list-wrapper, .preview__close-bttn, .no-modules, .task-create__task-description-group label, .task-create__task-description-group input[type=text], .task-create__add-more-question, .task-create__options-timer-wrapper label, .task-create__options-timer-wrapper input[type=number], .task-create__hide-settings-bttn, .task-create__ma-wrapper-bttn, .task-create__checkbox-note, .task-create__bttn-checkbox, .task-create__attach-bttn, .task-create__answer-key, .task-create__answer-preview-note, .task-create__reset-question-bttn, .task-create__mark-as-correct-ans-bttn, .task-create__correct-ans-wrapper input[type=text], .task-create__question-wrapper input[type=text], .task-create__question-how-many-points input[type=number], .task-create__options-radio-bttn-group input[type=text], .task-create__options-radio-bttn-group label, .task-create__options-checkboxes label, .task-create__note-emp, .task-create__selection-item, .task-create__selection-txt, .task-create__option-lbl, .task-create__options textarea::placeholder, .task-create__options textarea, .time-wrapper input, label, .form--secondary__success-txt, .form--secondary__schedule-bttn, .form--secondary__schedule-bttn--removed, .form--secondary__bttn, .form--secondary__group select, .form--secondary__group input,
+.form--secondary__group textarea, .breadcrumbs {
   font-weight: 700;
 }
 
@@ -15,7 +15,7 @@ body {
   font-weight: 400;
 }
 
-.classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .fill-in-the-blank p, .question__img-wrapper, .question__footer, .question__radio-bttn-group, .question__attachment-wrapper, .no-modules, .task-create__bttn-bottom--right, .task-create__bttn-bottom, .task-create__options-timer-wrapper, .task-create__ma-choice-wrapper, .task-create__mc-choice-wrapper, .task-create__bttn-controls, .task-create__attachment-area, .task-create__question-bttn-controls, .task-create__question-main-content--top, .task-create__options-radio-bttn-wrapper--inline .task-create__options-cs, .task-create__options-radio-bttn-wrapper--inline, .task-create__options, .task-create__options-wrapper--right, .task-create__options-wrapper--left, .task-create__options-wrapper, .form--secondary__schedule-wrapper, .breadcrumbs, .switch__main, .logo {
+.classroom-settings__schedule-bttn-controls, .classroom-settings__bttn-box, .fill-in-the-blank p, .question__img-wrapper, .question__footer, .question__radio-bttn-group, .question__attachment-wrapper, .no-modules, .task-create__bttn-bottom--right, .task-create__bttn-bottom, .task-create__options-timer-wrapper, .task-create__ma-choice-wrapper, .task-create__mc-choice-wrapper, .task-create__bttn-controls, .task-create__attachment-area, .task-create__question-bttn-controls, .task-create__question-main-content--top, .task-create__options-radio-bttn-wrapper--inline .task-create__options-cs, .task-create__options-radio-bttn-wrapper--inline, .task-create__options, .task-create__options-wrapper--right, .task-create__options-wrapper--left, .task-create__options-wrapper, .form--secondary__schedule-wrapper, .breadcrumbs, .logo {
   display: -webkit-flex;
   display: flex;
 }
@@ -913,106 +913,6 @@ ul {
 }
 .logo__circle--s {
   margin-top: 0.375em;
-}
-
-.switch {
-  padding: 10px;
-  margin-bottom: 15px;
-}
-.switch:last-of-type {
-  margin-bottom: 0;
-}
-.switch__main {
-  -webkit-align-items: center;
-  align-items: center;
-  cursor: pointer;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.switch__main:hover .switch__name {
-  color: #373a4a;
-}
-.switch__main:hover .switch__bttn {
-  background-color: #e0e5f5;
-}
-.switch__main:hover .switch__bttn::before {
-  background-color: #a1a7c5;
-}
-.switch__bttn {
-  background-color: #ecf0ff;
-  height: 20px;
-  width: 60px;
-  border-radius: 17px;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
-}
-.switch__bttn::before {
-  content: "";
-  position: absolute;
-  background-color: #B2B7D4;
-  width: 22px;
-  height: 100%;
-  border-radius: 100%;
-  -webkit-transform: scale(1.15);
-  -ms-transform: scale(1.15);
-  transform: scale(1.15);
-  right: 0;
-  transition: all 0.3s cubic-bezier(0.33, 1, 0.68, 1);
-}
-.switch__name {
-  margin-left: 10px;
-  color: #6c718c;
-  font-size: 14px;
-  width: 100%;
-  max-width: 150px;
-}
-@media only screen and (min-width: 24.375em) {
-  .switch__name {
-    max-width: unset;
-  }
-}
-@media only screen and (min-width: 48em) {
-  .switch__name {
-    font-size: 16px;
-  }
-}
-.switch__note {
-  margin-top: 10px;
-  font-size: 14px;
-  color: #5d606d;
-  display: none;
-}
-
-.switch--active .switch__bttn {
-  background-color: #f3ebff;
-}
-.switch--active .switch__bttn::before {
-  background-color: #7F2AFF;
-  box-shadow: 0 0 5px 2px rgba(132, 50, 255, 0.25);
-  right: 60%;
-}
-.switch--active:hover .switch__bttn {
-  background-color: #f3ebff;
-}
-.switch--active:hover .switch__bttn::before {
-  background-color: #7F2AFF;
-  box-shadow: 0 0 2px 2px rgba(132, 50, 255, 0.25);
-}
-
-.switch-1 {
-  width: 310px;
-}
-
-.switch-2 {
-  width: 295px;
-}
-
-.switch-3 {
-  width: 275px;
-}
-
-.switch-4 {
-  width: 270px;
 }
 
 .breadcrumbs {
@@ -2467,6 +2367,9 @@ label {
   outline: none;
   border-color: #7F2AFF;
   color: #7F2AFF;
+}
+.task-create__task-description-group label {
+  color: #4e4d4d;
 }
 .task-create__bttn-bottom {
   -webkit-flex-direction: column;

@@ -110,7 +110,8 @@ Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function()
 });
 Route::group(['middleware'=>['auth:teacher'], 'prefix'=>'/task'],function(){
     Route::post('/publish', [TeacherTaskController::class, 'generateTask']);
-    Route::get('/view/{type}/{uniqueUrl}', [TeacherTaskController::class, 'renderTask'])->name('task.view.teacher');
+    Route::post('/save-changes', [TeacherTaskController::class, 'editTask']);
+    Route::get('/view/{type}/{uniqueUrl}/{classroomUniqueUrl}', [TeacherTaskController::class, 'renderTask'])->name('task.view.teacher');
 });
 Route::group(['middeware'=>['auth:teacher'], 'prefix'=>'/classroom'], function(){
     Route::post('/create', [ClassroomController::class, 'createClassroom'])->name('classroom.create');

@@ -111,7 +111,7 @@
                                                     @foreach($quiz as $q)
                                                         <tr>
                                                             <th scope="row" class="table__row-head">
-                                                                <a href="{{ route('task.view.teacher', ['quiz', $q->hashedUrl]) }}" class="table__link">{{$q->title}}</a>
+                                                                <a href="{{ route('task.view.teacher', ['quiz', $q->hashedUrl, $classroom->classroom_unique_url]) }}" class="table__link">{{$q->title}}</a>
                                                             </th>
                                                             @foreach(\App\Models\Modules::select('secondary_title')->where('id', (int)$q->submodule)->get() as $module)
                                                                 <td><a href="{{ route('classroom.modules', $classrooms[0]->classroom_unique_url . '#'.$q->submodule) }}" class="table__link">{{$module->secondary_title}}</a></td>

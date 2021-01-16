@@ -205,7 +205,7 @@ hourTxt.onchange = (e)=>{
 }
 minuteTxt.addEventListener('keyup', acceptNumbersOnly);
 minuteTxt.onchange = (e)=>{
-    if(parseInt(e.currentTarget.value) === 1){
+    if(parseInt(e.currentTarget.value) <= 1){
         e.currentTarget.nextElementSibling.textContent = 'minute';
     }else{
         e.currentTarget.nextElementSibling.textContent = 'minutes';
@@ -275,6 +275,7 @@ function getSelectedModule(e){
     selectedTxt.textContent = e.currentTarget.textContent;
     selectedTxt.setAttribute('data-module-id', e.currentTarget.getAttribute('data-module-id'));
     e.currentTarget.parentNode.style.display = null;
+    taskDropdownCtr = 0;
 }
 function showSelectionAnswerType(e){
     let nextEl = e.currentTarget.nextElementSibling;

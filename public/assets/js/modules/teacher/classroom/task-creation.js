@@ -721,6 +721,7 @@ function getAllQuestions(){
                 let txtOnly = questions[i].querySelector('.task-create__bttn-controls').getAttribute('data-txt-only');
                 let answerValues = [], choices = [];
                 let checkboxes = questions[i].querySelectorAll('.task-create__ma-wrapper input[type="checkbox"]');
+                let question = questions[i].querySelector('.task-create__question-wrapper input[type="text"]').value;
                 let points = questions[i].querySelector('.task-create__question-how-many-points input[type="number"]').value;
                 if(txtOnly === 'true'){
                     if(checkboxes.length !== 0){
@@ -731,7 +732,7 @@ function getAllQuestions(){
                             }
                         }
                     }
-                    content.push(['ma', 'true', choices, answerValues, points, attachmentsID]);
+                    content.push(['ma', 'true', question, choices, answerValues, points, attachmentsID]);
                 }else if(txtOnly === 'false'){
                     if(checkboxes.length !== 0){
                         for(let i = 0; i<checkboxes.length; i++){
@@ -742,13 +743,14 @@ function getAllQuestions(){
                             }
                         }
                     }
-                    content.push(['ma', 'false', choices, answerValues, points, attachmentsID]);
+                    content.push(['ma', 'false', question, choices, answerValues, points, attachmentsID]);
                 }
             }else if(type === 'mc'){
                 let txtOnly = questions[i].querySelector('.task-create__bttn-controls').getAttribute('data-txt-only');
                 let answerValues = [], choices = [];
                 let radios = questions[i].querySelectorAll('.task-create__mc-choice-wrapper input[type="radio"]');
                 let points = questions[i].querySelector('.task-create__question-how-many-points input[type="number"]').value;
+                let question = questions[i].querySelector('.task-create__question-wrapper input[type="text"]').value;
                 if(txtOnly === 'true'){
                     if(radios.length !== 0){
                         for(let i = 0; i<radios.length; i++){
@@ -758,7 +760,7 @@ function getAllQuestions(){
                             }
                         }
                     }
-                    content.push(['mc', 'true', choices, answerValues, points, attachmentsID]);
+                    content.push(['mc', 'true', question, choices, answerValues, points, attachmentsID]);
                 }else if(txtOnly === 'false'){
                     if(radios.length !== 0){
                         for(let i = 0; i<radios.length; i++){
@@ -769,7 +771,7 @@ function getAllQuestions(){
                             }
                         }
                     }
-                    content.push(['mc', 'false', choices, answerValues, points, attachmentsID]);
+                    content.push(['mc', 'false', question, choices, answerValues, points, attachmentsID]);
                 }
             }else if(type === 'id'){
                 let input = questions[i].querySelector('.task-create__question-wrapper input[type="text"]');
@@ -789,7 +791,7 @@ function showLAFormat(target, answerPreviewContainer, questionPanelCtr){
         questionWrapper = document.createElement('DIV'),
         questionInput = document.createElement('INPUT'),
         questionLine = document.createElement('DIV'),
-        questionNote = document.createElement('DIV');
+        questionNote = document.createElement('P');
 
     questionCounter.classList.add('task-create__question-counter');
     questionCounter.textContent = 'Question '+questionPanelCtr;
@@ -817,7 +819,7 @@ function showFITBFormat(target, answerPreviewContainer, questionPanelCtr){
         questionWrapper = document.createElement('DIV'),
         questionInput = document.createElement('INPUT'),
         questionLine = document.createElement('DIV'),
-        questionNote = document.createElement('DIV');
+        questionNote = document.createElement('P');
 
     let bttnWrapper = document.createElement('DIV'),
         correctAnsBttn = document.createElement('BUTTON'),
@@ -866,7 +868,7 @@ function showIDFormat(target, answerPreviewContainer, questionPanelCtr){
         questionWrapper = document.createElement('DIV'),
         questionInput = document.createElement('INPUT'),
         questionLine = document.createElement('DIV'),
-        questionNote = document.createElement('DIV');
+        questionNote = document.createElement('P');
 
 
     questionCounter.classList.add('task-create__question-counter');
@@ -913,7 +915,7 @@ function showMAFormat(target, answerPreviewContainer, questionPanelCtr){
         questionWrapper = document.createElement('DIV'),
         questionInput = document.createElement('INPUT'),
         questionLine = document.createElement('DIV'),
-        questionNote = document.createElement('DIV');
+        questionNote = document.createElement('P');
 
     questionCounter.classList.add('task-create__question-counter');
     questionCounter.textContent = 'Question '+questionPanelCtr;
@@ -974,7 +976,7 @@ function showMCFormat(target, answerPreviewContainer, questionPanelCtr){
         questionWrapper = document.createElement('DIV'),
         questionInput = document.createElement('INPUT'),
         questionLine = document.createElement('DIV'),
-        questionNote = document.createElement('DIV');
+        questionNote = document.createElement('P');
 
     questionCounter.classList.add('task-create__question-counter');
     questionCounter.textContent = 'Question '+questionPanelCtr;

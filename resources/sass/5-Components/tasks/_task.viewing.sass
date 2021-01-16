@@ -36,7 +36,7 @@
         &--task
             background-color: #ebf9ff
             color: #03A9F4
-            border: 1px solid #03A9F4
+            border: 2px solid #03A9F4
     &__info
         &-container
             color: $txt-primary-2
@@ -95,7 +95,8 @@
         &:hover
             background-color: #6913ea
     &__bttn,
-    &__delete-bttn
+    &__delete-bttn,
+    &__light-bttn
         font-size: 12px
         padding: 7px 10px
         @include brk_md
@@ -115,7 +116,38 @@
             background-color: #ffdddd
         &:focus
             outline: none
-
+    &__light-bttn
+        background-color: #f2eaff
+        font-weight: 700
+        color: $color-primary
+        font-family: inherit
+        border-radius: 5px
+        margin-left: 10px
+        &:hover
+            background-color: #e9daff
+        &:focus
+            outline: none
+        &:first-of-type
+            margin-left: 0
+    &__edit-container
+        background-color: white
+        width: 80%
+        margin: 20px auto
+        padding: 1px 0 1px 85px
+    &__save-bttn
+        font-family: inherit
+        @extend %font-bold
+        text-transform: uppercase
+        background-color: #7f2aff
+        color: white
+        padding: 10px 15px
+        border-radius: 5px
+        display: block
+        margin: 20px 40px 20px auto
+        &:hover
+            background-color: #7019f3
+        &:focus
+            outline: none
 .status
     &--default
         background-color: #06ced8
